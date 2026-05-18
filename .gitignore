@@ -1,0 +1,42 @@
+# Secrets and credentials. None of these ever get committed.
+.env
+.env.local
+credentials.json
+token.json
+*.token
+client_secret*.json
+
+# SQLite cache and generated outputs. Regenerable, no value in version control.
+data/
+output/
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Backup files that might accidentally hold real secrets
+*.backup
+*.bak
+*.orig
