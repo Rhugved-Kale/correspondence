@@ -1,0 +1,29 @@
+{
+  "thread_id": "t-josiah-first-engineer",
+  "anchor": true,
+  "_note": "Hand-written. The second April peer thread, and the one where Priya is the one asking. Two friends at the same stage trading notes with nothing owed in either direction. This is what makes the April 9 ask read as normal between them, and it establishes that she is perfectly capable of writing to him at length when she wants something. Her 190-word reply here sits three weeks before she stops answering him entirely.",
+
+  "participants": ["priya", "josiah"],
+  "subject": "first engineer question",
+
+  "messages": [
+    {
+      "from": "priya",
+      "date_utc": "2026-04-06T16:20:00-07:00",
+      "subject": "first engineer question",
+      "body": "You hired your first person before I did, so: how much did you care about domain background?\n\nThe candidate I want most has never worked in healthcare or anything adjacent. The two who have are both fine and neither is her. Dane thinks domain is most of the job because he came from clinics and it's most of his job. I think domain is six weeks of reading and taste is not teachable, but I also notice that's the conclusion that lets me hire the person I already want.\n\nBest,\nPriya"
+    },
+    {
+      "from": "josiah",
+      "date_utc": "2026-04-06T19:05:00-07:00",
+      "subject": "Re: first engineer question",
+      "body": "I cared a lot and I was wrong.\n\nThe domain hire was faster for about ten weeks and then plateaued, because he knew how the industry did things and kept building that. The person who didn't know anything asked why four times a day and two of those questions were good. One of them changed the product.\n\nBut the honest version: it only worked because I was there to answer the why questions. If you're heads-down on the scheduler and Dane is selling, nobody is answering her, and a smart person with no context and no one to ask just builds the wrong thing confidently.\n\nSo less \"is domain necessary\" and more \"do you have the hours to be her domain for two months.\" If you don't, hire the fine one.\n\nJ"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-07T00:10:00-07:00",
+      "subject": "Re: first engineer question",
+      "body": "\"Do you have the hours to be her domain for two months\" is a much better question than the one I asked, and I don't love my answer to it.\n\nI don't have the hours. But I think I'd rather find them for the right person than not need them for the wrong one. Ask me again in June whether that held up.\n\nBest,\nPriya"
+    }
+  ]
+}

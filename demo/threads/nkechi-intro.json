@@ -1,0 +1,41 @@
+{
+  "thread_id": "t-nkechi-intro",
+  "anchor": true,
+  "_note": "Hand-written. April, when it was working. Priya replies in 3h and 5h and writes 180-200 words. These numbers exist to be the baseline that the June numbers are measured against. Nkechi is the candidate referenced in the Josiah first-engineer thread: no healthcare background, the one Priya wants anyway.",
+
+  "participants": ["priya", "nkechi"],
+  "subject": "a question about what you're working on",
+
+  "messages": [
+    {
+      "from": "priya",
+      "date_utc": "2026-04-10T14:15:00-07:00",
+      "subject": "a question about what you're working on",
+      "body": "You don't know me, but Femi Adeyinka suggested I write to you, and specifically told me not to open with a pitch.\n\nSo instead: I read your writeup on the incremental migration you ran last year, the one where you kept both write paths live for five months. The part that stuck with me was the decision to keep the old path warm rather than dark, which cost you real money every month and is the reason the cutover was boring. Most people write about the cutover. You wrote about the five months.\n\nI'm building practice management software for independent vet clinics. We're three months in, three pilot clinics, one of which is doing real work in it. I'm the only engineer, which is the problem I'm writing to you about.\n\nNo expectation of a yes or of anything. But if you'd talk to me for half an hour about what you'd want to be true before you left a job like yours, I'd take that conversation seriously.\n\nBest,\nPriya"
+    },
+    {
+      "from": "nkechi",
+      "date_utc": "2026-04-11T10:02:00-07:00",
+      "subject": "Re: a question about what you're working on",
+      "body": "Femi warned me you'd read the migration post, which is the first time anyone has cited the five months instead of the cutover, so, effective opening.\n\nI'm not looking, but I'm curious, and I'd rather say that plainly than pretend otherwise.\n\nTwo questions before a call, if you don't mind answering in writing, because I think written answers are more honest than spoken ones:\n\nWhat does your one engineer spend her week on right now? Not the roadmap version. The actual hours.\n\nAnd what happens to the product if you get hit by a bus in August?\n\nNkechi"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-11T13:20:00-07:00",
+      "subject": "Re: a question about what you're working on",
+      "body": "Both fair, and the second one is the one I'd have asked.\n\nLast week, honestly: eleven hours on a scheduling rewrite, six on a data migration for a clinic that hasn't finished migrating, four on a billing question I've since decided not to answer, three on interviews, and somewhere around nine hours of things I could not account for if you paid me. Call it a third real building, a third customer work that looks like building, and a third overhead.\n\nThe bus question: badly. There's no one else who can deploy. The infrastructure is documented in the sense that I wrote it down once in February and haven't looked at it since, which is the same as not documented. If I'm gone in August the three clinics keep running on what's deployed until something breaks, and then it stays broken.\n\nI could have given you a better answer to that. I'd rather give you the true one and have you decide what it means.\n\nBest,\nPriya"
+    },
+    {
+      "from": "nkechi",
+      "date_utc": "2026-04-14T09:30:00-07:00",
+      "subject": "Re: a question about what you're working on",
+      "body": "The nine unaccounted hours is the most credible thing anyone has told me about a startup in a while.\n\nHalf an hour, yes. Thursday or Friday afternoon both work.\n\nOne more written one, since it worked the first time: who decides what gets built? You said Dane thinks billing closes the round and you've decided not to answer the billing question. Those two sentences are in tension and I'd like to know how that gets resolved when it matters.\n\nNkechi"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-14T14:45:00-07:00",
+      "subject": "Re: a question about what you're working on",
+      "body": "It gets resolved by arguing, and the honest answer is that we haven't had the argument that decides it yet. We've had the friendly version twice.\n\nStructurally: he owns what we sell, I own what we build, and every real decision lives exactly on that line. That works right now because there are three customers and the answer is usually obvious. I don't think it survives twenty customers without one of us conceding something we currently think is non-negotiable.\n\nI'd rather tell you that than describe a decision framework we don't have.\n\nThursday at 2 works. I'll send an invite.\n\nBest,\nPriya"
+    }
+  ]
+}
