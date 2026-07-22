@@ -1,6 +1,6 @@
-# TwinMind preview
+# Correspondence
 
-A local app that reads your Gmail and Calendar, finds the ten people who matter most to you right now, and writes a short editorial page for each one. Built for the TwinMind founding engineer take-home.
+A local app that reads your Gmail and Calendar, finds the ten people who matter most to you right now, and writes a short editorial page for each one.
 
 Beyond the per-person pages, three dashboard surfaces sit on top:
 
@@ -124,7 +124,7 @@ frontend/src/
 
 **Tier 1 Anthropic API.** The agent pipeline could finish in ~4 minutes instead of ~12 with parallel per-person execution. Parallel runs trip the 30k input-tokens-per-minute Tier 1 limit, so we run sequentially with 1.5s inter-agent waits. Anyone with Tier 2+ access can set `PERSON_CONCURRENCY=4` in `pipeline.py` and see the speedup.
 
-**No Perplexity integration.** Perplexity was suggested as one option for web research on the call. I went with Claude's built-in `web_search` tool instead: one fewer key for the user to provide, one fewer client integration to test, identical output quality for this use case. If you want to swap in Perplexity, the `clients/claude.py` interface is small and would take ~30 minutes to adapt.
+**Claude's built-in web search instead of a separate research API.** The About-them agent needs to look people up on the web. A dedicated search API would work, but it means one more key for the user to provide and one more client to test, and the output quality is the same at this volume. If you want to swap one in, the `clients/claude.py` interface is small and would take about 30 minutes to adapt.
 
 **Hallucination defense.** Every agent prompt has an explicit zero-hallucination clause: empty fields are better than fabricated ones. The About-them agent verifies identity three ways (email domain match, in-email context match, or verifiable profile page) before stating any public fact. If none of those check out, it returns empty strings and the page renders without that block.
 
@@ -136,7 +136,7 @@ frontend/src/
 
 **Empty-field handling.** Sections render only when they have content. A page with no public info for that person shows just the timeline and prep card, cleanly.
 
-**In-app setup wizard.** The brief asked for "a screen in the beginning that asks for all the Google client id, the Perplexity API key, the cloud API key, permissions and all." The wizard fulfills that: each key is collected, validated with a real API call (Anthropic) or shape check (Google credentials.json), and persisted to `.env` / `credentials.json` on disk. The user never has to open a text editor.
+**In-app setup wizard.** Collecting keys in the browser rather than making people edit a `.env` by hand. Each key is validated before it's written, with a real API call for Anthropic and a shape check for the Google credentials.json, then persisted to disk. The user never has to open a text editor, and a typo fails immediately instead of thirty seconds into a pipeline run.
 
 ---
 

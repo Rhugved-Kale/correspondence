@@ -38,7 +38,7 @@ export default function SetupScreen({ onStart, starting, account, preflight }) {
             className="text-[11px] uppercase tracking-[0.22em] font-semibold"
             style={{ color: "#272555" }}
           >
-            TwinMind preview
+            Correspondence
           </span>
         </div>
 

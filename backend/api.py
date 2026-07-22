@@ -1,5 +1,5 @@
 """
-FastAPI app for the local TwinMind preview.
+FastAPI app for Correspondence, running locally.
 
 This is what runs on the user's laptop. The flow:
   1. They launch the server (uvicorn backend.api:app).
@@ -46,7 +46,7 @@ from backend.utils.progress import (
 
 log = get_logger("api")
 
-app = FastAPI(title="TwinMind preview", version="0.1.0")
+app = FastAPI(title="Correspondence", version="0.1.0")
 
 # CORS: in dev the frontend runs on 5173 and the API on 8000. We allow that
 # origin so npm run dev can hit /api/* without a proxy. In production the
@@ -277,7 +277,7 @@ def preflight():
 
 # --- First-run setup wizard endpoints ------------------------------------
 #
-# These power the in-app setup screen the brief asked for. The user
+# These power the in-app setup screen. The user
 # pastes their Anthropic key and uploads their Google OAuth credentials
 # right in the browser instead of editing files in a text editor. Both
 # endpoints validate before writing, so a typo doesn't get persisted.
@@ -409,7 +409,7 @@ def setup_google(req: GoogleSetupRequest):
     elif "web" in data:
         raise HTTPException(
             status_code=400,
-            detail="This looks like a Web OAuth client. TwinMind needs a Desktop client. "
+            detail="This looks like a Web OAuth client. Correspondence needs a Desktop client. "
             "In Google Cloud Console, create credentials with Application type = Desktop app.",
         )
     else:

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TwinMind preview launcher.
+# Correspondence launcher.
 #
 # Run this from the project root. It will:
 #   1. Build the React frontend if frontend/dist doesn't exist or is stale.
@@ -61,7 +61,7 @@ fi
 # --- start the server --------------------------------------------------------
 
 echo ""
-echo "Starting TwinMind preview at http://localhost:8000"
+echo "Starting Correspondence at http://localhost:8000"
 echo "Press Ctrl+C to stop."
 echo ""
 

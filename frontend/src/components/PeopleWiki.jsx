@@ -813,7 +813,7 @@ function PersonPage({ person, accent, serif }) {
       <PrepSection person={person} accent={accent} serif={serif} />
 
       {/* FOOTER */}
-      <Footer accent={accent} serif={serif} />
+      <Footer serif={serif} />
     </div>
   );
 }
@@ -1228,7 +1228,7 @@ function PrepBlock({ label, accent, children }) {
 // ---------------------------------------------------------------------------
 // Footer
 // ---------------------------------------------------------------------------
-function Footer({ accent, serif }) {
+function Footer({ serif }) {
   return (
     <footer className="pb-20">
       <div className="max-w-[920px] mx-auto px-6 md:px-12">
@@ -1247,42 +1247,13 @@ function Footer({ accent, serif }) {
               fontSize: 18,
               color: "#3A342D",
               letterSpacing: "-0.01em",
-              marginBottom: 18,
             }}
           >
-            Made with TwinMind
+            Correspondence
           </div>
-          <a
-            href="https://twinmind.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2"
-            style={{
-              padding: "14px 24px",
-              borderRadius: 999,
-              background: accent.solid,
-              color: "#FFFFFF",
-              fontSize: 15.5,
-              fontWeight: 600,
-              letterSpacing: "-0.005em",
-              transition: "transform 250ms ease-out, box-shadow 250ms ease-out, opacity 250ms ease-out",
-              boxShadow: `0 8px 20px -10px ${accent.solid}88`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = `0 12px 24px -10px ${accent.solid}aa`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = `0 8px 20px -10px ${accent.solid}88`;
-            }}
-          >
-            Get TwinMind to see your own
-            <ArrowUpRight size={17} strokeWidth={2.4} />
-          </a>
           <div
             className="text-[12.5px]"
-            style={{ color: "#9B907F", marginTop: 18 }}
+            style={{ color: "#9B907F", marginTop: 10 }}
           >
             Built from your email and calendar.
           </div>
@@ -1462,7 +1433,7 @@ function ShareCard({ person, accent, serif }) {
               <span
                 className="text-[10.5px] uppercase tracking-[0.22em] font-semibold"
               >
-                TwinMind · A page about
+                Correspondence · A page about
               </span>
             </div>
             <span
@@ -1669,28 +1640,10 @@ function ShareCard({ person, accent, serif }) {
               fontWeight: 500,
               fontSize: 17,
               letterSpacing: "-0.005em",
-              marginBottom: 6,
             }}
           >
-            Made with TwinMind
+            Correspondence
           </div>
-          <a
-            href="https://twinmind.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5"
-            style={{
-              color: "#FAF8F4",
-              fontSize: 13.5,
-              fontWeight: 500,
-              opacity: 0.85,
-              textDecoration: "underline",
-              textUnderlineOffset: 3,
-            }}
-          >
-            Get TwinMind to see your own
-            <ArrowUpRight size={13} strokeWidth={2.4} />
-          </a>
         </div>
       </div>
     </div>

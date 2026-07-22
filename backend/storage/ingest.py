@@ -50,7 +50,7 @@ log = get_logger(__name__)
 # (~300ms per message vs ~40ms theoretical parallel ceiling) but it cannot
 # overrun the quota and cannot drop messages. First-run takes longer; every
 # subsequent run is fast because the cache check skips already-fetched ids.
-# This is a take-home build, so correctness matters more than first-run latency.
+# Correctness matters more here than first-run latency.
 #
 # A proper shared token-bucket rate limiter could let us go parallel at
 # ~40 req/s sustainable, cutting first-run by ~5x. That's deferred work.

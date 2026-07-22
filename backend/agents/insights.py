@@ -15,9 +15,8 @@ three top-level surfaces that complement the per-person wiki:
      with prep as a bonus rather than a gate.
 
   3. About-you stats: aggregate signals about how the user uses email
-     in their inbox. The "what this AI found about me that I didn't
-     even know" surface from the brief. All numeric, no LLM
-     hallucinations.
+     in their inbox. The "what this found about me that I didn't even
+     know" surface. All numeric, no LLM hallucinations.
 
 All three are deterministic. The narrative bits already come out of
 the per-person LLM stage; this module is pure aggregation and ranking
@@ -167,8 +166,8 @@ def _compose_upcoming(
     prep blurb is the bonus, not the gate.
 
     14-day window cap because the user is unlikely to care about prep
-    for a meeting three months out, and the brief asked specifically for
-    the next handful of meetings.
+    for a meeting three months out. The next handful of meetings is the
+    useful horizon.
     """
     by_email = {p["email"].lower(): p for p in payloads if p.get("email")}
 
@@ -260,9 +259,8 @@ def _compose_upcoming(
 
 def _compose_about_you(db_path: Path, my_email: str) -> dict:
     """
-    Aggregate stats about how the user uses email. These are the
-    "things you didn't know about yourself" insights the brief flagged
-    as worth surfacing for sharing.
+    Aggregate stats about how the user uses email. Meant to be the
+    "things you didn't know about yourself" surface.
 
     All deterministic SQL. No LLM, no risk of hallucination. Each
     number can be defended by re-running the query.

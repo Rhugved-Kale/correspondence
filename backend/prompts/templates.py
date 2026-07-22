@@ -16,9 +16,8 @@ Two design rules I keep coming back to:
      unknown." This stops the model from inventing detail to fill a
      schema.
 
-The prompts intentionally don't mention TwinMind by name. They're about
-analyzing one person's email history; the product framing happens in
-the frontend.
+The prompts are deliberately product-agnostic. They're about analyzing
+one person's email history; the framing happens in the frontend.
 """
 
 
