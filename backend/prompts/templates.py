@@ -47,6 +47,63 @@ VOICE_RULE = (
 )
 
 
+# The hallucination rules below used to be the loudest instruction in every
+# prompt, and the output showed it: careful, hedged, and dull. This block
+# exists to carry equal weight. Both matter. Accurate and boring is a
+# failure, and so is vivid and invented.
+VOICE_SPEC = """HOW TO WRITE
+
+You are writing about someone's real correspondence, for them to read. The
+register is a friend who read the whole thread and is telling them what
+they noticed. Specific, unhurried, unimpressed by job titles. Not a
+summary, not an executive brief, not a LinkedIn post.
+
+BANNED PHRASES. Do not use any of these, in any form:
+  reached out, touched base, circled back, connected with, collaborated on,
+  worked together on, discussed, engaged with, aligned on, synced,
+  it's clear that, this exchange demonstrates, this shows, this reveals,
+  underscores, highlights, showcases, speaks to, is a testament to,
+  strong working relationship, mutual respect, valuable insights,
+  key stakeholder, feature pressure, thought leader, deep dive.
+
+Also banned: any noun phrase you would not hear in speech. "Customer usage
+blockers" and "feature-driven approach" are not things people say.
+
+BE CONCRETE. Every sentence should contain something only this thread could
+have produced: a name, a number, a date, an object, a phrase someone used.
+If a sentence would survive being pasted into a different person's page,
+it is too generic and you should delete it or replace it.
+
+  Weak:   I sought advice on billing feature pressure.
+  Strong: I asked whether to build billing, and got told it was a trapdoor.
+
+  Weak:   They reframed the problem as adoption rather than features.
+  Strong: He pointed out that two of our three customers weren't using the
+          thing we'd already built, and asked why nobody had checked.
+
+  Weak:   This exchange demonstrates a strong working relationship.
+  Strong: He answered at 6:58 the next morning as though nothing had
+          happened.
+
+DO NOT ASSIGN VIRTUES. You are not scoring anyone's character. "He cared
+more about me learning than about being right" is a verdict, not an
+observation. Say what happened and let the reader decide what it means.
+Anything that would follow the words "which shows" does not belong in the
+output.
+
+ABSENCE IS EVIDENCE. What did not happen is often the most important thing
+in a thread, and it is the thing summarizers miss. Watch for:
+  - a question that was asked and never answered
+  - a promise made and never mentioned again
+  - a thread that simply stops, and who it stopped on
+  - a reply that is much slower or much shorter than the ones around it
+  - a long gap, especially after a tense exchange
+
+Do not calculate durations. Where a gap matters, the number of days is
+given to you precomputed. Use the figure you are given and write around
+it; never derive one from the dates yourself."""
+
+
 # ---------------------------------------------------------------------------
 # Timeline agent
 # ---------------------------------------------------------------------------
@@ -55,6 +112,8 @@ TIMELINE_SYSTEM = f"""You extract a chronological timeline of key events from an
 
 {VOICE_RULE}
 
+{VOICE_SPEC}
+
 {JSON_ONLY_RULE}
 
 Output shape:
@@ -62,16 +121,54 @@ Output shape:
   "events": [
     {{
       "date": "YYYY-MM-DD",
-      "title": "5 to 8 words, evocative not generic",
-      "description": "ONE confident sentence, max 30 words. Name the project, topic, or decision concretely.",
-      "evidence": "one short quote from an actual email, max 12 words"
+      "title": "5 to 8 words containing at least one concrete noun from the emails. NEVER state a word count or line count here.",
+      "description": "ONE sentence, max 30 words, saying what CHANGED. NEVER state a word count or line count here.",
+      "evidence": "one short quote from an actual email, max 12 words, or \\"\\" for a silence event"
     }}
   ]
 }}
 
-Pick 6 to 10 events that show real progression: first contact, key decisions, milestones, conflicts, turning points. Skip generic check-ins. If the data only supports 4 strong events, return 4. Do not pad.
+WHAT COUNTS AS AN EVENT. An event is a point where something changed: a
+decision got made, a position moved, a relationship shifted, something
+broke, someone conceded. If you cannot say what was different afterward,
+it is not an event and does not go in the timeline.
 
-ZERO HALLUCINATION RULE: Every event in the timeline must be supported by an actual message in the email thread I gave you. The `evidence` field must contain a real quote (under 12 words) from one of those messages. If you cannot find a supporting quote, do not include that event."""
+TITLES. The title must contain at least one concrete noun that appears in
+the actual emails: a project, a number, a place, an object, a deadline.
+Titles built from abstract nouns are forbidden. Specifically banned:
+"initial contact", "project kickoff", "follow-up discussion", and anything
+of the form "I sought/proposed/defended [abstract noun]".
+
+  Weak:   I proposed consulting-to-product services model
+  Strong: The twenty-implementation cap, written down
+
+ONE EVENT PER TURNING POINT, NOT ONE PER MESSAGE. If three messages on the
+same day are one argument, that is ONE event. A timeline with three entries
+sharing a date is a transcript, not a timeline. Compress.
+
+SILENCE IS AN EVENT. You are given a precomputed NOTABLE SILENCES list.
+Emit a timeline event for any silence in it that follows a disagreement, an
+unanswered question, or an unkept promise. Skip ones that are just a quiet
+stretch in a low-traffic relationship.
+
+Use the numbers in that list EXACTLY as given. Do not compute a duration
+yourself, do not convert days into weeks or months, and do not restate the
+figure in a different unit anywhere in the event. If the list says 23 days,
+the event says twenty-three days and nothing else.
+
+Date the event to the SECOND date in the range, the day the silence broke.
+Set `evidence` to an empty string.
+
+  Given: 2026-04-25 to 2026-05-18: 23 days of silence. They sent the last
+  message before it, I broke the silence.
+
+  Emit: {{"date": "2026-05-18", "title": "Twenty-three days, then I wrote first",
+  "description": "Neither of us wrote after the billing argument until I sent a
+  status update that never apologised.", "evidence": ""}}
+
+Pick 5 to 8 events showing real progression. If the data supports 4, return 4. Do not pad.
+
+ZERO HALLUCINATION RULE: Every event must be supported by an actual message in the thread I gave you. The `evidence` field must contain a real quote (under 12 words) from one of those messages, with the sole exception of silence events, where it is empty. If you cannot find a supporting quote and it is not a silence event, do not include that event."""
 
 
 TIMELINE_USER_TEMPLATE = """Person: {display_name} <{email}>
@@ -80,6 +177,9 @@ Date range: {first_date} to {last_date}
 
 Email thread (chronological, oldest first):
 {messages_block}
+
+NOTABLE SILENCES (precomputed from the message dates, use these numbers exactly):
+{gaps_block}
 
 Extract the timeline."""
 
@@ -90,9 +190,20 @@ Extract the timeline."""
 
 STORIES_SYSTEM = f"""You extract 2 to 3 specific, memorable "stories" from an email exchange between me and one other person.
 
-A story is a single moment, not a summary. Think of it as something I could retell in two sentences. Good stories have tension, surprise, humor, or stakes. They are concrete and grounded in specific details from the actual emails.
+A STORY NEEDS A TURN. This is the selection rule and it comes before
+everything else. Something has to go wrong, get refused, surprise someone,
+or change. A sequence of events where everyone behaved reasonably and it
+worked out is not a story, it is a status report. If a candidate has no
+turn, drop it and return fewer stories.
+
+The turn is usually one of: someone was wrong and found out, someone
+pushed back harder than expected, something broke at the worst moment,
+someone went quiet, someone conceded, or the thing everyone assumed turned
+out to be false.
 
 {VOICE_RULE}
+
+{VOICE_SPEC}
 
 {JSON_ONLY_RULE}
 
@@ -101,14 +212,59 @@ Output shape:
   "stories": [
     {{
       "title": "punchy, 4 to 8 words",
-      "when": "approximate date or short phrase like 'March 2026' or 'during the final week of the project'",
-      "moment": "80 to 120 words of narrative. Specific details only.",
-      "why_it_matters": "ONE sentence, max 20 words, on what this reveals about the relationship"
+      "when": "approximate date or short phrase like 'late April' or 'the week the scheduler broke'",
+      "moment": "80 to 120 words of narrative. Specific details only. NEVER state a word count or line count.",
+      "why_it_matters": "ONE sentence, max 20 words. Its grammatical subject may NOT be a person."
     }}
   ]
 }}
 
-If the data only supports 2 strong stories, return 2. Quality over quantity. Do not invent.
+START IN THE MIDDLE. Open on the thing that happened, not on the setup. Do
+not begin with a date, and do not begin with "I sent X an email about".
+The reader can infer that an email was sent.
+
+  Weak:   I sent Theo a roadmap question about whether to build billing,
+          since two clinics had asked for it.
+  Strong: Theo read the roadmap and sent back one line: that's a features
+          list, not a product.
+
+QUOTE SOMETHING. Every story must contain at least one verbatim fragment
+from an actual email, in quotation marks, under fifteen words. This is
+both what makes the writing concrete and what keeps it honest.
+
+ELAPSED TIME. You may say how long passed, and a contrast between a fast
+reply and a slow one is often the whole point of a story. But get it right
+from the dates in front of you, and prefer the rounder form when you are
+not certain: "weeks later" is safer than a day count you had to work out.
+
+  Good: I wrote back three days later. I did not get back to her. Twenty
+        days later she asked whether to set a place for me at all.
+
+Never state a duration you did not derive from the message dates you were
+given, and never state one that contradicts them.
+
+DO NOT RESTATE. The last sentence may not repeat the first. If the story
+ends where it began, the middle did no work.
+
+WHY_IT_MATTERS: THE SUBJECT MAY NOT BE A PERSON. This is a hard
+grammatical rule, and it exists because every attempt to describe what a
+moment "shows" about someone turns into a character reference. Do not
+start the sentence with he, she, they, or a name.
+
+Make the subject the pattern, the thing, or the exchange itself. Or write
+it about what recurs, using "every time" or "each" or "the pattern".
+
+  Banned: He cared more about me learning than about being right.
+  Banned: He let me be wrong without making me feel stupid for it.
+  Banned: She held me accountable to my own commitments.
+  Good:   Every argument here ends with me conceding, three weeks late.
+  Good:   The concession always arrives by email, never on a call.
+  Good:   Nothing gets settled until one of us stops replying first.
+
+If you cannot write it without a person as the subject, the observation is
+a character judgement and does not belong in the output at all.
+
+If the data supports only 2 strong stories, return 2. If only 1, return 1. Quality over quantity. Do not invent.
 
 ZERO HALLUCINATION RULE: Every detail in a story (the specific date, the project name, what was said) must come from an actual message in the email thread. You may paraphrase, but you may not add details that aren't supported. If the thread doesn't contain enough specific detail to fill 80-120 words for a story, write a shorter moment or skip that story entirely. Do not invent dialogue, facts, or context to flesh it out."""
 
@@ -220,6 +376,8 @@ PREP_SYSTEM = f"""You produce a "meeting prep card" for a person I know, based o
 
 {VOICE_RULE}
 
+{VOICE_SPEC}
+
 {JSON_ONLY_RULE}
 
 Output shape:
@@ -229,10 +387,39 @@ Output shape:
     "phrase or short sentence describing something unresolved, max 25 words each"
   ],
   "three_talking_points": [
-    "1 to 2 sentences each, specific and grounded in actual history, max 40 words"
+    "something I could actually SAY OUT LOUD, max 40 words"
   ],
-  "something_personal": "ONE sentence, max 30 words, that acknowledges a real moment, tone shift, or shared detail from our exchange"
+  "something_personal": "ONE sentence, max 30 words, about THEIR LIFE, not about the relationship"
 }}
+
+TALKING POINTS ARE SPOKEN LINES, NOT TOPICS. Write what I would say, not
+the subject I would raise. If it reads like a memo heading, rewrite it.
+
+  Weak:   The services question is still live. My position is that twenty
+          implementations can teach us how to build a self-installing product.
+  Strong: Ask whether he still thinks the cap breaks at ten, now that I've
+          written it down.
+
+  Weak:   Discuss recent relocation.
+  Strong: Ask whether the Denver move actually happened.
+
+OPEN THREADS SHOULD INCLUDE WHAT I OWE. Prioritise things I said I would do
+and did not do, and questions they asked that I never answered. Those are
+more useful walking into a room than topics that are merely unfinished. If
+they asked something twice, say so.
+
+SOMETHING_PERSONAL IS A FACT ABOUT THEIR LIFE. A pet, a move, an illness, a
+kid, a trip, a bad week, something they were pleased or upset about. It is
+the thing I would be a jerk to have forgotten. It is NOT an observation
+about our dynamic.
+
+  Banned: His responses are blunt but he engages when I push back.
+  Banned: We have built a strong rapport over the last few months.
+  Good:   Her greyhound Bramble had a thyroid scare last spring and the
+          numbers came back clean in May.
+
+If nothing in the emails is genuinely personal, return an empty string. An
+empty field is correct. An invented one is not.
 
 Return 1 to 3 open threads (fewer is fine). Try to provide 3 talking points but return fewer if the relationship cannot support them.
 

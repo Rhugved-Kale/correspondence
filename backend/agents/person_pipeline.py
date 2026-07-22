@@ -35,6 +35,7 @@ from __future__ import annotations
 import asyncio
 from pathlib import Path
 
+from backend.agents import grounding
 from backend.agents.deep_fetch import PersonMessages, load_person_messages
 from backend.clients import claude
 from backend.prompts import templates as T
@@ -97,6 +98,7 @@ async def build_person_payload(
                 first_date=pm.first_date[:10],
                 last_date=pm.last_date[:10],
                 messages_block=messages_block,
+                gaps_block=_format_gaps_block(pm),
             ),
         ),
         default={"events": []},
@@ -158,6 +160,18 @@ async def build_person_payload(
             ),
         ),
         default=_empty_prep(),
+    )
+
+    # Check quotes before composing. The agents are told an empty field
+    # beats an invented one; this enforces it rather than trusting it,
+    # because `evidence` renders as a verbatim quote directly under the
+    # claim it supports and a paraphrase there reads as a fabrication to
+    # anyone who knows the thread.
+    grounding.verify_payload(
+        messages=pm.messages,
+        timeline_events=timeline_data.get("events") or [],
+        stories=stories_data.get("stories") or [],
+        person=pm.email,
     )
 
     payload = _compose_payload(
@@ -273,6 +287,63 @@ def _format_messages_block(pm: PersonMessages) -> str:
             f"Body:\n{body}"
         )
     return "\n\n".join(parts)
+
+
+MIN_GAP_DAYS = 10
+
+
+def _format_gaps_block(pm: PersonMessages) -> str:
+    """
+    Precompute notable silences and hand them to the timeline agent as
+    facts.
+
+    The silence event is the most valuable thing the timeline produces and
+    its most quotable element is the number of days, which is exactly the
+    thing the model gets wrong: given both dates it still miscounted 23 as
+    24, and drifted on which date to file the event under. Date arithmetic
+    is derivable from data we already hold, so we derive it. The agent
+    writes prose around these numbers instead of computing them.
+
+    Also records who fell silent and who spoke first afterward, because
+    "they went quiet" and "I went quiet" are different events and the
+    direction is not always obvious from a message list.
+    """
+    msgs = pm.messages
+    if len(msgs) < 2:
+        return "None."
+
+    from datetime import datetime
+
+    rows: list[str] = []
+    for prev, cur in zip(msgs, msgs[1:]):
+        try:
+            a = datetime.fromisoformat(prev["date_utc"])
+            b = datetime.fromisoformat(cur["date_utc"])
+        except (ValueError, TypeError, KeyError):
+            continue
+        days = (b - a).days
+        if days < MIN_GAP_DAYS:
+            continue
+
+        # "I" must stay capitalised mid-sentence, so build the clause from
+        # explicit forms rather than case-folding a pronoun.
+        if prev["is_outgoing"] and cur["is_outgoing"]:
+            direction = "I sent the last message before it and I broke it too, so they never replied at all"
+        elif prev["is_outgoing"]:
+            direction = "I sent the last message before it, they broke the silence"
+        elif cur["is_outgoing"]:
+            direction = "They sent the last message before it, I broke the silence"
+        else:
+            direction = "They sent the last message before it and they broke it too, so I never replied at all"
+
+        rows.append(
+            f"- {a.date().isoformat()} to {b.date().isoformat()}: {days} days "
+            f"of silence. {direction}."
+        )
+
+    if not rows:
+        return "None."
+    return "\n".join(rows)
 
 
 def _format_context_block(pm: PersonMessages) -> str:
