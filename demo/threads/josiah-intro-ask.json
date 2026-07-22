@@ -1,0 +1,35 @@
+{
+  "thread_id": "t-josiah-intro",
+  "anchor": true,
+  "_note": "Hand-written. The canonical forgotten thread. The promise is deliberately one clean quotable sentence so the forgotten agent has something to point at, and so the share card has a candidate. Three inbound, one outbound, then nothing. His last message gives her an easy exit she never takes, which is worse than if he had been annoyed. Depends on the two April peer threads existing first, so the ask reads as one friend asking another rather than a stranger emailing a resource.",
+
+  "participants": ["josiah", "priya"],
+  "subject": "a favor, and please say no if it's weird",
+
+  "messages": [
+    {
+      "from": "josiah",
+      "date_utc": "2026-04-09T14:15:00-07:00",
+      "subject": "a favor, and please say no if it's weird",
+      "body": "Feel free to say no to this and I will never bring it up again.\n\nWe're putting together a small pre-seed, and Marguerite Vance keeps coming up as the one person who actually understands the operator side of what we're building. I saw she led yours. Would you be up for making an introduction?\n\nI know intros are a real thing to spend, and you just closed, so if the answer is \"not right now\" or \"not yet\" or \"ask me in six months,\" all of those are completely fine answers and I mean it.\n\nEither way, congratulations on the round. I saw the announcement and I was genuinely thrilled for you.\n\nJ"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-09T23:38:00-07:00",
+      "subject": "Re: a favor, and please say no if it's weird",
+      "body": "Happy to. Let me think about the right framing so it actually lands, she gets a lot of these and the ones that work are specific about why her in particular.\n\nGive me a few days.\n\nBest,\nPriya"
+    },
+    {
+      "from": "josiah",
+      "date_utc": "2026-05-06T10:22:00-07:00",
+      "subject": "Re: a favor, and please say no if it's weird",
+      "body": "No pressure at all, just floating this back up.\n\nDid you get a chance to think about the framing? Happy to write a draft blurb you can edit or throw away entirely, if that turns it into a two-minute thing instead of a twenty-minute thing.\n\nJ"
+    },
+    {
+      "from": "josiah",
+      "date_utc": "2026-05-27T16:51:00-07:00",
+      "subject": "Re: a favor, and please say no if it's weird",
+      "body": "Last time I'll bring this up, promise.\n\nIf it's not a fit, or the timing is bad, or you thought about it and landed on no, genuinely no hard feelings. I'd just rather know than keep wondering whether my email went to spam.\n\nHope Thicket is going well. The scheduling stuff looked really good in the demo you sent back in April.\n\nJ"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "_comment": "Handle -> identity map for the demo corpus. Thread files reference people by handle so addresses can change in one place. style_note is fed to the thread generator; it is the single most important field for keeping voices distinct.",
+
+  "demo_as_of": "2026-06-30",
+  "window_start": "2026-04-01",
+  "window_end": "2026-06-30",
+
+  "me": "priya",
+
+  "people": {
+    "priya": {
+      "email": "priya@thicket.vet",
+      "name": "Priya Raghunathan",
+      "role": "protagonist, CTO and co-founder of Thicket",
+      "style_note": "Length is inverse to closeness. Sends in two bands, 9a-6p and 10:30p-1:30a. Opens a lot of replies with 'Sorry, just seeing this.' Answers the easy question in a multi-question email and drops the hard one. Sign-off varies by recipient and never varies within a relationship."
+    },
+
+    "dane": {
+      "email": "dane@thicket.vet",
+      "name": "Dane Whitfield",
+      "rank": 1,
+      "style_note": "Fragments. Sends three or four messages in ninety seconds instead of one. No greeting, no sign-off. Starts paragraphs with 'ok so'. Lowercase sentence starts about half the time. Occasional long excited message that runs on."
+    },
+    "marguerite": {
+      "email": "marguerite@vanceandco.com",
+      "name": "Marguerite Vance",
+      "rank": 2,
+      "style_note": "Full paragraphs, never fragments. Numbers her questions when there is more than one. Always signs 'Best, Marguerite'. Replies within a day, never instantly. The third question in a list is always the one that matters."
+    },
+    "rosalind": {
+      "email": "rosalind@cascadevet.com",
+      "name": "Rosalind Achterberg",
+      "rank": 3,
+      "style_note": "Long, warm, digressive. Puts her weekend inside a bug report. Exclamation points. Clinical detail she does not realize is interesting. Signs 'Ros'. Mentions her greyhound Bramble in passing, never as the subject."
+    },
+    "theo": {
+      "email": "theo.brandt@corvia.com",
+      "name": "Theo Brandt-Sørensen",
+      "rank": 4,
+      "style_note": "Four sentences where most people use fifteen. Signs 'T'. Dry to the point of seeming cold in text. Never softens a disagreement. Asks one question at a time and waits for the answer."
+    },
+    "nkechi": {
+      "email": "nkechi.adeyemi@gmail.com",
+      "name": "Nkechi Adeyemi",
+      "rank": 5,
+      "style_note": "Careful and professional without being cold. Asks precise questions about equity, runway, and failure cases. Never pushes. Response times lengthen steadily across the window, which is the whole point of her."
+    },
+    "callum": {
+      "email": "callum@callumrb.co",
+      "name": "Callum Reyes-Baptiste",
+      "rank": 6,
+      "style_note": "Lowercase, from a phone. 'k'. 'on it'. 'sorry just saw this'. Sends a Figma link with no context. Once or twice a month sends a genuinely sharp paragraph at 2am that is better than anything anyone else said that week."
+    },
+    "wendy": {
+      "email": "wendy.okonkwo@gmail.com",
+      "name": "Wendy Okonkwo",
+      "rank": 7,
+      "style_note": "Warm, chatty, direct. Asks real questions and expects real answers. Never passive-aggressive, which is what makes the June message land. Signs 'W'. Uses dashes and asides the way people actually text."
+    },
+    "josiah": {
+      "email": "josiah@lindqvist.io",
+      "name": "Josiah Lindqvist",
+      "rank": 8,
+      "style_note": "Friendly, slightly over-explains. Front-loads an apology before asking for anything. Follows up politely and is visibly embarrassed to be doing it. Warmer and looser in the two April threads that contain no ask."
+    },
+    "ezra": {
+      "email": "e.mbekitoft@fulton-works.com",
+      "name": "Ezra Mbeki-Toft",
+      "rank": 9,
+      "style_note": "Terse and formal. Says 'the premises'. Numbers his points for no reason. Faintly passive-aggressive. Explains each flooding is not a plumbing issue."
+    },
+    "hana": {
+      "email": "hana.vukovic@northlane.com",
+      "name": "Hana Vukovic",
+      "rank": 10,
+      "style_note": "Polished outbound sequence, personalized just enough to be irritating. Names Thicket to prove she did research. Each message slightly shorter and slightly more direct than the last."
+    },
+
+    "beatriz": {
+      "email": "beatriz@cascadevet.com",
+      "name": "Beatriz Salas-Whitmore",
+      "rank": null,
+      "style_note": "Office manager at Cascade. Practical, brief, CC'd on most Rosalind threads. Three direct messages all quarter, all logistics."
+    },
+    "aiden": {
+      "email": "aiden.fenwick@corvia.com",
+      "name": "Aiden Fenwick",
+      "rank": null,
+      "style_note": "Old Corvia colleague. One warm catch-up exchange in April, two messages each way, then nothing. Thin but genuine."
+    }
+  },
+
+  "noise_senders": [
+    { "email": "receipts@stripe.com", "name": "Stripe", "kind": "transactional", "reply_expected": false },
+    { "email": "dispatch@vetbusinessweekly.com", "name": "Vet Business Weekly", "kind": "newsletter", "reply_expected": false },
+    { "email": "no-reply@google.com", "name": "Google", "kind": "notification", "reply_expected": false },
+    { "email": "cfp@vetsoftsummit.org", "name": "VetSoft Summit", "kind": "cfp", "reply_expected": false },
+    { "email": "outreach@meridianstack.io", "name": "Meridian Stack", "kind": "cold_sales", "reply_expected": true }
+  ]
+}

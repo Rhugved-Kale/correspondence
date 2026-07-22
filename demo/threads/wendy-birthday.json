@@ -1,0 +1,53 @@
+{
+  "thread_id": "t-wendy-birthday",
+  "anchor": true,
+  "_note": "Hand-written. This is the emotional center of the corpus and the source of the headline finding in The Read. Four asks from Wendy across eleven weeks. Priya answers the date, half-answers the gift, and never answers the other three. Reply gaps are 4d / 6d / 3d against a Dane median of 11 minutes, which is the ~500x figure. All three of Priya's replies land after 11:30pm, which feeds the second-shift finding. The final message is never answered, so it sits as the last message in the thread and should surface in Forgotten.",
+
+  "participants": ["wendy", "priya"],
+  "subject": "Mom's 60th",
+
+  "messages": [
+    {
+      "from": "wendy",
+      "date_utc": "2026-04-14T18:22:00-07:00",
+      "subject": "Mom's 60th",
+      "body": "Okay, I'm officially in charge of this, because nobody else volunteered, which is how I end up in charge of everything.\n\nJuly 18 or July 25? I'm leaning the 18th, because the 25th is the weekend Deepa is out of town and she will be insufferable about it for a year.\n\nThings I actually need from you:\n\n- Are you in on the gift? Rahul found a place in Berkeley that restores old radios and I think we could get Grandpa's fixed. It's about $400, so ~$135 each if all three of us go in.\n- Are you bringing anyone? I need a headcount for the table, and I promise I am asking logistically and not the other way.\n- Any chance you could come the Friday before? It's a lot of setup and I would rather not be doing it alone at 11pm like Thanksgiving.\n\nNo rush, but also some rush.\n\nLove you.\nW"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-18T23:47:00-07:00",
+      "subject": "Re: Mom's 60th",
+      "body": "18th works for me.\n\nlove you"
+    },
+    {
+      "from": "wendy",
+      "date_utc": "2026-05-05T09:14:00-07:00",
+      "subject": "Re: Mom's 60th",
+      "body": "Bumping the radio thing, Rahul has to tell the guy by Friday whether we're doing it. $135. Just say yes or no, I genuinely will not be weird about it either way.\n\nAlso still need the headcount! You are the only one I don't have an answer from and the table is a table."
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-11T00:31:00-07:00",
+      "subject": "Re: Mom's 60th",
+      "body": "Sorry, just seeing this. Yes on the radio, I'll venmo you this week.\n\nlove you"
+    },
+    {
+      "from": "wendy",
+      "date_utc": "2026-06-02T19:48:00-07:00",
+      "subject": "Re: Mom's 60th",
+      "body": "Never got the venmo. Not chasing you for it, I just don't want Rahul thinking I forgot to ask.\n\nThe bigger thing: can you come Friday the 17th? I have the cake, the chairs, and the tent rental, and Ma keeps asking me what the plan is as though there is a plan that I am keeping from her.\n\nIt would be really nice to not do this by myself."
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-05T23:58:00-07:00",
+      "subject": "Re: Mom's 60th",
+      "body": "Let me look at the calendar this week and get back to you."
+    },
+    {
+      "from": "wendy",
+      "date_utc": "2026-06-24T20:02:00-07:00",
+      "subject": "Re: Mom's 60th",
+      "body": "Hey. I know you're busy. I'm not saying that in a pointed way, I actually do know.\n\nThe tent people need a final count Monday.\n\nI'd just like to know if I should set a place for you.\n\nW"
+    }
+  ]
+}
