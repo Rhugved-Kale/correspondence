@@ -234,8 +234,17 @@ function computeStats(person) {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export default function PeopleWiki({ people, insights }) {
-  const [selectedId, setSelectedId] = useState(people[0]?.id || "");
+export default function PeopleWiki({ people, insights, landingPersonId }) {
+  // Which person a visitor lands on. Defaults to rank order, since
+  // people.json arrives sorted by rank_position. The demo build overrides
+  // it, because the ranker's job (report interaction signal) and the
+  // demo's job (communicate the product in ten seconds) are different
+  // jobs, and the ranker should not be bent to serve the second one.
+  // An unknown id falls through to rank order on purpose.
+  const [selectedId, setSelectedId] = useState(() => {
+    const landing = people.find((p) => p.id === landingPersonId);
+    return landing?.id || people[0]?.id || "";
+  });
   const [viewMode, setViewMode] = useState("detail"); // "detail" | "share"
 
   // Which surface is the main panel showing? "person" = the usual
