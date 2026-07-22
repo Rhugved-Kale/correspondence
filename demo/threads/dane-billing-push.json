@@ -1,0 +1,78 @@
+{
+  "thread_id": "t-dane-billing-push",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-billing-push'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "billing",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-11T10:43:00-07:00",
+      "subject": "billing",
+      "body": "ok so\n\nwestbrook asked again yesterday"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-11T10:44:00-07:00",
+      "subject": "billing",
+      "body": "and cascade\n\nros brought it up thursday"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-11T10:46:00-07:00",
+      "subject": "billing",
+      "body": "two of three now. and the thing is they're not asking for the world, they just want to see what they billed, send an invoice, track whether it got paid. we keep saying the product handles the whole workflow and then they get to the part where money changes hands and we've got nothing. i think this is the seed closer. like genuinely. because right now we're a very nice frontend to their paper invoices"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-11T11:52:00-07:00",
+      "subject": "billing",
+      "body": "I know they're asking. But billing isn't one feature, it's twelve features pretending to be one. Invoice templates, payment tracking, partial payments, refunds, insurance splits, past-due notices, reporting. Every clinic does it differently and they all think their way is the obvious way.\n\nSix weeks if we're lucky. Probably eight."
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-11T12:08:00-07:00",
+      "subject": "billing",
+      "body": "what if we just do invoices\n\nno payment tracking yet"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-11T12:15:00-07:00",
+      "subject": "billing",
+      "body": "Then they send the invoice and come back into Thicket and can't see whether it was paid. So now we're the system that knows about the appointment and the records but not the money, which means we're not the system of record anymore, which is the only reason they're tolerating the switch."
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-11T14:33:00-07:00",
+      "subject": "billing",
+      "body": "ok but\n\nif we don't build it we lose westbrook"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-11T14:34:00-07:00",
+      "subject": "billing",
+      "body": "they were really clear about it"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-12T23:47:00-07:00",
+      "subject": "billing",
+      "body": "If we build it wrong we lose all three, plus the next six months. Billing is the part of the system where being slightly wrong means their bank account is wrong, and when someone's bank account is wrong they don't file a bug report, they leave.\n\nWe're at the stage where we should be learning whether the scheduling model works for more than one clinic, whether the records structure makes sense, whether people can actually onboard without us sitting there. Those are product-risk questions. Billing is execution risk on top of a product we haven't proven yet."
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-13T09:17:00-07:00",
+      "subject": "billing",
+      "body": "i hear you but i also think we're about to lose the window\n\nthese clinics have asked twice and if we say no again they're going to start looking at the other options and there are other options now"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-13T09:21:00-07:00",
+      "subject": "billing",
+      "body": "let's talk about this monday"
+    }
+  ]
+}

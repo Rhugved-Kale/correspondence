@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-may05",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-may05'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "ros",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-05T10:43:00-07:00",
+      "subject": "ros",
+      "body": "so beatriz just called me\n\nsaid the double booking thing was worse than you made it sound"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-05T10:44:00-07:00",
+      "subject": "ros",
+      "body": "they had a golden retriever in recovery and nowhere to put it because the room was booked for a dental"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-05T10:45:00-07:00",
+      "subject": "ros",
+      "body": "are we losing her"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-05T11:02:00-07:00",
+      "subject": "ros",
+      "body": "no. fixing it this week"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-dane-apr08",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-apr08'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "cascade hills quiet",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-04-08T11:17:00-07:00",
+      "subject": "cascade hills quiet",
+      "body": "have you heard anything from cascade hills\n\nlast touch was the 28th"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-08T11:18:00-07:00",
+      "subject": "cascade hills quiet",
+      "body": "they were pretty warm on the demo"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-08T11:31:00-07:00",
+      "subject": "cascade hills quiet",
+      "body": "left a voicemail yesterday, nothing yet"
+    }
+  ]
+}

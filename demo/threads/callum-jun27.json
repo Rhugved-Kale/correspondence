@@ -1,0 +1,24 @@
+{
+  "thread_id": "t-callum-jun27",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-jun27'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "last one",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-06-27T14:22:00-07:00",
+      "subject": "last one",
+      "body": "final handoff before i scale back\n\nhttps://figma.com/file/kL9mP2nQ4rT8sV7wX3yZ6A/invoice-read-only-views"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-27T14:35:00-07:00",
+      "subject": "last one",
+      "body": "perfect thx"
+    }
+  ]
+}

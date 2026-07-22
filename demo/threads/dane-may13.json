@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-may13",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-may13'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "do we need a logo",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-13T11:42:00-07:00",
+      "subject": "do we need a logo",
+      "body": "ok so i showed the deck to that clinic in bend\n\nthey thought our logo was a bush"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-13T11:43:00-07:00",
+      "subject": "do we need a logo",
+      "body": "it's a thicket"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-13T11:44:00-07:00",
+      "subject": "do we need a logo",
+      "body": "literally in the name\n\nshould we get callum to redo it or is this fine"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-13T11:59:00-07:00",
+      "subject": "do we need a logo",
+      "body": "a thicket is a bush\n\nit's fine"
+    }
+  ]
+}

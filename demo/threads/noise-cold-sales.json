@@ -1,0 +1,60 @@
+{
+  "thread_id": "t-noise-cold-sales",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-cold-sales'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "outreach@meridianstack.io"
+  ],
+  "subject": "Observability for Thicket",
+  "messages": [
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-04-22T10:14:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "Hi Priya,\n\nI came across Thicket's launch and wanted to reach out. Practice management software in veterinary is a space where uptime really matters—a scheduling outage during morning appointments can cascade through the entire day.\n\nMeridian Stack helps early-stage B2B teams get production visibility without the engineering overhead of standing up your own observability stack. We're built for teams at your stage: pre-seed to Series A, shipping fast, where the first production incident usually happens before you've hired someone to own monitoring.\n\nWe work with a few other vertical SaaS companies (practice management for physical therapy, scheduling for salons) and the pattern is consistent: the cost of an outage in appointment-based businesses is high enough that basic monitoring pays for itself in the first prevented incident.\n\nWould it make sense to show you what 15 minutes of setup gets you? Happy to do a working session where we instrument one service together.\n\nBest,\nLiam Chen\nMeridian Stack"
+    },
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-04-29T14:32:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "Hi Priya,\n\nFollowing up on my note from last week about production observability for Thicket.\n\nI know you're probably deep in building right now, which is exactly when most teams punt on monitoring. The challenge is that the first time you need it is usually during an incident, when you're trying to instrument something while it's on fire.\n\nQuick question: are you currently running any error tracking or performance monitoring in production, or is it mostly logs and manual checks?\n\nHappy to keep this async if a call doesn't make sense yet.\n\nBest,\nLiam Chen\nMeridian Stack"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-29T16:08:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "not looking right now, thanks"
+    },
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-05-13T11:47:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "Hi Priya,\n\nTotally understand—timing matters and it sounds like you've got monitoring handled for now.\n\nOne thing I'll mention: we just released a free tier specifically for teams under 10 people. No credit card, no time limit, full feature set up to 100k events/month. The goal is to be there before you need us, not after.\n\nIf that changes the equation at all, here's the signup link: meridianstack.io/early\n\nOtherwise, I'll leave you alone. Good luck with the pilot clinics—I saw the Cascade Veterinary case study and the room-based scheduling fix was a smart catch.\n\nBest,\nLiam Chen\nMeridian Stack"
+    },
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-05-28T09:55:00-07:00",
+      "subject": "Resource: Post-mortem templates for small teams",
+      "body": "Hi Priya,\n\nNot a pitch—just sharing something that might be useful.\n\nWe put together a set of incident post-mortem templates designed for teams that don't have a dedicated ops person yet. It's the process we walked a few early customers through after their first production incident, now as a template you can use independently.\n\nIncludes:\n- Blameless post-mortem structure\n- Severity classification for small teams (what's a P0 when you're three people?)\n- A timeline format that works in a Google doc\n\nFree download, no email capture: meridianstack.io/resources/postmortem-template\n\nFigured it might be helpful even if Meridian Stack isn't the right fit.\n\nBest,\nLiam"
+    },
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-06-03T13:21:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "Hi Priya,\n\nI wanted to check in one more time before I close the loop on this.\n\nWe're running a pilot cohort in June for early-stage healthcare and healthcare-adjacent SaaS companies—4 teams, weekly working sessions on production reliability, shared post-mortems, the kind of peer learning that's hard to get when you're the only technical founder in the room.\n\nThicket would be a great fit, especially given the appointment-based workflow where downtime has immediate customer impact. The cohort is free, and the only commitment is one 45-minute session per week for four weeks.\n\nApplications close June 7. If you're interested: meridianstack.io/cohort-june\n\nIf not, no worries at all—I'll stop here.\n\nBest,\nLiam Chen\nMeridian Stack"
+    },
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-06-09T10:38:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "Hi Priya,\n\nLast note from me.\n\nThe June cohort filled up, but I wanted to leave the door open in case your monitoring needs change later this year. We're running these quarterly, so the next one kicks off in September.\n\nIn the meantime, if you ever want to talk through an incident post-mortem or get a second pair of eyes on a performance issue, my calendar is here: calendly.com/liam-meridian. No sales agenda, just happy to help.\n\nGood luck with the seed round—sounds like you're close based on the LinkedIn activity.\n\nBest,\nLiam Chen\nMeridian Stack"
+    },
+    {
+      "from": "outreach@meridianstack.io",
+      "date_utc": "2026-06-11T15:44:00-07:00",
+      "subject": "Observability for Thicket",
+      "body": "Hi Priya,\n\nQuick correction to my last email—I said the next cohort starts in September, but we actually just added an August session due to demand. Applications open July 1 if that timing is better.\n\nEither way, I'll let this thread rest now. Really do mean the open offer on incident review calls if something comes up.\n\nBest,\nLiam"
+    }
+  ]
+}

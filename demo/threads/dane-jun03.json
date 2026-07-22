@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-jun03",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-jun03'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "westbrook",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-06-03T11:17:00-07:00",
+      "subject": "westbrook",
+      "body": "ok so westbrook just logged in for the first time in like a week\n\nthey migrated the rest of their records\n\njust checked the db, all their historical stuff is there now"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-03T11:18:00-07:00",
+      "subject": "westbrook",
+      "body": "they didn't say anything they just did it"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-03T11:19:00-07:00",
+      "subject": "westbrook",
+      "body": "should I call them? feels like we should call them"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-03T11:32:00-07:00",
+      "subject": "westbrook",
+      "body": "wait a week, see if they actually use it"
+    }
+  ]
+}

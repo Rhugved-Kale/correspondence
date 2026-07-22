@@ -1,0 +1,48 @@
+{
+  "thread_id": "t-ros-weekly-may",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'ros-weekly-may'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "rosalind"
+  ],
+  "subject": "thursday check-in notes",
+  "messages": [
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-28T10:22:00-07:00",
+      "subject": "thursday check-in notes",
+      "body": "Morning! Quick recap from our call yesterday since I promised Bea I'd put the invoice question in writing and then we ran out of time.\n\nThe room-based scheduling is holding beautifully. Marcus has stopped asking me if he's reading it right, which is the highest compliment he knows how to give. We had twelve appointments Monday including two surgeries and a dental, and nothing collided.\n\nWe hired a new tech, starts June 9th. Her name is Lena and she has somehow never used scheduling software at all, which means we get to find out if the interface makes sense to a completely fresh person. I'm curious.\n\nTwo small things: the day sheet still cuts off the last line when Bea prints it on Mondays, so she's still writing it on by hand. And we had a client yesterday—very anxious person, cat named Governor, long story—who called three times because the confirmation text has a period instead of a colon after the time and she thought it was a typo. Can we just make it a colon? I know that sounds insane but it would make my Thursday quieter.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-28T14:55:00-07:00",
+      "subject": "thursday check-in notes",
+      "body": "Love that Marcus has stopped asking. That's the real metric.\n\nConfirmation text punctuation is an easy fix, I'll push it today. Congrats on Lena—excited to hear how onboarding goes with someone who has zero prior assumptions.\n\nP"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-30T09:14:00-07:00",
+      "subject": "thursday check-in notes",
+      "body": "The colon is live and Governor's owner has not called me, so I'm calling that a win.\n\nUnrelated: do you have any documentation on how the search works? Bea was looking for a client whose last name she thought was Foster, but it's actually Forster, and the search didn't surface it even though she typed most of it. She found it eventually by scrolling, but she's wondering if there's a trick she's missing.\n\nAlso I'm attaching a photo Bea took of yesterday's day sheet because it's sort of charming at this point. Last line says \"3:45 Momo (rattus, nail trim)\" in her handwriting at the bottom.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-30T16:38:00-07:00",
+      "subject": "thursday check-in notes",
+      "body": "Search should fuzzy-match on that—let me check if there's a character limit breaking it. Will look today.\n\nMomo the rat is delightful and Bea's handwriting is better than the font honestly.\n\nP"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-06-02T11:03:00-07:00",
+      "subject": "thursday check-in notes",
+      "body": "Good week here. Quiet, which after the last month I will take.\n\nBea tried the search again with a different near-miss and it worked, so maybe it was just the Forster thing being weird. I told her to let me know if it happens again.\n\nWe had a golden retriever in this morning, ten years old, started limping on the left rear over the weekend. Owner was convinced it was cancer because she has had two goldens before and both of them died of hemangiosarcoma, which, fair. Turned out to be a torn cruciate. Still surgery, still expensive, but she cried with relief when I told her. There is a version of this job that is just managing the gap between what people are braced for and what is actually true.\n\nAnyway. Lena starts next week and I'm having her shadow Bea for the first two days, so she'll be in the system but probably not doing much. Bramble is annoyed that I keep leaving for work. She has opinions about my schedule.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-04T13:27:00-07:00",
+      "subject": "thursday check-in notes",
+      "body": "That gap between braced-for and true is such a good way to put it.\n\nExcited to hear how Lena's onboarding goes. Let me know if anything feels broken from a new-user perspective—that's the stuff that's hardest for us to see.\n\nP"
+    }
+  ]
+}

@@ -310,6 +310,36 @@ behavior and worth being able to demonstrate.
 
 ---
 
+## Canonical names
+
+Generation must use these and not invent alternates that collide with
+them. A founder talks to more clinics than she has pilots, so new prospect
+names are fine, but they cannot be near-misses of these.
+
+**The company:** Thicket. Never "Thicket Health", never "Thicket Software".
+
+**The three pilots:**
+
+- **Cascade Veterinary**, Tacoma. Rosalind's clinic. Two vets, plus Marcus
+  (associate vet) and Beatriz (office manager). The one doing real work.
+  Refer to it as Cascade.
+- **Westbrook Animal Hospital.** Three vets, six years of paper records.
+  The quiet one that converts silently in May when they finish migrating.
+- **Silvercreek Veterinary.** Two logins, a front desk manager retiring in
+  October who does not want to learn a new system. The one that never
+  moves in this window.
+
+**People outside the cast who get referenced but never write:** Marcus
+(vet at Cascade), Corbin Achebe (the operator Josiah introduces), Femi
+Adeyinka (who suggested Nkechi), Rahul and Deepa (Wendy's husband and
+their sister), Bramble (Rosalind's greyhound).
+
+**Named prospects that are not pilots**, safe to reference in sales
+traffic: Ridgeline Animal Care, Redwood Veterinary Group, Harborview Pet
+Clinic. Any others must not start with Cascade, Westbrook, or Silvercreek.
+
+---
+
 ## Noise contacts
 
 Not featured. They exist so ranking has real work to do and so the

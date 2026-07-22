@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-dane-may27",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-may27'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "westbrook logins",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-27T11:43:00-07:00",
+      "subject": "westbrook logins",
+      "body": "ok so westbrook just went from 2 logins to 9\n\nno idea what happened but that's the entire front desk staff now"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-27T11:44:00-07:00",
+      "subject": "westbrook logins",
+      "body": "wait and one of the vets\n\nthis is good right"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-27T11:56:00-07:00",
+      "subject": "westbrook logins",
+      "body": "very good. I'll pull logs tonight"
+    }
+  ]
+}

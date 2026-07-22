@@ -1,0 +1,84 @@
+{
+  "thread_id": "t-callum-scheduler-ui",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-scheduler-ui'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "sched v2",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-05-04T10:22:00-07:00",
+      "subject": "sched v2",
+      "body": "https://figma.com/file/xK9mP2nQ4vL8wR3t/room-scheduler-v2"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-04T14:15:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "this is right"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-06T09:40:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "updated timeline view\n\nhttps://figma.com/file/xK9mP2nQ4vL8wR3t/room-scheduler-v2?node-id=144"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-06T11:03:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "room block needs to read as a wall not a card"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-06T15:20:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "k"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-07T13:55:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "tried solid fills\n\nhttps://figma.com/file/xK9mP2nQ4vL8wR3t/room-scheduler-v2?node-id=167"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-07T16:30:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "yes that"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-08T11:18:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "been thinking about why the old one felt wrong and i think it's because a room is a place and an appointment is a promise and we were treating both as boxes. a place is persistent, it has a location, you can be inside it or it can be empty. a promise is conditional and temporary and belongs to people not to a grid.\n\nso the room should be a column that exists whether anything is scheduled or not. the appointment is the thing that appears inside it. the surgery block is different, it's not an appointment, it's the room being unavailable, which is a state change on the place itself.\n\nanyway that's why i think the solid fill worked. it's not an event, it's a closed door."
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-08T12:05:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "this is the smartest thing anyone has said about this product"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-09T10:42:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "conflict states\n\nhttps://figma.com/file/xK9mP2nQ4vL8wR3t/room-scheduler-v2?node-id=183"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-09T14:20:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "yes"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-13T16:10:00-07:00",
+      "subject": "Re: sched v2",
+      "body": "final pass ready for dev handoff when you are"
+    }
+  ]
+}

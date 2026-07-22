@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-marguerite-intro-westbrook",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'marguerite-intro-westbrook'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "marguerite"
+  ],
+  "subject": "Two people who failed at this",
+  "messages": [
+    {
+      "from": "marguerite",
+      "date_utc": "2026-04-13T10:22:00-07:00",
+      "subject": "Two people who failed at this",
+      "body": "As promised.\n\nCorbin Achebe built scheduling software for equine practices in 2019, sold to four clinics, and shut it down eighteen months later. He is now running a wholesale supply business for the same market and will talk to anyone who asks. corbin.achebe@summit-vet-supply.com.\n\nThe second is someone I worked with at Millbridge. Tried to sell practice management to dental offices, could not get past the front desk, ran out of money. She has since joined a larger company doing something unrelated and would prefer I not share her name in writing, but I can introduce you over email if you would like to meet her.\n\nBoth were gracious about this when I asked, so do not wait.\n\nBest,\nMarguerite"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-13T11:04:00-07:00",
+      "subject": "Re: Two people who failed at this",
+      "body": "This is great, thank you.\n\nI'll reach out to Corbin this afternoon. And yes please to the second introduction, I would very much like to talk to her.\n\nBest,\nPriya"
+    },
+    {
+      "from": "marguerite",
+      "date_utc": "2026-04-15T14:18:00-07:00",
+      "subject": "Re: Two people who failed at this",
+      "body": "Connecting you both.\n\nPriya, this is Lena Orosco. Lena, Priya Raghunathan, CTO at Thicket, practice management for veterinary clinics.\n\nLena spent two years trying to sell similar software into dental practices and has been generous enough to offer some time. I will leave you both to it.\n\nBest,\nMarguerite"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-16T09:40:00-07:00",
+      "subject": "Re: Two people who failed at this",
+      "body": "Thank you for this, and nice to meet you Lena.\n\nI'd love thirty minutes whenever works for you. I'm especially interested in the front desk problem Marguerite mentioned, since I suspect we're running into a version of the same thing.\n\nBest,\nPriya"
+    }
+  ]
+}

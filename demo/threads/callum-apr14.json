@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-callum-apr14",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-apr14'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "icons",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-04-14T14:22:00-07:00",
+      "subject": "icons",
+      "body": "keep the old icon set or start fresh"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-14T14:35:00-07:00",
+      "subject": "icons",
+      "body": "start fresh"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-04-14T14:36:00-07:00",
+      "subject": "icons",
+      "body": "k"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-apr16",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-apr16'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "figma",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-04-16T11:22:00-07:00",
+      "subject": "figma",
+      "body": "https://figma.com/file/xK9mP2nQrL4vT8wZ/invoice-layout-v3"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-16T11:22:00-07:00",
+      "subject": "Re: figma",
+      "body": "thinking we do the line items like this"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-16T11:23:00-07:00",
+      "subject": "Re: figma",
+      "body": "callum says it's easier to build than the last version"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-16T11:37:00-07:00",
+      "subject": "Re: figma",
+      "body": "invoice mockup looks good. the totals column should right-align though"
+    }
+  ]
+}

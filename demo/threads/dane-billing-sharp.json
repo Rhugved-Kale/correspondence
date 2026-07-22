@@ -1,0 +1,60 @@
+{
+  "thread_id": "t-dane-billing-sharp",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-billing-sharp'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "Re: billing",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-19T10:14:00-07:00",
+      "subject": "billing",
+      "body": "ok so both westbrook and cascade asked again\n\nwestbrook wants to see invoices even if they can't send them yet\n\ncascade needs it for the surgery packages, ros does a thing where people pay half up front\n\nthis is the thing that closes them"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-19T10:16:00-07:00",
+      "subject": "Re: billing",
+      "body": "also i told marguerite we'd have read-only by end of month and she's putting us in front of two more clinics first week of june"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-19T14:22:00-07:00",
+      "subject": "Re: billing",
+      "body": "You told Marguerite we'd ship billing in two weeks?\n\nP"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-19T14:29:00-07:00",
+      "subject": "Re: billing",
+      "body": "read-only. just displaying what they already have in their old system. i know full billing is bigger\n\nbut we can't go into those meetings with nothing, they're both asking the same question and we keep saying soon"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-19T15:03:00-07:00",
+      "subject": "Re: billing",
+      "body": "We keep saying soon because I don't want to build the wrong version of it and then be stuck supporting it forever. Rosalind's surgery packages are not how most clinics work, and if we build for her edge case first we're designing around one person.\n\nRead-only sounds smaller than it is. Their old systems export to eight different formats and none of them agree on what a line item is. This is still four weeks if nothing breaks."
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-19T15:41:00-07:00",
+      "subject": "Re: billing",
+      "body": "rosalind is the only one actually using it\n\nwestbrook just finished migrating and silvercreek still has two logins. we have one real customer and you keep calling her the edge case\n\nmaybe she's the case and we don't have the rest yet because we're not building what they need"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-20T00:47:00-07:00",
+      "subject": "Re: billing",
+      "body": "I'm not building for Rosalind, I'm building something fifty clinics can use, and you're selling a product that doesn't exist yet and then telling me the thing I'm actually building isn't what you already promised.\n\nWe have thirteen weeks of runway. Billing the way you're describing it is six weeks if it goes well, and the scheduler still has the room-booking thing half-fixed and Nkechi hasn't said yes and I don't know what happens if she doesn't. I can't take six weeks on something that might be wrong when we don't have six weeks to waste.\n\nYou want me to build faster and I want you to stop selling things I haven't scoped yet. I don't know how to do both."
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-20T08:12:00-07:00",
+      "subject": "Re: billing",
+      "body": "ok"
+    }
+  ]
+}

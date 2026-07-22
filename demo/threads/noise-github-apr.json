@@ -1,0 +1,72 @@
+{
+  "thread_id": "t-noise-github-apr",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-github-apr'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "notifications@github.com"
+  ],
+  "subject": "(varies)",
+  "messages": [
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-02T09:14:00-07:00",
+      "subject": "[thicket-app] CI failed on main",
+      "body": "Build #347 failed\nBranch: main\nCommit: a7f3c21 by priya@thicket.io\nJob: test-suite\nDuration: 2m 14s\n\nError: 3 tests failed in scheduling_spec.rb\n\nView details: https://github.com/thicket-app/thicket/actions/runs/347"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-07T11:42:00-07:00",
+      "subject": "[thicket-app] Dependabot alert: rack (CVE-2026-1234)",
+      "body": "Dependabot has detected a security vulnerability in one of your dependencies.\n\nPackage: rack\nCurrent version: 2.2.3\nPatched version: 2.2.6.1\nSeverity: moderate\nCVE: CVE-2026-1234\n\nRecommendation: Update to rack 2.2.6.1 or later\n\nView alert: https://github.com/thicket-app/thicket/security/dependabot/12"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-08T14:03:00-07:00",
+      "subject": "[thicket-app] Weekly repository summary",
+      "body": "Repository activity for thicket-app (Mar 31 - Apr 7)\n\n15 commits pushed\n8 pull requests merged\n3 issues closed\n2 new issues opened\n\nTop contributors:\n- priya@thicket.io (12 commits)\n- dane@thicket.io (3 commits)\n\nMost active files:\napp/models/appointment.rb\napp/controllers/scheduling_controller.rb\nspec/models/appointment_spec.rb"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-11T10:28:00-07:00",
+      "subject": "[thicket-app] CI failed on billing-module branch",
+      "body": "Build #362 failed\nBranch: billing-module\nCommit: d4e9a11 by priya@thicket.io\nJob: integration-tests\nDuration: 4m 37s\n\nError: Timeout in billing_integration_spec.rb\n\nView details: https://github.com/thicket-app/thicket/actions/runs/362"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-15T09:51:00-07:00",
+      "subject": "[thicket-app] Weekly repository summary",
+      "body": "Repository activity for thicket-app (Apr 7 - Apr 14)\n\n22 commits pushed\n6 pull requests merged\n5 issues closed\n7 new issues opened\n\nTop contributors:\n- priya@thicket.io (19 commits)\n- dane@thicket.io (2 commits)\n- callum@design.net (1 commit)\n\nMost active files:\napp/models/room.rb\napp/controllers/scheduling_controller.rb\ndb/migrate/20260412_add_rooms.rb"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-18T16:33:00-07:00",
+      "subject": "[thicket-app] CI failed on main",
+      "body": "Build #389 failed\nBranch: main\nCommit: 7b2f8c3 by priya@thicket.io\nJob: test-suite\nDuration: 1m 52s\n\nError: 1 test failed in room_allocation_spec.rb\n\nView details: https://github.com/thicket-app/thicket/actions/runs/389"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-22T13:07:00-07:00",
+      "subject": "[thicket-app] Dependabot alert: nokogiri (CVE-2026-5678)",
+      "body": "Dependabot has detected a security vulnerability in one of your dependencies.\n\nPackage: nokogiri\nCurrent version: 1.13.4\nPatched version: 1.13.10\nSeverity: high\nCVE: CVE-2026-5678\n\nRecommendation: Update to nokogiri 1.13.10 or later\n\nView alert: https://github.com/thicket-app/thicket/security/dependabot/13"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-22T14:19:00-07:00",
+      "subject": "[thicket-app] Weekly repository summary",
+      "body": "Repository activity for thicket-app (Apr 14 - Apr 21)\n\n18 commits pushed\n9 pull requests merged\n4 issues closed\n3 new issues opened\n\nTop contributors:\n- priya@thicket.io (16 commits)\n- dane@thicket.io (2 commits)\n\nMost active files:\napp/models/appointment.rb\napp/models/room.rb\napp/views/scheduling/index.html.erb"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-28T11:44:00-07:00",
+      "subject": "[thicket-app] CI failed on main",
+      "body": "Build #421 failed\nBranch: main\nCommit: e9d1a44 by priya@thicket.io\nJob: lint\nDuration: 0m 47s\n\nError: Rubocop violations in scheduling_controller.rb\n\nView details: https://github.com/thicket-app/thicket/actions/runs/421"
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-04-29T15:02:00-07:00",
+      "subject": "[thicket-app] Weekly repository summary",
+      "body": "Repository activity for thicket-app (Apr 21 - Apr 28)\n\n14 commits pushed\n5 pull requests merged\n6 issues closed\n4 new issues opened\n\nTop contributors:\n- priya@thicket.io (11 commits)\n- dane@thicket.io (3 commits)\n\nMost active files:\napp/controllers/scheduling_controller.rb\napp/models/clinic.rb\nspec/requests/scheduling_spec.rb"
+    }
+  ]
+}

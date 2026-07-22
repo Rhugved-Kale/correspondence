@@ -1,0 +1,48 @@
+{
+  "thread_id": "t-dane-apr28",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-apr28'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "who's coming thursday",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-04-28T10:14:00-07:00",
+      "subject": "who's coming thursday",
+      "body": "are you on the cascade call or should i run it"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-28T10:29:00-07:00",
+      "subject": "who's coming thursday",
+      "body": "I'm on it"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-28T10:31:00-07:00",
+      "subject": "who's coming thursday",
+      "body": "ok so should callum join"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-28T10:31:00-07:00",
+      "subject": "who's coming thursday",
+      "body": "ros mentioned wanting to walk through the new booking flow"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-28T10:32:00-07:00",
+      "subject": "who's coming thursday",
+      "body": "he has the mocks but idk if that's too many people"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-28T10:49:00-07:00",
+      "subject": "who's coming thursday",
+      "body": "yeah have him join"
+    }
+  ]
+}

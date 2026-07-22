@@ -1,0 +1,132 @@
+{
+  "thread_id": "t-noise-stripe",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-stripe'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "receipts@stripe.com"
+  ],
+  "subject": "Your Thicket receipt",
+  "messages": [
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-04-01T09:12:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: April 1, 2026\n\nPayment method: Visa •••• 4242\n\nDescription: Thicket monthly subscription - Cascade Veterinary\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-04-15T11:03:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: April 15, 2026\n\nPayment method: Visa •••• 8391\n\nDescription: Thicket monthly subscription - Westbrook Animal Hospital\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-04-22T14:28:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: April 22, 2026\n\nPayment method: Mastercard •••• 1067\n\nDescription: Thicket monthly subscription - Silvercreek Veterinary\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-05-01T09:11:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: May 1, 2026\n\nPayment method: Visa •••• 4242\n\nDescription: Thicket monthly subscription - Cascade Veterinary\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-05-15T09:08:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: May 15, 2026\n\nPayment method: Visa •••• 8391\n\nDescription: Thicket monthly subscription - Westbrook Animal Hospital\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-05-22T10:45:00-07:00",
+      "subject": "Payment failed for Thicket subscription",
+      "body": "We had trouble processing your payment for Thicket.\n\nAmount: $49.00 USD\nPayment method: Mastercard •••• 1067\nCustomer: Silvercreek Veterinary\n\nYour card was declined. Please update your payment information to continue your subscription.\n\nUpdate payment method: https://billing.stripe.com/p/update/xxxxxxxx\n\nWe'll retry the payment automatically in 3 days.\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-05-25T13:22:00-07:00",
+      "subject": "Payment retry failed for Thicket subscription",
+      "body": "We tried to process your payment again, but it failed.\n\nAmount: $49.00 USD\nPayment method: Mastercard •••• 1067\nCustomer: Silvercreek Veterinary\n\nYour card was declined. Please update your payment information as soon as possible.\n\nUpdate payment method: https://billing.stripe.com/p/update/xxxxxxxx\n\nWe'll make one more attempt in 5 days. If that payment fails, your subscription will be canceled.\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-05-30T11:17:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: May 30, 2026\n\nPayment method: Mastercard •••• 1067\n\nDescription: Thicket monthly subscription - Silvercreek Veterinary\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-01T09:14:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: June 1, 2026\n\nPayment method: Visa •••• 4242\n\nDescription: Thicket monthly subscription - Cascade Veterinary\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-05T15:41:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $98.00 USD\n\nDate paid: June 5, 2026\n\nPayment method: Visa •••• 4242\n\nDescription: Thicket platform fee - API usage (May 2026)\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-11T10:28:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $250.00 USD\n\nDate paid: June 11, 2026\n\nPayment method: ACH •••• 6789\n\nDescription: Thicket Stripe Connect payout\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-15T09:09:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: June 15, 2026\n\nPayment method: Visa •••• 8391\n\nDescription: Thicket monthly subscription - Westbrook Animal Hospital\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-18T14:03:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $15.00 USD\n\nDate paid: June 18, 2026\n\nPayment method: Visa •••• 4242\n\nDescription: Thicket SMS notifications (June 1-15, 2026)\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-22T10:51:00-07:00",
+      "subject": "Payment failed for Thicket subscription",
+      "body": "We had trouble processing your payment for Thicket.\n\nAmount: $49.00 USD\nPayment method: Mastercard •••• 1067\nCustomer: Silvercreek Veterinary\n\nYour card was declined. Please update your payment information to continue your subscription.\n\nUpdate payment method: https://billing.stripe.com/p/update/xxxxxxxx\n\nWe'll retry the payment automatically in 3 days.\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-23T16:19:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $7.50 USD\n\nDate paid: June 23, 2026\n\nPayment method: Visa •••• 8391\n\nDescription: Thicket SMS notifications (June 1-15, 2026)\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-25T12:44:00-07:00",
+      "subject": "Payment retry failed for Thicket subscription",
+      "body": "We tried to process your payment again, but it failed.\n\nAmount: $49.00 USD\nPayment method: Mastercard •••• 1067\nCustomer: Silvercreek Veterinary\n\nYour card was declined. Please update your payment information as soon as possible.\n\nUpdate payment method: https://billing.stripe.com/p/update/xxxxxxxx\n\nWe'll make one more attempt in 5 days. If that payment fails, your subscription will be canceled.\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-26T09:33:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $125.00 USD\n\nDate paid: June 26, 2026\n\nPayment method: Visa •••• 4242\n\nDescription: Thicket data migration service - Cascade Veterinary (legacy records import)\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-27T11:05:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $98.00 USD\n\nDate paid: June 27, 2026\n\nPayment method: Visa •••• 8391\n\nDescription: Thicket platform fee - API usage (May 2026)\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-28T15:27:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $350.00 USD\n\nDate paid: June 28, 2026\n\nPayment method: ACH •••• 6789\n\nDescription: Thicket Stripe Connect payout\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    },
+    {
+      "from": "receipts@stripe.com",
+      "date_utc": "2026-06-30T13:52:00-07:00",
+      "subject": "Your Thicket receipt",
+      "body": "Receipt from Thicket\n\nAmount paid: $49.00 USD\n\nDate paid: June 30, 2026\n\nPayment method: Mastercard •••• 1067\n\nDescription: Thicket monthly subscription - Silvercreek Veterinary\n\nIf you have any questions, contact us at billing@thicket.app\n\nThicket Inc\n548 Market St #12847\nSan Francisco, CA 94104"
+    }
+  ]
+}

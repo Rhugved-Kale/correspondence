@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-may22",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-may22'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "you ok",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-22T11:42:00-07:00",
+      "subject": "you ok",
+      "body": "you seem fried"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-22T11:55:00-07:00",
+      "subject": "Re: you ok",
+      "body": "I'm fine"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-22T11:56:00-07:00",
+      "subject": "Re: you ok",
+      "body": "ok so like fine fine or\n\njust\n\nyou've been in the office till midnight three days this week"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-22T12:58:00-07:00",
+      "subject": "Re: you ok",
+      "body": "ok"
+    }
+  ]
+}
