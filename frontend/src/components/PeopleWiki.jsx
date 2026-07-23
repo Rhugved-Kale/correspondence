@@ -175,60 +175,26 @@ function formatDate(iso) {
   }
 }
 
-// Derive quantitative "Spotify Wrapped"-style stats from the data we already have.
-// In the real backend these will come straight from the email aggregation pipeline,
-// but we surface what we can from the artifact's own inputs so the slot is filled today.
-function computeStats(person) {
+// Recency is the only number left in the hero. The rest of the old stat
+// row is gone: "Milestones" counted how many events the timeline agent
+// chose to emit, which is a statistic about the artifact rather than the
+// person, and "Span" and "Meetings" were inert as tiles. Those facts now
+// live inside the generated hero_line sentence, where they can carry a
+// claim instead of sitting in boxes. A row of four tiles is the visual
+// signature of a dashboard; one sentence and one marker is an essay.
+function recencyLabel(person) {
   const events = [...(person.timeline || [])].sort((a, b) =>
-    a.date.localeCompare(b.date)
+    (a.date || "").localeCompare(b.date || "")
   );
-  const first = events[0]?.date;
   const last = events[events.length - 1]?.date;
-
-  let spanLabel = "—";
-  if (first && last) {
-    const ms = new Date(last) - new Date(first);
-    const days = Math.max(1, Math.round(ms / 86400000));
-    if (days < 45) spanLabel = `${days} days`;
-    else if (days < 365) spanLabel = `${Math.round(days / 30)} months`;
-    else {
-      const years = (days / 365).toFixed(days >= 730 ? 0 : 1);
-      spanLabel = `${years} ${years === "1" ? "year" : "years"}`;
-    }
-  }
-
-  const milestones = events.length;
-
-  let recencyLabel = "—";
-  if (last) {
-    const ms = Date.now() - new Date(last);
-    const days = Math.round(ms / 86400000);
-    if (days <= 0) recencyLabel = "today";
-    else if (days === 1) recencyLabel = "yesterday";
-    else if (days < 14) recencyLabel = `${days} days ago`;
-    else if (days < 60) recencyLabel = `${Math.round(days / 7)} weeks ago`;
-    else if (days < 365) recencyLabel = `${Math.round(days / 30)} months ago`;
-    else recencyLabel = `${Math.round(days / 365)}+ years ago`;
-  }
-
-  // Meeting count comes from the calendar table via the backend payload.
-  // Older artifacts (generated before this field existed) won't have it;
-  // default to a zero-state so the wiki doesn't crash.
-  const meetingsCount = person.meetings?.count ?? 0;
-  const meetingsLabel = meetingsCount === 0 ? "—" : String(meetingsCount);
-
-  const stats = [
-    { label: "Span", value: spanLabel },
-    { label: "Milestones", value: String(milestones) },
-  ];
-  // Only show the Meetings stat when there's something to say. Showing
-  // "Meetings: —" for everyone clutters the layout for inboxes where the
-  // user doesn't have many calendar invites in scope.
-  if (meetingsCount > 0) {
-    stats.push({ label: "Meetings", value: meetingsLabel });
-  }
-  stats.push({ label: "Last contact", value: recencyLabel });
-  return stats;
+  if (!last) return null;
+  const days = Math.round((Date.now() - new Date(last)) / 86400000);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 14) return `${days} days ago`;
+  if (days < 60) return `${Math.round(days / 7)} weeks ago`;
+  if (days < 365) return `${Math.round(days / 30)} months ago`;
+  return `${Math.round(days / 365)}+ years ago`;
 }
 
 // ---------------------------------------------------------------------------
@@ -338,7 +304,7 @@ export default function PeopleWiki({ people, insights, landingPersonId }) {
               />
               <SidebarPill
                 icon={<TrendingUp size={14} strokeWidth={2.2} />}
-                label="About you"
+                label="The Read"
                 active={view === "about_you"}
                 onClick={() => setView("about_you")}
               />
@@ -441,7 +407,7 @@ export default function PeopleWiki({ people, insights, landingPersonId }) {
                 onClick={() => setView("upcoming")}
               />
               <MobileDashTab
-                label="About you"
+                label="The Read"
                 active={view === "about_you"}
                 onClick={() => setView("about_you")}
               />
@@ -632,7 +598,11 @@ function PersonPage({ person, accent, serif }) {
               className="text-[12px] uppercase tracking-[0.2em] font-semibold"
               style={{ color: accent.ink }}
             >
-              {person.role_hint}
+              {/* role_hint falls back to the display name when the About
+                  agent found nothing, which is the correct outcome for a
+                  private person but renders the name twice. Show the
+                  eyebrow only when it says something the heading doesn't. */}
+              {person.role_hint !== person.name ? person.role_hint : "In your correspondence"}
             </span>
           </motion.div>
 
@@ -672,48 +642,48 @@ function PersonPage({ person, accent, serif }) {
               person.about.one_line}
           </motion.p>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="mt-10 flex flex-wrap items-stretch gap-3"
-          >
-            {computeStats(person).map((stat, i) => (
-              <div
-                key={i}
-                className="flex flex-col"
-                style={{
-                  padding: "12px 18px",
-                  background: "rgba(255,255,255,0.55)",
-                  border: `1px solid ${accent.soft}`,
-                  borderRadius: 12,
-                  backdropFilter: "blur(4px)",
-                  minWidth: 110,
-                }}
+          {/* Hero line: the facts, composed into a claim. */}
+          {person.hero_line && (
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+              className="mt-9 max-w-[620px]"
+              style={{
+                fontFamily: serif,
+                fontWeight: 400,
+                fontSize: 22,
+                lineHeight: 1.5,
+                letterSpacing: "-0.01em",
+                color: "#3A342D",
+              }}
+            >
+              {person.hero_line}
+            </motion.p>
+          )}
+
+          {/* The one number on the page, and the hook into Forgotten. */}
+          {recencyLabel(person) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="mt-8 inline-flex items-center gap-2"
+            >
+              <span
+                className="text-[11px] uppercase tracking-[0.18em] font-semibold"
+                style={{ color: accent.ink }}
               >
-                <span
-                  className="text-[10px] uppercase tracking-[0.18em] font-semibold"
-                  style={{ color: accent.ink }}
-                >
-                  {stat.label}
-                </span>
-                <span
-                  className="mt-1 tabular-nums"
-                  style={{
-                    fontFamily: serif,
-                    fontWeight: 500,
-                    fontSize: 22,
-                    letterSpacing: "-0.01em",
-                    color: "#15110D",
-                    lineHeight: 1.1,
-                  }}
-                >
-                  {stat.value}
-                </span>
-              </div>
-            ))}
-          </motion.div>
+                Last contact
+              </span>
+              <span
+                className="tabular-nums"
+                style={{ fontSize: 15, color: "#5C544A" }}
+              >
+                {recencyLabel(person)}
+              </span>
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -1404,7 +1374,6 @@ function ForgottenCard({ item, accent, serif, index }) {
 // Same data, different visual register: bolder, simpler, more poster-like.
 // ---------------------------------------------------------------------------
 function ShareCard({ person, accent, serif }) {
-  const stats = computeStats(person);
   const signatureStory = person.stories[0]; // first story = most prominent
   const topTalk = person.prep.three_talking_points[0];
 
@@ -1513,47 +1482,9 @@ function ShareCard({ person, accent, serif }) {
           )}
         </div>
 
-        {/* STATS BAND */}
-        <div
-          className="grid grid-cols-3 px-2"
-          style={{
-            borderTop: `1px solid ${accent.soft}`,
-            borderBottom: `1px solid ${accent.soft}`,
-            background: "#FBF8F2",
-          }}
-        >
-          {stats.map((s, i) => (
-            <div
-              key={i}
-              className="py-5 px-3 text-center"
-              style={{
-                borderRight:
-                  i < stats.length - 1 ? `1px solid ${accent.soft}` : "none",
-              }}
-            >
-              <div
-                className="text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5"
-                style={{ color: accent.ink }}
-              >
-                {s.label}
-              </div>
-              <div
-                className="tabular-nums"
-                style={{
-                  fontFamily: serif,
-                  fontWeight: 500,
-                  fontSize: 22,
-                  letterSpacing: "-0.012em",
-                  color: "#15110D",
-                  lineHeight: 1.05,
-                }}
-              >
-                {s.value}
-              </div>
-            </div>
-          ))}
-        </div>
-
+        {/* Stage 4 rebuilds this card. The stats band is gone because
+            the data behind it is gone; what replaces it is decided in
+            notes/stage4-share-card.md, not here. */}
         {/* SIGNATURE STORY */}
         <div className="px-9 py-9">
           <div

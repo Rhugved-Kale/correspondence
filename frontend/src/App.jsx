@@ -22,8 +22,16 @@ import ProgressView from "./ProgressView.jsx";
  * setInterval so a slow status response can't pile up overlapping
  * requests.
  */
+// Demo build. When VITE_DEMO is set the app skips the API and the whole
+// setup/progress flow and reads prebuilt JSON, because the public demo has
+// no backend to talk to. Imported rather than fetched so there is no
+// loading flash on a cold visit.
+const DEMO = import.meta.env.VITE_DEMO === "1";
+
+
 export default function App() {
   const [status, setStatus] = useState(null);
+  const [demoData, setDemoData] = useState(null);
   const [people, setPeople] = useState(null);
   const [insights, setInsights] = useState(null);
   const [account, setAccount] = useState(null);
@@ -51,8 +59,26 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
+  // Demo data load. Static files, served from the build.
+  useEffect(() => {
+    if (!DEMO) return;
+    (async () => {
+      try {
+        const [people, insights, config] = await Promise.all([
+          fetch("/output/people.json").then((r) => r.json()),
+          fetch("/output/insights.json").then((r) => r.json()),
+          fetch("/demo/config.json").then((r) => r.json()).catch(() => ({})),
+        ]);
+        setDemoData({ people, insights, config });
+      } catch (e) {
+        console.error("demo data load failed:", e);
+      }
+    })();
+  }, []);
+
   // Status poll loop.
   useEffect(() => {
+    if (DEMO) return;
     let cancelled = false;
     let timeoutId;
     async function poll() {
@@ -164,6 +190,19 @@ export default function App() {
     await handleReset(false);
     // Tiny delay so the reset propagates before /api/start fires.
     setTimeout(() => handleStart(), 300);
+  }
+
+  // Demo build renders the artifact directly. No polling, no setup, no
+  // progress: there is nothing to wait for.
+  if (DEMO) {
+    if (!demoData) return <BlankSplash />;
+    return (
+      <PeopleWiki
+        people={demoData.people}
+        insights={demoData.insights}
+        landingPersonId={demoData.config?.landing_person_id}
+      />
+    );
   }
 
   // Decide what to render.

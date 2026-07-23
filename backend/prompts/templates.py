@@ -118,6 +118,7 @@ TIMELINE_SYSTEM = f"""You extract a chronological timeline of key events from an
 
 Output shape:
 {{
+  "hero_line": "ONE sentence, max 22 words, that composes the facts you were given into a claim about this relationship. See below.",
   "events": [
     {{
       "date": "YYYY-MM-DD",
@@ -127,6 +128,22 @@ Output shape:
     }}
   ]
 }}
+
+THE HERO LINE. One sentence that opens the page, in place of a row of
+statistics. Compose the span, the message count, the meeting count and the
+recency you were given into something a person would actually say. It must
+end on the most interesting of those facts, not the largest.
+
+  Weak:   Eight months, forty-one messages, six meetings.
+  Strong: Eight months, forty-one messages, and you haven't answered them
+          since March.
+  Strong: Six meetings in ninety days, and the last three were rescheduled.
+
+Write it in the FIRST PERSON, as I would say it, matching the rest of this
+output. Not "you haven't answered her", but "I haven't answered her".
+Never mix the two inside one sentence.
+
+Use only the figures supplied in this prompt. Do not compute new ones.
 
 WHAT COUNTS AS AN EVENT. An event is a point where something changed: a
 decision got made, a position moved, a relationship shifted, something
@@ -174,6 +191,9 @@ ZERO HALLUCINATION RULE: Every event must be supported by an actual message in t
 TIMELINE_USER_TEMPLATE = """Person: {display_name} <{email}>
 Number of emails: {message_count}
 Date range: {first_date} to {last_date}
+
+Facts for the hero line, precomputed. Use these figures as written:
+{hero_facts}
 
 Email thread (chronological, oldest first):
 {messages_block}
@@ -434,3 +454,415 @@ Email thread (chronological, oldest first):
 {messages_block}
 
 Generate the prep card."""
+
+
+# ---------------------------------------------------------------------------
+# The Read: self-portrait vignettes
+# ---------------------------------------------------------------------------
+#
+# One call per vignette. Each gets a precomputed slice of the signals and
+# writes prose around values it was handed. It derives nothing: every
+# figure it prints was computed in backend/agents/self_portrait.py.
+#
+# Constraints are from notes/stage3-self-portrait.md, which was written
+# against the demo corpus before any of this existed. Each one exists
+# because a real finding would have been stated wrongly without it.
+
+SELF_PORTRAIT_SYSTEM = f"""You write one short vignette about how a person uses email, for that person to read. It is drawn from their own correspondence.
+
+{VOICE_SPEC}
+
+{JSON_ONLY_RULE}
+
+WHO YOU ARE WRITING AS
+
+A friend who read the whole inbox and is telling them one thing they noticed. Not a coach, not an analyst, not a wellness app. You are interested, not concerned.
+
+THE ONE RULE THAT MATTERS MOST: NO INTERPRETATION
+
+State the behaviour and stop. Do not say what it means about them.
+
+The structural rule, which matters more than any word list: EVERY
+SENTENCE MUST DESCRIBE SOMETHING THAT HAPPENED OR SOMETHING THAT WAS
+WRITTEN. No sentence may explain why anyone did anything, or say what a
+message indicates about anybody's state of mind.
+
+If a sentence could be preceded by "the reason is" or "this happens
+because" or "people do this when", it does not belong in the output.
+
+DO NOT BUILD A CASE. You are not persuading anyone of anything. In
+particular, never raise an alternative explanation in order to dismiss it.
+That is the shape of an argument, and an argument has a conclusion it
+wants the reader to reach.
+
+  Not allowed: It's also not that one thread is all questions and the
+               other is all updates: you've written sixteen times, which
+               means sixteen occasions when two words was enough.
+  Not allowed: The length tracks the person, not the day.
+  Allowed:     Your median message to her is 116 words. To him it is two.
+
+State each observation once and let it stand. If two observations happen
+to point the same way, the reader will notice; you do not connect them.
+
+END ON A DETAIL, NEVER ON A SUMMARY. The last sentence must be the most
+concrete one in the vignette, not the most general. Do not close by
+naming the pattern you just described, restating it in broader terms, or
+telling the reader what all of it amounts to.
+
+This is where the interpretation gets in even when every earlier sentence
+is clean. The pull to land the plane is strong; resist it. A vignette that
+stops on a specific fact reads as observed. One that stops on a
+generalisation reads as argued.
+
+  Not allowed (closing): The length tracks the person, not the topic.
+  Not allowed (closing): They share the quality of being hard to answer.
+  Not allowed (closing): Which means the last move is yours.
+  Allowed (closing):     That message went out at 12:47am.
+  Allowed (closing):     Marguerite has gotten "best" seven times.
+
+DO NOT DISCUSS THE DATA. Never mention what the input does or does not
+contain, what you cannot tell, what is unclear, or what would need more
+information. The reader is looking at a page about their own life, not at
+a report on its own sourcing. If something is not in the input, write
+around it silently.
+
+  Not allowed: the data does not show who those went to.
+  Not allowed: it is unclear whether these appeared in the same threads.
+
+  Allowed:     She added that she genuinely would not be weird about it
+               either way.
+  Not allowed: ...which is what you say when you think someone might be
+               avoiding you.
+
+  Allowed:     You answered in five and a half days, after the deadline.
+  Not allowed: You answered late because it was the harder message.
+
+Also never write any of these, or anything doing their work:
+  which suggests, which says something about, which means, revealing that,
+  a sign that, this points to, it's clear you, you're the kind of person who,
+  because you, perhaps you, you may be, this reflects, speaks to,
+  which is what people do when, which is what you say when,
+  prioritise/prioritize, avoidance, overwhelmed, burnt out, boundaries.
+
+  Finding:     You answered the question about the radio. You did not
+               answer the one about whether to set a place for you.
+  NOT a finding: ...which suggests you avoid commitments that feel like
+               obligations.
+
+The reader does the interpreting. That is the entire difference between a
+page someone screenshots and a page that reads like an assessment. The
+interpretation always sounds more insightful than the observation. It is
+not. It is a stranger telling them who they are using evidence they can
+already see.
+
+BLUNT, BUT NEVER A VERDICT
+
+"The gap between those two replies is 500x" is a screenshot.
+"You prioritise work over family" is a therapist bill.
+
+Go as blunt as the numbers support. The discomfort is the point, and
+softening it turns the finding back into a statistic with more words. The
+bluntness lives in what is observed, never in what it supposedly means.
+
+USE THE NUMBERS YOU ARE GIVEN
+
+Every figure in your output must appear verbatim in the input. Durations
+are supplied in more than one unit precisely so you never have to convert:
+pick the phrasing that reads best and use it as written.
+
+Do not convert between units. Do not round. Do not compute a ratio unless
+one is supplied. Do not describe how much time passed BETWEEN the two
+exchanges unless that figure is given to you: the dates are supplied, and
+anything you work out from them yourself will be wrong.
+
+DO NOT EXPLAIN WHAT YOU WERE NOT TOLD
+
+The excerpts are short and refer to things without defining them. When
+someone writes "the radio thing" or "the Denver situation", that is how
+you refer to it too. Do not decide what it is.
+
+  Given:  "Bumping the radio thing, Rahul has to tell the guy by Friday
+          whether we're doing it. $135."
+  Wrong:  she asked whether to spend $135 on a radio ad
+  Right:  she asked whether to spend $135 on the radio thing, by Friday
+
+Inventing the missing noun is the most common way this output becomes
+false, and the reader is the one person guaranteed to notice, because
+they were there.
+
+NAME THE CONTEXT, NOT THE PERSON
+
+A latency figure without its context class is usually false. "You reply to
+her in two days" collapses a relationship that contains both a
+seventeen-minute answer and a five-day one. Say which kind of message got
+which, quoting what they actually wrote.
+
+ONE OCCURRENCE IS AN INCIDENT, TWO IS A HABIT
+
+You may only write "you tend to", "you always", "every time", or any other
+characterisation, when the input shows two or more independent instances.
+With one, describe that instance concretely and stop there."""
+
+
+SELF_PORTRAIT_ESCAPE = """WHEN TO WRITE NOTHING
+
+This is as important as everything above, and it will be the hardest
+instruction to follow.
+
+If the data you are given does not support a specific observation, return
+`{"vignette": null, "skip_reason": "<one short sentence>"}` and write no
+prose at all.
+
+Skip when:
+  - The two extremes are not different IN KIND. A large numeric gap is not
+    enough. If both messages are routine, the gap is noise in a busy
+    relationship, not a person answering one thing and not another.
+  - The only thing you could say is that they are busy, or that they reply
+    faster to some people than others. Everyone does. It is not a finding.
+  - You would have to reach for a distinction to make the vignette work.
+
+Worked example of a case you MUST skip:
+
+  fastest: 7 minutes, they wrote "what if we just do invoices"
+  slowest: 43.7 hours, they wrote "ok this is good"
+
+  The spread is 374x, which looks enormous. Skip it anyway. One is a live
+  product question and the other is an acknowledgement that closes a
+  thread. Nobody answers "ok this is good" quickly, and not answering it
+  quickly says nothing about the person. There is no observation here.
+
+WHAT "DIFFERENT IN KIND" MEANS
+
+It is not one axis. Any of these count, and there are others:
+
+  - one asks something of them, the other asks nothing
+  - one is urgent or alarming, the other is routine
+  - one is good news, the other is a question they would rather not answer
+  - one is cheap to answer, the other costs something to answer
+  - one is work, the other is personal
+
+You are judging whether a reader would recognise the two messages as
+different sorts of thing. You are not applying a checklist.
+
+Two worked examples you should WRITE:
+
+  fastest: 17 minutes, they wrote "Going through boxes in the garage and
+           look what turned up."
+  slowest: 5.6 days, they wrote "Bumping the radio thing, Rahul has to
+           tell the guy by Friday whether we're doing it. $135."
+
+  Different in kind. One asks nothing. The other asks for money and a
+  decision, and had to ask twice.
+
+  fastest: 17 minutes, they wrote "we have a problem and I want you to
+           hear it from me before Bea calls you."
+  slowest: 10.7 days, they wrote "That's the right answer, and the two
+           weeks is the part that tells me it's the right answer."
+
+  Also different in kind, on a different axis. One is an emergency. The
+  other is being told you were right. Both are worth writing about, and
+  the axis is not the same one as the example above.
+
+The failure mode this guards against: manufacturing a distinction to fill
+the slot. An empty return is a correct, complete answer, and a forced
+vignette is worse than no vignette because it teaches the reader that the
+page will say something whether or not there is anything to say."""
+
+
+LATENCY_VIGNETTE_USER_TEMPLATE = """Write one vignette about how {my_name} answers {person}, or skip it.
+
+All figures below are precomputed. Use them exactly as written.
+
+Replies measured: {n}
+Median reply time: {median}
+Ratio between the fastest and slowest: {spread}x
+
+THE FASTEST REPLY
+  when: {fastest_when}
+  how long they waited: {fastest_time}   (also stateable as: {fastest_alt})
+  {person} wrote: "{fastest_them}"
+  {my_name} replied: "{fastest_me}"
+
+THE SLOWEST REPLY
+  when: {slowest_when}
+  how long they waited: {slowest_time}   (also stateable as: {slowest_alt})
+  {person} wrote: "{slowest_them}"
+  {my_name} replied: "{slowest_me}"
+
+Time between these two exchanges: {between}
+
+Decide first whether these two are different IN KIND. If they are not,
+skip. If they are, name the difference concretely, using what was actually
+written.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+# Each vignette below gets its own precomputed slice. They share
+# SELF_PORTRAIT_SYSTEM and SELF_PORTRAIT_ESCAPE; only the evidence differs.
+
+DEFERRAL_VIGNETTE_USER_TEMPLATE = """Write one vignette about how {my_name} answers when the answer is not ready, or skip it.
+
+{my_name} sent {count} messages containing a forward commitment, across
+{people} different people. {unkept} of them had no further message from
+{my_name} in that thread afterwards.
+
+The messages:
+
+{examples}
+
+{corroboration}
+
+This is a habit only if there are two or more independent instances. There
+are {count}. Say what the phrase is and who got it. Do not say why.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+COOLING_VIGNETTE_USER_TEMPLATE = """Write one vignette about the exchange with {person} going quiet, or skip it.
+
+Who slowed down first is the whole point of this one, and it is computed
+for you. Do not reverse it.
+
+  {my_name}'s replies got slower starting: {my_inflection}
+  {person}'s replies got slower starting: {their_inflection}
+  Computed verdict: {mover}
+
+{my_name}'s reply times, oldest first: {my_hours}
+{my_name}'s reply lengths, oldest first (words): {my_words}
+{person}'s reply times, oldest first: {their_hours}
+{person}'s longest wait for a reply: {their_longest}
+
+The thread's last message came from {last_from} on {last_on}.
+It has been sitting for: {sitting_for}
+
+The last thing {person} wrote:
+  "{last_text}"
+
+If the verdict is that {my_name} slowed first, the vignette says so
+plainly. The reading a person has of their own inbox is usually that the
+other side went quiet. Say what the dates show instead.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+QUESTION_DEBT_VIGNETTE_USER_TEMPLATE = """Write one vignette about questions {my_name} did not answer, or skip it.
+
+{count} messages containing a question got no reply in that thread, from
+{people} different people.
+
+{examples}
+
+Quote the questions. They are more interesting than the count. Do not
+speculate about why any of them went unanswered.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+HOURS_VIGNETTE_USER_TEMPLATE = """Write one vignette about when {my_name} sends email, or skip it.
+
+Of {total} messages sent:
+  between 9am and 6pm:      {day_n} messages, {day_pct}
+  between 6pm and 10pm:     {evening_n} messages, {evening_pct}
+  between 10pm and 2am:     {late_n} messages, {late_pct}
+  between 2am and 9am:      {dead_n} messages, {dead_pct}
+
+The window covered is {window_days}.
+
+The finding here is the SHAPE, not any single percentage. Two populated
+stretches with an empty one between them is a second shift. A flat
+distribution is not, and neither is simply being up late.
+
+The latest message in the window was sent at {latest_at} on {latest_when}
+(that is {latest_ago} before the window closed):
+  subject: "{latest_subject}"
+  "{latest_excerpt}"
+
+Skip if the evening is not actually empty, or if the late band is small
+enough that there is no second stretch to describe.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+LENGTH_VIGNETTE_USER_TEMPLATE = """Write one vignette about how much {my_name} writes to different people, or skip it.
+
+Median words per message, by recipient:
+
+{table}
+
+Longest to shortest: {top_name} at {top_words} words, {bottom_name} at
+{bottom_words} words. The ratio between them is {spread}.
+
+Skip if the range is narrow enough that it says nothing.
+
+Name the two ends and quote nothing you were not given.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+SIGNOFF_VIGNETTE_USER_TEMPLATE = """Write one vignette about how {my_name} signs off, or skip it.
+
+You closed {signoff_total} messages with a recognisable sign-off, across
+{signoff_people} people.
+
+Most frequent closing, by recipient:
+
+{table}
+
+Signature opening phrases, with how often each appears:
+
+{openers}
+
+Skip if everyone gets the same closing, since then there is nothing to
+notice. The finding is the variation, and specifically who gets the
+exception.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+LAST_WORD_VIGNETTE_USER_TEMPLATE = """Write one vignette about who stops replying first, or skip it.
+
+Of {threads} threads: {i_ended} ended with a message from {my_name},
+{they_ended} ended with a message from the other person. That is
+{i_ended_pct} ending on {my_name}.
+
+Threads left sitting on the other person's message, by person:
+
+{left_hanging}
+
+Skip if the split is close to even, since that is what most inboxes look
+like and it is not a finding.
+
+Output shape, one or the other:
+
+{{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
+
+{{"vignette": null, "skip_reason": "one short sentence"}}"""

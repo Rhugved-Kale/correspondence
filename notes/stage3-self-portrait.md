@@ -82,6 +82,30 @@ week") and counting matches inflates the number by roughly 60%.
 
 ---
 
+## Working discipline: generalize at the first success
+
+**When a mechanism is built for one instance in a class, extend it to all
+instances in the class before proceeding.**
+
+The trigger is finishing the first working application, not noticing the
+pattern repeat. This is distinct from "read the handoff before writing the
+code", which prevents a different failure. That one is about not knowing.
+This one is about knowing and stopping too early.
+
+What it cost here: durations-in-multiple-units was built and verified for
+the latency vignette, then seven more vignette templates were written
+without it. The next run produced converted durations in four of them and
+one outright fabricated timeframe ("eleven months" for eighteen days).
+Every one of those was preventable at the moment the first template
+worked.
+
+The class is whatever shares the shape: agents, prompt templates, vignette
+types, share-card variants, signal extractors. When a fix lands in one,
+enumerate the rest and apply it. The generalization pass is part of
+shipping the first case, not a follow-up.
+
+---
+
 ## Hard constraint 1: context class
 
 **A latency finding must name the class of message it describes, and may
@@ -206,3 +230,112 @@ strengthen constraint 3's example considerably. Dane's June standup traffic
 has Priya deflecting the hiring question twice, which may or may not
 qualify: it is a deflection rather than an omission, and the distinction
 matters. Check before counting it.
+
+---
+---
+
+# Stage 3 close: what shipped, and what to watch
+
+Everything above was written during Stage 1, before the code existed.
+Everything below was written at the close of Stage 3, after it did.
+
+## What shipped
+
+`backend/agents/self_portrait.py` computes ten signal families. It writes
+no prose and derives no conclusions.
+
+`backend/agents/phrasing.py` supplies every figure in every form a writer
+might reach for. It exists because prohibiting conversion failed twice.
+
+`backend/agents/read_composer.py` runs candidates and selects the page.
+
+`SELF_PORTRAIT_SYSTEM` plus `SELF_PORTRAIT_ESCAPE` in templates, and eight
+per-vignette user templates.
+
+`TheReadView` in the frontend: single column, opening vignette large with
+no lede, no stat tiles anywhere.
+
+On the demo corpus: 12 candidates considered, 6 kept, 0 skipped, 6
+distinct finding types.
+
+## Two composer principles, now proven rather than conjectured
+
+**1. Outliers game interestingness metrics.**
+
+Callum's latency spread is 4825x, which ranked him the most interesting
+person in the inbox. It comes from one 26-day invoice thread against an
+8-minute Figma acknowledgement, sitting on a median of 2.6 hours. Wendy's
+median is 88 hours. Ranking by median put Wendy first and Callum out.
+
+When ranking candidates for slot allocation, prefer metrics describing the
+sustained character of a relationship over metrics dominated by extremes.
+Extremes are what make a vignette worth reading. They are not what should
+decide which vignettes exist.
+
+**2. Rare findings beat common ones for slot allocation.**
+
+Cooling fires once in the corpus, behind tight gates. Latency contrast
+fires for six of thirteen people. Both wanted Nkechi's evidence key, and
+whichever got there first locked the other out. The common one arriving
+first would have cost the page its scarcest finding.
+
+When two findings compete for the same person, the rarer one wins. This is
+what makes The Read feel bespoke: different inboxes surface different
+rarities, rather than the same handful of flavours reordered.
+
+**Corollary found the hard way:** evidence-level dedupe is not enough on
+its own. The first composer run kept four latency vignettes about four
+different people. Every one passed dedupe, and the page made the same
+observation four times with different names in it. Per-kind caps are what
+prevent the template failure from wearing a disguise.
+
+## Known limitation: interpretation residue
+
+Constraint 4 was attacked four times: a banned phrase list, a structural
+rule on sentence content, a ban on case-building, and a rule about the
+closing sentence. Each fix relocated the behaviour rather than removing
+it. The model has a strong prior toward concluding.
+
+The shipped page is clean, but **it is clean partly by accident.** The two
+vignettes carrying the worst residue, `length` ("the length tracks the
+person, not the day") and `signoff` ("which makes it a template"), were
+not selected by the composer on this corpus. Composition removed them, not
+the prompt.
+
+**Trigger condition:** if `length` or `signoff` is ever selected on a real
+inbox, read the closing sentence specifically. If the interpretation leak
+shows up there, that is the signal to build the detector: a check over
+vignette bodies for generalising sentences, defined as present-tense
+claims containing no proper noun, number, or quotation. Not worth building
+speculatively; worth building the moment it is observed in the wild.
+
+## Guard measurement is only as good as its normaliser
+
+A full pipeline run flagged twelve story quotes as ungrounded. Five were
+the model quoting accurately and adding a full stop the source did not
+have. One was the model rendering the source's double quotes as single.
+
+Both were normaliser gaps, not hallucinations, and they inflated the
+measured rate by roughly half. Since this log is meant to be the
+hallucination metric on real inboxes, a false-positive class that large
+makes the metric useless. The normaliser now folds terminal punctuation
+and inner quote marks. Real fabrications still fail: an evidence quote
+saying "she was one incident away from being done with us" against a
+source saying "one incident away from going back to paper" is still
+caught.
+
+Lesson worth carrying: when a guard produces a rate, audit the rate before
+trusting it. A guard that over-reports is worse than no guard, because it
+trains you to ignore it.
+
+## Three bugs found in the precompute layer
+
+Moving work out of the prompt moves the correctness burden into code, and
+the code was wrong three times: `.0f` rounding turned 2.6 days into "3
+days", `f"{n} weeks"` produced "1 weeks", and floor division turned a
+90-day window into "about 12 weeks" when it is 12.9.
+
+That last one is the instructive one. It surfaced as a model defect and
+was not one. The model printed "over twelve weeks" because that is what it
+was handed. Before blaming the model for a wrong figure, check what the
+figure was when it left the code.

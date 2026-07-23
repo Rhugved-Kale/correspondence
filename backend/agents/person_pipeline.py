@@ -82,6 +82,7 @@ async def build_person_payload(
 
     messages_block = _format_messages_block(pm)
     context_block = _format_context_block(pm)
+    calendar_stats = _calendar_stats_for(db_path, pm.email)
     name = _label(pm)
 
     log.info("agents starting for %s (%d msgs, sampled to fit)", name, len(pm.messages))
@@ -99,6 +100,7 @@ async def build_person_payload(
                 last_date=pm.last_date[:10],
                 messages_block=messages_block,
                 gaps_block=_format_gaps_block(pm),
+                hero_facts=_format_hero_facts(pm, calendar_stats),
             ),
         ),
         default={"events": []},
@@ -184,7 +186,7 @@ async def build_person_payload(
         about_data=about_data,
         forgotten_data=forgotten_data,
         prep_data=prep_data,
-        calendar_stats=_calendar_stats_for(db_path, pm.email),
+        calendar_stats=calendar_stats,
     )
 
     log.info("agents done for %s", name)
@@ -290,6 +292,41 @@ def _format_messages_block(pm: PersonMessages) -> str:
 
 
 MIN_GAP_DAYS = 10
+
+
+def _format_hero_facts(pm: PersonMessages, calendar: dict, as_of=None) -> str:
+    """
+    The handful of numbers the hero line is composed from.
+
+    The old hero was four stat tiles, one of which ("Milestones") counted
+    how many events the timeline agent chose to emit: a statistic about
+    the artifact rather than the person. These are the facts worth
+    keeping, handed over precomputed so the sentence around them cannot
+    get them wrong.
+    """
+    from datetime import datetime, timezone
+    from backend.agents import phrasing as ph
+
+    now = as_of or datetime.now(timezone.utc)
+    rows = [f"- Messages exchanged: {len(pm.messages)}"]
+
+    try:
+        first = datetime.fromisoformat(pm.first_date.replace("Z", "+00:00"))
+        last = datetime.fromisoformat(pm.last_date.replace("Z", "+00:00"))
+        rows.append(f"- Span of the relationship: {ph.window_span((last - first).days)}")
+        rows.append(
+            f"- Time since the last message: "
+            f"{ph.days_since(pm.last_date[:10], now.date().isoformat())}"
+        )
+    except (ValueError, AttributeError, TypeError):
+        pass
+
+    n = (calendar or {}).get("count") or 0
+    rows.append(
+        f"- Meetings on the calendar together: {n}" if n
+        else "- Meetings on the calendar together: none, do not mention meetings"
+    )
+    return "\n".join(rows)
 
 
 def _format_gaps_block(pm: PersonMessages) -> str:
@@ -422,6 +459,7 @@ def _compose_payload(
             "background": about_data.get("background") or "",
             "three_things_to_know": about_data.get("three_things_to_know") or [],
         },
+        "hero_line": (timeline_data.get("hero_line") or "").strip(),
         "timeline": timeline_data.get("events") or [],
         "stories": stories_data.get("stories") or [],
         "forgotten": forgotten_data.get("forgotten") or [],
@@ -485,6 +523,7 @@ def _empty_payload(email: str) -> dict:
         "rank_score": 0.0,
         "role_hint": email,
         "about": _empty_about(),
+        "hero_line": "",
         "timeline": [],
         "stories": [],
         "forgotten": [],

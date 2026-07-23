@@ -55,12 +55,23 @@ def _normalize(s: str) -> str:
         return ""
     s = (
         s.replace("’", "'").replace("‘", "'")
-        .replace("“", '"').replace("”", '"')
+        # Inner quote marks vary freely: a source saying A simple "agreed"
+        # gets re-rendered with single quotes when the model nests it in
+        # its own sentence. The words are identical, so fold both forms to
+        # one rather than reporting a fabrication.
+        .replace("“", '"').replace("”", '"').replace("'", '"')
         .replace("—", "-").replace("–", "-")
         .replace("…", "...")
     )
     s = re.sub(r"\s+", " ", s)
-    return s.strip().strip('"\'').lower()
+    s = s.strip().strip('"\'').lower()
+    # Terminal punctuation the model adds when embedding a fragment in its
+    # own sentence. Without stripping it, an accurate quote reads as a
+    # fabrication: five of six flags in a full pipeline run were a quote
+    # that was right except for a full stop the source did not have. The
+    # log is meant to measure hallucination rate on real inboxes, so a
+    # false-positive class this large would make the metric useless.
+    return s.rstrip(".,;:!?").strip()
 
 
 def _strip_ellipsis(s: str) -> list[str]:

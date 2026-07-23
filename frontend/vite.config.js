@@ -11,15 +11,15 @@ import fs from "fs";
 export default defineConfig({
   plugins: [
     react(),
-    // Custom middleware: serve /output/people.json straight from the
-    // project root's output/ folder. The pipeline writes there, and we
-    // want the frontend to read the live file without copying it into
-    // public/ (which would go stale every time generate runs).
+    // Custom middleware: serve /output/*.json and /demo/*.json straight
+    // from the project root. The pipeline writes to output/ and the demo
+    // fixture lives in demo/, and we want the frontend reading the live
+    // files rather than copies in public/ that go stale on every run.
     {
       name: "serve-output-json",
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url && req.url.startsWith("/output/")) {
+          if (req.url && (req.url.startsWith("/output/") || req.url.startsWith("/demo/"))) {
             const relPath = req.url.replace(/^\/+/, "");
             const filePath = path.resolve(__dirname, "..", relPath);
             if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {

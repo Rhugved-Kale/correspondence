@@ -48,3 +48,4 @@ Thumbs.db
 demo/.generated/
 demo/**/*.raw.json
 demo/*.cost.log
+demo/the_read.json
