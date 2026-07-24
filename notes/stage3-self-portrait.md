@@ -339,3 +339,39 @@ That last one is the instructive one. It surfaced as a model defect and
 was not one. The model printed "over twelve weeks" because that is what it
 was handed. Before blaming the model for a wrong figure, check what the
 figure was when it left the code.
+
+## Unconsumed mechanisms are untested mechanisms
+
+**Any mechanism whose output is not consumed by a load-bearing downstream
+check is functionally untested, however many times it appears to run.**
+
+Before writing a monitor, guard, wait-loop, validator or health check,
+name the exact downstream consumer whose failure will surface if the
+mechanism breaks. If there is no such consumer, do not build it. You will
+not find out when it stops working.
+
+This happened three times in one stage, in three different shapes:
+
+**The harness bypassed the guard.** `demo/preview.py` called the agents
+directly and never ran `verify_payload`, so an entire stage of prompt
+iteration was judged against unguarded output while the shipped path was
+guarded. Two artifacts, one of them invisible.
+
+**The guard over-reported and nobody checked the rate.** It ran on every
+person and produced a number, and the number was wrong by about two
+thirds because the normaliser folded quotes but not full stops. Nothing
+consumed the rate, so nothing noticed it was inflated.
+
+**Three wait-loops deadlocked on their own pattern.** Each ran
+`until ! pgrep -f "demo.run_pipeline"`, and each loop's own command line
+contains that string, so every loop matched itself and waited forever for
+its own exit. They spun for three hours. It cost nothing, burned no
+credit, and lost no work, purely because their results were never on the
+critical path: every figure they would have printed had already been
+obtained by a foreground command.
+
+That last one is the cleanest statement of the problem. The loops were
+completely broken from the moment they were written, ran dozens of
+iterations, and produced no symptom, because nothing was waiting on them.
+A mechanism that cannot fail visibly is not a check. It is decoration
+that happens to consume a process slot.
