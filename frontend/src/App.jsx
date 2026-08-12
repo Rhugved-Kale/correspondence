@@ -104,6 +104,10 @@ export default function App() {
   // phase flips back to idle (after a reset). This is what keeps the
   // Setup screen accurate when the user switches accounts.
   async function fetchAccountAndPreflight() {
+    // Demo builds have no backend. Without this guard the demo fires
+    // /api/account and /api/preflight on every mount and logs a pair of
+    // 500s in the console of a page that is otherwise entirely static.
+    if (DEMO) return;
     try {
       const [accountResp, preflightResp] = await Promise.all([
         fetch("/api/account"),
@@ -201,6 +205,7 @@ export default function App() {
         people={demoData.people}
         insights={demoData.insights}
         landingPersonId={demoData.config?.landing_person_id}
+        demoUrl={demoData.config?.demo_url}
       />
     );
   }

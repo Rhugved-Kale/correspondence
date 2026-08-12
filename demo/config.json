@@ -1,14 +1,13 @@
 {
   "_comment": "Presentation config for the public demo. Nothing here changes the pipeline, the ranker, or the corpus. It only decides what a first-time visitor sees.",
-
   "landing_person_id": "wendy-okonkwo",
-
   "_why": [
     "The ranker sorts by interaction signal, and people.json is written in rank order, so the wiki would otherwise open on whoever ranks first. That is currently Callum, at 3.38 against Dane's 3.37, a gap well inside noise.",
     "Landing on Callum means a visitor's first ten seconds are Figma links, 'k', and an eleven-message invoice thread. That is the weakest content in the corpus arriving on the surface where first-impression pull is the entire goal.",
     "This is a demo failure, not a ranker failure. The ranker is reporting what it measures and should keep doing that. The fix belongs in presentation.",
     "Wendy is the landing person because the birthday thread is the emotional center of the corpus, it produced the headline finding, and it is the page most likely to make someone lean in cold. Rosalind's near-quit arc is the fallback for the same reason."
   ],
-
-  "_fallback": "If landing_person_id is missing or does not match any id in people.json, the wiki falls back to rank order. The demo degrading to the honest default is the correct failure mode."
+  "_fallback": "If landing_person_id is missing or does not match any id in people.json, the wiki falls back to rank order. The demo degrading to the honest default is the correct failure mode.",
+  "demo_url": "correspondence.vercel.app",
+  "_demo_url_note": "Shown in the card footer on the demo build only. The card carrying the link is the entire sharing loop, so this is the one place a URL belongs. Update when the real domain is decided in Stage 5."
 }

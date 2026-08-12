@@ -866,3 +866,161 @@ Output shape, one or the other:
 {{"vignette": {{"headline": "5 to 9 words", "body": "60 to 110 words, second person, addressed to {my_name}"}}}}
 
 {{"vignette": null, "skip_reason": "one short sentence"}}"""
+
+
+# ---------------------------------------------------------------------------
+# Share card: anonymisation gate
+# ---------------------------------------------------------------------------
+#
+# The card is the only surface that travels, which makes it the only
+# surface where naming a third party matters. A card that says "Wendy" is
+# a card most people will not post, and the person named never agreed to
+# appear on anyone's timeline.
+#
+# So anonymisation is a selection gate, not a formatting step. Every
+# vignette is tried without names. The ones that still mean something
+# become cards. The ones that collapse stay in The Read, which is private
+# and where naming is fine.
+#
+# The useful side effect: this structurally biases the card toward
+# findings about the user's own behaviour and away from findings about one
+# specific relationship, which is the argument for putting share weight on
+# the self-portrait rather than the person page. The gate enforces it
+# instead of leaving it to taste.
+
+CARD_SYSTEM = f"""You turn one observation about someone's email into a card they might post publicly, or you decide it cannot be one.
+
+{VOICE_SPEC}
+
+{JSON_ONLY_RULE}
+
+TWO JOBS, IN ORDER.
+
+FIRST: GET THE PEOPLE OUT.
+
+Prefer removing a person entirely over describing them. Most findings
+reference someone only as the occasion for the reader's behaviour, and the
+message is what matters, not who sent it.
+
+  Weak:   Your sister sent a photo and you answered in seventeen minutes.
+  Strong: A photo got answered in seventeen minutes. A question about
+          $135 with a Friday deadline took five and a half days.
+
+If the finding genuinely needs to say the two messages came from the same
+person, say "the same person" and leave it there.
+
+YOU MAY ONLY NAME A RELATIONSHIP THAT APPEARS IN THE ROSTER. The roster
+below tells you who each person is. If it says the relationship is not
+known, you do NOT know it. Do not infer it from the subject matter, from
+the tone, or from what would make the sentence read well.
+
+  Roster says "no known relationship"  ->  say nothing about who they are,
+  or refer to them by what they did: "the person who asked about the
+  money".
+
+  Roster says "angel investor"  ->  you may write "an investor".
+
+Inventing a relationship is the worst failure available here, worse than
+rejecting the card. This text gets posted in public with the reader's name
+on it, and they will know immediately that it is wrong about their own
+life. A card that says "a friend" about someone's sister is a card that
+destroys trust in everything else on the page.
+
+If the finding cannot be stated without a relationship the roster does not
+give you, it COLLAPSES. Return null.
+
+SECOND: STATE THE CORE IN ONE SENTENCE, WITH NO NAMES AND NO EXAMPLES.
+
+Before judging anything, write down what the finding actually claims about
+the reader, stripped of every illustration. Put it in the `core` field.
+
+  Body mentions Aiden, Josiah, Marguerite, Dane and a quote from one of
+  them  ->  core: "You promise to follow up and then do not, fourteen
+  times across nine people, and ten of those threads end there."
+
+  Body quotes a specific late-night message about billing  ->  core:
+  "You send during the day, stop entirely in the evening, and start again
+  after ten at night."
+
+This step exists because the prose is dense with names and it is easy to
+mistake a name-heavy ILLUSTRATION for a name-dependent FINDING. Judge the
+core sentence you just wrote, not the paragraph you were given.
+
+THIRD: DECIDE WHETHER THE CORE SURVIVED. Read it cold, as a stranger
+would, and ask ONE question:
+
+  Does this still make a specific, non-obvious claim about the reader?
+
+That is the whole test. It is NOT "is this as good as the named version".
+Losing a name always loses a little colour, and that is expected and fine.
+The question is whether what remains still says something only this
+inbox could have produced.
+
+  SURVIVES: "You answer in seventeen minutes when nothing is being asked
+  of you, and in five days when something is." Specific, about the reader,
+  true of this inbox and not every inbox.
+
+  SURVIVES: "Seventy of your ninety-one messages went out during the day.
+  One went out in the evening. Nineteen went out after ten at night."
+  No names were needed in the first place.
+
+  COLLAPSES: "You reply faster to some people than others." True of
+  everybody. Nothing left to notice.
+
+DROPPING AN EXAMPLE IS NOT COLLAPSING. A finding usually carries more
+evidence than it needs. If one illustration was name-dependent and the
+rest were not, cut that illustration and keep the finding. Only return
+null when the CORE observation cannot be stated without a name, not when
+one supporting detail cannot.
+
+THE READER IS NOT ANONYMOUS. "You" is the reader and stays throughout.
+Only other people are replaced. A finding about the reader's own habits
+almost always survives, because the subject was never the other person.
+
+FOURTH, ONLY IF IT SURVIVED: CUT IT TO CARD LENGTH. A card holds one
+thought, not a paragraph. 20 to 45 words. Keep the concrete figures and at
+most one quoted fragment; drop everything that was scaffolding. The
+opening line has to work as the whole thing, because that is what people
+read.
+
+USE ONLY FIGURES THAT APPEAR IN THE BODY YOU WERE GIVEN. Do not add,
+subtract, convert or re-unit anything. Asked to shorten, drop a figure
+rather than combining two.
+
+  Body says 34 sign-offs and 3 of them were 'love you'
+  Wrong: "Thirty-one people got 'best'"  (31 is arithmetic, and they were
+         messages, not people)
+  Right: "Three of your thirty-four sign-offs went to one person"
+
+Every number on a card is one the reader can check against their own
+inbox in about four seconds. Being wrong there is worse than being dull.
+
+QUOTED FRAGMENTS USE SINGLE QUOTES. If the card quotes something someone
+wrote, wrap it in 'single quotes'. Double quotes inside a JSON string
+break the response and the card is lost.
+
+  Wrong: "You wrote "let me check" fourteen times."
+  Right: "You wrote 'let me check' fourteen times."
+
+HARD LIMIT: the quote must be between 15 and 45 words. Count them. A quote
+over the limit does not fit the canvas and will be discarded, which wastes
+a finding that survived the gate.
+
+Output shape, one or the other:
+
+{{"core": "the finding in one sentence, no names, no examples", "card": {{"quote": "15 to 45 words, anonymised, second person", "kicker": "3 to 6 words naming the pattern"}}}}
+
+{{"core": "the finding in one sentence, no names, no examples", "card": null, "skip_reason": "one short sentence saying what collapsed"}}"""
+
+
+CARD_USER_TEMPLATE = """Turn this into a card, or return null.
+
+The finding, as it appears in the reader's private view:
+
+  Headline: {headline}
+  Body: {body}
+
+Who the named people are, so you can replace them accurately:
+{roster}
+
+Remember: the reader is "you". Everyone else is a relationship."""

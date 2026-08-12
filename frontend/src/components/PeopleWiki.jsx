@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import InsightsDashboard from "./InsightsDashboard.jsx";
+import ShareCard from "./ShareCard.jsx";
 
 
 // ---------------------------------------------------------------------------
@@ -200,7 +201,7 @@ function recencyLabel(person) {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export default function PeopleWiki({ people, insights, landingPersonId }) {
+export default function PeopleWiki({ people, insights, landingPersonId, demoUrl }) {
   // Which person a visitor lands on. Defaults to rank order, since
   // people.json arrives sorted by rank_position. The demo build overrides
   // it, because the ranker's job (report interaction signal) and the
@@ -237,17 +238,12 @@ export default function PeopleWiki({ people, insights, landingPersonId }) {
     setView("person");
   }
 
-  // Inject the serif display font + body font once.
-  useEffect(() => {
-    if (document.getElementById("people-wiki-fonts")) return;
-    const link = document.createElement("link");
-    link.id = "people-wiki-fonts";
-    link.rel = "stylesheet";
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap";
-    document.head.appendChild(link);
-  }, []);
-
+  // Fonts come from src/fonts.css, which inlines Fraunces and Inter as
+  // base64. There used to be a Google Fonts <link> injected here; it had
+  // to go. html-to-image walks every stylesheet to inline it, and a
+  // cross-origin sheet throws SecurityError on cssRules, which broke PNG
+  // export outright. Self-hosting is what makes the card exportable, not
+  // just what makes it render.
   const serif = `'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif`;
   const sans = `'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif`;
 
@@ -463,11 +459,11 @@ export default function PeopleWiki({ people, insights, landingPersonId }) {
           {/* Share-mode toggle (floating, top right). Only meaningful for
               the per-person view; hidden when one of the dashboard
               surfaces is active. */}
-          {view === "person" && (
+          {view !== "share" && (
           <div className="absolute top-6 right-6 md:top-8 md:right-8 z-30">
-            {viewMode === "detail" ? (
+            {true ? (
               <button
-                onClick={() => setViewMode("share")}
+                onClick={() => setView("share")}
                 className="inline-flex items-center gap-2"
                 style={{
                   padding: "9px 16px",
@@ -515,7 +511,14 @@ export default function PeopleWiki({ people, insights, landingPersonId }) {
           </div>
           )}
 
-          {view !== "person" ? (
+          {view === "share" ? (
+            <ShareCard
+              cards={insights?.cards || []}
+              accent={accent}
+              demoUrl={demoUrl}
+              onClose={() => setView("person")}
+            />
+          ) : view !== "person" ? (
             <InsightsDashboard
               view={view}
               insights={insights}
@@ -524,27 +527,15 @@ export default function PeopleWiki({ people, insights, landingPersonId }) {
             />
           ) : (
           <AnimatePresence mode="wait">
-            {viewMode === "detail" ? (
-              <motion.div
-                key={`detail-${person.id}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-              >
-                <PersonPage person={person} accent={accent} serif={serif} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key={`share-${person.id}`}
-                initial={{ opacity: 0, scale: 0.985 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.99 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                <ShareCard person={person} accent={accent} serif={serif} />
-              </motion.div>
-            )}
+            <motion.div
+              key={`detail-${person.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <PersonPage person={person} accent={accent} serif={serif} />
+            </motion.div>
           </AnimatePresence>
           )}
         </main>
@@ -1364,229 +1355,6 @@ function ForgottenCard({ item, accent, serif, index }) {
         </div>
       </div>
     </motion.div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Share card
-// A single-screen, portrait-leaning export view designed for screenshot.
-// One hero, three stats, one signature story, one prep hook, footer.
-// Same data, different visual register: bolder, simpler, more poster-like.
-// ---------------------------------------------------------------------------
-function ShareCard({ person, accent, serif }) {
-  const signatureStory = person.stories[0]; // first story = most prominent
-  const topTalk = person.prep.three_talking_points[0];
-
-  return (
-    <div className="min-h-screen w-full flex items-start justify-center py-10 md:py-16 px-4">
-      <div
-        className="w-full max-w-[560px] rounded-3xl overflow-hidden relative"
-        style={{
-          background: "#FFFFFF",
-          boxShadow: `0 30px 80px -30px ${accent.solid}55, 0 8px 24px -12px rgba(0,0,0,0.12)`,
-          border: `1px solid ${accent.soft}`,
-        }}
-      >
-        {/* HEADER BAND with gradient */}
-        <div
-          className="relative px-9 pt-12 pb-10"
-          style={{
-            background: `linear-gradient(135deg, ${accent.tint} 0%, #FFFFFF 70%), radial-gradient(700px 400px at 80% 0%, ${accent.solid}22, transparent 60%)`,
-          }}
-        >
-          {/* Brand strip */}
-          <div className="flex items-center justify-between mb-10">
-            <div
-              className="flex items-center gap-2"
-              style={{ color: accent.ink }}
-            >
-              <span
-                className="inline-block rounded-full"
-                style={{
-                  width: 8,
-                  height: 8,
-                  background: accent.solid,
-                }}
-              />
-              <span
-                className="text-[10.5px] uppercase tracking-[0.22em] font-semibold"
-              >
-                Correspondence · A page about
-              </span>
-            </div>
-            <span
-              className="text-[10.5px] uppercase tracking-[0.18em] font-semibold"
-              style={{ color: "#9B907F" }}
-            >
-              {new Date().toLocaleDateString("en-US", {
-                month: "short",
-                year: "numeric",
-              })}
-            </span>
-          </div>
-
-          {/* Avatar + name */}
-          <div className="flex items-center gap-5 mb-6">
-            <div
-              className="flex-shrink-0 flex items-center justify-center rounded-full"
-              style={{
-                width: 64,
-                height: 64,
-                background: accent.solid,
-                color: "#FFFFFF",
-                fontFamily: serif,
-                fontWeight: 500,
-                fontSize: 24,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {initialsOf(person.name)}
-            </div>
-            <div className="min-w-0">
-              <h1
-                style={{
-                  fontFamily: serif,
-                  fontWeight: 500,
-                  fontSize: 38,
-                  lineHeight: 1.02,
-                  letterSpacing: "-0.02em",
-                  color: "#15110D",
-                }}
-              >
-                {person.name}
-              </h1>
-              <p
-                className="mt-1.5 text-[13.5px]"
-                style={{ color: "#5C544A", lineHeight: 1.4 }}
-              >
-                {person.role_hint}
-              </p>
-            </div>
-          </div>
-
-          {/* One-line bio. Hidden if it matches role_hint above to avoid
-              the same-text duplication on the share card. */}
-          {!isSameAsRoleHint(person.about.one_line, person.role_hint) && (
-            <p
-              style={{
-                fontFamily: serif,
-                fontWeight: 400,
-                fontStyle: "italic",
-                fontSize: 17.5,
-                lineHeight: 1.5,
-                color: "#3A342D",
-              }}
-            >
-              {person.about.one_line}
-            </p>
-          )}
-        </div>
-
-        {/* Stage 4 rebuilds this card. The stats band is gone because
-            the data behind it is gone; what replaces it is decided in
-            notes/stage4-share-card.md, not here. */}
-        {/* SIGNATURE STORY */}
-        <div className="px-9 py-9">
-          <div
-            className="text-[10.5px] uppercase tracking-[0.18em] font-semibold mb-3"
-            style={{ color: accent.ink }}
-          >
-            A moment
-          </div>
-          <h2
-            style={{
-              fontFamily: serif,
-              fontWeight: 500,
-              fontSize: 26,
-              letterSpacing: "-0.015em",
-              lineHeight: 1.12,
-              color: "#15110D",
-              marginBottom: 12,
-            }}
-          >
-            {signatureStory.title}
-          </h2>
-          <p
-            style={{
-              fontSize: 14.5,
-              lineHeight: 1.6,
-              color: "#3A342D",
-              marginBottom: 14,
-            }}
-          >
-            {/* Trim the moment so the card stays single-screen friendly */}
-            {truncate(signatureStory.moment, 280)}
-          </p>
-          <p
-            style={{
-              fontFamily: serif,
-              fontStyle: "italic",
-              fontSize: 14,
-              lineHeight: 1.5,
-              color: accent.ink,
-              paddingLeft: 14,
-              borderLeft: `2px solid ${accent.solid}`,
-            }}
-          >
-            {signatureStory.why_it_matters}
-          </p>
-        </div>
-
-        {/* PREP HOOK */}
-        <div
-          className="px-9 py-7"
-          style={{
-            background: accent.tint,
-            borderTop: `1px solid ${accent.soft}`,
-          }}
-        >
-          <div className="flex items-start gap-3">
-            <Calendar
-              size={17}
-              strokeWidth={2.2}
-              style={{ color: accent.solid, marginTop: 2, flexShrink: 0 }}
-            />
-            <div>
-              <div
-                className="text-[10.5px] uppercase tracking-[0.18em] font-semibold mb-1.5"
-                style={{ color: accent.ink }}
-              >
-                When we meet next
-              </div>
-              <p
-                style={{
-                  fontSize: 14.5,
-                  lineHeight: 1.55,
-                  color: "#2E2A24",
-                }}
-              >
-                {truncate(topTalk, 220)}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* FOOTER */}
-        <div
-          className="px-9 py-8 text-center"
-          style={{
-            background: "#15110D",
-            color: "#FAF8F4",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: serif,
-              fontWeight: 500,
-              fontSize: 17,
-              letterSpacing: "-0.005em",
-            }}
-          >
-            Correspondence
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
