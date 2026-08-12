@@ -50,3 +50,48 @@ The local install path must keep working. `run.sh` and the API flow are
 untouched by demo mode and should stay that way; the only shared surface
 is `App.jsx`, and the demo branch returns before any of the API logic
 runs.
+
+---
+
+## Deploy hygiene: two rules that paid for themselves
+
+### Audit by reachability, not by rendering
+
+**A public deploy changes the reachability of everything the frontend
+fetches, not just what the frontend displays.** The correct pre-deploy
+walk covers every URL a visitor can reach, not every page a visitor lands
+on.
+
+Two things were caught this way and neither was visible in a dev browser,
+because neither renders:
+
+`demo/config.json` is fetched by the browser at a guessable path and
+carried several paragraphs of internal design reasoning, including a
+frank assessment of which part of the demo is the weakest content. Anyone
+who guessed the URL could read it.
+
+`output/people.json` carried two plausible `@gmail.com` addresses. Nothing
+in the UI shows an email, so nothing looked wrong.
+
+Checklist for any future deploy: every JSON the app fetches, every asset
+path, every error string the app can surface, every route that returns
+something other than 404.
+
+### Contamination is not only your identity
+
+Scanning for the repo owner's name in the prompts turned up four other
+people: an email address in a docstring, two "Last, First" samples, and a
+correspondent named as the heavy case for token budgeting, with her
+message count attached. All real, all from the original inbox, all in code
+comments headed for a public repo.
+
+Your own name in your own repo is your call. Everyone who ever appeared in
+your test data is not, and they were never asked.
+
+The corpus had the same problem from the other direction: two fictional
+contacts used plausible `@gmail.com` addresses, which can collide with
+real strangers who would then find their address attached to invented
+emotional content. Fictional data belongs on RFC 2606 reserved domains.
+
+**When you scan for one identity, scan for all of them.** The one you are
+looking for is the one you already know about.
