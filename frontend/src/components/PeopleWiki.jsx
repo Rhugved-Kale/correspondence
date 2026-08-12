@@ -183,13 +183,14 @@ function formatDate(iso) {
 // live inside the generated hero_line sentence, where they can carry a
 // claim instead of sitting in boxes. A row of four tiles is the visual
 // signature of a dashboard; one sentence and one marker is an essay.
-function recencyLabel(person) {
+function recencyLabel(person, asOf) {
   const events = [...(person.timeline || [])].sort((a, b) =>
     (a.date || "").localeCompare(b.date || "")
   );
   const last = events[events.length - 1]?.date;
   if (!last) return null;
-  const days = Math.round((Date.now() - new Date(last)) / 86400000);
+  const nowMs = asOf ? new Date(asOf).getTime() : Date.now();
+  const days = Math.round((nowMs - new Date(last)) / 86400000);
   if (days <= 0) return "today";
   if (days === 1) return "yesterday";
   if (days < 14) return `${days} days ago`;
@@ -201,17 +202,40 @@ function recencyLabel(person) {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export default function PeopleWiki({ people, insights, landingPersonId, demoUrl }) {
+export default function PeopleWiki({ people, insights, landingPersonId, demoUrl, asOf }) {
   // Which person a visitor lands on. Defaults to rank order, since
   // people.json arrives sorted by rank_position. The demo build overrides
   // it, because the ranker's job (report interaction signal) and the
   // demo's job (communicate the product in ten seconds) are different
   // jobs, and the ranker should not be bent to serve the second one.
   // An unknown id falls through to rank order on purpose.
+  // Selection lives in the URL, not only in state. The artifact's whole
+  // purpose is being sent to someone, and without this every shared link
+  // opens on the landing person regardless of what the sender was looking
+  // at. /p/<id> on load, pushState on navigation, popstate for the back
+  // button.
   const [selectedId, setSelectedId] = useState(() => {
+    const fromPath = decodeURIComponent(
+      (window.location.pathname.match(/^\/p\/([^/]+)/) || [])[1] || ""
+    );
+    if (people.some((p) => p.id === fromPath)) return fromPath;
     const landing = people.find((p) => p.id === landingPersonId);
     return landing?.id || people[0]?.id || "";
   });
+
+  useEffect(() => {
+    function onPop() {
+      const id = decodeURIComponent(
+        (window.location.pathname.match(/^\/p\/([^/]+)/) || [])[1] || ""
+      );
+      if (people.some((p) => p.id === id)) {
+        setSelectedId(id);
+        setView("person");
+      }
+    }
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [people]);
   const [viewMode, setViewMode] = useState("detail"); // "detail" | "share"
 
   // Which surface is the main panel showing? "person" = the usual
@@ -236,6 +260,10 @@ export default function PeopleWiki({ people, insights, landingPersonId, demoUrl 
   function openPerson(personId) {
     setSelectedId(personId);
     setView("person");
+    const next = `/p/${encodeURIComponent(personId)}`;
+    if (window.location.pathname !== next) {
+      window.history.pushState({ personId }, "", next);
+    }
   }
 
   // Fonts come from src/fonts.css, which inlines Fraunces and Inter as
@@ -522,6 +550,7 @@ export default function PeopleWiki({ people, insights, landingPersonId, demoUrl 
             <InsightsDashboard
               view={view}
               insights={insights}
+              asOf={asOf}
               accentFor={accentFor}
               onOpenPerson={openPerson}
             />
@@ -534,7 +563,7 @@ export default function PeopleWiki({ people, insights, landingPersonId, demoUrl 
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
-              <PersonPage person={person} accent={accent} serif={serif} />
+              <PersonPage person={person} accent={accent} serif={serif} asOf={asOf} />
             </motion.div>
           </AnimatePresence>
           )}
@@ -547,7 +576,7 @@ export default function PeopleWiki({ people, insights, landingPersonId, demoUrl 
 // ---------------------------------------------------------------------------
 // Person page
 // ---------------------------------------------------------------------------
-function PersonPage({ person, accent, serif }) {
+function PersonPage({ person, accent, serif, asOf }) {
   return (
     <div>
       {/* HERO */}
@@ -654,7 +683,7 @@ function PersonPage({ person, accent, serif }) {
           )}
 
           {/* The one number on the page, and the hook into Forgotten. */}
-          {recencyLabel(person) && (
+          {recencyLabel(person, asOf) && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -671,7 +700,7 @@ function PersonPage({ person, accent, serif }) {
                 className="tabular-nums"
                 style={{ fontSize: 15, color: "#5C544A" }}
               >
-                {recencyLabel(person)}
+                {recencyLabel(person, asOf)}
               </span>
             </motion.div>
           )}

@@ -38,6 +38,7 @@ def compose_insights(
     db_path: Path,
     payloads: list[dict],
     my_email: str,
+    as_of: datetime | None = None,
 ) -> dict:
     """
     Build the top-level dashboard insights from the per-person payloads
@@ -57,19 +58,24 @@ def compose_insights(
     (e.g. no upcoming meetings on the calendar). The frontend renders
     only the sections that have content.
     """
+    # as_of exists for the demo, whose corpus is frozen in time. Filtering
+    # a fixed calendar against the real clock means Upcoming is correct on
+    # the day it is generated and empty forever after. The demo passes its
+    # own window close; a live run passes nothing and gets now.
+    now = as_of or datetime.now(timezone.utc)
     return {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "as_of_utc": now.isoformat(),
         "my_email": my_email,
-        "forgotten": _compose_forgotten(payloads),
-        "upcoming": _compose_upcoming(db_path, payloads, my_email),
-        "about_you": _compose_about_you(db_path, my_email),
+        "forgotten": _compose_forgotten(payloads, now),
+        "upcoming": _compose_upcoming(db_path, payloads, my_email, now),
     }
 
 
 # --- Forgotten threads ----------------------------------------------------
 
 
-def _compose_forgotten(payloads: list[dict]) -> list[dict]:
+def _compose_forgotten(payloads: list[dict], now: datetime) -> list[dict]:
     """
     Flatten open_threads across all people and rank by staleness.
 
@@ -83,7 +89,6 @@ def _compose_forgotten(payloads: list[dict]) -> list[dict]:
     to redo the date math.
     """
     entries: list[dict] = []
-    now = datetime.now(timezone.utc)
 
     for p in payloads:
         person_id = p.get("id")
@@ -154,6 +159,7 @@ def _compose_upcoming(
     db_path: Path,
     payloads: list[dict],
     my_email: str,
+    now: datetime,
 ) -> list[dict]:
     """
     Find calendar events in the next 14 days and surface them, with
@@ -171,7 +177,6 @@ def _compose_upcoming(
     """
     by_email = {p["email"].lower(): p for p in payloads if p.get("email")}
 
-    now = datetime.now(timezone.utc)
     horizon = now + timedelta(days=14)
 
     # We pull all events and filter in Python rather than using a SQL

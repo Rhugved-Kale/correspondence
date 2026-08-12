@@ -1,0 +1,243 @@
+{
+  "generated_at_utc": "2026-08-12T04:40:05.532030+00:00",
+  "as_of_utc": "2026-06-30T12:00:00-07:00",
+  "my_email": "priya@thicket.vet",
+  "forgotten": [
+    {
+      "person_id": "beatriz",
+      "person_name": "Beatriz Salas-Whitmore",
+      "thread": "I said I'd figure out how to model the curtain room without making the interface horrible, then never followed up",
+      "days_since_last_contact": 47,
+      "freshness_label": "1 month ago"
+    },
+    {
+      "person_id": "josiah",
+      "person_name": "Josiah Lindqvist",
+      "thread": "I owe him the Marguerite Vance intro. I said yes on April 9, asked for a few days to think about framing, and then disappeared for seven weeks.",
+      "days_since_last_contact": 34,
+      "freshness_label": "1 month ago"
+    },
+    {
+      "person_id": "josiah",
+      "person_name": "Josiah Lindqvist",
+      "thread": "He asked twice more, offering to draft the blurb himself, then sent a final check-in saying he'd rather know than wonder if his email went to spam.",
+      "days_since_last_contact": 34,
+      "freshness_label": "1 month ago"
+    },
+    {
+      "person_id": "nkechi-adeyemi",
+      "person_name": "Nkechi Adeyemi",
+      "thread": "I owe her an answer about what happens if the seed doesn't close, which she's now asked three times",
+      "days_since_last_contact": 18,
+      "freshness_label": "2 weeks ago"
+    },
+    {
+      "person_id": "nkechi-adeyemi",
+      "person_name": "Nkechi Adeyemi",
+      "thread": "I said I'd send times for a call on June 9th and never sent them",
+      "days_since_last_contact": 18,
+      "freshness_label": "2 weeks ago"
+    },
+    {
+      "person_id": "marguerite",
+      "person_name": "Marguerite Vance",
+      "thread": "I said I'd take a paid plan to Cascade in the first week of July and have a real revenue answer after that conversation, which still hasn't been scheduled",
+      "days_since_last_contact": 7,
+      "freshness_label": "1 week ago"
+    },
+    {
+      "person_id": "marguerite",
+      "person_name": "Marguerite Vance",
+      "thread": "She had questions after reading the May sheet that were going to come the following week, which was early June, and I never heard them",
+      "days_since_last_contact": 7,
+      "freshness_label": "1 week ago"
+    },
+    {
+      "person_id": "theo-brandt",
+      "person_name": "Theo Brandt-Sørensen",
+      "thread": "I never told him whether I actually wrote the twenty-implementation cap down, or where I put it.",
+      "days_since_last_contact": 7,
+      "freshness_label": "1 week ago"
+    },
+    {
+      "person_id": "theo-brandt",
+      "person_name": "Theo Brandt-Sørensen",
+      "thread": "He asked me to tell him how Thursday went—the one after the room-based scheduling decision—and I never did.",
+      "days_since_last_contact": 7,
+      "freshness_label": "1 week ago"
+    },
+    {
+      "person_id": "wendy-okonkwo",
+      "person_name": "Wendy Okonkwo",
+      "thread": "I never sent the $135 venmo for the restored radio gift",
+      "days_since_last_contact": 6,
+      "freshness_label": "6 days ago"
+    }
+  ],
+  "upcoming": [
+    {
+      "event_id": "6cb4d391ac83d2ea",
+      "summary": "Thicket standup",
+      "start_utc": "2026-07-01T09:15:00-07:00",
+      "end_utc": "2026-07-01T09:30:00-07:00",
+      "location": "",
+      "anchor_person_id": "dane",
+      "anchor_person_name": "Dane Whitfield",
+      "other_attendees_count": 0,
+      "prep_blurb": "He laid out July priorities: the ros call on the 8th, westbrook pricing conversation, two ridgeline callbacks, and proposed making the conference decision contingent on whether westbrook converts before the 15th.",
+      "talking_points": [
+        "Tell him what actually happened with Nkechi, since he's been asking since June 9th and changed his billing planning around it.",
+        "Confirm the ros call on the 8th is still happening and whether she already reached out to Puyallup herself."
+      ]
+    },
+    {
+      "event_id": "e586729e62c16612",
+      "summary": "Cascade check-in",
+      "start_utc": "2026-07-02T16:00:00-07:00",
+      "end_utc": "2026-07-02T16:30:00-07:00",
+      "location": "",
+      "anchor_person_id": "rosalind",
+      "anchor_person_name": "Rosalind Achterberg",
+      "other_attendees_count": 1,
+      "prep_blurb": "She referred Dr. Elaine Kowalski from Puyallup to me in late June after telling the room scheduling story at a regional meeting. Kowalski called, I'm sending her a demo link.",
+      "talking_points": [
+        "Tell her the Puyallup demo went out and ask if Kowalski followed up with her after our call",
+        "Admit I dropped the printing bug and the audit log question and ask if they're still problems or if something else has become more urgent"
+      ]
+    },
+    {
+      "event_id": "e7b4069620430166",
+      "summary": "Cascade - paid plan conversation",
+      "start_utc": "2026-07-02T16:00:00-07:00",
+      "end_utc": "2026-07-02T16:45:00-07:00",
+      "location": "",
+      "anchor_person_id": "rosalind",
+      "anchor_person_name": "Rosalind Achterberg",
+      "other_attendees_count": 0,
+      "prep_blurb": "She referred Dr. Elaine Kowalski from Puyallup to me in late June after telling the room scheduling story at a regional meeting. Kowalski called, I'm sending her a demo link.",
+      "talking_points": [
+        "Tell her the Puyallup demo went out and ask if Kowalski followed up with her after our call",
+        "Admit I dropped the printing bug and the audit log question and ask if they're still problems or if something else has become more urgent"
+      ]
+    },
+    {
+      "event_id": "6d5b9aaf686fadea",
+      "summary": "Thicket standup",
+      "start_utc": "2026-07-03T09:15:00-07:00",
+      "end_utc": "2026-07-03T09:30:00-07:00",
+      "location": "",
+      "anchor_person_id": "dane",
+      "anchor_person_name": "Dane Whitfield",
+      "other_attendees_count": 0,
+      "prep_blurb": "He laid out July priorities: the ros call on the 8th, westbrook pricing conversation, two ridgeline callbacks, and proposed making the conference decision contingent on whether westbrook converts before the 15th.",
+      "talking_points": [
+        "Tell him what actually happened with Nkechi, since he's been asking since June 9th and changed his billing planning around it.",
+        "Confirm the ros call on the 8th is still happening and whether she already reached out to Puyallup herself."
+      ]
+    },
+    {
+      "event_id": "30fc6447b724eb97",
+      "summary": "MOM BIRTHDAY PLANNING CALL",
+      "start_utc": "2026-07-05T17:00:00-07:00",
+      "end_utc": "2026-07-05T17:30:00-07:00",
+      "location": "",
+      "anchor_person_id": "wendy-okonkwo",
+      "anchor_person_name": "Wendy Okonkwo",
+      "other_attendees_count": 0,
+      "prep_blurb": "She asked on June 24 if she should set a place for me at the party, after I said I'd check my calendar three weeks earlier and never did.",
+      "talking_points": [
+        "I'm sorry I left you doing this alone",
+        "Tell me what actually needs to happen between now and the 18th"
+      ]
+    }
+  ],
+  "the_read": {
+    "vignettes": [
+      {
+        "kind": "latency",
+        "headline": "Wendy asks twice for two different things",
+        "body": "Wendy sent a photo of you holding your grandfather's cat on his porch, maybe 1999, during what she calls your braids phase. You answered in seventeen minutes to say the cat was evil and you loved him. Eleven days earlier she asked whether to spend $135 on the radio thing, by Friday, because Rahul had to tell the guy. She also asked for headcount because you were the only one she didn't have an answer from and the table is a table. She added that she genuinely would not be weird about it either way. You answered in 5.6 days, after Friday, and said you were just seeing it."
+      },
+      {
+        "kind": "latency",
+        "headline": "Emergency in seventeen minutes, confirmation in eleven days",
+        "body": "Rosalind told you there was a problem and that she wanted you to hear it from her before Bea called. You answered in seventeen minutes, apologised, and asked to call at lunch instead of sending over a plan you'd only thought about for an hour. Three days later she told you that two weeks was the right answer, and that anyone who'd said one week would have been guessing. You answered in eleven days, after the feature was already live. The first message was a crisis she was managing for you. The second was her telling you that you were right."
+      },
+      {
+        "kind": "deferral",
+        "headline": "Let me check and I'll ping you",
+        "body": "You have written \"let me check\" or \"I'll ping\" or \"this week\" fourteen times across nine people. Ten of those threads contain no further message from you. To Aiden it was \"let me see when things calm down.\" To Josiah it was \"give me a few days\" about the intro. To Dane it was \"fixing it this week\" about something broken, and \"will ping her this week\" about something you were waiting to hear. Marguerite wrote back: \"you have now told me twice that you will have a real answer after a conversation that has not yet been scheduled.\""
+      },
+      {
+        "kind": "cooling",
+        "headline": "You slowed down first, then she did",
+        "body": "Your first two replies to Nkechi took three hours and five hours. Then 2.6 days. Then 3.6, then 6.6. She stayed steady at first: twenty hours, then 2.8 days. Then she stretched to ten days, then 9.4. Your messages got shorter as they got slower. You went from 167 words to 102 to 80 to 48 to eighteen. She wrote back on June 12th. That was eighteen days ago, and the thread is sitting on her. But you're the one who changed pace first, two days before she did."
+      },
+      {
+        "kind": "question_debt",
+        "headline": "Four questions you never got back to",
+        "body": "Josiah asked if you'd gotten a chance to think about the framing. Rosalind asked whether there was a way to see who changed an appointment. Karin asked you to send over what you had so far. Nkechi asked one more time in writing what happens if the seed doesn't close by the fall, and said she'd leave it after that. Four people, four threads, four questions that got no reply in that thread. The Josiah one was about a favor he'd explicitly said you could say no to. The Nkechi one she said she was asking for the last time."
+      },
+      {
+        "kind": "hours",
+        "headline": "You work a second shift after ten",
+        "body": "Seventy of your 91 messages went out during the day. Nineteen went out after 10pm, which over twelve weeks is more than one a week. Between 6pm and 10pm you sent one message total. That 12:47am note about billing and runway was five weeks ago. You wrote that you're not building for Rosalind, you're building something fifty clinics can use, and that he's selling a product that doesn't exist yet. You pointed out that billing the way he's describing it is six weeks. That message went out at 12:47am."
+      }
+    ],
+    "window": {
+      "first": "2026-04-01",
+      "last": "2026-06-30",
+      "days": 90
+    },
+    "volume": {
+      "total": 406,
+      "sent": 91,
+      "received": 315,
+      "threads": 68
+    }
+  },
+  "cards": [
+    {
+      "kind": "latency",
+      "kicker": "What gets the fast reply",
+      "quote": "A photo got answered in seventeen minutes. A question about $135 with a Friday deadline took 5.6 days, after the deadline had passed.",
+      "core": "A photo got answered in seventeen minutes. A question about $135 with a Friday deadline took five and a half days.",
+      "source_headline": "Wendy asks twice for two different things"
+    },
+    {
+      "kind": "latency",
+      "kicker": "Crisis fast, confirmation slow",
+      "quote": "A customer told you there was a problem and you answered in seventeen minutes. Three days later she said you'd been right, and you answered in eleven days, after the feature was live.",
+      "core": "You answer a crisis in seventeen minutes and a validation in eleven days, after the thing being discussed is already done.",
+      "source_headline": "Emergency in seventeen minutes, confirmation in eleven days"
+    },
+    {
+      "kind": "deferral",
+      "kicker": "promises you did not keep",
+      "quote": "You've written 'let me check' or 'I'll ping you' or 'this week' fourteen times. Ten of those threads contain no further message from you.",
+      "core": "You promise to follow up and then do not, fourteen times across nine people, and ten of those threads end there.",
+      "source_headline": "Let me check and I'll ping you"
+    },
+    {
+      "kind": "cooling",
+      "kicker": "You slowed down first",
+      "quote": "Your first two replies took three hours and five hours. Then 2.6 days. Then 3.6, then 6.6. Your messages got shorter as they got slower: 167 words to 102 to 80 to 48 to eighteen.",
+      "core": "Your replies slow from hours to days over five messages, and your word count drops from 167 to eighteen, before the other person's pace changes.",
+      "source_headline": "You slowed down first, then she did"
+    },
+    {
+      "kind": "question_debt",
+      "kicker": "Four threads that stopped",
+      "quote": "Four questions got no reply in that thread. One was about a favor you'd been told you could say no to. One came from someone who said they'd leave it after that.",
+      "core": "You left four questions unanswered, including one from someone who said they were asking for the last time.",
+      "source_headline": "Four questions you never got back to"
+    },
+    {
+      "kind": "hours",
+      "kicker": "You work a second shift",
+      "quote": "Seventy of your 91 messages went out during the day. Nineteen went out after 10pm. Between 6pm and 10pm you sent one message total.",
+      "core": "You send nothing between 6pm and 10pm, then start a second shift after ten that accounts for a fifth of your output.",
+      "source_headline": "You work a second shift after ten"
+    }
+  ]
+}

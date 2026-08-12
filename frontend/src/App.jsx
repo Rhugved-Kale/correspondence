@@ -28,10 +28,17 @@ import ProgressView from "./ProgressView.jsx";
 // loading flash on a cold visit.
 const DEMO = import.meta.env.VITE_DEMO === "1";
 
+// Imported, not fetched. A static deploy has no Vite middleware to serve
+// these, and bundling them also removes the loading flash on a cold
+// visit: the artifact is in the first paint rather than one round trip
+// later. Vite tree-shakes these out of the non-demo build.
+import demoPeople from "./demo/people.json";
+import demoInsights from "./demo/insights.json";
+import demoConfig from "./demo/config.json";
+
 
 export default function App() {
   const [status, setStatus] = useState(null);
-  const [demoData, setDemoData] = useState(null);
   const [people, setPeople] = useState(null);
   const [insights, setInsights] = useState(null);
   const [account, setAccount] = useState(null);
@@ -57,23 +64,6 @@ export default function App() {
       }
     }, 1000);
     return () => clearInterval(id);
-  }, []);
-
-  // Demo data load. Static files, served from the build.
-  useEffect(() => {
-    if (!DEMO) return;
-    (async () => {
-      try {
-        const [people, insights, config] = await Promise.all([
-          fetch("/output/people.json").then((r) => r.json()),
-          fetch("/output/insights.json").then((r) => r.json()),
-          fetch("/demo/config.json").then((r) => r.json()).catch(() => ({})),
-        ]);
-        setDemoData({ people, insights, config });
-      } catch (e) {
-        console.error("demo data load failed:", e);
-      }
-    })();
   }, []);
 
   // Status poll loop.
@@ -199,13 +189,16 @@ export default function App() {
   // Demo build renders the artifact directly. No polling, no setup, no
   // progress: there is nothing to wait for.
   if (DEMO) {
-    if (!demoData) return <BlankSplash />;
     return (
       <PeopleWiki
-        people={demoData.people}
-        insights={demoData.insights}
-        landingPersonId={demoData.config?.landing_person_id}
-        demoUrl={demoData.config?.demo_url}
+        people={demoPeople}
+        insights={demoInsights}
+        landingPersonId={demoConfig.landing_person_id}
+        demoUrl={demoConfig.demo_url}
+        // The corpus is frozen at a fixed date. Relative times render
+        // against that instead of the clock, so "tomorrow" stays
+        // tomorrow instead of drifting into "eight months ago".
+        asOf={demoInsights.as_of_utc}
       />
     );
   }

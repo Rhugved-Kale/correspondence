@@ -24,8 +24,9 @@ import {
  * we don't duplicate the palette logic).
  */
 export default function InsightsDashboard({
-  view,                 // "forgotten" | "upcoming" | "about_you"
+  view,                 // "forgotten" | "upcoming" | "the_read"
   insights,             // result of /api/insights
+  asOf,                 // freeze relative time for the demo's fixed corpus
   accentFor,            // function(name) -> { solid, soft, ink, ... }
   onOpenPerson,         // (personId) => void
 }) {
@@ -48,6 +49,7 @@ export default function InsightsDashboard({
         accentFor={accentFor}
         onOpenPerson={onOpenPerson}
         serif={serif}
+        asOf={asOf}
       />
     );
   }
@@ -258,7 +260,7 @@ function ForgottenView({ items, accentFor, onOpenPerson, serif }) {
 
 // --- Upcoming meetings view -------------------------------------------------
 
-function UpcomingView({ items, accentFor, onOpenPerson, serif }) {
+function UpcomingView({ items, accentFor, onOpenPerson, serif, asOf }) {
   return (
     <DashboardLayout
       eyebrow="Coming up on your calendar"
@@ -281,7 +283,7 @@ function UpcomingView({ items, accentFor, onOpenPerson, serif }) {
             // the "Open page" button.
             const hasAnchor = !!m.anchor_person_id;
             const accent = accentFor(m.anchor_person_name || "default");
-            const when = formatMeetingTime(m.start_utc);
+            const when = formatMeetingTime(m.start_utc, asOf);
             return (
               <motion.div
                 key={m.event_id}
@@ -514,11 +516,14 @@ function EmptyState({ icon, title, body }) {
 
 // --- helpers ----------------------------------------------------------------
 
-function formatMeetingTime(utcString) {
+function formatMeetingTime(utcString, asOf) {
   if (!utcString) return "";
   try {
     const d = new Date(utcString);
-    const now = new Date();
+    // The demo corpus is frozen, so "tomorrow" has to mean tomorrow
+    // relative to the window it was generated for, not to the day someone
+    // happens to load the page.
+    const now = asOf ? new Date(asOf) : new Date();
     const diffMs = d - now;
     const diffHr = diffMs / (1000 * 60 * 60);
     const diffDay = diffHr / 24;
