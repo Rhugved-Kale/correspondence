@@ -103,3 +103,66 @@ name, and a card that says "Wendy" is a card most people will not post.
 frequently fail to embed during canvas serialisation, and the PNG comes
 out in Times New Roman. Fix is self-hosting Fraunces and Inter as woff2
 and inlining them base64. Budget for this first, not last.
+
+---
+---
+
+# Stage 4 close: what shipped, and the durable insight
+
+## The insight worth keeping
+
+**When a constraint forces specificity to move, the constrained version is
+often better than the unconstrained one.**
+
+The Wendy latency finding was predicted to die at the anonymisation gate.
+It did not. What died was the shortcut.
+
+  Named:      Your sister sent a photo and you answered in seventeen
+              minutes. She asked about $135 and you took five days.
+
+  Anonymised: A photo got answered in seventeen minutes. A question about
+              $135 with a Friday deadline took 5.6 days, after the
+              deadline had passed.
+
+The second is the better sentence, and not by a little. "Your sister" was
+doing work that the messages should have been doing: it told the reader
+this mattered instead of showing them why. Removing it forced the
+specificity down into the evidence, where it belonged.
+
+This is what the gate bought beyond privacy. It was built to stop the card
+naming people who never agreed to appear on anyone's timeline, and it
+turned out to also be a writing discipline. Neither of us predicted that.
+
+Generalisation: a constraint that removes a shortcut is not only a cost.
+Before treating one as pure loss, check what the output has to do instead.
+
+## Reframe the operation, do not tune the parameters
+
+Three calibration passes failed in three different directions: too strict
+(0 of 6), anchored on prose rather than finding (2 of 6), then too loose
+and actively dangerous (6 of 6 with invented relationships). No threshold
+sat between them, because the operation was wrong. Anonymisation is not
+"swap a name for a relationship". It is "drop the person, keep the
+message".
+
+That is the third time in this rebuild that a fix required a semantic
+redefinition rather than a parameter search:
+
+  Stage 2: structural rules beat banned phrase lists.
+  Stage 3: rank by median, not by raw spread.
+  Stage 4: drop the person rather than describing them.
+
+**When three calibration passes fail in different directions, the
+operation is wrong, not the numbers.** Stop searching the parameter space
+and restate what the step is supposed to do.
+
+## Extend to the class at the moment of building
+
+The no-arithmetic rule existed for vignettes and was not carried to the
+card layer when the card layer was written. A control case computed 34
+minus 3 and reported 31 messages as 31 people.
+
+Caught during Stage 4 rather than after it, which is the discipline
+working, but the cheaper moment was still earlier. The trigger to watch:
+when building for case A, and case B exists in the codebase, say so out
+loud and decide whether to extend before moving on.

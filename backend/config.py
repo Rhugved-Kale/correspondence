@@ -37,6 +37,12 @@ class Settings(BaseSettings):
     google_credentials_path: str = str(PROJECT_ROOT / "credentials.json")
     google_token_path: str = str(PROJECT_ROOT / "token.json")
 
+    # Whose inbox this is. Threaded into every agent prompt so the model
+    # narrates in the right first person. Left empty by default; the
+    # pipeline resolves it from the authenticated Google account, and the
+    # demo overrides it with its fictional protagonist.
+    protagonist_name: str = ""
+
     # Pipeline tuning. 90-day window captures most active relationships while
     # keeping the first-run ingestion under ~15 minutes. Bump to 180+ for a
     # more thorough ranking pass at the cost of a slower first run.

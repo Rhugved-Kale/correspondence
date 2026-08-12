@@ -31,12 +31,16 @@ JSON_ONLY_RULE = (
     "an opening brace."
 )
 
+# {protagonist} is substituted at call time by for_protagonist(). It is a
+# placeholder rather than an f-string field because these prompts contain
+# literal JSON braces, which .format() would choke on; .replace() leaves
+# them alone.
 VOICE_RULE = (
-    "CRITICAL VOICE RULE: I am Rhugved Kale, the owner of the email account. "
+    "CRITICAL VOICE RULE: I am {protagonist}, the owner of the email account. "
     "Every email tagged 'ME -> THEM' was sent BY ME. Every email tagged "
     "'THEM -> ME' was sent BY THE OTHER PERSON. "
     "When you write 'I' or 'me' or 'my' in your output, it MUST refer to "
-    "Rhugved Kale, not the other person. "
+    "{protagonist}, not the other person. "
     "If a thread is led by the other person (most of the messages are "
     "'THEM -> ME'), narrate it as 'they did X, then I responded with Y' "
     "or 'they reached out to me about Z.' Never narrate the other person's "
@@ -102,6 +106,20 @@ in a thread, and it is the thing summarizers miss. Watch for:
 Do not calculate durations. Where a gap matters, the number of days is
 given to you precomputed. Use the figure you are given and write around
 it; never derive one from the dates yourself."""
+
+
+def for_protagonist(prompt: str, name: str) -> str:
+    """
+    Bind a system prompt to whoever owns the inbox.
+
+    The account owner's name used to be hardcoded in VOICE_RULE, which
+    meant every run narrated somebody else's inbox as one specific person
+    and the public demo would have shipped a real name into a fictional
+    world. Substitution is str.replace and not str.format on purpose: the
+    prompts are full of literal JSON braces that format() would treat as
+    fields.
+    """
+    return prompt.replace("{protagonist}", name or "the account owner")
 
 
 # ---------------------------------------------------------------------------

@@ -60,6 +60,7 @@ async def main() -> None:
             p = await build_person_payload(
                 db_path=db, email=c.email,
                 rank_score=c.score, rank_position=i,
+                protagonist_name=contacts["people"][contacts["me"]]["name"],
             )
             print(f"      {len(p['timeline'])} events, {len(p['stories'])} stories, "
                   f"{len(p['forgotten'])} forgotten, "
