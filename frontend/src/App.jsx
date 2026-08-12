@@ -194,7 +194,9 @@ export default function App() {
         people={demoPeople}
         insights={demoInsights}
         landingPersonId={demoConfig.landing_person_id}
-        demoUrl={demoConfig.demo_url}
+        // Comes from the build so the card footer always matches the
+        // domain it was actually deployed to.
+        demoUrl={__PUBLIC_URL__.replace(/^https?:\/\//, "")}
         // The corpus is frozen at a fixed date. Relative times render
         // against that instead of the clock, so "tomorrow" stays
         // tomorrow instead of drifting into "eight months ago".

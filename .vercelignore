@@ -1,0 +1,9 @@
+# The FastAPI backend is a local-only application. It holds OAuth flows,
+# reads a user's Gmail, and expects credentials on disk. It has no place
+# on a public host and Vercel would otherwise detect it as a deployable
+# service. The demo is the frontend and nothing else.
+backend/
+data/
+output/
+demo/threads/
+*.db
