@@ -95,3 +95,39 @@ emotional content. Fictional data belongs on RFC 2606 reserved domains.
 
 **When you scan for one identity, scan for all of them.** The one you are
 looking for is the one you already know about.
+
+---
+
+## What the live walk caught that local testing could not
+
+Both were URL-identity problems, and neither can surface before a real
+deploy because locally there is no public domain to be wrong about.
+
+**The OG image pointed at a domain owned by someone else.**
+`correspondence.vercel.app` was a hardcoded guess. The file served fine at
+the real domain, the meta tag just pointed elsewhere, so every link
+preview would have 404'd and every posted card would have carried a
+stranger's URL. Fixed by taking the domain from
+`VERCEL_PROJECT_PRODUCTION_URL` at build time. index.html gets it via a
+`transformIndexHtml` plugin, since HTML cannot read a Vite define.
+
+**Vercel detected the FastAPI backend as a deployable service.** It runs
+OAuth flows and reads a user's Gmail. `.vercelignore` now keeps it, the
+corpus and the database out of the upload entirely, and the project root
+is `frontend/`.
+
+## Deployment protection
+
+A manually assigned alias came up behind Vercel SSO and returns 302 to a
+login. The project's own production domain is public and serves the same
+build. If a custom alias is wanted, Deployment Protection has to be turned
+off in the dashboard: there is no CLI for it, and changing a project's
+security posture is an owner decision rather than something to do with a
+scraped token.
+
+## Verified live
+
+Root, deep links, an unknown person id, and the OG image all 200. Every
+internal path 404s: `/output/*`, `/demo/*`, `/api/*`, `/vercel.json`,
+`/package.json`, `/src/*`. No identity strings in the served bundle.
+Security headers present at the edge.
