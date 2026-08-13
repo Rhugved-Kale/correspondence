@@ -341,6 +341,23 @@ def _format_hero_facts(pm: PersonMessages, calendar: dict, as_of=None) -> str:
     except (ValueError, AttributeError, TypeError):
         pass
 
+    # The number the hero line actually reaches for. Supplying only "time
+    # since the last message" left the model computing "eighteen days"
+    # from the message dates, which is the arithmetic this whole layer
+    # exists to prevent. If it wants the fact, give it the fact.
+    mine = [m for m in pm.messages if m["is_outgoing"]]
+    if mine:
+        try:
+            last_mine = max(m["date_utc"] for m in mine)
+            rows.append(
+                f"- Time since I last replied to them: "
+                f"{ph.days_since(last_mine[:10], now.date().isoformat())}"
+            )
+        except (ValueError, TypeError, KeyError):
+            pass
+    else:
+        rows.append("- I have never replied to them")
+
     n = (calendar or {}).get("count") or 0
     rows.append(
         f"- Meetings on the calendar together: {n}" if n
