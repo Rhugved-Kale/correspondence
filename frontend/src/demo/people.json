@@ -4,7 +4,7 @@
     "name": "Callum Reyes-Baptiste",
     "email": "callum@callumrb.co",
     "rank_position": 1,
-    "rank_score": 3.225,
+    "rank_score": 3.212,
     "role_hint": "Callum Reyes-Baptiste",
     "about": {
       "one_line": "",
@@ -12,54 +12,54 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "Thirty-nine messages across eleven weeks, twelve meetings, and I haven't written back in seven weeks.",
+    "hero_line": "Thirty-nine messages across eleven weeks, twelve meetings, and I made him chase payment three times.",
     "timeline": [
       {
         "date": "2026-04-14",
-        "title": "Start fresh, decided in three messages",
-        "description": "He asked whether to keep the old icon set, I said start fresh, he said okay.",
+        "title": "Start fresh",
+        "description": "He asked whether to keep the old icon set, I said start over, he shipped it in one day.",
         "evidence": "start fresh"
       },
       {
         "date": "2026-05-08",
-        "title": "A place is persistent, a promise belongs to people",
-        "description": "He sent a paragraph about why rooms should be columns and appointments should float, and I called it the smartest thing anyone had said.",
-        "evidence": "a room is a place and an appointment is a promise"
+        "title": "A room is a place and an appointment is a promise",
+        "description": "He wrote a paragraph about why the old design felt wrong that was better than anything in our product spec.",
+        "evidence": "a place is persistent, it has a location"
       },
       {
         "date": "2026-05-08",
-        "title": "First time he chased the invoice",
-        "description": "He asked if the payment went through because Stripe usually hits by now.",
+        "title": "First time he asked about the invoice",
+        "description": "Stripe usually hits by now, he said, apologising for bugging me.",
         "evidence": "sorry to bug you but did that invoice go through"
       },
       {
         "date": "2026-05-14",
-        "title": "The PO number I gave him was already wrong",
-        "description": "I asked him to resend with a different PO number two weeks late, and he pointed out he'd copied it from last month.",
+        "title": "The PO number didn't match",
+        "description": "I told him to resend with a different PO number two weeks late, then he pointed out he'd copied it from last month.",
         "evidence": "wait i just copied it from last month's"
       },
       {
         "date": "2026-06-02",
         "title": "Ten days, then he sent thumbnails unprompted",
-        "description": "Neither of us wrote after I finally sorted the PO mess until he posted a Figma link with no context.",
+        "description": "I never replied to his updated invoice, so he just kept working and posted new thumbnails.",
         "evidence": ""
       },
       {
         "date": "2026-06-16",
         "title": "Thirteen days, then he asked about empty states",
-        "description": "Neither of us wrote after the thumbnail thread until he needed to know what the scheduling view should say when there are no appointments.",
+        "description": "I never replied to the thumbnails either, so he moved on to the next screen and asked a question.",
         "evidence": ""
       },
       {
         "date": "2026-06-17",
-        "title": "Rent is tomorrow and he is short",
-        "description": "He chased the invoice again a month later and said he needed it for rent, and I found it stuck in approvals.",
-        "evidence": "rent is tomorrow and i'm short"
+        "title": "Rent is tomorrow and I'm short",
+        "description": "A month after the invoice, he apologised for chasing and told me he couldn't make rent.",
+        "evidence": "really sorry to chase again but it's been a month"
       },
       {
         "date": "2026-06-27",
-        "title": "Final handoff before he scales back",
-        "description": "He sent read-only invoice views and said it was the last one, and I thanked him.",
+        "title": "Final handoff before I scale back",
+        "description": "He posted the last designs and said he was scaling back, nine days after I finally paid him.",
         "evidence": "final handoff before i scale back"
       }
     ],
@@ -67,42 +67,43 @@
       {
         "title": "a room is a place",
         "when": "early May",
-        "moment": "Callum sent a link to the scheduler redesign. I wrote back \"this is right.\" Two days later he sent the timeline view. I asked for the room block to read as a wall, not a card. He tried solid fills. I said yes. Then he stopped and wrote a paragraph about why the old design felt wrong: \"a room is a place and an appointment is a promise and we were treating both as boxes.\" A place is persistent, has a location, can be empty. A promise is conditional, temporary, belongs to people. So the room should be a column that exists whether anything is scheduled or not. I told him it was the smartest thing anyone had said about this product.",
-        "why_it_matters": "The best design insight arrived after the fix was already approved."
+        "moment": "Callum sent me a paragraph about why the old scheduler felt wrong. \"A room is a place and an appointment is a promise and we were treating both as boxes,\" he wrote. A place is persistent, it has a location. A promise is conditional and belongs to people, not to a grid. So the room should be a column that exists whether anything is scheduled or not. I wrote back: \"this is the smartest thing anyone has said about this product.\" He sent conflict states the next day.",
+        "why_it_matters": "The entire visual logic changed because someone named the difference out loud."
       },
       {
-        "title": "the invoice that took a month",
-        "when": "April through June",
-        "moment": "Callum asked if invoices still went to Dane's email. I told him accounting@thicket.vet, he resent. Eight days later he asked if it went through, Stripe usually hits by now. I didn't answer. Five days after that I said the PO number didn't match our system, could he resend with the date-based format. He said he'd just copied it from last month's, did it change. Four days later I admitted Dane changed the format in QuickBooks and didn't tell anyone including me. He resent. Eleven days after that he wrote again: \"really sorry to chase again but it's been a month, rent is tomorrow and i'm short.\" It had been sitting in approvals. Dane didn't realize it needed two signatures now.",
-        "why_it_matters": "Every reply arrived days late and moved the problem to a new broken thing."
+        "title": "invoice sitting in approvals",
+        "when": "mid-April through mid-June",
+        "moment": "Callum sent his invoice to Dane's email on April 20th. I redirected him to accounting. He asked about it again May 8th. I didn't answer for thirteen days, then discovered the PO number was wrong and asked him to resend. He pointed out he'd just copied it from last month. Four days later I admitted Dane had changed the format in QuickBooks without telling anyone. On June 16th he wrote that rent was tomorrow and he was short. Dane had left it sitting in approvals, not realizing it needed two signatures now. I pushed it through.",
+        "why_it_matters": "He had to ask three times over eight weeks for money he'd already earned."
+      },
+      {
+        "title": "k",
+        "when": "the entire thread",
+        "moment": "Every design revision ends the same way. I say \"yes that\" or \"this is right\" or send a thumbs-up emoji. He writes back \"k\" and moves to the next thing. The icon decision in April: \"k.\" The solid fills in May: \"k.\" The room block, the conflict states, the thumbnails, the placeholder text. No acknowledgment, no explanation of what he'll do next, just the single letter. Then a Figma link appears, sometimes the same day, sometimes a week later, with the thing already done.",
+        "why_it_matters": "The shortest possible reply became the most reliable signal that he'd heard me."
       }
     ],
     "forgotten": [
       {
-        "when": "April 30, 2026",
-        "summary": "Callum reported a broken iOS scheduling screen with an attached screenshot. I said 'on it' but there's no follow-up confirming the fix was deployed or the issue resolved.",
-        "suggested_action": "Ask Callum if the iOS scheduling bug was fixed or if it still needs attention.",
-        "severity": "medium"
-      },
-      {
         "when": "June 16, 2026",
-        "summary": "Callum asked what the scheduling view should say when there's no appointments. I said 'good question' but never actually provided copy, so he used placeholder text.",
-        "suggested_action": "Send Callum the actual empty state copy for the scheduling view.",
+        "summary": "Callum asked what the scheduling view should say when there's no appointments yet. I said 'good question' but never actually provided an answer, so he used placeholder text.",
+        "suggested_action": "Send Callum the actual copy I want for the empty state on the scheduling view.",
         "severity": "low"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "He sent the final design handoff on June 27 before scaling back, and I confirmed receipt.",
+      "last_substantive_interaction": "He delivered final design handoff on June 27 before scaling back his hours, and I confirmed it was good.",
       "open_threads": [
-        "I never answered his question about what the scheduling view should say when there are no appointments",
-        "He said he's scaling back as of late June but we didn't discuss what that means or whether the contract continues"
+        "I never answered his question about what copy to use for the empty state on the scheduling view.",
+        "He said 'final handoff before I scale back' but we haven't discussed what scaling back means or what happens next.",
+        "He chased me twice about a stuck invoice in May, waited a month to get paid because Dane didn't process it."
       ],
       "three_talking_points": [
-        "Apologize for the invoice nightmare in May—Dane sat on it for a month and he had to chase me three times before rent",
-        "Tell him the room-as-place-not-box insight actually changed how we talk about the product internally",
-        "Ask what scaling back means and whether he wants to keep the retainer or close it out"
+        "Acknowledge that I left him hanging on the empty state copy and either give him the line or tell him I'll write it myself.",
+        "Ask what scaling back actually looks like—are we switching to ad-hoc, is he wrapping entirely, does he need fewer hours per month.",
+        "Apologize for the invoice disaster in May and confirm the new PO format is working, because chasing payment twice in one month is unacceptable."
       ],
-      "something_personal": "He was short on rent in mid-June and had to chase me because our payment was stuck in approvals."
+      "something_personal": ""
     },
     "meetings": {
       "count": 12,
@@ -114,7 +115,7 @@
     "name": "Dane Whitfield",
     "email": "dane@thicket.vet",
     "rank_position": 2,
-    "rank_score": 3.209,
+    "rank_score": 3.195,
     "role_hint": "Co-founder of Thicket. Worked as a veterinary technician for several years before moving into software sales.",
     "about": {
       "one_line": "Co-founder of Thicket. Worked as a veterinary technician for several years before moving into software sales.",
@@ -122,48 +123,54 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "One hundred messages in twelve weeks, forty-four meetings, and I haven't answered him in six weeks.",
+    "hero_line": "One hundred messages in twelve weeks, forty-four meetings, and I still haven't told him whether we're hiring Nkechi.",
     "timeline": [
       {
         "date": "2026-04-02",
         "title": "Ridgeline booked surgeries during the demo",
-        "description": "He ran a demo that went long enough for the prospect to schedule two actual surgeries through our scheduler.",
+        "description": "He ran a demo that went long enough for the prospect to schedule two surgeries through our scheduler while still on the call.",
         "evidence": "she booked two surgeries through the scheduler while we were on the call"
       },
       {
         "date": "2026-04-11",
-        "title": "Per location, not per vet",
-        "description": "He worked out the pricing model himself mid-thread, landing on per-clinic because front desk uses it as much as vets do.",
+        "title": "Per-location pricing, decided out loud",
+        "description": "He asked whether we charge per vet or per clinic, then answered it himself before I could reply.",
         "evidence": "never mind i think i answered it"
       },
       {
         "date": "2026-06-03",
-        "title": "Westbrook migrated everything without telling us",
-        "description": "He found all their historical records in the database after a week of silence from them, no announcement, just done.",
+        "title": "Westbrook migrated their records without telling us",
+        "description": "He checked the database and found they'd moved all their historical data over during a week when they hadn't logged in.",
         "evidence": "they didn't say anything they just did it"
       },
       {
         "date": "2026-06-04",
-        "title": "He conceded on the runway argument",
-        "description": "After I committed two weeks to the scoped-down billing build, he admitted I'd been right about runway in May.",
-        "evidence": "you were right about the runway thing I just didn't want to hear it in may"
+        "title": "The runway thing he didn't want to hear",
+        "description": "He conceded I was right about cutting scope on billing, apologised for resisting it in May.",
+        "evidence": "you were right about the runway thing I just didn't want to hear it"
       },
       {
         "date": "2026-06-12",
-        "title": "The $2,400 VMX booth he already booked",
-        "description": "He bought the conference booth next to Purina before asking, then apologised, and I just said ok.",
+        "title": "The twenty-four-hundred-dollar booth he already booked",
+        "description": "He told me he'd committed us to a VMX conference booth next to Purina, then apologised.",
         "evidence": "i kind of already told them we'd take it"
       },
       {
+        "date": "2026-06-17",
+        "title": "Silvercreek's retiring manager who won't learn it",
+        "description": "He wanted to call the deal dead because their front desk manager is leaving in October and refuses to onboard.",
+        "evidence": "she doesn't want to learn it"
+      },
+      {
         "date": "2026-06-22",
-        "title": "Third time asking about Nkechi",
-        "description": "He pushed again on whether we're hiring her because the billing plan changes if it's me and an actual engineer instead of me and Callum.",
-        "evidence": "bc the billing conversation changes a lot if it's you and callum vs you and an actual engineer"
+        "title": "Nkechi question, third time asking",
+        "description": "He asked again whether we're hiring her because the billing plan changes depending on the answer, and I gave him nothing.",
+        "evidence": "still talking to her"
       },
       {
         "date": "2026-06-29",
-        "title": "Conference decision gated on Westbrook converting",
-        "description": "He proposed we only do the conference if Westbrook converts before the fifteenth, and I agreed the Ros call mattered most.",
+        "title": "Conference decision keyed to Westbrook converting",
+        "description": "He proposed we attend the summit if Westbrook converts before mid-July and skip it if they don't, and I agreed.",
         "evidence": "i think we do it if westbrook converts before the 15th"
       }
     ],
@@ -171,40 +178,40 @@
       {
         "title": "Westbrook migrated without telling anyone",
         "when": "early June",
-        "moment": "Dane checked the database and found that Westbrook had moved all their historical records into the system. They hadn't announced it, hadn't asked for help, just logged in after a week of silence and did it. He sent three messages in a row: the facts first, then \"they didn't say anything they just did it,\" then asking whether we should call them. I told him to wait a week and see if they actually used it. Five days later he mentioned they wanted to talk pricing, which meant they were using it for real.",
-        "why_it_matters": "The gap between migration and contact is the whole signal."
+        "moment": "Dane checked the database and found that Westbrook had logged in after a week of silence and moved all their historical records into the system. They didn't announce it, didn't ask for help, just did it. He sent three messages in a row trying to figure out what it meant and whether we should call them. I told him to wait a week and see if they actually used it. Four days after that, he wrote back: \"you were right about the runway thing I just didn't want to hear it in may.\" The concession arrived by email, in the middle of a thread about scoping billing down.",
+        "why_it_matters": "The customer action that mattered most happened in total silence."
       },
       {
         "title": "He bought the booth before asking",
         "when": "mid-June",
-        "moment": "Dane found a 10x10 space at the VMX conference for $2400, next to the Purina booth, which he said was perfect placement. He sent me the details, then immediately followed with \"i kind of already told them we'd take it\" and then \"sorry.\" I wrote back \"ok\" and that was the end of it. No argument, no walkback, no budget conversation. He'd committed the money and apologized in the same breath, and I let it sit there.",
-        "why_it_matters": "The apology arrived after the decision, not instead of it."
+        "moment": "Dane sent me three messages about a $2400 conference booth next to the Purina stand at the VMX summit in August. He explained why it was perfect, said basically every clinic owner in the northwest would be there, then admitted he'd already told them we'd take it. The third message was just the word \"sorry.\" I wrote back \"ok\" and nothing else. Two weeks later he floated a rule for whether we'd actually staff it: go if Westbrook converts before the 15th, skip it if they don't. I agreed. Neither of us mentioned that he'd already committed the money.",
+        "why_it_matters": "The apology came after the commitment, and the condition came after the apology."
       },
       {
-        "title": "Nkechi came up three times in two weeks",
-        "when": "early to late June",
-        "moment": "On June 9th Dane asked if we'd heard back from Nkechi, said we needed to look at other people if she wasn't moving. I said I'd ping her that week. Thirteen days later he asked again: \"so are we hiring her or,\" then clarified that the billing plan changed a lot depending on whether it was me and Callum or \"you and an actual engineer.\" I wrote back \"still talking to her\" both times. He dropped it and neither of us brought her up again in the thread.",
-        "why_it_matters": "Each reply bought thirteen more days of nothing happening."
+        "title": "He asked about Nkechi three times",
+        "when": "June",
+        "moment": "On June 9th, Dane asked if we'd heard back from Nkechi and said we needed to look at other people if she wasn't moving. I said I'd ping her that week. Thirteen days later he asked again, then clarified that the billing plan changed a lot depending on whether it was me and Callum or me and an actual engineer. I wrote back \"still talking to her\" and nothing else. He did not ask again. The gap between his second ask and my answer was thirteen days. The thing he wanted to know was whether we were hiring her. The thing I told him was that a conversation was ongoing.",
+        "why_it_matters": "The question was binary and the answer was a continuous present tense."
       }
     ],
     "forgotten": [
       {
         "when": "June 9 and June 22",
-        "summary": "Dane asked twice whether we are hiring Nkechi, since billing and engineering planning depends on it. I said 'still talking to her' on June 22 but never gave him a final answer.",
-        "suggested_action": "Tell Dane whether Nkechi is joining so he can plan billing scope accordingly",
-        "severity": "medium"
+        "summary": "Dane asked twice about Nkechi's hiring status because it affects billing planning and whether they need other engineering options. I said I'd ping her in early June and that we were 'still talking,' but no resolution appears in later messages.",
+        "suggested_action": "Update Dane on Nkechi's status or confirm we're moving on to other candidates",
+        "severity": "high"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "He laid out July priorities: the ros call on the 8th, westbrook pricing conversation, two ridgeline callbacks, and proposed making the conference decision contingent on whether westbrook converts before the 15th.",
+      "last_substantive_interaction": "He suggested making the August conference booth conditional on whether Westbrook converts before mid-July. I agreed on the conference logic and said the Ros call on the 8th was the priority.",
       "open_threads": [
-        "I said I'd ping Nkechi in mid-June and never reported back. He asked three times whether we're hiring her.",
-        "I never answered whether we're doing the VMX booth thing in August after he committed the $2400."
+        "I never answered whether we're hiring Nkechi. He asked three times across ten days in June.",
+        "Silvercreek has had two logins in five weeks and their front desk manager is retiring in October and won't learn the product."
       ],
       "three_talking_points": [
-        "Tell him what actually happened with Nkechi, since he's been asking since June 9th and changed his billing planning around it.",
-        "Confirm the ros call on the 8th is still happening and whether she already reached out to Puyallup herself.",
-        "Ask if westbrook did end up talking pricing, since that was supposed to happen in late June and would trigger the conference decision."
+        "Tell him whether Nkechi is actually happening, because he's been waiting since June 9th and the billing timeline depends on it.",
+        "Ask how the Ros call on the 8th went and whether Puyallup moved after hearing from her.",
+        "Ask whether Westbrook converted and whether we're actually doing the VMX booth he already committed to for $2400."
       ],
       "something_personal": ""
     },
@@ -218,7 +225,7 @@
     "name": "Marguerite Vance",
     "email": "marguerite@vanceandco.com",
     "rank_position": 3,
-    "rank_score": 2.937,
+    "rank_score": 2.924,
     "role_hint": "Angel investor and former COO of Ardith Staffing, which sold to a healthcare services group in 2021.",
     "about": {
       "one_line": "Angel investor and former COO of Ardith Staffing, which sold to a healthcare services group in 2021.",
@@ -230,83 +237,95 @@
         "Sits on four boards and has said she takes on no more than one new one a year"
       ]
     },
-    "hero_line": "Fifteen messages across eleven weeks, four meetings, and I haven't answered her since June.",
+    "hero_line": "Fifteen messages across eleven weeks, four meetings, and I haven't scheduled the conversation I've promised twice.",
     "timeline": [
       {
         "date": "2026-04-06",
-        "title": "One real pilot, two polite ones",
-        "description": "She signed and asked for monthly updates, I told her one clinic was real and two were hedge bets.",
-        "evidence": "One is real and two are polite"
+        "title": "She signed and asked for honest paragraphs",
+        "description": "She sent the signed agreement and asked to be added to monthly updates, specifically requesting four honest paragraphs over a dashboard.",
+        "evidence": "I would rather have four honest paragraphs than a dashboard."
       },
       {
         "date": "2026-04-13",
-        "title": "Two people who failed at veterinary software",
-        "description": "She sent introductions to founders who had tried selling into independent practices and shut down.",
-        "evidence": "sold to four clinics, and shut it down eighteen months later"
+        "title": "Two introductions to people who failed at this",
+        "description": "She connected me to Corbin Achebe and offered a second intro to someone who tried selling into dental offices and hit the same front desk problem.",
+        "evidence": "Failure stories are more useful than success stories."
       },
       {
         "date": "2026-05-12",
-        "title": "Twenty-five days, then she asked about money",
-        "description": "Neither of us wrote after the Lena introduction until she asked whether anyone was paying me yet.",
+        "title": "Twenty-five days, then she asked about pilots",
+        "description": "Neither of us wrote after the Lena introduction until she returned with three questions, including whether anyone was paying yet.",
         "evidence": ""
       },
       {
         "date": "2026-05-13",
-        "title": "The eleven-day rewrite that cost a customer",
-        "description": "I told her the scheduling fix took eleven days and nearly lost Rosalind, who had one incident away from leaving.",
+        "title": "The eleven-day rewrite and Rosalind's near-exit",
+        "description": "I admitted the scheduling rewrite took eleven days and nearly lost Rosalind, who was one incident away from leaving when I told her two weeks.",
         "evidence": ""
       },
       {
         "date": "2026-05-31",
-        "title": "Cascade logged in eleven times, the others twice",
-        "description": "I sent May's update showing the real pilot was using the system daily and the polite ones had vanished.",
+        "title": "Seventeen days, then I sent May without answering",
+        "description": "I never replied to her pilot questions, instead sending the May update eighteen days later with product progress but mixed customer motion.",
         "evidence": ""
       },
       {
+        "date": "2026-06-08",
+        "title": "She noticed I hadn't answered the third question",
+        "description": "She complimented the logins observation, then pointed out I had not answered whether anyone was paying yet.",
+        "evidence": "I do not think you answered the third question."
+      },
+      {
         "date": "2026-06-10",
-        "title": "Nobody is paying yet and I said why",
-        "description": "She noticed I had dodged her revenue question, I admitted I was avoiding pricing until after a conversation I hadn't scheduled.",
-        "evidence": "nobody is paying yet and I have been reluctant"
+        "title": "Nobody is paying and July becomes an excuse",
+        "description": "I admitted nobody was paying yet and that my reluctance to put a number in front of Rosalind was defensible in May but becomes an excuse around July.",
+        "evidence": "That was a defensible reason in May. I am aware it becomes an excuse somewhere around July."
       },
       {
         "date": "2026-06-23",
-        "title": "Told twice about a conversation not yet scheduled",
-        "description": "She pointed out this was the second time I had promised an answer after a meeting that did not exist.",
-        "evidence": "you have now told me twice"
+        "title": "Twelve days, then what it sounds like from there",
+        "description": "She wrote that I had now told her twice I would have a real answer after a conversation not yet scheduled, and she was telling me what that sounded like.",
+        "evidence": "I am telling you what it sounds like from here"
       }
     ],
     "stories": [
       {
         "title": "Failure stories are more useful than success stories",
-        "when": "early April",
-        "moment": "Marguerite signed the investment documents and sent them back the same morning, then offered three things. The third was an introduction to two people who had tried to sell software into independent practices and shut down. I told her that was \"the single most useful offer anyone has made me this year,\" which was true but probably sounded like I was overselling my gratitude. She wrote back 16 words: \"'One is real and two are polite' is a better summary than most seed decks manage.\" No reassurance that I hadn't been rude, no clarification of which pilot she meant. Just that line, and then the introductions went out six days later exactly as promised.",
-        "why_it_matters": "The correction arrived without any cushioning around it."
+        "when": "the week after signing",
+        "moment": "Marguerite signed the investment documents on April 6th and immediately asked to be added to updates. Then she offered to introduce me to two people who had tried to sell into veterinary practices and failed at it. I wrote back that this was \"the single most useful offer anyone has made me this year,\" which I meant, because I'd been collecting advice from people who succeeded and learning almost nothing. She sent the introductions a week later: Corbin Achebe, who built scheduling software for equine practices and shut it down after eighteen months, and Lena Orosco, who spent two years failing to sell into dental offices. Both had actually done the thing I was trying to do, in adjacent markets, and quit.",
+        "why_it_matters": "The first thing she did after investing was offer access to failure."
       },
       {
-        "title": "I didn't answer the question",
+        "title": "I did not answer the third question",
         "when": "early June",
-        "moment": "Marguerite asked three questions about the pilots in mid-May. I answered the first two in detail: the scheduling rewrite took eleven days, Rosalind was logging in daily, the polite pilots had gone quiet. Then I sent the May update two weeks later and she replied that the logins observation was good. A week after that she wrote back on the original thread: \"I do not think you answered the third question.\" She was right. The question had been whether anyone was paying me yet, and I had written around it for two paragraphs without saying no. When I finally did say no, two days later, I added that I'd been reluctant to talk pricing while the product was breaking. She waited thirteen days, then replied that I had now told her twice I'd have an answer after a conversation I hadn't scheduled yet.",
-        "why_it_matters": "Every deflection gets named, and nothing gets named twice."
+        "moment": "Marguerite asked three questions about the pilots on May 12th. I answered the first two in detail the next day: the rewrite took eleven days, Rosalind at Cascade was using the system daily, the other two pilots had gone quiet. Then I sent the May monthly update on the 31st. She replied the same day, said it was the right level of detail, and that she'd have questions next week. On June 8th she wrote back: \"I do not think you answered the third question.\" She was right. The question had been whether anyone was paying me yet, and I had written around it for two weeks. I admitted this on June 10th and said nobody was paying, that I'd been reluctant to ask Rosalind for money while the product was still breaking, and that I wanted to take her a paid plan in July.",
+        "why_it_matters": "The observation arrived eight days late and named the evasion directly."
+      },
+      {
+        "title": "Twice you have told me after a conversation not yet scheduled",
+        "when": "late June",
+        "moment": "On June 10th I told Marguerite I wanted to take a paid plan to Cascade in July, after a specific conversation with Rosalind that I had not yet scheduled. Thirteen days later, Marguerite wrote back: \"I would only note that you have now told me twice that you will have a real answer after a conversation that has not yet been scheduled. I am not chasing you. I am telling you what it sounds like from here, which is a thing I would want to know if I were you.\" She did not ask when the conversation would happen. She pointed out the pattern and left it.",
+        "why_it_matters": "The correction was about what deferral sounds like from the outside."
       }
     ],
     "forgotten": [
       {
-        "when": "June 23, 2026",
-        "summary": "Marguerite pointed out that I had twice delayed having a pricing conversation with Cascade that I kept saying I would schedule. She was warning me about a pattern of avoidance, not asking for follow-up, but the conversation itself never appears to have been scheduled or reported back on.",
-        "suggested_action": "Send Marguerite a brief note on whether I had the pricing conversation with Cascade and what the outcome was.",
-        "severity": "medium"
+        "when": "June 2026",
+        "summary": "I said I would schedule a conversation with Rosalind (at Cascade) about paid plans in the next two weeks, which Marguerite noted I had now mentioned twice without actually scheduling. No follow-up visible showing the meeting happened.",
+        "suggested_action": "Schedule the pricing conversation with Rosalind at Cascade and update Marguerite on the outcome",
+        "severity": "high"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "She pointed out that I'd twice promised her a revenue answer after a conversation I hadn't scheduled yet, and said she wasn't chasing me but that's what it sounded like from her side.",
+      "last_substantive_interaction": "She pointed out that I had twice promised her a real answer after a conversation I hadn't scheduled yet, and said she wasn't chasing me but wanted me to know what it sounded like from her side.",
       "open_threads": [
-        "I said I'd take a paid plan to Cascade in the first week of July and have a real revenue answer after that conversation, which still hasn't been scheduled",
-        "She had questions after reading the May sheet that were going to come the following week, which was early June, and I never heard them"
+        "I said I would put the logins observation in the next update and never confirmed whether I did",
+        "I told her twice I would have a real answer after talking to Rosalind about pricing, and she noted I still hadn't scheduled that conversation"
       ],
       "three_talking_points": [
-        "Tell her whether the Cascade pricing conversation actually happened and what Rosalind said",
-        "Ask what her questions were about the May sheet, since I never got them and it's been three weeks",
-        "Ask whether she still wants failure intros if they come up, since Corbin and Lena both turned out to be right about the front desk problem"
+        "Tell her whether I actually scheduled the Cascade pricing conversation, and if not, why not",
+        "Ask whether the June update arrived and whether the logins detail made it in",
+        "Say whether anyone is paying yet, with a number and a date, not a plan"
       ],
       "something_personal": ""
     },
@@ -320,7 +339,7 @@
     "name": "Rosalind Achterberg",
     "email": "rosalind@cascadevet.com",
     "rank_position": 4,
-    "rank_score": 2.788,
+    "rank_score": 2.774,
     "role_hint": "Owner and lead veterinarian at Cascade Veterinary in Tacoma, in practice since 1999.",
     "about": {
       "one_line": "Owner and lead veterinarian at Cascade Veterinary in Tacoma, in practice since 1999.",
@@ -331,85 +350,98 @@
         "Cascade is independent and has stayed two-vet, in a region where most practices have been acquired"
       ]
     },
-    "hero_line": "Nineteen messages across eight weeks, thirteen meetings, and I still haven't answered her question from seventeen days ago.",
+    "hero_line": "Nineteen messages in eight weeks, thirteen meetings, and I left her waiting seventeen days after she asked me twice.",
     "timeline": [
       {
         "date": "2026-05-01",
-        "title": "OR2 double-booked during a splenectomy",
-        "description": "Their scheduler showed the room open mid-surgery because I'd logged the three-hour block requirement as a preference, not a constraint.",
+        "title": "The double-booked OR and the twenty-six year threat",
+        "description": "She reported the scheduling failure before her partner could call me, then wrote a second time saying she'd survived three systems and couldn't have her surgeon standing in hallways.",
         "evidence": ""
       },
       {
         "date": "2026-05-03",
-        "title": "Two-week rebuild to make rooms reservable",
-        "description": "I committed to rewriting the scheduler so procedures could hold rooms with no client attached, blocking them for the full duration.",
-        "evidence": "An appointment asks for a room and a duration"
+        "title": "Room-first rebuild, two weeks, no apology loop",
+        "description": "I sent her the technical plan over the weekend: room becomes the reserved object, procedures can hold rooms with no client, two-week delivery, Bea tests Thursday.",
+        "evidence": "I want to tell you what we're doing rather than that we're sorry"
       },
       {
-        "date": "2026-05-14",
-        "title": "Room scheduling live, I watched Friday",
-        "description": "Deployed the rebuilt scheduler ten days after promising it, and told her I'd be monitoring the first real surgery day myself.",
-        "evidence": "Friday is the real test. I'll be watching it."
+        "date": "2026-05-04",
+        "title": "The two weeks is the part that tells me",
+        "description": "She wrote back that the timeline proved it was real work, not a guess, and confirmed Bea's availability.",
+        "evidence": "Anyone who told me one week would have been guessing"
       },
       {
         "date": "2026-05-15",
-        "title": "Marcus moved a nail trim without asking",
-        "description": "Their surgeon trusted the system enough to reschedule himself around a room block, which she said mattered more than the feature working.",
+        "title": "Marcus moved a nail trim without asking her",
+        "description": "She reported the first full surgery day with no hallway collisions, and said Marcus trusting the room block enough to act on it was what she'd tell another vet.",
         "evidence": "this is now better than the paper book"
       },
       {
+        "date": "2026-05-21",
+        "title": "Day sheet cuts the last appointment, audit log missing",
+        "description": "She filed a printing bug affecting Mondays and Thursdays and asked if there was a way to see who changed an appointment, calling the latter the one she actually cared about.",
+        "evidence": "She has been writing the last one on by hand"
+      },
+      {
         "date": "2026-06-09",
-        "title": "Seventeen days, then they wrote first",
-        "description": "She bumped the day-sheet printing bug and asked again about audit logs, saying the audit question was the one she actually cared about.",
-        "evidence": ""
+        "title": "She bumped the unanswered questions gently",
+        "description": "She resent the day sheet and audit log requests from nineteen days earlier, saying Bea was still writing the last line by hand and the audit question mattered more.",
+        "evidence": "The audit question is the one I actually care about"
       },
       {
         "date": "2026-06-26",
-        "title": "Puyallup referral with the surgery story",
-        "description": "She gave my name to another vet at a regional meeting and told her the room scheduling story as the reason to call me.",
-        "evidence": "told her you were still early but that we run our surgery days on it"
+        "title": "Seventeen days, then she referred Puyallup without asking me first",
+        "description": "She told a practice at the regional meeting to call me, saying she runs surgery days on Thicket now, and I never replied to the message before this one.",
+        "evidence": ""
+      },
+      {
+        "date": "2026-06-29",
+        "title": "Elaine Kowalski called, demo link goes Monday",
+        "description": "I confirmed the Puyallup lead converted to a call and I'm sending a demo link, still without acknowledging the printing bug or the audit log she asked for twice.",
+        "evidence": "Good conversation, sending her a demo link Monday"
       }
     ],
     "stories": [
       {
-        "title": "Marcus walked into an occupied OR",
-        "when": "early May",
-        "moment": "The scheduler double-booked OR2 because I'd logged a three-hour room block as a scheduling preference instead of as an actual constraint. Marcus walked in with a laceration repair while a splenectomy was underway. Rosalind called at lunch and was gentler on the phone than she felt, then sent an email saying she'd survived three practice management systems and chose us because we asked better questions, \"but I cannot have my techs wondering whether the software knows what it's doing.\" I spent the weekend rebuilding the scheduler so rooms could be reserved directly, with no client attached. Told her two weeks. She wrote back that \"the two weeks is the part that tells me it's the right answer\"—anyone who said one week would be guessing.",
-        "why_it_matters": "The time estimate mattered more than the apology."
+        "title": "the operating room got double-booked",
+        "when": "May 1, 2026",
+        "moment": "Rosalind called at 7:40 in the morning because Marcus had walked into OR2 with a laceration repair while a shepherd mix was already under anesthesia for a splenectomy. The scheduler showed the room as open because she'd told me the surgery needed three hours but I'd logged it as a preference instead of a constraint. She wrote after our phone call to say she'd been gentler on the phone than she actually felt, and that she couldn't have her techs working around my software. I spent the weekend rebuilding the scheduler so rooms could be reserved directly, with no appointment attached. When I told her it would take two weeks, she wrote back that the timeline was what told her it was the right answer.",
+        "why_it_matters": "The thing that restored trust was the honest timeline, not the apology."
       },
       {
-        "title": "Bea still writes the last line by hand",
-        "when": "late May through June",
-        "moment": "Rosalind filed a bug on May 21st: the day sheet cuts off the last appointment when there are more than eleven, so Bea writes it in by hand. She said Bea finds it funny and she finds it \"slightly heartbreaking given what we are paying you.\" I never answered. She bumped it gently on June 9th, saying \"Bea is still writing the last line on by hand.\" As of late June, seventeen days after the second mention, there's no evidence in the thread that it got fixed. The audit log question she asked in the same message was the one she said she actually cared about, but she still took the time to bump the printing bug.",
-        "why_it_matters": "Small things left broken become the measure of whether someone's listening."
+        "title": "Marcus stopped asking if he was reading it right",
+        "when": "late May",
+        "moment": "Two weeks after the rebuild went live, Rosalind reported that Marcus had moved a nail trim on his own rather than checking with her first, which she said he wouldn't have done if he didn't trust the system. She called it \"the highest compliment he knows how to give.\" A few days later she wrote that the colon fix was live and \"Governor's owner has not called me, so I'm calling that a win.\" The updates kept coming in her weekly emails, each one a small operational detail I hadn't asked for but that she filed anyway so she wouldn't forget it.",
+        "why_it_matters": "Trust showed up as someone no longer needing to verify what the software said."
       },
       {
-        "title": "She told the Puyallup vet about us",
-        "when": "late June",
-        "moment": "Rosalind sat next to someone from Puyallup at a regional meeting who asked what she uses for scheduling. She said Thicket, said we were still early but that they run surgery days on it now, and the other vet asked to call me. Rosalind sent her my email and told her the room scheduling story, \"because that's the thing that would matter to her.\" I wrote back that her putting us in front of someone without me asking \"means more than I know how to say in a work email.\" She'd referred us seven weeks after Marcus walked into an occupied OR and two weeks after I still hadn't fixed the day sheet bug.",
-        "why_it_matters": "The referral arrived while an acknowledged bug was still open."
+        "title": "she sent someone my email without asking first",
+        "when": "June 26, 2026",
+        "moment": "Rosalind sat next to a vet from Puyallup at a regional meeting who asked what she used for scheduling. She told her Thicket, said they ran their surgery days on it now, and the other vet asked if she could call me. Rosalind wrote to let me know and to ask if she should send my contact information. I said yes and thanked her. She'd already done it. When the Puyallup vet called two days later, she asked about the room scheduling story, which was the story Rosalind had chosen to tell her.",
+        "why_it_matters": "The referral happened because of the thing that broke, not in spite of it."
       }
     ],
     "forgotten": [
       {
-        "when": "2026-05-21 and again 2026-06-09",
-        "summary": "Rosalind asked twice about the day sheet printing issue (last appointment gets cut off on busy days) and requested audit log functionality to see who changed appointments. She bumped it on June 9th saying Bea is still writing the last line by hand, and noted the audit question is what she actually cares about. I never responded to either message.",
-        "suggested_action": "Reply to the June 9th message with a timeline for the printing fix and audit log feature, or explain current limitations.",
+        "when": "May 21, 2026, re-raised June 9, 2026",
+        "summary": "Rosalind reported two issues: day sheet printing cuts off the last appointment on busy days (Bea writes it in by hand), and she asked if there's a way to see who changed an appointment. She bumped the printing issue June 9 and said the audit question is what she actually cares about. I never responded to either request.",
+        "suggested_action": "Reply with timeline for audit log feature and fix for day sheet printing issue, or explain current workarounds if fixes aren't immediately feasible.",
         "severity": "medium"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "She referred Dr. Elaine Kowalski from Puyallup to me in late June after telling the room scheduling story at a regional meeting. Kowalski called, I'm sending her a demo link.",
+      "last_substantive_interaction": "She sent a referral to Elaine Kowalski in Puyallup, told the room scheduling story, and I confirmed the call happened and demo link is going out.",
       "open_threads": [
-        "I never fixed the day sheet printing bug—Bea is still writing the last appointment by hand on busy days",
-        "I never answered her audit log question from May 21st, asked again June 9th"
+        "Day sheet printing still cuts off the last appointment on Mondays and Thursdays, Bea writing it in by hand for seven weeks now",
+        "Audit log question from May 21—she wanted to see who changed an appointment, never got an answer",
+        "Search broke on 'Foster/Forster' then seemed to fix itself, told Bea to flag if it happens again but I never followed up"
       ],
       "three_talking_points": [
-        "Tell her the Puyallup demo went out and ask if Kowalski followed up with her after our call",
-        "Admit I dropped the printing bug and the audit log question and ask if they're still problems or if something else has become more urgent",
-        "Ask how Lena's first month went, since we talked about onboarding back in May and I never circled back"
+        "Tell her the print bug is fixed or tell her when it will be, because Bea's been writing that line for seven weeks and Rosalind finds it heartbreaking.",
+        "Ask how Lena's first month went, whether onboarding surfaced anything broken that a new user would see and we'd miss.",
+        "Ask if the Puyallup practice moved forward, and whether there's anything from that conversation I should know before the demo."
       ],
-      "something_personal": "Her greyhound Bramble had thyroid numbers come back clean in May after what sounds like a scare."
+      "something_personal": "Her greyhound Bramble had a thyroid scare and the numbers came back good in May, after what sounds like a tense wait."
     },
     "meetings": {
       "count": 13,
@@ -421,7 +453,7 @@
     "name": "Ezra Mbeki-Toft",
     "email": "e.mbekitoft@fulton-works.com",
     "rank_position": 5,
-    "rank_score": 2.229,
+    "rank_score": 2.217,
     "role_hint": "Ezra Mbeki-Toft",
     "about": {
       "one_line": "",
@@ -429,79 +461,73 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "Fourteen messages in nine weeks, one meeting, and I haven't heard from him in eight weeks.",
+    "hero_line": "Fourteen messages in nine weeks, one meeting, and I haven't answered him twice.",
     "timeline": [
       {
         "date": "2026-04-17",
-        "title": "Standing water explained as building characteristic",
-        "description": "He walked me through why the rear bathroom floods: the drain sits lower than the supply line, and it's just how the building was built.",
+        "title": "Standing water, not a plumbing issue",
+        "description": "He explained that water in the rear bathroom was a drainage characteristic of the original construction, not a problem.",
         "evidence": "This is not a plumbing issue."
       },
       {
-        "date": "2026-04-19",
-        "title": "Floor dried, case closed",
-        "description": "He confirmed the water was gone and told me future puddles would resolve themselves the same way within forty-eight hours.",
-        "evidence": "drainage characteristic rather than a systemic issue"
-      },
-      {
         "date": "2026-05-22",
-        "title": "Thirty-two days, then water came back",
-        "description": "Neither of us wrote after his all-clear until he reopened the thread to say the floor was wet again and blame our handwashing technique.",
+        "title": "Thirty-two days, then he blamed our handwashing",
+        "description": "Neither of us wrote after his final note in April until he sent a second water complaint blaming excessive sink usage.",
         "evidence": ""
       },
       {
         "date": "2026-05-23",
-        "title": "Not flooding, water accumulation",
-        "description": "I asked if we were being blamed for washing our hands too hard; he corrected my word choice and cited the Tenant Guidelines.",
-        "evidence": "Not 'flooding.' Water accumulation due to usage patterns."
+        "title": "Not flooding, water accumulation due to usage patterns",
+        "description": "I asked if the floor was flooding because we washed our hands too enthusiastically, and he corrected my terminology for liability reasons.",
+        "evidence": "Not \"flooding.\" Water accumulation due to usage patterns."
       },
       {
         "date": "2026-05-26",
-        "title": "Documented my cooperation for the lease file",
-        "description": "After I said we'd be more careful, he thanked me and said he'd logged the exchange in case he needed to revisit our facilities clause.",
+        "title": "Documented the exchange, threatened the lease",
+        "description": "He filed the conversation and warned that recurring issues might require revisiting the facilities clause in our lease.",
         "evidence": "we may need to revisit the facilities clause"
       },
       {
         "date": "2026-06-15",
-        "title": "Nineteen days, then five responsibilities",
-        "description": "Neither of us wrote after his veiled threat until he sent a numbered list of bathroom rules following an incident he never described.",
+        "title": "Nineteen days, then five new bathroom rules",
+        "description": "Neither of us wrote after his lease threat until he sent a numbered list of tenant responsibilities following yesterday's incident.",
         "evidence": ""
       },
       {
         "date": "2026-06-16",
-        "title": "was not enough",
-        "description": "I wrote 'Acknowledged' and he asked me to rewrite it as 'agreed' or 'confirmed' so he could file it properly.",
-        "evidence": "A simple 'agreed' or 'confirmed' will suffice."
+        "title": "Demanded I write the word agreed",
+        "description": "He refused to accept my acknowledgment and required explicit confirmation that I agreed to observe points one through five.",
+        "evidence": "A simple \"agreed\" or \"confirmed\" will suffice."
       }
     ],
     "stories": [
       {
-        "title": "Drainage Characteristic Rather Than Systemic Issue",
+        "title": "Water in the rear bathroom was never water",
         "when": "mid-April",
-        "moment": "Ezra sent a three-point memo explaining that standing water in the bathroom was not a plumbing problem but a feature of the building's original construction, where the floor drain sat at a lower grade than the supply line. He followed up the next day to report that the water level had decreased, \"which confirms my assessment.\" The day after that he sent a final note saying the floor was now dry and would \"resolve naturally within 24 to 48 hours\" if it happened again. I sent one line back on the first day and nothing after that.",
-        "why_it_matters": "The explanation arrived in triplicate before anyone asked for it."
+        "moment": "Ezra sent a three-point inspection report explaining that standing water in the bathroom was not a plumbing issue but a drainage characteristic of the building's original construction. He returned the next morning and confirmed the water level had decreased, which he said proved his assessment correct. The day after that he sent a final note: the floor was dry, and if water appeared again it would resolve naturally within twenty-four to forty-eight hours. I sent one reply across all three emails, long.",
+        "why_it_matters": "The conclusion arrived before any of the evidence did."
       },
       {
-        "title": "Not Flooding, Water Accumulation Due to Usage Patterns",
+        "title": "We were washing our hands too hard",
         "when": "late May",
-        "moment": "When the bathroom flooded again a month later, Ezra blamed it on excessive water usage at the sinks and improper paper towel disposal. I asked whether the floor was flooding because we were washing our hands too enthusiastically. He wrote back the next morning to clarify: not \"flooding,\" but \"water accumulation due to usage patterns. The distinction is important from a liability perspective.\" He explained that the faucet pressure was commercial-grade and referenced section 4.2 of the Tenant Guidelines. I wrote back that we would be more careful. Two days later he thanked me for my cooperation and noted that he had \"documented this exchange and the resolution\" in case we needed to revisit the facilities clause in the lease.",
-        "why_it_matters": "The correction of a single word generated more text than the original complaint."
+        "moment": "Water appeared again five weeks later. This time Ezra wrote that he was observing excessive water usage at the sinks, improper paper towel disposal, and floor mats not being used as intended. I asked whether the floor was flooding because we were washing our hands too enthusiastically. He clarified the next day: not flooding, water accumulation due to usage patterns, and the distinction mattered from a liability perspective. The faucet pressure was commercial-grade and the basin was shallow, so water exited the perimeter when used without attention to splashing. I wrote back that we would be more careful.",
+        "why_it_matters": "The problem changed shape the second time it appeared."
       },
       {
-        "title": "A Simple Agreed or Confirmed Will Suffice",
+        "title": "Confirmed, for the record",
         "when": "mid-June",
-        "moment": "After another incident Ezra sent a five-point outline of tenant responsibilities for the shared bathroom. I replied \"Acknowledged.\" The next day he wrote back to say that for record-keeping purposes he would need explicit confirmation that we agreed to observe points one through five, and that \"a simple 'agreed' or 'confirmed' will suffice.\" I sent back the word \"confirmed\" in lowercase with no punctuation. He filed it and said he would refer back to the exchange and the responsibilities as outlined on June 15 should any future incidents occur.",
-        "why_it_matters": "Every exchange ends with him documenting that the exchange has ended."
+        "moment": "After an incident he did not describe, Ezra sent a five-point outline of tenant responsibilities for shared facilities. I replied: acknowledged. He wrote back the next day to say he would need explicit confirmation that we agreed to observe points one through five, and that a simple 'agreed' or 'confirmed' would suffice. I sent the word confirmed. He filed it and said that if future incidents occurred, he would refer back to the exchange and to the responsibilities as outlined on June 15.",
+        "why_it_matters": "Every reply shorter than the one before it still wasn't short enough."
       }
     ],
     "forgotten": [],
     "prep": {
-      "last_substantive_interaction": "He sent a five-point list of tenant responsibilities for the shared bathroom on June 15, then asked me to confirm in writing that we agree to them. I wrote 'confirmed' on June 17.",
+      "last_substantive_interaction": "He sent me a numbered list of bathroom rules on June 15, asked me to confirm I agreed to them, and then filed my one-word reply for future reference.",
       "open_threads": [],
       "three_talking_points": [
-        "Ask whether the bathroom situation has been fine since mid-June, or if there's something new.",
-        "If he brings up the water again, ask what he wants me to do differently from what I already confirmed in writing.",
-        "If he's here about something else, let him say what it is before I apologize for anything."
+        "Ask whether the bathroom has been fine since June, or if there's something new.",
+        "If he brings up water again, ask whether he wants us to reduce faucet pressure or just keep using the mats.",
+        "If he's here about something else, let him say it first—he documents everything and I don't want to create a record of a problem that doesn't exist."
       ],
       "something_personal": ""
     },
@@ -515,7 +541,7 @@
     "name": "Nkechi Adeyemi",
     "email": "nkechi.adeyemi@example.com",
     "rank_position": 6,
-    "rank_score": 2.156,
+    "rank_score": 2.145,
     "role_hint": "Senior software engineer working on data infrastructure at a large technology company.",
     "about": {
       "one_line": "Senior software engineer working on data infrastructure at a large technology company.",
@@ -526,89 +552,83 @@
         "No public indication she is looking for a new role"
       ]
     },
-    "hero_line": "Twelve messages over nine weeks, two meetings, and I haven't answered her question in two months.",
+    "hero_line": "Twelve messages over nine weeks, two meetings scheduled, and I haven't answered their last question in three weeks.",
     "timeline": [
       {
         "date": "2026-04-10",
-        "title": "The five-month warm write path",
-        "description": "I wrote cold, citing the migration writeup and asking what she was working on, not whether she was looking.",
+        "title": "The five-month warm migration path",
+        "description": "I wrote cold through Femi's intro, citing the specific decision to keep the old write path warm instead of dark.",
         "evidence": "Femi Adeyinka suggested I write to you"
       },
       {
         "date": "2026-04-11",
-        "title": "Nine unaccounted hours",
-        "description": "She asked what my week looked like, and I told her a third real building, a third customer work, a third mystery.",
-        "evidence": "nine hours of things I could not account for"
+        "title": "Eleven hours on scheduling, nine unaccounted for",
+        "description": "They asked how I spent last week before any call, and I broke it down including the hours I couldn't explain.",
+        "evidence": "somewhere around nine hours of things I could not account for"
       },
       {
         "date": "2026-04-14",
         "title": "Who decides what gets built",
-        "description": "She noticed Dane thinks billing closes the round and I've decided not to answer the billing question, and asked who wins.",
+        "description": "They caught the tension between Dane wanting billing and me not answering the billing question, asked who really decides.",
         "evidence": "Those two sentences are in tension"
       },
       {
         "date": "2026-05-08",
-        "title": "Twenty-three days, then she wrote first",
-        "description": "Neither of us wrote after the decision-making argument until she sent the boring questions about equity and runway.",
+        "title": "Twenty-three days, then they wrote first",
+        "description": "Neither of us wrote after I admitted we hadn't had the real decision-making argument yet, until they sent the equity questions.",
         "evidence": ""
       },
       {
         "date": "2026-05-10",
         "title": "March next year on current burn",
-        "description": "I gave equity range and cash-out date, but buried the third question about what happens if the seed doesn't close.",
-        "evidence": "March next year on current burn"
+        "description": "I gave them 1.5 to 2.5% off the real cap table and said we have until March without the seed.",
+        "evidence": "Cash-out is March next year on current burn"
       },
       {
         "date": "2026-05-21",
-        "title": "The question I didn't answer",
-        "description": "She asked again what happens if the seed doesn't close by fall, saying she cared less about the odds than how I thought.",
+        "title": "Cut, bridge, wind down, or services revenue",
+        "description": "They pointed out I hadn't answered what happens if the seed doesn't close, asked whether I'd cut or raise a bridge or take services.",
         "evidence": ""
       },
       {
         "date": "2026-06-12",
-        "title": "A answer I still haven't sent",
-        "description": "She asked the runway question a third time, in writing, saying it's not hard unless the answer is hard.",
+        "title": "One more time in writing",
+        "description": "After I dodged the question twice by asking for a call, they wrote back asking for a answer instead.",
         "evidence": "It's not a hard question unless the answer is hard"
       }
     ],
     "stories": [
       {
-        "title": "Femi warned me you'd read the migration post",
+        "title": "The question I asked him to answer twice",
+        "when": "late May into June",
+        "moment": "He asked what happens if the seed doesn't close by fall. I wrote back three days later and said I'd rather talk it through than send something \"that reads more confident than I am.\" He said sure, what day works. Six days passed. I wrote back to say the week got away from me. Three days after that he sent one more message: \"I'd rather have a answer than a scheduled call, honestly. It's not a hard question unless the answer is hard.\" I never answered it.",
+        "why_it_matters": "The gap always widens after someone asks for the thing in writing instead of on a call."
+      },
+      {
+        "title": "Written answers are more honest than spoken ones",
         "when": "mid-April",
-        "moment": "I wrote to her cold, citing the five-month dual-write period in her migration writeup. She replied the next morning: Femi had warned her I'd focus on the five months instead of the cutover, \"which is the first time anyone has cited\" that detail. She wasn't looking but was curious, and insisted I answer two questions in writing before a call, \"because I think written answers are more honest than spoken ones.\" One asked how I spent my engineering time last week. I gave her the breakdown: eleven hours on scheduling, six on a stalled migration, four on a billing question I'd decided not to answer, and nine hours I could not account for. She wrote back three days later that the nine unaccounted hours was \"the most credible thing anyone has told me about a startup in a while.\"",
-        "why_it_matters": "The unaccounted time mattered more than the legible work."
-      },
-      {
-        "title": "We haven't had the argument that decides it yet",
-        "when": "late April",
-        "moment": "She asked who decides what gets built, pointing out the tension between Dane thinking billing closes the round and me deciding not to answer the billing question. I told her it gets resolved by arguing, and that we hadn't had the real argument yet, only the friendly version twice. I wrote that Dane owns what we sell, I own what we build, \"and every real decision lives exactly on that line.\" I added that it works now with three customers because the answer is usually obvious, but I didn't think it would survive twenty customers without one of us having veto power. She replied that this was a good answer and confirmed the call. The structural question never came up again.",
-        "why_it_matters": "The thing that would break the partnership got named and then dropped."
-      },
-      {
-        "title": "It's not a hard question unless the answer is hard",
-        "when": "early June",
-        "moment": "On May 21st she asked what happens if the seed doesn't close by fall: do we cut to survive, raise a bridge, wind down, or take services revenue. I wrote back three days later asking if we could do it live, that I'd \"rather talk it through than send you something that reads more confident than I am.\" She agreed and asked what day works. I said the week got away from me and I'd send times. Twelve days after her last message, she wrote again: \"I'd rather have a answer than a scheduled call, honestly. It's not a hard question unless the answer is hard.\" I never answered it. The thread stops there.",
-        "why_it_matters": "The conversation ended exactly where I refused to write the answer down."
+        "moment": "He asked two questions before agreeing to a call, and specified he wanted written answers \"because I think written answers are more honest than spoken ones.\" I laid out my week in detail: eleven hours on scheduling, six on a migration for a clinic that hadn't finished migrating, four on a billing question I'd decided not to answer, nine hours unaccounted for. He wrote back that \"the nine unaccounted hours is the most credible thing anyone has told me about a startup in a while\" and agreed to the call. Later, when I tried to defer his hardest question to a conversation, he pushed back and asked for it in writing again.",
+        "why_it_matters": "He used the same tactic twice, and the second time I couldn't deliver what it surfaced."
       }
     ],
     "forgotten": [
       {
-        "when": "June 2026",
-        "summary": "Nkechi asked twice what happens if the seed doesn't close by fall. I said I'd send meeting times to discuss it live, then never sent them. She asked again in writing on June 12th and I never responded.",
-        "suggested_action": "Send her the honest two-line answer she requested about the backup plan if seed funding falls through.",
+        "when": "June 9, 2026",
+        "summary": "I promised to send Nkechi times for a call to discuss what happens if the seed round doesn't close by fall. She followed up on June 12 asking for a written answer instead, but I never responded.",
+        "suggested_action": "Send Nkechi a direct written answer about our contingency plan if the seed doesn't close.",
         "severity": "high"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "She asked for the third time what happens if the seed doesn't close by fall. I said I'd send times for a call, then never did. She wrote back saying she'd rather have two lines than a scheduled call.",
+      "last_substantive_interaction": "She asked a third time what happens if the seed doesn't close by fall, said she'd rather have two lines in writing than a call, and pointed out it's not a hard question unless the answer is hard. I never answered.",
       "open_threads": [
-        "I owe her an answer about what happens if the seed doesn't close, which she's now asked three times",
-        "I said I'd send times for a call on June 9th and never sent them"
+        "I owe her the answer about what happens if the seed doesn't close, which I've now dodged twice and she's asked three times",
+        "I said I'd send times for a call on June 9th and never did"
       ],
       "three_talking_points": [
-        "Apologize for dodging the question twice, then answer it: we'd cut burn and take services work to stretch runway, not raise a bridge or wind down.",
-        "Ask if the equity range and runway answer from May still lands right, or if the delay changed how she's thinking about it.",
-        "Ask whether she's still interested, given that I went dark for three weeks on the one question she said mattered most."
+        "Apologize for going dark on the seed question and answer it plainly: we'd cut to survive on services if we had to, but I've been avoiding saying that because it sounds like we're already planning to fail",
+        "Ask whether she's still interested given how long this has dragged and how obviously I've been stalling on the hard part",
+        "Tell her the scheduler rewrite shipped and the customer who nearly walked is now our reference account"
       ],
       "something_personal": ""
     },
@@ -622,7 +642,7 @@
     "name": "Wendy Okonkwo",
     "email": "wendy.okonkwo@example.com",
     "rank_position": 7,
-    "rank_score": 2.016,
+    "rank_score": 2.01,
     "role_hint": "Wendy Okonkwo",
     "about": {
       "one_line": "",
@@ -630,92 +650,92 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "Ten messages across ten weeks, three meetings scheduled, and I haven't answered her in seven weeks.",
+    "hero_line": "Ten messages in ten weeks, and I haven't answered her in eighteen days.",
     "timeline": [
       {
         "date": "2026-04-14",
-        "title": "She took charge of Mom's sixtieth birthday",
-        "description": "Wendy volunteered for the party because nobody else did and asked me to confirm the July 18th date.",
-        "evidence": "I'm officially in charge of this, because nobody else volunteered"
+        "title": "She asked me to commit to July 18th",
+        "description": "Wendy took over planning our mother's sixtieth and needed a headcount and a yes on splitting the restored radio.",
+        "evidence": "Are you in on the gift?"
+      },
+      {
+        "date": "2026-04-18",
+        "title": "I said the date worked, nothing else",
+        "description": "I confirmed July 18th but didn't answer the gift question or give her a headcount.",
+        "evidence": "18th works for me."
       },
       {
         "date": "2026-05-05",
-        "title": "Sixteen days, then she wrote first",
-        "description": "I'd said the eighteenth worked but nothing else, so she asked again about the radio and the headcount.",
+        "title": "Sixteen days, then she asked again",
+        "description": "She sent a deadline for the radio guy and noted I was the only person who hadn't given a headcount.",
         "evidence": ""
       },
       {
         "date": "2026-05-11",
-        "title": "I agreed to the hundred-thirty-five-dollar radio",
-        "description": "Six days late, I said yes and promised to Venmo her that week.",
-        "evidence": "Yes on the radio, I'll venmo you this week."
-      },
-      {
-        "date": "2026-05-16",
-        "title": "The photo from Grandpa's porch, 1999",
-        "description": "She found a picture of us from childhood and sent it, saying she might print it for the party.",
-        "evidence": "you and me on Grandpa's porch, maybe 1999?"
+        "title": "I said yes but never sent the money",
+        "description": "I agreed to the radio and said I'd Venmo her that week, then apparently didn't.",
+        "evidence": "I'll venmo you this week."
       },
       {
         "date": "2026-06-02",
-        "title": "Sixteen days, then she wrote first",
-        "description": "I never replied to the photo, so she came back asking for the Venmo and whether I could help set up Friday the seventeenth.",
-        "evidence": ""
+        "title": "She stopped chasing the Venmo and asked for help",
+        "description": "She mentioned the money never came but said the bigger thing was whether I could come the Friday before to help set up.",
+        "evidence": "It would be really nice to not do this by myself."
       },
       {
         "date": "2026-06-05",
         "title": "I said I'd check my calendar",
-        "description": "Three days later I wrote back but didn't answer the question, just said I'd look and get back to her.",
+        "description": "I told her I'd look at my schedule and get back to her, then didn't.",
         "evidence": "Let me look at the calendar this week"
       },
       {
         "date": "2026-06-24",
-        "title": "Eighteen days, then she wrote first",
-        "description": "I never got back to her, so she asked one more time if she should set a place for me.",
+        "title": "Eighteen days, then she wrote again",
+        "description": "She sent a deadline for the tent company and asked if she should set a place for me at all.",
         "evidence": ""
       }
     ],
     "stories": [
       {
-        "title": "The venmo that never came",
-        "when": "early May through early June",
-        "moment": "I said yes to the radio and that I'd send money by the end of the week. Six days later Wendy wrote back: she hadn't gotten it, and she wasn't chasing me for it, but Rahul thought she'd forgotten to ask. The phrasing did all the work. Not 'you forgot,' not 'can you send it,' just the arrangement of whose problem this had become in someone else's head. I never sent it and she never asked again.",
-        "why_it_matters": "The thing that doesn't get mentioned twice is the thing someone has stopped expecting."
+        "title": "The radio fund and the headcount",
+        "when": "early May",
+        "moment": "Wendy sent the question about the radio gift on May 5th: Rahul needed an answer by Friday, $135, \"just say yes or no.\" I wrote back six days later saying I'd seen it just now. She asked for a headcount in the same message. I never gave her one. On June 2nd she wrote that she never got the Venmo, \"not chasing you for it,\" but Rahul was going to think she forgot to ask. The real request was buried at the end: could I come the Friday before to help with the cake, the chairs, and the tent. I said I'd look at my calendar that week. I did not look at my calendar that week.",
+        "why_it_matters": "The answer that matters keeps getting deferred while smaller confirmations arrive late."
       },
       {
-        "title": "Twenty days later she asked whether to set a place for me at all",
-        "when": "early June through late June",
-        "moment": "Wendy asked on June 2nd whether I could come the Friday before the party to help with the cake, the chairs, and the tent. She wrote that it would be really nice to not do it by herself. I wrote back three days later that I'd look at the calendar that week and get back to her. I did not get back to her. Twenty days later she wrote again. She knew I was busy, she said, not in a pointed way. The tent people needed a final count by Monday. \"I'd just like to know if I should set a place for you.\" The question was whether I was coming to the party at all.",
-        "why_it_matters": "Promising to check the calendar is a way of saying no while appearing to say maybe."
+        "title": "Twenty days and a place setting",
+        "when": "late June",
+        "moment": "I told Wendy on June 5th that I would check my calendar and get back to her about setup day. She wrote again on June 24th. The gap is nineteen days. She opened with \"I know you're busy\" and said she wasn't saying it in a pointed way, she actually did know. Then: the tent people needed a final count by Monday. The last line was a question with no punctuation around it, just sitting there by itself. \"I'd just like to know if I should set a place for you.\" Not whether I could come early, whether I was coming at all. The thread ends there.",
+        "why_it_matters": "The question narrows each time it goes unanswered, from help to attendance to a chair."
       }
     ],
     "forgotten": [
       {
-        "when": "May 11, 2026",
-        "summary": "I promised to Venmo Wendy $135 for the radio gift for Mom's 60th birthday 'this week' but never sent it. Wendy followed up June 2nd saying she never received it.",
-        "suggested_action": "Send Wendy $135 via Venmo immediately with a note apologizing for the delay.",
+        "when": "early May 2026",
+        "summary": "I said I would Venmo Wendy $135 for Mom's radio gift 'this week' but never sent it. She followed up once in early June saying she never got it.",
+        "suggested_action": "Send Wendy $135 via Venmo with a note apologizing for the delay",
         "severity": "medium"
       },
       {
-        "when": "June 5, 2026",
-        "summary": "Wendy asked if I could come Friday July 17th to help with party setup. I said I'd check my calendar 'this week' but never responded. She followed up June 24th still not knowing if I'm attending.",
-        "suggested_action": "Reply immediately with whether I can come July 17th and confirm my attendance at the party itself.",
+        "when": "early June 2026",
+        "summary": "Wendy asked if I could come Friday June 17th to help with party setup. I said I'd check my calendar 'this week' but never responded. She's now waiting for final headcount.",
+        "suggested_action": "Tell Wendy whether I can attend on June 17th and confirm my attendance at the party itself",
         "severity": "high"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "She asked on June 24 if she should set a place for me at the party, after I said I'd check my calendar three weeks earlier and never did.",
+      "last_substantive_interaction": "She asked on June 24 whether to set a place for me at Mom's 60th birthday party on July 18, after I said I'd check my calendar three weeks earlier and never followed up.",
       "open_threads": [
-        "I never sent the $135 venmo for the restored radio gift",
-        "I never answered whether I'm coming to the party at all, or whether I can help set up the Friday before",
-        "She had to give the tent people a final count on June 28 and I left her hanging"
+        "I never sent her the $135 for the radio gift",
+        "I never answered whether I can come Friday the 17th to help set up",
+        "I never gave her a headcount for the party and the tent company needed it June 29"
       ],
       "three_talking_points": [
-        "I'm sorry I left you doing this alone",
-        "Tell me what actually needs to happen between now and the 18th",
-        "Did you print the photo of us with Grandpa's terrible cat"
+        "Tell her whether I'm actually coming to the party and apologize for making her wait a month",
+        "Venmo her for the radio right now, in front of her",
+        "Offer something specific for setup or day-of that she didn't have to ask for"
       ],
-      "something_personal": "She's been going through boxes in the garage and found old photos from when we were kids."
+      "something_personal": "She's been going through boxes in the garage and found a photo of us from 1999 on Grandpa's porch with his mean cat."
     },
     "meetings": {
       "count": 3,
@@ -727,7 +747,7 @@
     "name": "Theo Brandt-Sørensen",
     "email": "theo.brandt@corvia.com",
     "rank_position": 8,
-    "rank_score": 1.723,
+    "rank_score": 1.71,
     "role_hint": "Director of engineering at Corvia, a freight logistics company, where he has led platform teams since 2019.",
     "about": {
       "one_line": "Director of engineering at Corvia, a freight logistics company, where he has led platform teams since 2019.",
@@ -739,76 +759,76 @@
         "Writes infrequently but is cited by others in the logistics engineering community"
       ]
     },
-    "hero_line": "Ten messages across eight weeks, and I've written first after every silence.",
+    "hero_line": "Ten messages across eight weeks, and I've written first after both of the long silences.",
     "timeline": [
       {
         "date": "2026-04-24",
-        "title": "Billing is a trapdoor, he said",
-        "description": "I asked whether to build billing to close the seed, and he told me the problem was adoption, not features.",
+        "title": "Billing is a trapdoor",
+        "description": "I asked whether to build billing to close the seed round, he said the real problem was two customers not using what we'd already shipped.",
         "evidence": "Billing is a trapdoor. Don't."
       },
       {
         "date": "2026-04-24",
-        "title": "I defended the feature list",
-        "description": "I pushed back that I knew why customers weren't using it and neither reason was a product problem.",
-        "evidence": "Neither of those is a product problem."
-      },
-      {
-        "date": "2026-04-25",
-        "title": "He conceded",
-        "description": "After I defended building for customers who asked, he ended the argument without agreeing.",
+        "title": "I defended the feature pipeline",
+        "description": "I said I knew why they weren't using it and neither reason was a product problem, he backed off without agreeing.",
         "evidence": "Fair enough. Good luck with it."
       },
       {
         "date": "2026-05-18",
         "title": "Twenty-three days, then I wrote first",
-        "description": "Neither of us wrote after the billing argument until I sent a status update admitting he'd been right about the front desk manager.",
+        "description": "Neither of us wrote after the billing argument until I sent a status update admitting the retirement problem was mine.",
         "evidence": ""
+      },
+      {
+        "date": "2026-05-18",
+        "title": "The front desk manager was a product problem",
+        "description": "I cut billing and admitted I'd built for her replacement instead of for the person who had to use it until October.",
+        "evidence": "I built for her replacement instead of for her"
       },
       {
         "date": "2026-06-18",
         "title": "Thirty days, then the services question",
-        "description": "I broke another silence to ask whether taking implementation revenue would turn us into a consulting company.",
+        "description": "Another month of silence until I asked whether selling twenty implementations with a written stop date was the same trap as services companies fall into.",
         "evidence": ""
       },
       {
         "date": "2026-06-19",
-        "title": "The stop only holds if revenue exists first",
-        "description": "He said every company says they'll stop services work at some milestone, but payroll beats principles.",
-        "evidence": "Otherwise you're choosing between your rule and payroll, and payroll wins every time."
+        "title": "The stop only holds if revenue already exists",
+        "description": "He said every company claims they'll stop at a number, but when the time comes they pick payroll over the rule.",
+        "evidence": "you're choosing between your rule and payroll, and payroll wins"
       },
       {
         "date": "2026-06-23",
         "title": "The twenty-implementation cap, written down",
-        "description": "I argued twenty implementations could produce a self-installing product, and he told me to make the rule visible to Dane.",
+        "description": "I argued the replacement revenue would be the output of learning, not a bet, and he told me to write the number where Dane could see it.",
         "evidence": "Rules you keep in your own head aren't rules."
       }
     ],
     "stories": [
       {
-        "title": "Billing is a trapdoor",
+        "title": "billing is a trapdoor",
         "when": "late April",
-        "moment": "I asked whether to build billing, since two of three customers had requested it and Dane thought it would close the seed round. Theo sent back one line: \"That's a features list, not a product.\" He pointed out that only one of the three customers was actually using what we'd already built, and asked why nobody had checked on that yet. I pushed back hard—I did know why the other two weren't using it, and neither reason was a product problem. He replied the next morning with six words: \"Fair enough. Good luck with it.\" Twenty-three days later I cut billing from the roadmap and admitted the front desk manager had been a product problem all along. I'd built for her replacement without noticing I was making that choice.",
-        "why_it_matters": "The concession came three weeks later by email, not on the call where he was right."
+        "moment": "I asked whether to build billing, since two clinics had asked for it and Dane thought it would close the seed round. Theo read the roadmap and sent back one line: \"That's a features list, not a product.\" He pointed out that two of our three customers weren't using the thing we'd already built, and asked why nobody had checked. I wrote back defending myself—I did know why they weren't using it, one hadn't migrated their paper records and the other had a front desk manager retiring in four months. He replied the next day with six words: \"Fair enough. Good luck with it.\" Three weeks later I cut billing from the roadmap entirely. The front desk manager was a product problem after all. I'd built for her replacement without noticing I was making that choice.",
+        "why_it_matters": "The concession arrived by email, never on the call where the argument happened."
       },
       {
-        "title": "Twenty implementations, then stop",
+        "title": "the twenty implementations rule",
         "when": "mid-June",
-        "moment": "I wrote to him about the services question—every vertical software company in a low-margin industry eventually gets asked to do implementations, and I was wondering whether we should commit to a hard stop after some fixed number. He replied that it's \"the thing everybody says at ten,\" and that the stop only holds if replacement revenue already exists before you stop. I argued back: if twenty implementations produce a product that installs itself, the replacement revenue isn't a bet, it's the output. The rule holds because by the time we get to twenty we don't want the work anymore. He sent back \"That's a better argument than the one I was expecting,\" then told me to write the number down somewhere Dane could see it. \"Rules you keep in your own head aren't rules.\"",
-        "why_it_matters": "Every argument ends with one of us conceding, but never the same person twice."
+        "moment": "I sent Theo the services question—whether to take implementation work even though every vertical software company that does eventually can't stop. I argued that if twenty implementations produced a product that installs itself, the replacement revenue wasn't a bet but the output of what we'd just spent a year doing. The rule would hold because by the time we got to twenty we wouldn't want the work anymore. He wrote back: \"That's a better argument than the one I was expecting.\" Then he told me to write the number down somewhere Dane could see it, because \"rules you keep in your own head aren't rules.\" I never said the number twenty out loud to anyone before that thread.",
+        "why_it_matters": "Every argument here ends with me conceding, three weeks late, or him conceding immediately."
       }
     ],
     "forgotten": [],
     "prep": {
-      "last_substantive_interaction": "I made the case for capping implementation services at twenty instead of ten, and he said it was a better argument than he expected. He told me to write the cap down where Dane can see it.",
+      "last_substantive_interaction": "I argued that capping services at twenty implementations was defensible if the work taught us to build a self-installing product. He said to write the number down where Dane could see it.",
       "open_threads": [
-        "I never told him whether I actually wrote the twenty-implementation cap down, or where I put it.",
-        "He asked me to tell him how Thursday went—the one after the room-based scheduling decision—and I never did."
+        "I never wrote back after he told me to write the cap down somewhere Dane could see it",
+        "I said I could be wrong about the twenty-implementation theory and wanted to hear the argument against it, and he never gave one"
       ],
       "three_talking_points": [
-        "Ask whether he still thinks the cap breaks at ten, now that I've written it down.",
-        "Tell him what happened with the front desk manager and whether she actually used the thing before October.",
-        "Ask whether he's seen the services-to-product pattern break in a way that wasn't just a founder lying to themselves about the stop date."
+        "Ask whether he still thinks the cap breaks at ten, now that I've written it down",
+        "Tell him whether the scheduling rewrite actually shipped",
+        "Ask what the argument was that he expected me to make, before I made the one I did"
       ],
       "something_personal": ""
     },
@@ -822,7 +842,7 @@
     "name": "Josiah Lindqvist",
     "email": "josiah@lindqvist.io",
     "rank_position": 9,
-    "rank_score": 1.704,
+    "rank_score": 1.7,
     "role_hint": "Founder of an early-stage company. Limited public information available beyond a landing page.",
     "about": {
       "one_line": "Founder of an early-stage company. Limited public information available beyond a landing page.",
@@ -830,89 +850,89 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "Ten messages across eight weeks, and I stopped answering him three months ago.",
+    "hero_line": "Ten messages across eight weeks, and I've left him waiting twenty-one days on an intro I promised.",
     "timeline": [
       {
         "date": "2026-04-02",
-        "title": "Per-seat pricing fights a two-vet clinic",
-        "description": "He wrote unasked with pricing arguments that landed hard enough I admitted my strategy was just fear.",
-        "evidence": "the thing I understood how to build"
+        "title": "Per-seat pricing called out as self-sabotage",
+        "description": "He sent unsolicited pricing critique at night, and I admitted I'd built what I understood instead of what made sense.",
+        "evidence": "per-seat because it was the thing I understood how to build"
       },
       {
         "date": "2026-04-03",
-        "title": "Intro promised by morning",
-        "description": "He offered a pricing expert connection immediately after I conceded the per-seat point.",
+        "title": "Introduction to Corbin sent same morning",
+        "description": "He made the intro immediately after I asked, with a promise about the questions I'd ask.",
         "evidence": "intro going out this morning"
       },
       {
         "date": "2026-04-06",
-        "title": "Domain background versus taste",
-        "description": "I asked whether to hire the candidate with no healthcare experience, and he said domain knowledge plateaus.",
-        "evidence": "asked why four times a day"
+        "title": "Domain background versus taste for first engineer",
+        "description": "I asked whether to hire the best person or the one who knew healthcare, and he reframed it as whether I had hours to teach.",
+        "evidence": "Do you have the hours to be her domain for two months"
       },
       {
         "date": "2026-04-07",
-        "title": "Hours I don't have",
-        "description": "He reframed my hiring question as time, and I admitted I'd have to find hours I didn't have.",
-        "evidence": "Ask me again in June"
+        "title": "I chose the harder path before knowing the cost",
+        "description": "I said I'd rather find hours for the right person than not need them for the wrong one, then asked him to check if that held up.",
+        "evidence": "Ask me again in June whether that held up"
       },
       {
         "date": "2026-04-09",
-        "title": "Marguerite Vance introduction request",
-        "description": "He asked me to intro him to my lead investor and I said I needed days to frame it right.",
-        "evidence": "Let me think about the right framing"
+        "title": "He asked for an intro to Marguerite Vance",
+        "description": "He requested the introduction carefully, offering multiple outs, and I said I'd think about framing instead of just doing it.",
+        "evidence": "Let me think about the right framing so it actually lands"
       },
       {
         "date": "2026-05-06",
-        "title": "Twenty-six days, then he followed up",
-        "description": "Neither of us wrote after I promised the intro until he nudged with an offer to draft the blurb himself.",
+        "title": "Twenty-six days, then he nudged gently",
+        "description": "He floated it back up with no pressure and offered to draft the blurb himself to make it easier for me.",
         "evidence": ""
       },
       {
         "date": "2026-05-27",
-        "title": "Twenty-one days, and he wrote last",
-        "description": "He sent a final follow-up saying he'd rather know than wonder, and I never answered.",
-        "evidence": "Last time I'll bring this up"
+        "title": "Twenty-one days, and he released me from it",
+        "description": "He wrote one last time saying he'd rather know than wonder, and I never answered at all.",
+        "evidence": "I'd just rather know than keep wondering"
       }
     ],
     "stories": [
       {
-        "title": "per-seat pricing is fear written down",
+        "title": "per-seat is fear written down",
         "when": "early April",
-        "moment": "Josiah sent unsolicited notes on the pricing page, saying per-seat turns the front desk into a cost center and clinics will just share a login. I wrote back at 11pm and admitted we went per-seat because it was \"the thing I understood how to build, which is a bad reason that I have been calling a pricing strategy for four months.\" The FAQ disclaimer about features coming soon was staying on the page out of fear, nothing else. He'd caught me pricing the product around what I knew how to implement instead of what the customer actually needed, and I knew it the second I read it.",
-        "why_it_matters": "The pricing model was built backward from implementation comfort, not customer value."
+        "moment": "Josiah sent pricing feedback I didn't ask for. He said per-seat was fighting the product, because clinics have eleven people touching the schedule and two generating revenue, so they'd share a login to avoid the cost. I wrote back at 11pm and admitted we went per-seat \"because it was the thing I understood how to build, which is a bad reason that I have been calling a pricing strategy for four months.\" He'd caught something true. One of the FAQ lines was just fear written down, and I told him it was going. He made an intro the next morning.",
+        "why_it_matters": "The admission arrived twelve hours after the critique, which is fast for a founder to concede on pricing."
       },
       {
-        "title": "I said yes and then went silent",
-        "when": "April into late May",
-        "moment": "Josiah asked for an intro to Marguerite Vance, who led my round. I said I'd think about the framing \"so it actually lands\" and asked for a few days. Twenty-seven days later he sent a second nudge, offering to draft the blurb himself to make it a \"two-minute thing instead of a twenty-minute thing.\" I never answered. Twenty-one days after that he wrote one last time: \"I'd just rather know than keep wondering whether my email went to spam.\" The intro never happened. He stopped asking.",
-        "why_it_matters": "Saying yes and disappearing is worse than saying no in the first place."
+        "title": "domain hire plateaued at ten weeks",
+        "when": "April 6th",
+        "moment": "I asked Josiah how much he cared about domain background when he hired his first engineer. The candidate I wanted had never worked in healthcare. The two who had were both fine and neither was her. He said he cared a lot and was wrong. The domain hire was faster for ten weeks, then plateaued, \"because he knew how the industry did things and kept building that.\" The one who didn't know anything asked why four times a day, and two of those questions were good. One changed the product. Then he reframed my question entirely: \"Do you have the hours to be her domain for two months?\" I didn't have the hours. I said I'd rather find them for the right person than not need them for the wrong one, and asked him to check whether that held up in June.",
+        "why_it_matters": "The question I thought I was asking turned out not to be the question that mattered."
       },
       {
-        "title": "hire for taste, budget the teaching cost",
-        "when": "the week after the pricing conversation",
-        "moment": "I asked whether domain background mattered for a first engineering hire. The candidate I wanted had no healthcare experience; the two who did were \"both fine and neither is her.\" Josiah said he'd cared about domain and been wrong—the domain hire plateaued after ten weeks because he kept building what the industry already did, while the one who knew nothing \"asked why four times a day and two of those questions were good. One of them changed the product.\" Then the real answer: \"it only worked because I was there to answer the why questions.\" I realized the right question was whether I had the hours to be her domain for two months, and I didn't love my answer.",
-        "why_it_matters": "The constraint wasn't the candidate's background, it was whether I could afford to teach someone worth teaching."
+        "title": "three weeks, two follow-ups, no intro",
+        "when": "April through late May",
+        "moment": "Josiah asked for an intro to Marguerite Vance, who led my round and kept coming up as someone who understood the operator side of what he was building. I said yes immediately and asked for a few days to think about framing. Twenty-seven days later he followed up with no pressure, offering to draft something I could edit. Twenty-one days after that he wrote again: \"Last time I'll bring this up, promise.\" He said if I'd landed on no, he'd rather know than keep wondering whether his email went to spam. I never sent the intro. He closed the loop himself by saying the scheduling demo from April looked really good.",
+        "why_it_matters": "The gap between saying yes and going silent lasted seven weeks, which is long enough to be a decision."
       }
     ],
     "forgotten": [
       {
         "when": "April 9, 2026",
-        "summary": "I promised Josiah I would introduce him to Marguerite Vance (who led my funding round) after thinking about the right framing. He followed up twice (May 6 and May 27) and I never sent the intro or responded.",
-        "suggested_action": "Send Josiah a direct response: either make the intro to Marguerite with specific framing, or explain honestly why I can't.",
+        "summary": "I promised to introduce Josiah to Marguerite Vance for his pre-seed round, said I'd think about the right framing and get back in a few days. Never followed up despite two gentle reminders (May 6 and May 27).",
+        "suggested_action": "Send the intro email to Marguerite with specific framing about why she's right for Josiah's operator-focused company, or explicitly decline if no longer appropriate.",
         "severity": "high"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "He asked a third time about the Marguerite intro I said I'd make, seven weeks ago. I said I'd think about framing and never followed up.",
+      "last_substantive_interaction": "He asked for an intro to Marguerite Vance for his pre-seed on April 9th. I said I'd think about framing. He followed up May 6th and again May 27th. I never sent it.",
       "open_threads": [
-        "I owe him the Marguerite Vance intro. I said yes on April 9, asked for a few days to think about framing, and then disappeared for seven weeks.",
-        "He asked twice more, offering to draft the blurb himself, then sent a final check-in saying he'd rather know than wonder if his email went to spam."
+        "He asked for the Marguerite intro seven weeks ago and I ghosted him twice",
+        "I told him I'd report back in June on whether hiring the non-domain engineer worked out"
       ],
       "three_talking_points": [
-        "Apologize for ghosting the Marguerite intro and either make it now or tell him I can't do it.",
-        "Ask whether his pre-seed closed or if the intro would still be useful.",
-        "Tell him I hired the non-domain engineer and whether the 'do you have the hours to be her domain' question turned out to be right."
+        "Apologize for the Marguerite silence and either make the intro this week or tell him it's not happening",
+        "Tell him whether the engineer hire actually worked—I said I'd have an answer by now",
+        "Ask whether he got his pre-seed closed or is still raising"
       ],
       "something_personal": ""
     },
@@ -926,7 +946,7 @@
     "name": "Beatriz Salas-Whitmore",
     "email": "beatriz@cascadevet.com",
     "rank_position": 10,
-    "rank_score": 1.403,
+    "rank_score": 1.399,
     "role_hint": "Beatriz Salas-Whitmore",
     "about": {
       "one_line": "",
@@ -934,50 +954,51 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "Five messages in eight days, thirteen meetings on the calendar, and I haven't written back in three months.",
+    "hero_line": "Five messages in eight days, then I stopped replying seven weeks ago.",
     "timeline": [
       {
         "date": "2026-05-06",
-        "title": "Thursday site visit to map five rooms",
-        "description": "She offered to pull anything I needed beforehand, I said I just needed to see the layout.",
-        "evidence": "Do you need anything pulled beforehand?"
+        "title": "She offered to pull files for the room mapping",
+        "description": "I said I'd come at 11am and didn't need anything prepared, just needed to see the layout.",
+        "evidence": "just need to see the layout"
       },
       {
         "date": "2026-05-09",
-        "title": "Exam 2 and Exam 3 share a curtain",
-        "description": "After we entered all five rooms, she flagged that two are actually one space that they double-book unless surgery prep blocks both.",
+        "title": "The curtain room that books as two",
+        "description": "She told me Exam 2 and 3 are one physical room that they track separately for double-booking, and surgery prep blocks both sides.",
         "evidence": "one room with a curtain down the middle"
       },
       {
         "date": "2026-05-14",
-        "title": "Manual block-both toggle, for now",
-        "description": "I admitted the curtain problem mattered a lot and said I'd need to think about modeling it without wrecking the interface.",
-        "evidence": "might just be a manual block-both toggle for now"
+        "title": "I punted on the scheduling logic",
+        "description": "I thanked her for catching it and said I'd add a manual toggle instead of solving it properly.",
+        "evidence": "manual block-both toggle for now"
       }
     ],
     "stories": [
       {
         "title": "the room that was two rooms",
         "when": "early May",
-        "moment": "Beatriz set up all five rooms in the system after we walked through the clinic. Then she sent a second email the same day: Exam 2 and Exam 3 were actually one room with a curtain down the middle. They tracked them separately because they could double-book for exams, but if one side had surgery prep they had to block both. She flagged it \"before someone books a neuter on one side and a puppy wellness check on the other.\" I hadn't asked about edge cases. She caught it on her own, five days before it would have broken in production.",
-        "why_it_matters": "The failure mode arrived in an email, not in a customer complaint."
+        "moment": "Beatriz set up five exam rooms after I walked her through the system on Thursday. Then she sent a follow-up the same day: Exam 2 and Exam 3 were actually one room with a curtain down the middle. They tracked them separately because they could double-book for exams, but if one side had surgery prep they had to block both. She flagged it \"before someone books a neuter on one side and a puppy wellness check on the other.\" I thanked her five days later and admitted I had no idea how to model it without wrecking the interface.",
+        "why_it_matters": "The physical layout broke an assumption the software was built on."
       },
       {
-        "title": "manual block-both toggle for now",
-        "when": "five days after setup",
-        "moment": "I wrote back that it \"matters a lot\" and that I was \"going to need to think about how to model that without making the interface horrible.\" The interim fix was a manual toggle. No argument about whether the curtain setup was reasonable, no request to change their workflow. She had described the constraint; I accepted that the software had to bend around it. The phrase I used was \"for now,\" which meant I knew it was a workaround and she knew I knew.",
-        "why_it_matters": "The product adjusted to the clinic, not the other way around."
+        "title": "she sent it the same day",
+        "when": "May 9th",
+        "moment": "Beatriz confirmed our 11am meeting that morning. By the time she sent the curtain-room problem, we'd already done the walkthrough, entered all five rooms, and I'd left. She could have waited until it caused an actual scheduling collision or mentioned it the next time I came by. Instead she wrote it up the same afternoon, while the setup was still fresh and before anyone had tried to use the system in anger.",
+        "why_it_matters": "The correction arrived before the mistake could compound."
       }
     ],
     "forgotten": [],
     "prep": {
-      "last_substantive_interaction": "I came in on May 9th to set up room assignments. She flagged that Exam 2 and Exam 3 are one room with a curtain, and they double-book for exams but block both sides for surgery prep.",
+      "last_substantive_interaction": "I told her I needed to figure out how to model the Exam 2/3 split room situation without making the interface horrible, probably with a manual block-both toggle for now.",
       "open_threads": [
-        "I said I'd figure out how to model the curtain room without making the interface horrible, then never followed up"
+        "I never came back to her on how we're actually going to handle the Exam 2/3 curtain room in the scheduling logic"
       ],
       "three_talking_points": [
-        "Tell her I'm going with a manual block-both toggle for now and we can revisit if it becomes a pain point",
-        "Ask whether the curtain setup has caused any actual booking conflicts since we set it up"
+        "Ask if the manual block-both toggle idea would actually work for them, or if they need something smarter",
+        "Check whether the five-room setup we entered that day is still accurate or if anything's changed",
+        "Find out if the curtain room thing has caused any actual booking conflicts since May"
       ],
       "something_personal": ""
     },

@@ -75,6 +75,7 @@ async def build_person_payload(
     rank_score: float,
     rank_position: int,
     protagonist_name: str = "",
+    as_of=None,
 ) -> dict:
     """
     Run the full agent pipeline for one person and return the composed
@@ -119,7 +120,7 @@ async def build_person_payload(
                 last_date=pm.last_date[:10],
                 messages_block=messages_block,
                 gaps_block=_format_gaps_block(pm),
-                hero_facts=_format_hero_facts(pm, calendar_stats),
+                hero_facts=_format_hero_facts(pm, calendar_stats, as_of),
             ),
         ),
         default={"events": []},

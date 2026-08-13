@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+from datetime import datetime
 from pathlib import Path
 from unittest.mock import patch
 
@@ -61,6 +62,11 @@ async def main() -> None:
                 db_path=db, email=c.email,
                 rank_score=c.score, rank_position=i,
                 protagonist_name=contacts["people"][contacts["me"]]["name"],
+                # The corpus is frozen. Without this the hero line says
+                # "seven weeks" from the real clock while the recency
+                # marker beside it says "7 days" from demo_as_of: two
+                # clocks contradicting each other on the same page.
+                as_of=datetime.fromisoformat(contacts["demo_as_of"] + "T12:00:00-07:00"),
             )
             print(f"      {len(p['timeline'])} events, {len(p['stories'])} stories, "
                   f"{len(p['forgotten'])} forgotten, "

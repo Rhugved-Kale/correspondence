@@ -131,3 +131,18 @@ Root, deep links, an unknown person id, and the OG image all 200. Every
 internal path 404s: `/output/*`, `/demo/*`, `/api/*`, `/vercel.json`,
 `/package.json`, `/src/*`. No identity strings in the served bundle.
 Security headers present at the edge.
+
+## Production URLs belong to the environment, not the source
+
+**Anything resolvable from the runtime environment should be resolved
+there. Anything that cannot be must be flagged as needing manual
+override.**
+
+Hardcoding a production URL is the same failure mode as hardcoding an API
+key or a user's name: a value that varies per deployment, frozen into
+source, silently wrong everywhere it was not written for. It cost a link
+preview pointing at a stranger's project, and it was invisible until the
+thing was actually deployed.
+
+`VERCEL_PROJECT_PRODUCTION_URL` at build time, `VITE_PUBLIC_URL` as the
+manual override, and a fallback only so local builds do not crash.

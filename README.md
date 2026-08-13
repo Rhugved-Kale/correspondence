@@ -1,184 +1,236 @@
 # Correspondence
 
-A local app that reads your Gmail and Calendar, finds the ten people who matter most to you right now, and writes a short editorial page for each one.
+Facts about you, written as observations you would screenshot.
 
-Beyond the per-person pages, three dashboard surfaces sit on top:
+It reads your Gmail and Calendar, finds the people you actually talk to,
+and writes about them. Then it turns around and writes about you, from
+evidence you supplied without meaning to.
 
-- **Forgotten:** open threads with people you haven't talked to in a while, surfaced from your inbox so they don't quietly slip away.
-- **Upcoming:** your next calendar meetings with people we wrote a page for, each with a quick refresher of where you left off.
-- **About you:** aggregate stats about how you actually use email. The "things you didn't know about yourself" surface.
-
-Everything runs on your machine. The only network calls are to your own Google account, your own Anthropic API key, and Google's public OAuth servers.
+**[See it running on a made-up inbox →](https://correspondence-demo.vercel.app)**
+No signup, no install. The demo runs on a fictional person's ninety days
+of email, generated for the purpose, so you can see the whole artifact in
+about a minute.
 
 ---
 
-## Quick start
+## What it produces
+
+**A page for each of the ten people who matter most right now.** Not a
+contact card. A timeline of what actually changed between you, two or
+three stories with a turn in them, and a prep card for the next time you
+talk. Where a relationship went quiet, the silence is an event on the
+timeline with the number of days on it.
+
+**The Read**, which is about you. This is the part worth looking at first:
+
+> **Let me check and I'll ping you**
+>
+> You have written "let me check" or "I'll ping" or "this week" fourteen
+> times across nine people. Ten of those threads contain no further
+> message from you. [...] Marguerite wrote back: "you have now told me
+> twice that you will have a real answer after a conversation that has not
+> yet been scheduled."
+
+> **You slowed down first, then she did**
+>
+> Your first two replies to Nkechi took three hours and five hours. Then
+> 2.6 days. Then 3.6, then 6.6. [...] Your messages got shorter as they
+> got slower. You went from 167 words to 102 to 80 to 48 to eighteen.
+> [...] But you're the one who changed pace first, two days before she
+> did.
+
+Every number there was computed in SQL before any model saw it. The model
+was handed the figures and asked to write sentences around them, which is
+the single design decision that most affects whether this is trustworthy.
+
+**Share cards**, one thought each, at the two aspect ratios that matter.
+Every card is anonymised: nobody else's name appears on anything you might
+post.
+
+**Forgotten threads and upcoming meetings**, which are the boring useful
+part.
+
+---
+
+## Try it on your own inbox
 
 ```bash
 pip install -r backend/requirements.txt
 ./run.sh
 ```
 
-That's it. The first time you open the app, an in-browser setup wizard walks you through providing:
+A browser wizard collects an Anthropic API key and a Google OAuth client,
+validating each before it saves. Then it runs: roughly 20 to 30 minutes on
+a first pass, mostly Gmail ingestion, and about $1 in API credit. Later
+runs reuse the cache and take about two minutes.
 
-1. An Anthropic API key (text field).
-2. A Google OAuth credentials JSON (paste or upload).
+Everything stays on your machine. The only outbound calls are to your own
+Google account, your own Anthropic key, and Google's OAuth servers.
 
-The wizard validates each one before saving, so you find out immediately if anything's wrong. Once both are saved, you click Begin, authorize Gmail and Calendar in the popup, and walk away. Come back in 20-30 minutes to your pages.
+<details>
+<summary><b>Getting a Google OAuth client</b> (about ten minutes, and unavoidable)</summary>
 
-### Prerequisites
+Each user has to create their own Google Cloud project. I cannot ship one
+OAuth client that works for everybody: Google requires a multi-week
+verification review before an unverified app can request Gmail access from
+arbitrary users, and until then only explicitly allowlisted testers can
+authorize. Every local app that touches Gmail has this problem.
 
-- Python 3.10+
-- Node 18+ and npm
-- macOS or Linux (tested on macOS 14, Apple Silicon)
+1. Open [console.cloud.google.com](https://console.cloud.google.com),
+   signed in as the account whose mail you want to read.
+2. Create a project. Any name.
+3. **APIs & Services → Library**: enable the **Gmail API** and the
+   **Google Calendar API**.
+4. **OAuth consent screen**: User Type **External**, fill in the three
+   required fields, then find **Test users** (called **Audience** in newer
+   consoles) and add your own address. Leave publishing status on
+   **Testing**.
+5. **Credentials → Create Credentials → OAuth client ID**, type
+   **Desktop app**, then **Download JSON**.
+6. Paste the file's contents into the wizard, or use the upload button.
 
----
-
-## What you'll need to provide
-
-The setup wizard will ask for these. Get them ready before you launch, or get them while the wizard is open (both work).
-
-### Anthropic API key
-
-Sign in at [console.anthropic.com](https://console.anthropic.com), go to API Keys, create a new key. You need access to Claude Sonnet 4.5 (default for new accounts). A typical first run uses roughly $1 in API credit.
-
-### Google OAuth credentials
-
-**This is the unusual part.** Each user has to create their own Google Cloud project. I cannot ship a single OAuth client that works for everybody, because Google requires a multi-week verification process before any unverified app can request Gmail or Calendar access from arbitrary users. While in "Testing mode" (the default), only the developer's explicitly-allowlisted users can authorize. So the standard pattern for local apps that touch Gmail is: each user provides their own OAuth client.
-
-Takes about 10 minutes. The wizard has the instructions inline ("How do I get this?" expander), but here they are too:
-
-1. Open [console.cloud.google.com](https://console.cloud.google.com) signed into the Google account whose Gmail you want to analyze.
-2. **Create a new project.** Any name.
-3. **APIs & Services → Library:**
-   - Enable **Gmail API**
-   - Enable **Google Calendar API**
-4. **APIs & Services → OAuth consent screen:**
-   - User Type: **External**
-   - Fill in the app name, support email, developer contact (your own email is fine)
-   - Find the section called **Test users** (or **Audience** in the newer Google Cloud Console), and **add the email you're signed in with**
-   - Leave publishing status as **Testing**
-5. **APIs & Services → Credentials → Create Credentials → OAuth client ID:**
-   - Application type: **Desktop app**
-   - Any name
-   - Click Create, then **Download JSON**
-6. Open the downloaded file in any text editor, copy the contents, and paste into the wizard. (Or use the wizard's file upload button.)
+</details>
 
 ---
 
-## What to expect
+## How it works
 
-**First run: 20-30 minutes for a typical inbox.** Most of this is sequential Gmail ingestion (Gmail's per-user-per-minute quota doesn't tolerate the level of parallelism we'd need to go faster). The Claude pipeline takes ~12 minutes on an Anthropic Tier 1 account; faster on Tier 2+.
-
-**Subsequent runs: under 2 minutes.** The email cache is reused; only new mail since the last run is fetched. The agent pipeline always re-runs to incorporate the latest correspondence.
-
-**Cost per run: roughly $1** in Anthropic API usage.
-
-Once the wiki loads, you can:
-- Click **Start over** (top left) → **Re-run on this account** to refresh pages with new email.
-- **Start over** → **Switch account** to sign out and pick a different Google account.
-- **Share card** (top right) on any person to see a portrait-format summary.
-
----
-
-## Architecture
+Ingestion pulls a recent window of mail into SQLite. A deterministic
+ranker scores every contact on reciprocity, volume, recency and calendar
+overlap, and the survivors get a full history pull. Five agents then run
+per person, and a separate pass computes signals about you and writes The
+Read.
 
 ```
 backend/
-  api.py                 FastAPI: /api/start, /status, /people,
-                         /insights, /reset, /account, /preflight,
-                         /setup/anthropic, /setup/google
-  pipeline.py            Top-level orchestrator
+  pipeline.py             orchestrator
   agents/
-    ranking.py           Score-based contact ranking
-    deep_fetch.py        Per-person history pull
-    person_pipeline.py   Five-agent fan-out per person
-    insights.py          Top-level dashboard composer (forgotten,
-                         upcoming, about-you stats)
-  prompts/templates.py   All Claude prompts, with hallucination guards
-  clients/
-    gmail.py             Gmail SDK wrapper
-    calendar_client.py   Calendar SDK wrapper
-    claude.py            Anthropic SDK wrapper with retry and citation stripping
-  storage/
-    ingest.py            Bulk ingestion into SQLite
-    db.py                Schema and connection helper
-  utils/
-    progress.py          Status file read/write for the progress UI
-
-frontend/src/
-  App.jsx                Polls /api/status, routes between screens
-  SetupWizard.jsx        First-run wizard: API keys + credentials.json
-  SetupScreen.jsx        Pre-launch screen with preflight checks
-  ProgressView.jsx       Live progress UI
-  components/
-    PeopleWiki.jsx       The editorial wiki (sidebar + per-person pages)
-    InsightsDashboard.jsx  Forgotten / Upcoming / About-you surfaces
+    ranking.py            score every contact, keep the top ten
+    deep_fetch.py         full history for the ones that survived
+    person_pipeline.py    the five-agent fan-out per person
+    grounding.py          verify what the agents claim they quoted
+    self_portrait.py      ten signal families about the user, no prose
+    phrasing.py           every figure pre-rendered in every form
+    read_composer.py      which findings make the page
+    card_selector.py      which findings survive anonymisation
+    insights.py           forgotten threads, upcoming meetings
+  prompts/templates.py    every prompt, and every rule that cost something
+frontend/src/components/
+  PeopleWiki.jsx          the per-person pages
+  InsightsDashboard.jsx   The Read, Forgotten, Upcoming
+demo/                     the fictional corpus, and the tools that made it
 ```
 
 ---
 
-## Notable trade-offs
+## Three rules the code is built on
 
-**Sequential Gmail ingestion.** I tried parallel ingestion at 20 and 8 workers; both produced silent data loss when Gmail's per-user-per-minute quota kicked in. The right fix is a shared token-bucket rate limiter that pauses all workers together on 429. The existing sequential path is correct, just slow on big inboxes.
+Each one cost a stage to learn.
 
-**Tier 1 Anthropic API.** The agent pipeline could finish in ~4 minutes instead of ~12 with parallel per-person execution. Parallel runs trip the 30k input-tokens-per-minute Tier 1 limit, so we run sequentially with 1.5s inter-agent waits. Anyone with Tier 2+ access can set `PERSON_CONCURRENCY=4` in `pipeline.py` and see the speedup.
+**Any fact derivable from data is precomputed and handed to the model,
+never asked for.** Fabricated quotes, wrong word counts and wrong date
+arithmetic turned out to be the same defect wearing three coats: the model
+being asked to produce something the data already contained. Handing the
+value in drops that risk to zero. Asking for it creates the risk. This is
+why `phrasing.py` renders "2.6 days" and "62 hours" and "about a week"
+before anything reads them, and why a date gap is computed in Python and
+passed in as a sentence.
 
-**Claude's built-in web search instead of a separate research API.** The About-them agent needs to look people up on the web. A dedicated search API would work, but it means one more key for the user to provide and one more client to test, and the output quality is the same at this volume. If you want to swap one in, the `clients/claude.py` interface is small and would take about 30 minutes to adapt.
+**Structural rules beat lists of banned phrases.** Telling the model not
+to write a phrasing gets that exact phrasing avoided and the move
+performed some other way. Telling it that a field's grammatical subject
+may not be a person ends the behaviour immediately. Three attempts at
+banning interpretation failed before the rule became "every sentence must
+describe something that happened or something that was written."
 
-**Hallucination defense.** Every agent prompt has an explicit zero-hallucination clause: empty fields are better than fabricated ones. The About-them agent verifies identity three ways (email domain match, in-email context match, or verifiable profile page) before stating any public fact. If none of those check out, it returns empty strings and the page renders without that block.
-
-**Voice attribution.** Every prompt tells the model "I am [my name]," with messages tagged `ME -> THEM` or `THEM -> ME`. Without this, agents drift into describing the other person's actions as if I performed them.
-
-**Citation stripping.** Web-search-enabled Claude outputs include `<cite index="X-Y">...</cite>` tags. The regex handles both the raw form and the JSON-escaped form before composing the final artifact.
-
-**Display name normalization.** "Last, First" → "First Last". Missing display names are derived from the email's local-part. Falls back to raw email only as a last resort.
-
-**Empty-field handling.** Sections render only when they have content. A page with no public info for that person shows just the timeline and prep card, cleanly.
-
-**In-app setup wizard.** Collecting keys in the browser rather than making people edit a `.env` by hand. Each key is validated before it's written, with a real API call for Anthropic and a shape check for the Google credentials.json, then persisted to disk. The user never has to open a text editor, and a typo fails immediately instead of thirty seconds into a pipeline run.
-
----
-
-## Caveats and known limitations
-
-- **OAuth is testing-mode.** Your GCP project is capped at 100 test users by Google. Plenty for personal use. Going to production requires Google's verification review.
-- **Common-name contacts may have empty "About them" sections** by design. The identity check fails closed when we can't be confident.
-- **First-run ingestion isn't parallel.** ~16 minutes for a 6,000-message inbox. Re-runs are quick (cache reuse).
-- **Calendar shows up in three places** but isn't surfaced as raw event content on per-person pages: it biases ranking (people you meet with rank higher), shows up as a meeting count in each person's hero stats, and powers the Upcoming dashboard view with prep blurbs.
+**A guard that over-reports is worse than no guard.** The grounding layer
+flagged seventeen fabricated quotes on a full run. Eleven were the model
+quoting accurately and adding a full stop, or rendering the source's
+double quotes as single. A false-positive rate that high trains you to
+ignore the alarm, which is worse than not having one. It measures six now,
+and all six are real.
 
 ---
 
-## What I'd build next
+## Trade-offs
 
-A few directions I'd take this if I had more time, ranked by what I think would matter most:
+**Sequential Gmail ingestion.** Parallel at 8 and 20 workers both produced
+silent data loss when the per-user quota kicked in. The right fix is a
+shared token bucket that pauses every worker on a 429. What is here is
+correct and slow.
 
-**Parallel ingestion with a shared rate limiter.** The single biggest win for first-run latency. A token-bucket limiter shared across all worker threads, with global pause-on-429, would let me run ~10 workers safely and cut the 16-minute ingest to under 3. Worth a half-day.
+**Anonymisation as a selection gate, not a formatting step.** Cards try
+every finding with the names removed. What still means something becomes a
+card; what collapses stays in the private view. This started as a privacy
+control and turned into a writing discipline: the best finding in the demo
+corpus got *better* anonymised, because "your sister" had been doing work
+the messages should have been doing.
 
-**Background refresh.** Right now the user has to manually click "Re-run on this account" to pick up new email or calendar events. A small daemon thread that re-ingests every N hours (cheap, no LLM calls) and re-composes insights on cache delta would make the wiki feel alive rather than frozen-in-time.
+**Empty beats invented, everywhere.** Agents return empty fields rather
+than guessing, the identity check on public bios fails closed, and both
+The Read and the card layer will decline to say anything at all. A page
+with four findings instead of six reads fine. A page with two invented
+ones does not.
 
-**Per-person query layer.** "When did I last talk to X about Y?" answered against the indexed email data. The data is already in SQLite; this would be a small RAG pipeline with one Claude call per query. The natural next step after the wiki, since people will want to ask questions about their own data.
+**The demo bakes prebuilt JSON.** No backend, no keys, nothing to run. The
+consequence is that its corpus is frozen at a fixed date, so relative time
+renders against that date rather than the clock.
 
-**Connections graph.** Find people who appear together in your threads and surface the relationships between them, not just between you and each of them. "X introduced you to Y, who connected you to Z." Adds a network view to complement the per-person view.
+---
 
-**Real tests.** No automated tests in the current repo, partly because the most interesting failure modes are integration-level (rate limits, OAuth edge cases) where unit tests don't help much. A small set of end-to-end tests on canned email fixtures would cover the ranking heuristic, the agent prompt schemas, and the insights composer.
+## Known limits
 
-**Streaming agent output.** Right now the progress bar shows "agent 4 of 10" but the user sees nothing until everything finishes. Streaming partial JSON to the frontend as each person finishes would let people start reading immediately instead of waiting for the full pipeline.
+- **OAuth stays in testing mode**, capped by Google at 100 users. Fine for
+  personal use.
+- **Ranking decays against the real clock.** Re-running the pipeline
+  against the demo fixture long after its window gives a uniformly decayed
+  recency signal. It does not affect the deployed demo, which bakes its
+  JSON at build time.
+- **Common-name contacts often have an empty "about them" block.** That is
+  the identity check working.
+- **No automated tests.** The interesting failures are integration-level.
+  The demo fixture is the seam that would make real ones possible, and it
+  already runs the pipeline end to end in seconds.
+
+---
+
+## What I would build next
+
+**Validate The Read against live inboxes.** Everything in it was tuned on
+one fictional corpus built to contain specific findings. The gates that
+decide whether a finding is worth stating are calibrated against that
+corpus and nothing else. Running it over several real inboxes and checking
+what fires, what stays silent, and what turns out to be wrong is the
+highest-value next step by a distance. Two things to watch specifically:
+whether the interpretation ban holds on findings the demo never selected,
+and whether the anonymisation gate rejects too much on relationships less
+neatly shaped than the fixture's.
+
+**Parallel ingestion with a shared rate limiter.** A token bucket across
+all workers with global pause-on-429 would cut a sixteen-minute first run
+to under three. Half a day of work and the single biggest latency win.
+
+**Background refresh.** A daemon that re-ingests every few hours and
+recomposes on cache delta, so the wiki stops being frozen at whenever you
+last clicked a button.
+
+**Per-person query.** "When did I last talk to X about Y?" against the
+indexed mail. The data is already in SQLite.
 
 ---
 
 ## Stopping and resetting
 
-**Stop:** `Ctrl+C` in the terminal.
+Stop with `Ctrl+C`.
 
-**Stuck on a stale screen:** The server clears stale status automatically on startup, but if needed:
+Stuck on a stale screen:
+
 ```bash
 rm output/status.json
 ```
 
-**Truly fresh start (re-ingest everything, re-authorize, re-setup):**
+Start completely over, including re-authorizing:
+
 ```bash
 rm -rf data/ output/ token.json .env credentials.json
 ```
-
-Next run will show the setup wizard from scratch.
