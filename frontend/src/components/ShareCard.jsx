@@ -195,17 +195,18 @@ export default function ShareCard({ cards, accent, onClose, demoUrl }) {
     return () => window.removeEventListener("resize", fit);
   }, [w, h]);
 
-  // Rendered without html-to-image.
+  // Export is hand-rolled rather than done with a library.
   //
-  // That library discovers fonts by walking every stylesheet and running a
-  // url() regex over each rule. Our @font-face rules carry two base64
-  // payloads of about 90KB, and an export took over thirty seconds and
-  // often never finished. Passing it pre-built font CSS did not help,
-  // which ruled out font discovery as the only cost.
+  // html-to-image was here and could not finish. It discovers fonts by
+  // walking every stylesheet and running a url() regex over each rule,
+  // and our @font-face rules carry two base64 payloads of about 90KB. An
+  // export ran past thirty seconds and often never resolved. Handing it
+  // pre-built font CSS did not help, which ruled out font discovery as
+  // the only cost.
   //
-  // Measuring settled it: the browser rasterises a 161KB font-carrying SVG
-  // in ten milliseconds. All of the time was library JavaScript, none of
-  // it was the work we actually need. So we do the work directly.
+  // Measuring settled it: the browser rasterises a 161KB font-carrying
+  // SVG in ten milliseconds. All of the time was library JavaScript and
+  // none of it was work we need, so the dependency came out.
   //
   // The node is already laid out at the exact output size, so this is a
   // serialise and a draw, with no re-layout and no upscale.

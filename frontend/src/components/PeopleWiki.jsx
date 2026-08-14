@@ -287,10 +287,11 @@ export default function PeopleWiki({ people, insights, landingPersonId, demoUrl,
 
   // Fonts come from src/fonts.css, which inlines Fraunces and Inter as
   // base64. There used to be a Google Fonts <link> injected here; it had
-  // to go. html-to-image walks every stylesheet to inline it, and a
-  // cross-origin sheet throws SecurityError on cssRules, which broke PNG
-  // export outright. Self-hosting is what makes the card exportable, not
-  // just what makes it render.
+  // to go. Card export reads document.styleSheets to copy the type into
+  // the SVG it rasterises, and reading cssRules on a cross-origin sheet
+  // throws SecurityError, so a linked font silently became Times in the
+  // PNG. Self-hosting is what makes the card exportable, not just what
+  // makes it render.
   const serif = `'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif`;
   const sans = `'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif`;
 
