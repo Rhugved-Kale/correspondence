@@ -11,6 +11,13 @@ No signup, no install. The demo runs on a fictional person's ninety days
 of email, generated for the purpose, so you can see the whole artifact in
 about a minute.
 
+<p align="center">
+  <img src="docs/screenshots/the-read.png" width="49%"
+       alt="The Read, a column of vignettes about the reader's own email habits. The opening finding is headed 'Wendy asks twice for two different things' and contrasts a photo answered in seventeen minutes with a request for money answered in 5.6 days. Below it, 'Emergency in seventeen minutes, confirmation in eleven days'." />
+  <img src="docs/screenshots/wendy-page.png" width="49%"
+       alt="A per-person page for Wendy Okonkwo. A generated opening line reads 'Ten messages in ten weeks, and I haven't answered her in twenty-five days', above a timeline entry headed 'She picked July 18th for the party' with a quoted fragment from the email underneath." />
+</p>
+
 ---
 
 ## What it produces

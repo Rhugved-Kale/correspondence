@@ -49,3 +49,8 @@ demo/.generated/
 demo/**/*.raw.json
 demo/*.cost.log
 demo/the_read.json
+
+# Agent/editor tool config. Local to whoever is working, same as .vscode
+# or .idea. The launch config in here is a convenience, not part of the
+# project's build.
+.claude/

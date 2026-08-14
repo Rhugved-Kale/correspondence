@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import InsightsDashboard from "./InsightsDashboard.jsx";
+import { hasAbout } from "../lib/about.js";
 import ShareCard from "./ShareCard.jsx";
 
 
@@ -183,19 +184,6 @@ function formatDate(iso) {
 // live inside the generated hero_line sentence, where they can carry a
 // claim instead of sitting in boxes. A row of four tiles is the visual
 // signature of a dashboard; one sentence and one marker is an essay.
-// True when the About agent confirmed anything at all. All four fields
-// empty means the identity check failed closed, which is the correct
-// outcome for a private individual and not something to announce.
-function hasAbout(person) {
-  const a = person?.about || {};
-  return Boolean(
-    (a.one_line || "").trim() ||
-    (a.current_focus || "").trim() ||
-    (a.background || "").trim() ||
-    (a.three_things_to_know || []).length
-  );
-}
-
 function recencyLabel(person, asOf) {
   const events = [...(person.timeline || [])].sort((a, b) =>
     (a.date || "").localeCompare(b.date || "")
