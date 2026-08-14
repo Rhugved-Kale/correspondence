@@ -8,8 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "dev:demo": "VITE_DEMO=1 vite",
-    "build:demo": "node scripts/check-about.mjs && VITE_DEMO=1 vite build",
-    "check": "node scripts/check-about.mjs"
+    "build:demo": "npm run check && VITE_DEMO=1 vite build",
+    "check": "node scripts/check-about.mjs && node scripts/check-payload.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.11.17",

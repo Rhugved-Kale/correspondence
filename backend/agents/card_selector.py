@@ -36,7 +36,17 @@ from backend.utils.logging import get_logger
 
 log = get_logger(__name__)
 
-INTER_CALL_SLEEP = 1.5
+# Bounded concurrency, unlike the per-person agents which run strictly
+# sequentially. That rule exists because those calls carry a whole
+# correspondence, around 200k tokens, and firing four at once guarantees
+# a 429 on Tier 1. A gate call carries one vignette and a roster: about
+# 2.4k tokens. Three in flight is 7.2k against a 30k-per-minute budget,
+# which is not close to anything.
+#
+# It matters because the gate runs inline in the pipeline now. Sequential
+# put it at just over thirty seconds, which is enough to make someone
+# think about skipping it. Three at a time puts it around ten.
+GATE_CONCURRENCY = 3
 
 # A card is one thought. Past this it stops being a card and starts being
 # a paragraph on a coloured background, which is what v1 shipped.
@@ -85,84 +95,74 @@ async def build_cards(read: dict, people: list[dict]) -> dict:
         return {"cards": [], "rejected": [], "considered": 0}
 
     roster = _roster(people)
-    cards: list[dict] = []
-    rejected: list[dict] = []
+    sem = asyncio.Semaphore(GATE_CONCURRENCY)
 
-    for v in vignettes:
+    async def gate(v: dict) -> dict:
         user = T.CARD_USER_TEMPLATE.format(
             headline=v.get("headline", ""),
             body=v.get("body", ""),
             roster=roster,
         )
-        try:
-            data = await claude.call_json(
-                system=T.CARD_SYSTEM, user=user, max_tokens=1200
-            )
-        except Exception as e:
-            log.warning("card gate failed for %s: %s", v.get("kind"), e)
-            rejected.append({"kind": v.get("kind"), "reason": f"error: {e}"})
-            continue
-
-        card = data.get("card")
-        if not card or not card.get("quote"):
-            reason = data.get("skip_reason", "no reason given")
-            log.info("CARD reject kind=%s reason=%s", v.get("kind"), reason)
-            rejected.append({
-                "kind": v.get("kind"),
-                "headline": v.get("headline", ""),
-                "reason": reason,
-            })
-            await asyncio.sleep(INTER_CALL_SLEEP)
-            continue
-
-        # Length is a hard constraint on what fits the canvas, never a
-        # proxy for what deserves to be on it. Selection already happened
-        # upstream; this only rejects text that physically will not set.
-        n = len(card["quote"].split())
-        if n > MAX_QUOTE_WORDS:
-            # Ask for a trim rather than discarding. The finding already
-            # cleared the gate; this is a typesetting problem.
-            log.info("CARD trim kind=%s %d words", v.get("kind"), n)
+        async with sem:
             try:
-                retry = await claude.call_json(
-                    system=T.CARD_SYSTEM,
-                    user=user + (
-                        f"\n\nYour previous quote ran to {n} words, which does not "
-                        f"fit. Return the same finding in {MAX_QUOTE_WORDS} words or "
-                        f"fewer. Cut detail, do not cut the observation."
-                    ),
-                    max_tokens=1200,
+                data = await claude.call_json(
+                    system=T.CARD_SYSTEM, user=user, max_tokens=1200
                 )
-                if retry.get("card", {}).get("quote"):
-                    card = retry["card"]
-                    n = len(card["quote"].split())
             except Exception as e:
-                log.warning("card trim failed for %s: %s", v.get("kind"), e)
-            await asyncio.sleep(INTER_CALL_SLEEP)
+                log.warning("card gate failed for %s: %s", v.get("kind"), e)
+                return {"rejected": {"kind": v.get("kind"),
+                                     "headline": v.get("headline", ""),
+                                     "reason": f"error: {e}"}}
+
+            card = data.get("card")
+            if not card or not card.get("quote"):
+                reason = data.get("skip_reason", "no reason given")
+                log.info("CARD reject kind=%s reason=%s", v.get("kind"), reason)
+                return {"rejected": {"kind": v.get("kind"),
+                                     "headline": v.get("headline", ""),
+                                     "reason": reason}}
+
+            # Length is a canvas constraint, never a proxy for what
+            # deserves to be on it. A finding that cleared the gate gets a
+            # trim attempt rather than being discarded for two words.
+            n = len(card["quote"].split())
+            if n > MAX_QUOTE_WORDS:
+                log.info("CARD trim kind=%s %d words", v.get("kind"), n)
+                try:
+                    retry = await claude.call_json(
+                        system=T.CARD_SYSTEM,
+                        user=user + (
+                            f"\n\nYour previous quote ran to {n} words, which "
+                            f"does not fit. Return the same finding in "
+                            f"{MAX_QUOTE_WORDS} words or fewer. Cut detail, "
+                            f"do not cut the observation."
+                        ),
+                        max_tokens=1200,
+                    )
+                    if retry.get("card", {}).get("quote"):
+                        card = retry["card"]
+                        n = len(card["quote"].split())
+                except Exception as e:
+                    log.warning("card trim failed for %s: %s", v.get("kind"), e)
 
         if not (MIN_QUOTE_WORDS <= n <= MAX_QUOTE_WORDS):
             log.info("CARD reject kind=%s reason=length %d words", v.get("kind"), n)
-            rejected.append({
-                "kind": v.get("kind"),
-                "headline": v.get("headline", ""),
-                "reason": f"{n} words, outside {MIN_QUOTE_WORDS}-{MAX_QUOTE_WORDS}",
-            })
-            await asyncio.sleep(INTER_CALL_SLEEP)
-            continue
+            return {"rejected": {"kind": v.get("kind"),
+                                 "headline": v.get("headline", ""),
+                                 "reason": f"{n} words, outside "
+                                           f"{MIN_QUOTE_WORDS}-{MAX_QUOTE_WORDS}"}}
 
-        cards.append({
-            "kind": v.get("kind"),
-            "kicker": card.get("kicker", ""),
-            "quote": card["quote"],
-            "core": data.get("core", ""),
-            "source_headline": v.get("headline", ""),
-        })
-        await asyncio.sleep(INTER_CALL_SLEEP)
+        return {"card": {"kind": v.get("kind"),
+                         "kicker": card.get("kicker", ""),
+                         "quote": card["quote"],
+                         "core": data.get("core", ""),
+                         "source_headline": v.get("headline", "")}}
+
+    # gather preserves order, so cards stay in composer priority.
+    outcomes = await asyncio.gather(*(gate(v) for v in vignettes))
+    cards = [o["card"] for o in outcomes if o.get("card")]
+    rejected = [o["rejected"] for o in outcomes if o.get("rejected")]
 
     log.info("CARD summary: %d of %d survived anonymisation",
              len(cards), len(vignettes))
-    return {
-        "cards": cards,
-        "rejected": rejected,
-        "considered": len(vignettes),
-    }
+    return {"cards": cards, "rejected": rejected, "considered": len(vignettes)}

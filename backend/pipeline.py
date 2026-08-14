@@ -175,6 +175,43 @@ async def run_pipeline(
             payloads=payloads,
             my_email=my_email,
         )
+
+        # The Read, and the share cards derived from it.
+        #
+        # Both of these existed only in the demo build until now, produced
+        # by scripts under demo/ and baked into JSON. Nothing called them
+        # from the pipeline, so anyone running this on their own inbox got
+        # no self-portrait at all and an empty card list, which rendered
+        # as a rejection message on every person. The demo exercised these
+        # paths and the real one did not, and neither knew about the other.
+        #
+        # Same composer, same gate. They just run here now.
+        emit("compose", len(top), len(top), "reading your own patterns")
+        try:
+            from backend.agents.read_composer import compose_read
+            read = await compose_read(db_path, my_email, protagonist, None)
+            insights["the_read"] = {
+                "vignettes": read.get("vignettes", []),
+                "window": read.get("window"),
+                "volume": read.get("volume"),
+            }
+            log.info("The Read: %d vignettes from %d candidates",
+                     len(read.get("vignettes", [])), read.get("considered", 0))
+        except Exception as e:
+            log.warning("The Read failed: %s", e)
+            insights["the_read"] = {"vignettes": []}
+
+        emit("compose", len(top), len(top), "building share cards")
+        try:
+            from backend.agents.card_selector import build_cards
+            card_result = await build_cards(insights["the_read"], payloads)
+            insights["cards"] = card_result["cards"]
+            log.info("built %d share cards from %d findings",
+                     len(card_result["cards"]), card_result["considered"])
+        except Exception as e:
+            log.warning("card selection failed: %s", e)
+            insights["cards"] = []
+
         insights_path = output_path.parent / "insights.json"
         with open(insights_path, "w", encoding="utf-8") as f:
             json.dump(insights, f, indent=2, ensure_ascii=False)

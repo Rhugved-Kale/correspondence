@@ -110,95 +110,96 @@
       "background": "",
       "three_things_to_know": []
     },
-    "hero_line": "One hundred messages in twelve weeks, forty-four meetings, and they just spent yesterday alone for the july plan.",
+    "hero_line": "Forty-four meetings across twelve weeks, a hundred messages, and I haven't written back in seven weeks.",
     "timeline": [
       {
         "date": "2026-04-02",
         "title": "Ridgeline booked two surgeries during the demo",
-        "description": "They closed a call where the prospect used the scheduler live and asked about pricing and multi-location.",
+        "description": "He ran a demo that went long enough for the prospect to schedule real appointments through the product.",
         "evidence": "she booked two surgeries through the scheduler while we were on the call"
       },
       {
         "date": "2026-04-11",
-        "title": "Per-location pricing, not per-vet",
-        "description": "They worked out the pricing model mid-thread by realizing front desk uses it as much as the vets do.",
-        "evidence": "front desk uses it as much as the vets do"
-      },
-      {
-        "date": "2026-06-02",
-        "title": "Westbrook accepted read-only billing for June",
-        "description": "They got the prospect to agree to a scoped-down version in exchange for shipping a month earlier than August.",
-        "evidence": "they're fine with read-only if it means they get it this month"
+        "title": "Per-location pricing, decided while typing",
+        "description": "He asked whether we charge per vet or per clinic, then answered it himself before I could reply.",
+        "evidence": "never mind i think i answered it"
       },
       {
         "date": "2026-06-03",
-        "title": "Westbrook migrated all their records without telling us",
-        "description": "They discovered the clinic had quietly moved everything into the system after a week of no activity.",
+        "title": "Westbrook migrated everything without telling us",
+        "description": "They logged in after a week of silence and moved all their historical records into the system unprompted.",
         "evidence": "they didn't say anything they just did it"
       },
       {
         "date": "2026-06-04",
-        "title": "The runway conversation they conceded on",
-        "description": "They admitted I was right about cutting scope for runway reasons after resisting it in May.",
+        "title": "He conceded the runway argument from May",
+        "description": "I told him billing would take two weeks; he admitted I had been right about cutting scope earlier.",
         "evidence": "you were right about the runway thing I just didn't want to hear it in may"
       },
       {
         "date": "2026-06-12",
-        "title": "The twenty-four-hundred-dollar booth they already bought",
-        "description": "They committed us to a VMX conference booth next to Purina before asking, then apologized.",
+        "title": "The twenty-four-hundred-dollar booth, already committed",
+        "description": "He bought a conference booth next to Purina before asking, then apologised in a separate message.",
         "evidence": "i kind of already told them we'd take it"
       },
       {
+        "date": "2026-06-22",
+        "title": "Third time asking about Nkechi",
+        "description": "He needed to know if we were hiring her because the billing plan changed depending on team size.",
+        "evidence": "just need to know if we're still planning for that"
+      },
+      {
         "date": "2026-06-25",
-        "title": "Ros agreed to call Puyallup herself",
-        "description": "They got a reference willing to reach out directly to close a deal, though I already knew.",
-        "evidence": "she said yes to being a reference and said she'd call them herself"
+        "title": "Ros volunteered as reference, I already knew",
+        "description": "He called to tell me she agreed to talk to Puyallup; I had heard it from her the day before.",
+        "evidence": "yeah she told me yesterday"
       },
       {
         "date": "2026-06-29",
-        "title": "July plan gated on the Westbrook conversion date",
-        "description": "They proposed doing the conference only if Westbrook converts before the fifteenth, and I agreed.",
-        "evidence": "i think we do it if westbrook converts before the 15th"
+        "title": "Conference decision pegged to Westbrook converting",
+        "description": "He proposed we attend only if Westbrook converts before mid-July, and I agreed.",
+        "evidence": "agree on conference. ros call is the big one"
       }
     ],
     "stories": [
       {
         "title": "Westbrook migrated without telling anyone",
         "when": "early June",
-        "moment": "Dane checked the database and found that Westbrook had moved all their historical records into the system. They didn't ask for help, didn't announce it, just logged in after a week of silence and did it. He sent three messages in a row—\"they didn't say anything they just did it\" and then \"should I call them?\"—like he'd just watched someone propose and wasn't sure whether to clap. I told him to wait a week and see if they actually used it. Four days later he admitted I'd been right about the runway, said he just hadn't wanted to hear it in May.",
-        "why_it_matters": "The adoption signal arrived as behavior, not as words."
+        "moment": "Dane checked the database and found that Westbrook had quietly moved all their historical records into the system. They hadn't announced it, hadn't asked for help, just did it. He messaged me asking if we should call them. I told him to wait a week and see if they actually used it. Five days later they came back asking about pricing, which meant they were in. The silence before the migration was the tell—they were deciding whether to commit, and the answer came as data in the database, not words in an email.",
+        "why_it_matters": "The conversion happened in the gap, not on a call."
       },
       {
-        "title": "He bought the booth and apologized after",
+        "title": "He bought the booth before asking",
         "when": "mid-June",
-        "moment": "There was one spot left at the VMX conference in August, a 10x10 next to the Purina booth for $2400. Dane sent me the pitch—\"basically every clinic owner in the northwest\"—and then immediately followed with \"i kind of already told them we'd take it\" and \"sorry.\" Two messages, one word between the ask and the apology. I wrote back \"ok\" and nothing else. He'd framed it like he was asking permission, but he'd already committed the money and now I was just receiving the news.",
-        "why_it_matters": "The question arrived after the decision had already been made."
+        "moment": "Dane found a 10x10 booth slot at the VMX conference in August, next to Purina, for $2400. He wrote that it was \"actually perfect\" because every clinic owner in the northwest would be there. Then he sent two more messages: \"i kind of already told them we'd take it\" and \"sorry.\" I wrote back \"ok\" and that was it. No argument, no breakdown of whether we had the cash or whether the timing made sense. He'd committed us and apologized in the same breath, and I let it go.",
+        "why_it_matters": "The apology arrived after the decision, not before."
       },
       {
-        "title": "Nkechi, still talking",
-        "when": "late June",
-        "moment": "Dane asked about Nkechi three times over two weeks. June 9th: did we ever hear back. June 22nd: are we hiring her or not, because \"the billing conversation changes a lot if it's you and callum vs you and an actual engineer.\" Both times I said I was still talking to her. June 25th he told me Ros had agreed to be a reference for Puyallup, and I told him she'd already told me the day before. By the 29th he was planning July around a Ros call on the 8th and two Ridgeline callbacks, but Nkechi had disappeared from the list entirely.",
-        "why_it_matters": "The same answer twice usually means the question won't get asked again."
+        "title": "Three weeks of asking about Nkechi",
+        "when": "June 9th to 22nd",
+        "moment": "Dane asked on the 9th whether we'd heard back from Nkechi, the engineer we were trying to hire. I said I'd ping her that week. Thirteen days later he asked again: \"so are we hiring her or.\" He wrote that he needed to know because \"the billing conversation changes a lot if it's you and callum vs you and an actual engineer.\" I wrote back \"still talking to her\" and nothing else. No timeline, no update, no acknowledgment that two weeks had passed since I'd said I'd follow up. He was asking whether to plan around a hire and I gave him the same non-answer twice.",
+        "why_it_matters": "Each answer confirmed the question would get asked again."
       }
     ],
     "forgotten": [
       {
-        "when": "June 9 and June 22",
-        "summary": "Dane asked multiple times about Nkechi hiring status because it affects billing planning and team composition. I said I'd ping her in June 9 and that we were 'still talking' on June 22, but no resolution appears in later messages.",
-        "suggested_action": "Send Dane a clear update on Nkechi's status and timeline, or confirm we're moving on to other candidates.",
+        "when": "June 9 and June 22, 2026",
+        "summary": "Dane asked multiple times about Nkechi (likely a hiring candidate). I said I'd ping her in early June, then said 'still talking to her' on June 22, but there's no visible follow-up or resolution about whether we hired her or moved on.",
+        "suggested_action": "Send Dane a clear update on Nkechi's status and whether we're proceeding with her or looking at other candidates.",
         "severity": "medium"
       }
     ],
     "prep": {
-      "last_substantive_interaction": "He broke down July priorities: Ros call on the 8th, Westbrook pricing conversation, two Ridgeline callbacks. Tied conference decision to whether Westbrook converts before the 15th.",
+      "last_substantive_interaction": "He laid out the July plan: ros call on the 8th, westbrook asking about pricing, two ridgeline callbacks. He proposed we only do the conference if westbrook converts before the 15th.",
       "open_threads": [
-        "I never answered about Nkechi three times running, last ask was June 22nd",
-        "Silvercreek has had two logins in five weeks and we said wait until October when their front desk manager retires"
+        "I told him I was starting billing on Friday June 4th—that was three weeks ago and he hasn't heard anything",
+        "He asked about Nkechi three times over two weeks and I kept saying I was still talking to her, then went quiet",
+        "Silvercreek has had two logins in five weeks and he asked if we should call it; I said wait until October when the manager retires"
       ],
       "three_talking_points": [
-        "Tell him whether Nkechi is actually happening or if he should plan around just me and Callum",
-        "Ask how the Ros call went on the 8th and whether Puyallup moved after that",
-        "Ask whether Westbrook converted before the 15th and if we're doing the conference"
+        "Tell him where billing actually is, since I said two to three weeks and it's been twenty-five days",
+        "Close the Nkechi thing—he asked four times whether we're hiring her and the last answer was just 'still talking to her' on June 22nd",
+        "Ask whether the ros call on the 8th happened and what came out of it"
       ],
       "something_personal": ""
     },

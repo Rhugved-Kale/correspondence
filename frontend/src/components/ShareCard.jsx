@@ -284,14 +284,30 @@ export default function ShareCard({ cards, accent, onClose, demoUrl }) {
   }
 
   if (!cards || cards.length === 0) {
-    // The gate can legitimately produce nothing. A card about nothing is
-    // worse than no card, so say so plainly rather than rendering a shell.
+    // The gate can legitimately produce nothing, and roughly four in ten
+    // people land here: their strongest finding only means something with
+    // a name attached, and a name is the one thing a public card cannot
+    // carry.
+    //
+    // The copy matters more than it looks. The first version read
+    // "Nothing here is worth a card yet", which describes an app with
+    // nothing to say. The same outcome, framed as protecting someone who
+    // never agreed to appear on a timeline, reads as the discipline
+    // working. Same state, opposite impression.
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-[420px]">
-          <p style={{ fontSize: 16, color: "#5C544A", lineHeight: 1.6 }}>
-            Nothing here is worth a card yet. The findings we have need names
-            to make sense, and those stay private.
+          <p style={{ fontSize: 16, color: "#3A342D", lineHeight: 1.65 }}>
+            No card for this page. The strongest findings here only hold
+            together with someone's name attached, and they did not agree to
+            appear on anyone's timeline.
+          </p>
+          <p
+            className="mt-3"
+            style={{ fontSize: 14.5, color: "#7A726A", lineHeight: 1.6 }}
+          >
+            The full observations are still on the page behind this. They
+            stay private.
           </p>
           <button
             onClick={onClose}
