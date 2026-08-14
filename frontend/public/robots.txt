@@ -1,0 +1,6 @@
+# The demo is meant to be found. It runs on a fictional inbox, so there is
+# nothing here that should not be indexed.
+User-agent: *
+Allow: /
+
+Sitemap: https://correspondence-demo.vercel.app/sitemap.xml

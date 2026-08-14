@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import InsightsDashboard from "./InsightsDashboard.jsx";
+import ShareCard from "./ShareCard.jsx";
 
 
 // ---------------------------------------------------------------------------
@@ -175,67 +176,79 @@ function formatDate(iso) {
   }
 }
 
-// Derive quantitative "Spotify Wrapped"-style stats from the data we already have.
-// In the real backend these will come straight from the email aggregation pipeline,
-// but we surface what we can from the artifact's own inputs so the slot is filled today.
-function computeStats(person) {
-  const events = [...(person.timeline || [])].sort((a, b) =>
-    a.date.localeCompare(b.date)
+// Recency is the only number left in the hero. The rest of the old stat
+// row is gone: "Milestones" counted how many events the timeline agent
+// chose to emit, which is a statistic about the artifact rather than the
+// person, and "Span" and "Meetings" were inert as tiles. Those facts now
+// live inside the generated hero_line sentence, where they can carry a
+// claim instead of sitting in boxes. A row of four tiles is the visual
+// signature of a dashboard; one sentence and one marker is an essay.
+// True when the About agent confirmed anything at all. All four fields
+// empty means the identity check failed closed, which is the correct
+// outcome for a private individual and not something to announce.
+function hasAbout(person) {
+  const a = person?.about || {};
+  return Boolean(
+    (a.one_line || "").trim() ||
+    (a.current_focus || "").trim() ||
+    (a.background || "").trim() ||
+    (a.three_things_to_know || []).length
   );
-  const first = events[0]?.date;
+}
+
+function recencyLabel(person, asOf) {
+  const events = [...(person.timeline || [])].sort((a, b) =>
+    (a.date || "").localeCompare(b.date || "")
+  );
   const last = events[events.length - 1]?.date;
-
-  let spanLabel = "—";
-  if (first && last) {
-    const ms = new Date(last) - new Date(first);
-    const days = Math.max(1, Math.round(ms / 86400000));
-    if (days < 45) spanLabel = `${days} days`;
-    else if (days < 365) spanLabel = `${Math.round(days / 30)} months`;
-    else {
-      const years = (days / 365).toFixed(days >= 730 ? 0 : 1);
-      spanLabel = `${years} ${years === "1" ? "year" : "years"}`;
-    }
-  }
-
-  const milestones = events.length;
-
-  let recencyLabel = "—";
-  if (last) {
-    const ms = Date.now() - new Date(last);
-    const days = Math.round(ms / 86400000);
-    if (days <= 0) recencyLabel = "today";
-    else if (days === 1) recencyLabel = "yesterday";
-    else if (days < 14) recencyLabel = `${days} days ago`;
-    else if (days < 60) recencyLabel = `${Math.round(days / 7)} weeks ago`;
-    else if (days < 365) recencyLabel = `${Math.round(days / 30)} months ago`;
-    else recencyLabel = `${Math.round(days / 365)}+ years ago`;
-  }
-
-  // Meeting count comes from the calendar table via the backend payload.
-  // Older artifacts (generated before this field existed) won't have it;
-  // default to a zero-state so the wiki doesn't crash.
-  const meetingsCount = person.meetings?.count ?? 0;
-  const meetingsLabel = meetingsCount === 0 ? "—" : String(meetingsCount);
-
-  const stats = [
-    { label: "Span", value: spanLabel },
-    { label: "Milestones", value: String(milestones) },
-  ];
-  // Only show the Meetings stat when there's something to say. Showing
-  // "Meetings: —" for everyone clutters the layout for inboxes where the
-  // user doesn't have many calendar invites in scope.
-  if (meetingsCount > 0) {
-    stats.push({ label: "Meetings", value: meetingsLabel });
-  }
-  stats.push({ label: "Last contact", value: recencyLabel });
-  return stats;
+  if (!last) return null;
+  const nowMs = asOf ? new Date(asOf).getTime() : Date.now();
+  const days = Math.round((nowMs - new Date(last)) / 86400000);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 14) return `${days} days ago`;
+  if (days < 60) return `${Math.round(days / 7)} weeks ago`;
+  if (days < 365) return `${Math.round(days / 30)} months ago`;
+  return `${Math.round(days / 365)}+ years ago`;
 }
 
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
-export default function PeopleWiki({ people, insights }) {
-  const [selectedId, setSelectedId] = useState(people[0]?.id || "");
+export default function PeopleWiki({ people, insights, landingPersonId, demoUrl, asOf }) {
+  // Which person a visitor lands on. Defaults to rank order, since
+  // people.json arrives sorted by rank_position. The demo build overrides
+  // it, because the ranker's job (report interaction signal) and the
+  // demo's job (communicate the product in ten seconds) are different
+  // jobs, and the ranker should not be bent to serve the second one.
+  // An unknown id falls through to rank order on purpose.
+  // Selection lives in the URL, not only in state. The artifact's whole
+  // purpose is being sent to someone, and without this every shared link
+  // opens on the landing person regardless of what the sender was looking
+  // at. /p/<id> on load, pushState on navigation, popstate for the back
+  // button.
+  const [selectedId, setSelectedId] = useState(() => {
+    const fromPath = decodeURIComponent(
+      (window.location.pathname.match(/^\/p\/([^/]+)/) || [])[1] || ""
+    );
+    if (people.some((p) => p.id === fromPath)) return fromPath;
+    const landing = people.find((p) => p.id === landingPersonId);
+    return landing?.id || people[0]?.id || "";
+  });
+
+  useEffect(() => {
+    function onPop() {
+      const id = decodeURIComponent(
+        (window.location.pathname.match(/^\/p\/([^/]+)/) || [])[1] || ""
+      );
+      if (people.some((p) => p.id === id)) {
+        setSelectedId(id);
+        setView("person");
+      }
+    }
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [people]);
   const [viewMode, setViewMode] = useState("detail"); // "detail" | "share"
 
   // Which surface is the main panel showing? "person" = the usual
@@ -258,21 +271,26 @@ export default function PeopleWiki({ people, insights }) {
   // Clicking a person in the sidebar always lands them on the
   // per-person view, even if they were previously on the dashboard.
   function openPerson(personId) {
+    // Ignore ids we cannot render. Nothing currently links to a person
+    // outside the featured set (Forgotten and Upcoming are both built by
+    // walking the same payloads), but without this an unknown id would
+    // push a URL while the page fell back to somebody else, leaving the
+    // address bar and the content disagreeing.
+    if (!people.some((p) => p.id === personId)) return;
     setSelectedId(personId);
     setView("person");
+    const next = `/p/${encodeURIComponent(personId)}`;
+    if (window.location.pathname !== next) {
+      window.history.pushState({ personId }, "", next);
+    }
   }
 
-  // Inject the serif display font + body font once.
-  useEffect(() => {
-    if (document.getElementById("people-wiki-fonts")) return;
-    const link = document.createElement("link");
-    link.id = "people-wiki-fonts";
-    link.rel = "stylesheet";
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap";
-    document.head.appendChild(link);
-  }, []);
-
+  // Fonts come from src/fonts.css, which inlines Fraunces and Inter as
+  // base64. There used to be a Google Fonts <link> injected here; it had
+  // to go. html-to-image walks every stylesheet to inline it, and a
+  // cross-origin sheet throws SecurityError on cssRules, which broke PNG
+  // export outright. Self-hosting is what makes the card exportable, not
+  // just what makes it render.
   const serif = `'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif`;
   const sans = `'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif`;
 
@@ -329,7 +347,7 @@ export default function PeopleWiki({ people, insights }) {
               />
               <SidebarPill
                 icon={<TrendingUp size={14} strokeWidth={2.2} />}
-                label="About you"
+                label="The Read"
                 active={view === "about_you"}
                 onClick={() => setView("about_you")}
               />
@@ -432,7 +450,7 @@ export default function PeopleWiki({ people, insights }) {
                 onClick={() => setView("upcoming")}
               />
               <MobileDashTab
-                label="About you"
+                label="The Read"
                 active={view === "about_you"}
                 onClick={() => setView("about_you")}
               />
@@ -488,11 +506,11 @@ export default function PeopleWiki({ people, insights }) {
           {/* Share-mode toggle (floating, top right). Only meaningful for
               the per-person view; hidden when one of the dashboard
               surfaces is active. */}
-          {view === "person" && (
+          {view !== "share" && (
           <div className="absolute top-6 right-6 md:top-8 md:right-8 z-30">
-            {viewMode === "detail" ? (
+            {true ? (
               <button
-                onClick={() => setViewMode("share")}
+                onClick={() => setView("share")}
                 className="inline-flex items-center gap-2"
                 style={{
                   padding: "9px 16px",
@@ -540,36 +558,32 @@ export default function PeopleWiki({ people, insights }) {
           </div>
           )}
 
-          {view !== "person" ? (
+          {view === "share" ? (
+            <ShareCard
+              cards={insights?.cards || []}
+              accent={accent}
+              demoUrl={demoUrl}
+              onClose={() => setView("person")}
+            />
+          ) : view !== "person" ? (
             <InsightsDashboard
               view={view}
               insights={insights}
+              asOf={asOf}
               accentFor={accentFor}
               onOpenPerson={openPerson}
             />
           ) : (
           <AnimatePresence mode="wait">
-            {viewMode === "detail" ? (
-              <motion.div
-                key={`detail-${person.id}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-              >
-                <PersonPage person={person} accent={accent} serif={serif} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key={`share-${person.id}`}
-                initial={{ opacity: 0, scale: 0.985 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.99 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                <ShareCard person={person} accent={accent} serif={serif} />
-              </motion.div>
-            )}
+            <motion.div
+              key={`detail-${person.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <PersonPage person={person} accent={accent} serif={serif} asOf={asOf} />
+            </motion.div>
           </AnimatePresence>
           )}
         </main>
@@ -581,7 +595,7 @@ export default function PeopleWiki({ people, insights }) {
 // ---------------------------------------------------------------------------
 // Person page
 // ---------------------------------------------------------------------------
-function PersonPage({ person, accent, serif }) {
+function PersonPage({ person, accent, serif, asOf }) {
   return (
     <div>
       {/* HERO */}
@@ -623,7 +637,11 @@ function PersonPage({ person, accent, serif }) {
               className="text-[12px] uppercase tracking-[0.2em] font-semibold"
               style={{ color: accent.ink }}
             >
-              {person.role_hint}
+              {/* role_hint falls back to the display name when the About
+                  agent found nothing, which is the correct outcome for a
+                  private person but renders the name twice. Show the
+                  eyebrow only when it says something the heading doesn't. */}
+              {person.role_hint !== person.name ? person.role_hint : "In your correspondence"}
             </span>
           </motion.div>
 
@@ -663,52 +681,58 @@ function PersonPage({ person, accent, serif }) {
               person.about.one_line}
           </motion.p>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="mt-10 flex flex-wrap items-stretch gap-3"
-          >
-            {computeStats(person).map((stat, i) => (
-              <div
-                key={i}
-                className="flex flex-col"
-                style={{
-                  padding: "12px 18px",
-                  background: "rgba(255,255,255,0.55)",
-                  border: `1px solid ${accent.soft}`,
-                  borderRadius: 12,
-                  backdropFilter: "blur(4px)",
-                  minWidth: 110,
-                }}
+          {/* Hero line: the facts, composed into a claim. */}
+          {person.hero_line && (
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+              className="mt-9 max-w-[620px]"
+              style={{
+                fontFamily: serif,
+                fontWeight: 400,
+                fontSize: 22,
+                lineHeight: 1.5,
+                letterSpacing: "-0.01em",
+                color: "#3A342D",
+              }}
+            >
+              {person.hero_line}
+            </motion.p>
+          )}
+
+          {/* The one number on the page, and the hook into Forgotten. */}
+          {recencyLabel(person, asOf) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="mt-8 inline-flex items-center gap-2"
+            >
+              <span
+                className="text-[11px] uppercase tracking-[0.18em] font-semibold"
+                style={{ color: accent.ink }}
               >
-                <span
-                  className="text-[10px] uppercase tracking-[0.18em] font-semibold"
-                  style={{ color: accent.ink }}
-                >
-                  {stat.label}
-                </span>
-                <span
-                  className="mt-1 tabular-nums"
-                  style={{
-                    fontFamily: serif,
-                    fontWeight: 500,
-                    fontSize: 22,
-                    letterSpacing: "-0.01em",
-                    color: "#15110D",
-                    lineHeight: 1.1,
-                  }}
-                >
-                  {stat.value}
-                </span>
-              </div>
-            ))}
-          </motion.div>
+                Last contact
+              </span>
+              <span
+                className="tabular-nums"
+                style={{ fontSize: 15, color: "#5C544A" }}
+              >
+                {recencyLabel(person, asOf)}
+              </span>
+            </motion.div>
+          )}
         </div>
       </section>
 
-      {/* ABOUT */}
+      {/* ABOUT. Omitted entirely when the agent confirmed nothing, rather
+          than rendered as a heading over a placeholder. The identity check
+          fails closed on purpose, and a private person having no public
+          footprint is a real answer: four of the ten in the demo corpus
+          come back empty. Printing "no information found" would turn an
+          honest absence into an apology for one. */}
+      {hasAbout(person) && (
       <Section title="About them" accent={accent}>
         <div className="grid md:grid-cols-3 gap-x-10 gap-y-10">
           {person.about.current_focus && person.about.current_focus.trim() && (
@@ -773,6 +797,7 @@ function PersonPage({ person, accent, serif }) {
           )}
         </div>
       </Section>
+      )}
 
       {/* TIMELINE */}
       <Section title="Timeline" accent={accent}>
@@ -813,7 +838,7 @@ function PersonPage({ person, accent, serif }) {
       <PrepSection person={person} accent={accent} serif={serif} />
 
       {/* FOOTER */}
-      <Footer accent={accent} serif={serif} />
+      <Footer serif={serif} />
     </div>
   );
 }
@@ -1228,7 +1253,7 @@ function PrepBlock({ label, accent, children }) {
 // ---------------------------------------------------------------------------
 // Footer
 // ---------------------------------------------------------------------------
-function Footer({ accent, serif }) {
+function Footer({ serif }) {
   return (
     <footer className="pb-20">
       <div className="max-w-[920px] mx-auto px-6 md:px-12">
@@ -1247,42 +1272,13 @@ function Footer({ accent, serif }) {
               fontSize: 18,
               color: "#3A342D",
               letterSpacing: "-0.01em",
-              marginBottom: 18,
             }}
           >
-            Made with TwinMind
+            Correspondence
           </div>
-          <a
-            href="https://twinmind.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2"
-            style={{
-              padding: "14px 24px",
-              borderRadius: 999,
-              background: accent.solid,
-              color: "#FFFFFF",
-              fontSize: 15.5,
-              fontWeight: 600,
-              letterSpacing: "-0.005em",
-              transition: "transform 250ms ease-out, box-shadow 250ms ease-out, opacity 250ms ease-out",
-              boxShadow: `0 8px 20px -10px ${accent.solid}88`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = `0 12px 24px -10px ${accent.solid}aa`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = `0 8px 20px -10px ${accent.solid}88`;
-            }}
-          >
-            Get TwinMind to see your own
-            <ArrowUpRight size={17} strokeWidth={2.4} />
-          </a>
           <div
             className="text-[12.5px]"
-            style={{ color: "#9B907F", marginTop: 18 }}
+            style={{ color: "#9B907F", marginTop: 10 }}
           >
             Built from your email and calendar.
           </div>
@@ -1414,286 +1410,6 @@ function ForgottenCard({ item, accent, serif, index }) {
         </div>
       </div>
     </motion.div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Share card
-// A single-screen, portrait-leaning export view designed for screenshot.
-// One hero, three stats, one signature story, one prep hook, footer.
-// Same data, different visual register: bolder, simpler, more poster-like.
-// ---------------------------------------------------------------------------
-function ShareCard({ person, accent, serif }) {
-  const stats = computeStats(person);
-  const signatureStory = person.stories[0]; // first story = most prominent
-  const topTalk = person.prep.three_talking_points[0];
-
-  return (
-    <div className="min-h-screen w-full flex items-start justify-center py-10 md:py-16 px-4">
-      <div
-        className="w-full max-w-[560px] rounded-3xl overflow-hidden relative"
-        style={{
-          background: "#FFFFFF",
-          boxShadow: `0 30px 80px -30px ${accent.solid}55, 0 8px 24px -12px rgba(0,0,0,0.12)`,
-          border: `1px solid ${accent.soft}`,
-        }}
-      >
-        {/* HEADER BAND with gradient */}
-        <div
-          className="relative px-9 pt-12 pb-10"
-          style={{
-            background: `linear-gradient(135deg, ${accent.tint} 0%, #FFFFFF 70%), radial-gradient(700px 400px at 80% 0%, ${accent.solid}22, transparent 60%)`,
-          }}
-        >
-          {/* Brand strip */}
-          <div className="flex items-center justify-between mb-10">
-            <div
-              className="flex items-center gap-2"
-              style={{ color: accent.ink }}
-            >
-              <span
-                className="inline-block rounded-full"
-                style={{
-                  width: 8,
-                  height: 8,
-                  background: accent.solid,
-                }}
-              />
-              <span
-                className="text-[10.5px] uppercase tracking-[0.22em] font-semibold"
-              >
-                TwinMind · A page about
-              </span>
-            </div>
-            <span
-              className="text-[10.5px] uppercase tracking-[0.18em] font-semibold"
-              style={{ color: "#9B907F" }}
-            >
-              {new Date().toLocaleDateString("en-US", {
-                month: "short",
-                year: "numeric",
-              })}
-            </span>
-          </div>
-
-          {/* Avatar + name */}
-          <div className="flex items-center gap-5 mb-6">
-            <div
-              className="flex-shrink-0 flex items-center justify-center rounded-full"
-              style={{
-                width: 64,
-                height: 64,
-                background: accent.solid,
-                color: "#FFFFFF",
-                fontFamily: serif,
-                fontWeight: 500,
-                fontSize: 24,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {initialsOf(person.name)}
-            </div>
-            <div className="min-w-0">
-              <h1
-                style={{
-                  fontFamily: serif,
-                  fontWeight: 500,
-                  fontSize: 38,
-                  lineHeight: 1.02,
-                  letterSpacing: "-0.02em",
-                  color: "#15110D",
-                }}
-              >
-                {person.name}
-              </h1>
-              <p
-                className="mt-1.5 text-[13.5px]"
-                style={{ color: "#5C544A", lineHeight: 1.4 }}
-              >
-                {person.role_hint}
-              </p>
-            </div>
-          </div>
-
-          {/* One-line bio. Hidden if it matches role_hint above to avoid
-              the same-text duplication on the share card. */}
-          {!isSameAsRoleHint(person.about.one_line, person.role_hint) && (
-            <p
-              style={{
-                fontFamily: serif,
-                fontWeight: 400,
-                fontStyle: "italic",
-                fontSize: 17.5,
-                lineHeight: 1.5,
-                color: "#3A342D",
-              }}
-            >
-              {person.about.one_line}
-            </p>
-          )}
-        </div>
-
-        {/* STATS BAND */}
-        <div
-          className="grid grid-cols-3 px-2"
-          style={{
-            borderTop: `1px solid ${accent.soft}`,
-            borderBottom: `1px solid ${accent.soft}`,
-            background: "#FBF8F2",
-          }}
-        >
-          {stats.map((s, i) => (
-            <div
-              key={i}
-              className="py-5 px-3 text-center"
-              style={{
-                borderRight:
-                  i < stats.length - 1 ? `1px solid ${accent.soft}` : "none",
-              }}
-            >
-              <div
-                className="text-[10px] uppercase tracking-[0.18em] font-semibold mb-1.5"
-                style={{ color: accent.ink }}
-              >
-                {s.label}
-              </div>
-              <div
-                className="tabular-nums"
-                style={{
-                  fontFamily: serif,
-                  fontWeight: 500,
-                  fontSize: 22,
-                  letterSpacing: "-0.012em",
-                  color: "#15110D",
-                  lineHeight: 1.05,
-                }}
-              >
-                {s.value}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* SIGNATURE STORY */}
-        <div className="px-9 py-9">
-          <div
-            className="text-[10.5px] uppercase tracking-[0.18em] font-semibold mb-3"
-            style={{ color: accent.ink }}
-          >
-            A moment
-          </div>
-          <h2
-            style={{
-              fontFamily: serif,
-              fontWeight: 500,
-              fontSize: 26,
-              letterSpacing: "-0.015em",
-              lineHeight: 1.12,
-              color: "#15110D",
-              marginBottom: 12,
-            }}
-          >
-            {signatureStory.title}
-          </h2>
-          <p
-            style={{
-              fontSize: 14.5,
-              lineHeight: 1.6,
-              color: "#3A342D",
-              marginBottom: 14,
-            }}
-          >
-            {/* Trim the moment so the card stays single-screen friendly */}
-            {truncate(signatureStory.moment, 280)}
-          </p>
-          <p
-            style={{
-              fontFamily: serif,
-              fontStyle: "italic",
-              fontSize: 14,
-              lineHeight: 1.5,
-              color: accent.ink,
-              paddingLeft: 14,
-              borderLeft: `2px solid ${accent.solid}`,
-            }}
-          >
-            {signatureStory.why_it_matters}
-          </p>
-        </div>
-
-        {/* PREP HOOK */}
-        <div
-          className="px-9 py-7"
-          style={{
-            background: accent.tint,
-            borderTop: `1px solid ${accent.soft}`,
-          }}
-        >
-          <div className="flex items-start gap-3">
-            <Calendar
-              size={17}
-              strokeWidth={2.2}
-              style={{ color: accent.solid, marginTop: 2, flexShrink: 0 }}
-            />
-            <div>
-              <div
-                className="text-[10.5px] uppercase tracking-[0.18em] font-semibold mb-1.5"
-                style={{ color: accent.ink }}
-              >
-                When we meet next
-              </div>
-              <p
-                style={{
-                  fontSize: 14.5,
-                  lineHeight: 1.55,
-                  color: "#2E2A24",
-                }}
-              >
-                {truncate(topTalk, 220)}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* FOOTER */}
-        <div
-          className="px-9 py-8 text-center"
-          style={{
-            background: "#15110D",
-            color: "#FAF8F4",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: serif,
-              fontWeight: 500,
-              fontSize: 17,
-              letterSpacing: "-0.005em",
-              marginBottom: 6,
-            }}
-          >
-            Made with TwinMind
-          </div>
-          <a
-            href="https://twinmind.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5"
-            style={{
-              color: "#FAF8F4",
-              fontSize: 13.5,
-              fontWeight: 500,
-              opacity: 0.85,
-              textDecoration: "underline",
-              textUnderlineOffset: 3,
-            }}
-          >
-            Get TwinMind to see your own
-            <ArrowUpRight size={13} strokeWidth={2.4} />
-          </a>
-        </div>
-      </div>
-    </div>
   );
 }
 

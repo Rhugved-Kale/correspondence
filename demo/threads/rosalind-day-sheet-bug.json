@@ -1,0 +1,23 @@
+{
+  "thread_id": "t-ros-day-sheet",
+  "anchor": true,
+  "_note": "Hand-written. The dropped bug. Reported twice, never answered, and it sits in the corpus five weeks after the double-booking thread where Priya was maximally responsive. That contrast is the point: the responsiveness was to the crisis, not to the customer. Should surface in Forgotten and, ideally, get noticed by the stories agent as the counterweight to the near-quit story. Thread ends on Rosalind with no reply.",
+
+  "participants": ["rosalind", "priya"],
+  "subject": "day sheet printing",
+
+  "messages": [
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-21T07:33:00-07:00",
+      "subject": "day sheet printing",
+      "body": "Small one, not urgent, filing it before I forget it again.\n\nWhen Bea prints the day sheet the last appointment on the page gets cut in half. Only on days with more than eleven appointments, so Mondays and Thursdays. She has been writing the last one on by hand, which she finds funny and I find slightly heartbreaking given what we are paying you.\n\nAlso, unrelated: is there a way to see who changed an appointment? Not for anything sinister, I just had two people tell me they didn't move a thing that moved.\n\nRos"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-06-09T08:05:00-07:00",
+      "subject": "Re: day sheet printing",
+      "body": "Bumping this gently. Bea is still writing the last line on by hand.\n\nThe audit question is the one I actually care about, if you have to pick one.\n\nRos"
+    }
+  ]
+}

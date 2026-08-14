@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-ros-reference-offer",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'ros-reference-offer'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "rosalind"
+  ],
+  "subject": "Puyallup practice asked me about you",
+  "messages": [
+    {
+      "from": "rosalind",
+      "date_utc": "2026-06-26T14:22:00-07:00",
+      "subject": "Puyallup practice asked me about you",
+      "body": "I was at the regional meeting yesterday and sat next to someone from Puyallup who asked what I use for scheduling. Told her Thicket, told her you were still early but that we run our surgery days on it now, and she asked if she could call you.\n\nHer name is Dr. Elaine Kowalski, practice is called Foothills Animal Care. Two vets, been open about eight years. She said their current system makes them want to set things on fire, which I respected as an opening.\n\nI can send her your email or you can reach out, whatever you prefer.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-26T14:39:00-07:00",
+      "subject": "Re: Puyallup practice asked me about you",
+      "body": "Please send her my email. And thank you.\n\nThat you'd put us in front of someone without me asking means more than I know how to say in a work email.\n\nP"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-06-27T09:15:00-07:00",
+      "subject": "Re: Puyallup practice asked me about you",
+      "body": "Done. I told her the room scheduling story, because that's the thing that would matter to her. If she calls you she'll ask about it.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-29T11:03:00-07:00",
+      "subject": "Re: Puyallup practice asked me about you",
+      "body": "She called yesterday. Good conversation, sending her a demo link Monday.\n\nP"
+    }
+  ]
+}

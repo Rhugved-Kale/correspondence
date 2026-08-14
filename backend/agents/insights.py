@@ -15,9 +15,8 @@ three top-level surfaces that complement the per-person wiki:
      with prep as a bonus rather than a gate.
 
   3. About-you stats: aggregate signals about how the user uses email
-     in their inbox. The "what this AI found about me that I didn't
-     even know" surface from the brief. All numeric, no LLM
-     hallucinations.
+     in their inbox. The "what this found about me that I didn't even
+     know" surface. All numeric, no LLM hallucinations.
 
 All three are deterministic. The narrative bits already come out of
 the per-person LLM stage; this module is pure aggregation and ranking
@@ -39,6 +38,7 @@ def compose_insights(
     db_path: Path,
     payloads: list[dict],
     my_email: str,
+    as_of: datetime | None = None,
 ) -> dict:
     """
     Build the top-level dashboard insights from the per-person payloads
@@ -58,19 +58,24 @@ def compose_insights(
     (e.g. no upcoming meetings on the calendar). The frontend renders
     only the sections that have content.
     """
+    # as_of exists for the demo, whose corpus is frozen in time. Filtering
+    # a fixed calendar against the real clock means Upcoming is correct on
+    # the day it is generated and empty forever after. The demo passes its
+    # own window close; a live run passes nothing and gets now.
+    now = as_of or datetime.now(timezone.utc)
     return {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "as_of_utc": now.isoformat(),
         "my_email": my_email,
-        "forgotten": _compose_forgotten(payloads),
-        "upcoming": _compose_upcoming(db_path, payloads, my_email),
-        "about_you": _compose_about_you(db_path, my_email),
+        "forgotten": _compose_forgotten(payloads, now),
+        "upcoming": _compose_upcoming(db_path, payloads, my_email, now),
     }
 
 
 # --- Forgotten threads ----------------------------------------------------
 
 
-def _compose_forgotten(payloads: list[dict]) -> list[dict]:
+def _compose_forgotten(payloads: list[dict], now: datetime) -> list[dict]:
     """
     Flatten open_threads across all people and rank by staleness.
 
@@ -84,7 +89,6 @@ def _compose_forgotten(payloads: list[dict]) -> list[dict]:
     to redo the date math.
     """
     entries: list[dict] = []
-    now = datetime.now(timezone.utc)
 
     for p in payloads:
         person_id = p.get("id")
@@ -155,6 +159,7 @@ def _compose_upcoming(
     db_path: Path,
     payloads: list[dict],
     my_email: str,
+    now: datetime,
 ) -> list[dict]:
     """
     Find calendar events in the next 14 days and surface them, with
@@ -167,12 +172,11 @@ def _compose_upcoming(
     prep blurb is the bonus, not the gate.
 
     14-day window cap because the user is unlikely to care about prep
-    for a meeting three months out, and the brief asked specifically for
-    the next handful of meetings.
+    for a meeting three months out. The next handful of meetings is the
+    useful horizon.
     """
     by_email = {p["email"].lower(): p for p in payloads if p.get("email")}
 
-    now = datetime.now(timezone.utc)
     horizon = now + timedelta(days=14)
 
     # We pull all events and filter in Python rather than using a SQL
@@ -260,9 +264,8 @@ def _compose_upcoming(
 
 def _compose_about_you(db_path: Path, my_email: str) -> dict:
     """
-    Aggregate stats about how the user uses email. These are the
-    "things you didn't know about yourself" insights the brief flagged
-    as worth surfacing for sharing.
+    Aggregate stats about how the user uses email. Meant to be the
+    "things you didn't know about yourself" surface.
 
     All deterministic SQL. No LLM, no risk of hallucination. Each
     number can be defended by re-running the query.

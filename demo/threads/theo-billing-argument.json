@@ -1,0 +1,47 @@
+{
+  "thread_id": "t-theo-billing",
+  "anchor": true,
+  "_note": "Hand-written. The best story in the corpus, because conflict and repair is the only shape that reliably produces a story with a turn. The three-week silence sits inside the thread rather than between threads, so the gap is visible in the timestamps. Priya's Apr 24 late-night reply is deliberately her worst writing in the corpus: defensive, and wrong in a way she concedes three weeks later. The May 18 message never apologizes and functions entirely as one.",
+
+  "participants": ["priya", "theo"],
+  "subject": "roadmap sanity check",
+
+  "messages": [
+    {
+      "from": "priya",
+      "date_utc": "2026-04-24T16:12:00-07:00",
+      "subject": "roadmap sanity check",
+      "body": "Wanted to run something past you before we commit to it.\n\nBoth of the clinics actually using the product have asked for billing, and Dane thinks billing is what closes the seed. My instinct is that billing is a six-week hole with insurance claim codes at the bottom of it, and we do not have six weeks.\n\nBut I keep going back and forth. If two of three customers ask for the same thing in the same month, is that a signal, or is that just the two loudest people in a sample of three?\n\nRoadmap as it stands: scheduling fixes (room-based, Ros is right and I was wrong), records export, billing read-only, then invoicing if the seed lands.\n\nBest,\nPriya"
+    },
+    {
+      "from": "theo",
+      "date_utc": "2026-04-24T18:40:00-07:00",
+      "subject": "Re: roadmap sanity check",
+      "body": "That's a features list, not a product.\n\nYou have three customers and one of them is using it. The question isn't which feature comes next, it's why the other two aren't using the one you already built. Nobody has asked that yet, because Dane is selling and you are building and neither of you has time to be the person who asks.\n\nBilling is a trapdoor. Don't.\n\nT"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-24T23:52:00-07:00",
+      "subject": "Re: roadmap sanity check",
+      "body": "I do know why the other two aren't using it.\n\nOne is a three-vet practice that hasn't finished migrating six years of paper records, which is a them problem I can't build my way out of. The other has a front desk manager who does not want to learn a new system four months before she retires.\n\nNeither of those is a product problem.\n\nAnd I'm not building a features list. I'm building the things customers have asked for, in the order they asked for them, which is not the same thing even if it looks the same written down.\n\nBest,\nPriya"
+    },
+    {
+      "from": "theo",
+      "date_utc": "2026-04-25T07:31:00-07:00",
+      "subject": "Re: roadmap sanity check",
+      "body": "Fair enough. Good luck with it.\n\nT"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-18T23:41:00-07:00",
+      "subject": "Re: roadmap sanity check",
+      "body": "We cut billing. Read-only at most, no invoicing, and not until the scheduling rewrite ships.\n\nThe front desk manager was a product problem. She retires in October, and I built for her replacement instead of for her, which is a decision I made without noticing I was making it. She is the one who has to like it between now and October and I never once designed for that.\n\nAnyway. Room-based scheduling ships Thursday.\n\nBest,\nPriya"
+    },
+    {
+      "from": "theo",
+      "date_utc": "2026-05-19T06:58:00-07:00",
+      "subject": "Re: roadmap sanity check",
+      "body": "Room-based is right.\n\nTell me how Thursday goes.\n\nT"
+    }
+  ]
+}

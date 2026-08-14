@@ -14,9 +14,9 @@ For one person, this module:
   4. Composes the final per-person object in the shape the frontend wants.
 
 Why sequential and not parallel: my Anthropic account is on Tier 1
-(30k input tokens/min, 50 req/min). A heavy person like Karen has 177
-cached messages; trying to fire four 200k-token requests in parallel
-gets every one of them 429'd. Going sequential plus aggressive input
+(30k input tokens/min, 50 req/min). A heavy correspondent can have close
+to two hundred cached messages; trying to fire four 200k-token requests
+in parallel gets every one of them 429'd. Going sequential plus aggressive input
 trimming keeps us comfortably inside both limits.
 
 Wall-clock cost: roughly 30-45 seconds per person, so 5-8 minutes for
@@ -26,7 +26,7 @@ Input trimming: a person can have hundreds of cached emails. The agents
 don't need all of them. We keep the 10 oldest (to anchor the start of
 the relationship) and the most recent 30, then truncate bodies to 400
 chars. For 99% of people this fits comfortably under one rate-limit
-window. The Karens of the world get a slightly thinner view than they
+window. The heaviest correspondents get a slightly thinner view than they
 would with everything, but the resulting outputs are still strong.
 """
 
@@ -35,6 +35,7 @@ from __future__ import annotations
 import asyncio
 from pathlib import Path
 
+from backend.agents import grounding
 from backend.agents.deep_fetch import PersonMessages, load_person_messages
 from backend.clients import claude
 from backend.prompts import templates as T
@@ -42,6 +43,15 @@ from backend.utils.logging import get_logger
 
 
 log = get_logger(__name__)
+
+
+def _settings_protagonist() -> str:
+    """Account owner's name from config, or empty if never configured."""
+    try:
+        from backend.config import get_settings
+        return (get_settings().protagonist_name or "").strip()
+    except Exception:
+        return ""
 
 
 MAX_BODY_CHARS = 400
@@ -64,6 +74,8 @@ async def build_person_payload(
     email: str,
     rank_score: float,
     rank_position: int,
+    protagonist_name: str = "",
+    as_of=None,
 ) -> dict:
     """
     Run the full agent pipeline for one person and return the composed
@@ -81,6 +93,16 @@ async def build_person_payload(
 
     messages_block = _format_messages_block(pm)
     context_block = _format_context_block(pm)
+    calendar_stats = _calendar_stats_for(db_path, pm.email)
+
+    # Bind every system prompt to whoever owns this inbox. Without this the
+    # agents narrate in a name baked into the templates.
+    who = protagonist_name or _settings_protagonist()
+    sys_timeline = T.for_protagonist(T.TIMELINE_SYSTEM, who)
+    sys_stories = T.for_protagonist(T.STORIES_SYSTEM, who)
+    sys_forgotten = T.for_protagonist(T.FORGOTTEN_SYSTEM, who)
+    sys_about = T.for_protagonist(T.ABOUT_SYSTEM, who)
+    sys_prep = T.for_protagonist(T.PREP_SYSTEM, who)
     name = _label(pm)
 
     log.info("agents starting for %s (%d msgs, sampled to fit)", name, len(pm.messages))
@@ -89,7 +111,7 @@ async def build_person_payload(
     timeline_data = await _safe_call(
         "timeline",
         claude.call_json(
-            system=T.TIMELINE_SYSTEM,
+            system=sys_timeline,
             user=T.TIMELINE_USER_TEMPLATE.format(
                 display_name=name,
                 email=pm.email,
@@ -97,6 +119,8 @@ async def build_person_payload(
                 first_date=pm.first_date[:10],
                 last_date=pm.last_date[:10],
                 messages_block=messages_block,
+                gaps_block=_format_gaps_block(pm),
+                hero_facts=_format_hero_facts(pm, calendar_stats, as_of),
             ),
         ),
         default={"events": []},
@@ -106,7 +130,7 @@ async def build_person_payload(
     stories_data = await _safe_call(
         "stories",
         claude.call_json(
-            system=T.STORIES_SYSTEM,
+            system=sys_stories,
             user=T.STORIES_USER_TEMPLATE.format(
                 display_name=name,
                 email=pm.email,
@@ -120,7 +144,7 @@ async def build_person_payload(
     forgotten_data = await _safe_call(
         "forgotten",
         claude.call_json(
-            system=T.FORGOTTEN_SYSTEM,
+            system=sys_forgotten,
             user=T.FORGOTTEN_USER_TEMPLATE.format(
                 display_name=name,
                 email=pm.email,
@@ -136,7 +160,7 @@ async def build_person_payload(
     about_data = await _safe_call(
         "about",
         claude.call_json_with_web_search(
-            system=T.ABOUT_SYSTEM,
+            system=sys_about,
             user=T.ABOUT_USER_TEMPLATE.format(
                 display_name=name,
                 email=pm.email,
@@ -150,7 +174,7 @@ async def build_person_payload(
     prep_data = await _safe_call(
         "prep",
         claude.call_json(
-            system=T.PREP_SYSTEM,
+            system=sys_prep,
             user=T.PREP_USER_TEMPLATE.format(
                 display_name=name,
                 email=pm.email,
@@ -158,6 +182,18 @@ async def build_person_payload(
             ),
         ),
         default=_empty_prep(),
+    )
+
+    # Check quotes before composing. The agents are told an empty field
+    # beats an invented one; this enforces it rather than trusting it,
+    # because `evidence` renders as a verbatim quote directly under the
+    # claim it supports and a paraphrase there reads as a fabrication to
+    # anyone who knows the thread.
+    grounding.verify_payload(
+        messages=pm.messages,
+        timeline_events=timeline_data.get("events") or [],
+        stories=stories_data.get("stories") or [],
+        person=pm.email,
     )
 
     payload = _compose_payload(
@@ -170,7 +206,7 @@ async def build_person_payload(
         about_data=about_data,
         forgotten_data=forgotten_data,
         prep_data=prep_data,
-        calendar_stats=_calendar_stats_for(db_path, pm.email),
+        calendar_stats=calendar_stats,
     )
 
     log.info("agents done for %s", name)
@@ -188,12 +224,12 @@ def _label(pm: PersonMessages) -> str:
       1. "Last, First" academic format -> "First Last".
       2. A real display name present  -> keep it, just trimmed.
       3. No display name at all       -> derive a friendly form from the
-         email local-part. "yugandharak21@gmail.com" becomes "Yugandhara K"
-         instead of showing the raw email as the heading.
+         email local-part. "r.achterberg42@example.com" becomes
+         "R Achterberg" instead of showing the raw email as the heading.
     """
     name = (pm.display_name or "").strip()
     if name:
-        # "Ryu, Angela" -> "Angela Ryu". Only do this when there's exactly
+        # "Vance, Marguerite" -> "Marguerite Vance". Only do this when there is exactly
         # one comma with names on both sides; we don't want to mangle
         # legitimate comma-bearing names like "Smith, Jr.".
         if "," in name and name.count(",") == 1:
@@ -275,6 +311,115 @@ def _format_messages_block(pm: PersonMessages) -> str:
     return "\n\n".join(parts)
 
 
+MIN_GAP_DAYS = 10
+
+
+def _format_hero_facts(pm: PersonMessages, calendar: dict, as_of=None) -> str:
+    """
+    The handful of numbers the hero line is composed from.
+
+    The old hero was four stat tiles, one of which ("Milestones") counted
+    how many events the timeline agent chose to emit: a statistic about
+    the artifact rather than the person. These are the facts worth
+    keeping, handed over precomputed so the sentence around them cannot
+    get them wrong.
+    """
+    from datetime import datetime, timezone
+    from backend.agents import phrasing as ph
+
+    now = as_of or datetime.now(timezone.utc)
+    rows = [f"- Messages exchanged: {len(pm.messages)}"]
+
+    try:
+        first = datetime.fromisoformat(pm.first_date.replace("Z", "+00:00"))
+        last = datetime.fromisoformat(pm.last_date.replace("Z", "+00:00"))
+        rows.append(f"- Span of the relationship: {ph.window_span((last - first).days)}")
+        rows.append(
+            f"- Time since the last message: "
+            f"{ph.days_since(pm.last_date[:10], now.date().isoformat())}"
+        )
+    except (ValueError, AttributeError, TypeError):
+        pass
+
+    # The number the hero line actually reaches for. Supplying only "time
+    # since the last message" left the model computing "eighteen days"
+    # from the message dates, which is the arithmetic this whole layer
+    # exists to prevent. If it wants the fact, give it the fact.
+    mine = [m for m in pm.messages if m["is_outgoing"]]
+    if mine:
+        try:
+            last_mine = max(m["date_utc"] for m in mine)
+            rows.append(
+                f"- Time since I last replied to them: "
+                f"{ph.days_since(last_mine[:10], now.date().isoformat())}"
+            )
+        except (ValueError, TypeError, KeyError):
+            pass
+    else:
+        rows.append("- I have never replied to them")
+
+    n = (calendar or {}).get("count") or 0
+    rows.append(
+        f"- Meetings on the calendar together: {n}" if n
+        else "- Meetings on the calendar together: none, do not mention meetings"
+    )
+    return "\n".join(rows)
+
+
+def _format_gaps_block(pm: PersonMessages) -> str:
+    """
+    Precompute notable silences and hand them to the timeline agent as
+    facts.
+
+    The silence event is the most valuable thing the timeline produces and
+    its most quotable element is the number of days, which is exactly the
+    thing the model gets wrong: given both dates it still miscounted 23 as
+    24, and drifted on which date to file the event under. Date arithmetic
+    is derivable from data we already hold, so we derive it. The agent
+    writes prose around these numbers instead of computing them.
+
+    Also records who fell silent and who spoke first afterward, because
+    "they went quiet" and "I went quiet" are different events and the
+    direction is not always obvious from a message list.
+    """
+    msgs = pm.messages
+    if len(msgs) < 2:
+        return "None."
+
+    from datetime import datetime
+
+    rows: list[str] = []
+    for prev, cur in zip(msgs, msgs[1:]):
+        try:
+            a = datetime.fromisoformat(prev["date_utc"])
+            b = datetime.fromisoformat(cur["date_utc"])
+        except (ValueError, TypeError, KeyError):
+            continue
+        days = (b - a).days
+        if days < MIN_GAP_DAYS:
+            continue
+
+        # "I" must stay capitalised mid-sentence, so build the clause from
+        # explicit forms rather than case-folding a pronoun.
+        if prev["is_outgoing"] and cur["is_outgoing"]:
+            direction = "I sent the last message before it and I broke it too, so they never replied at all"
+        elif prev["is_outgoing"]:
+            direction = "I sent the last message before it, they broke the silence"
+        elif cur["is_outgoing"]:
+            direction = "They sent the last message before it, I broke the silence"
+        else:
+            direction = "They sent the last message before it and they broke it too, so I never replied at all"
+
+        rows.append(
+            f"- {a.date().isoformat()} to {b.date().isoformat()}: {days} days "
+            f"of silence. {direction}."
+        )
+
+    if not rows:
+        return "None."
+    return "\n".join(rows)
+
+
 def _format_context_block(pm: PersonMessages) -> str:
     """
     A much smaller summary for the About agent. The About agent doesn't
@@ -351,6 +496,7 @@ def _compose_payload(
             "background": about_data.get("background") or "",
             "three_things_to_know": about_data.get("three_things_to_know") or [],
         },
+        "hero_line": (timeline_data.get("hero_line") or "").strip(),
         "timeline": timeline_data.get("events") or [],
         "stories": stories_data.get("stories") or [],
         "forgotten": forgotten_data.get("forgotten") or [],
@@ -414,6 +560,7 @@ def _empty_payload(email: str) -> dict:
         "rank_score": 0.0,
         "role_hint": email,
         "about": _empty_about(),
+        "hero_line": "",
         "timeline": [],
         "stories": [],
         "forgotten": [],

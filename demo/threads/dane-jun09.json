@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-dane-jun09",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-jun09'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "did we ever hear back from nkechi",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-06-09T11:42:00-07:00",
+      "subject": "did we ever hear back from nkechi",
+      "body": "did we ever hear back from nkechi"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-09T11:42:00-07:00",
+      "subject": "did we ever hear back from nkechi",
+      "body": "bc i think we need to look at other people if she's not moving"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-09T11:59:00-07:00",
+      "subject": "did we ever hear back from nkechi",
+      "body": "still waiting to hear, will ping her this week"
+    }
+  ]
+}

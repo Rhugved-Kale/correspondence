@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-apr11",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-apr11'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "per provider or per location",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-04-11T11:14:00-07:00",
+      "subject": "per provider or per location",
+      "body": "ok so are we pricing per vet or per clinic\n\nlike does a three-vet practice pay 3x what a solo does or is it just one fee"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-11T11:15:00-07:00",
+      "subject": "per provider or per location",
+      "body": "cascade has two vets plus marcus part time\n\nwestbrook has three"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-11T11:16:00-07:00",
+      "subject": "per provider or per location",
+      "body": "actually per location makes more sense because front desk uses it as much as the vets do\n\nnever mind i think i answered it"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-11T11:29:00-07:00",
+      "subject": "per provider or per location",
+      "body": "yeah per location"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "thread_id": "t-theo-services",
+  "anchor": true,
+  "_note": "Hand-written. The third act, and the only place in the corpus where Priya writes as a peer about ideas rather than transacting, apologizing, or managing upward. She disagrees with Theo directly and does not back down, which she would not have done in April. Theo's closing line is the signal that the relationship changed shape inside the window, which is what the timeline agent should catch as a state change. Her opening message is ~340 words, the same length she writes to Marguerite, in a completely different mode. That contrast is the point.",
+
+  "participants": ["priya", "theo"],
+  "subject": "the services question",
+
+  "messages": [
+    {
+      "from": "priya",
+      "date_utc": "2026-06-18T23:20:00-07:00",
+      "subject": "the services question",
+      "body": "Something I can't stop turning over, and you're the only person I know who will tell me if it's stupid.\n\nEvery vertical software company in a low-margin industry eventually gets asked to do the implementation. Not because the software is hard, but because the customer's process is a mess and the software is the first thing that ever made the mess legible. Ros's clinic books by room. The other two book by appointment, and one of them books by appointment but actually means room, they just never wrote that down anywhere. Nobody knows their own process until software asks them to describe it.\n\nSo the question isn't whether we end up doing services. It's whether we do them on purpose.\n\nThe version I'm afraid of: we take the implementation money because it's sitting there, the margin looks fine for two years, and then we're a consultancy with a product attached and the multiple reflects exactly that.\n\nThe version I think might be right: we do implementations for the first twenty clinics, charge properly, and treat every one as a paid discovery session for what the product should have been. Then stop. Hard stop, written down, at twenty.\n\nThe part I can't resolve is whether \"we'll stop at twenty\" is a plan or just the thing everybody says at ten.\n\nBest,\nPriya"
+    },
+    {
+      "from": "theo",
+      "date_utc": "2026-06-19T07:02:00-07:00",
+      "subject": "Re: the services question",
+      "body": "It's the thing everybody says at ten.\n\nThe stop only holds if the revenue that replaces it already exists before you stop. Otherwise you're choosing between your rule and payroll, and payroll wins every time.\n\nT"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-22T22:47:00-07:00",
+      "subject": "Re: the services question",
+      "body": "I think that's true for companies that took services money to survive. I don't think it's obviously true for one that took it to learn.\n\nIf twenty implementations produce a product that installs itself, the replacement revenue isn't a bet I'm making, it's the output of the thing we just spent a year doing. The rule holds because by the time we get to twenty we don't want the work anymore.\n\nI could be wrong about that. But I don't think I'm wrong for the reason you gave.\n\nBest,\nPriya"
+    },
+    {
+      "from": "theo",
+      "date_utc": "2026-06-23T06:44:00-07:00",
+      "subject": "Re: the services question",
+      "body": "That's a better argument than the one I was expecting.\n\nWrite the number down somewhere Dane can see it. Rules you keep in your own head aren't rules.\n\nT"
+    }
+  ]
+}

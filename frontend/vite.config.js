@@ -8,18 +8,34 @@ import fs from "fs";
 // `uvicorn backend.main:app` for the API. In production we'd serve the
 // built `dist/` from FastAPI directly, but local dev is simpler with two
 // processes.
+const PUBLIC_URL =
+  process.env.VITE_PUBLIC_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://correspondence-demo.vercel.app");
+
 export default defineConfig({
+  // Absolute URLs for OG tags and the share-card footer. Scrapers do not
+  // resolve relative paths, and a hardcoded guess at the domain is how
+  // you ship link previews that 404.
+  define: { __PUBLIC_URL__: JSON.stringify(PUBLIC_URL) },
   plugins: [
     react(),
-    // Custom middleware: serve /output/people.json straight from the
-    // project root's output/ folder. The pipeline writes there, and we
-    // want the frontend to read the live file without copying it into
-    // public/ (which would go stale every time generate runs).
+    {
+      name: "public-url-in-html",
+      transformIndexHtml(html) {
+        return html.replaceAll("__PUBLIC_URL__", PUBLIC_URL);
+      },
+    },
+    // Custom middleware: serve /output/*.json and /demo/*.json straight
+    // from the project root. The pipeline writes to output/ and the demo
+    // fixture lives in demo/, and we want the frontend reading the live
+    // files rather than copies in public/ that go stale on every run.
     {
       name: "serve-output-json",
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url && req.url.startsWith("/output/")) {
+          if (req.url && (req.url.startsWith("/output/") || req.url.startsWith("/demo/"))) {
             const relPath = req.url.replace(/^\/+/, "");
             const filePath = path.resolve(__dirname, "..", relPath);
             if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {

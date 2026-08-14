@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-aiden-catchup",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'aiden-catchup'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "aiden"
+  ],
+  "subject": "saw the news",
+  "messages": [
+    {
+      "from": "aiden",
+      "date_utc": "2026-04-15T10:42:00-07:00",
+      "subject": "saw the news",
+      "body": "Priya!\n\nJust saw the announcement about the pre-seed. That's huge. I remember you talking about the vet software idea back when we were both stuck in that endless freight optimization meeting, so it's really cool to see it actually happening.\n\nCongrats to you and Dane. Hope it's going well.\n\nAiden"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-15T15:18:00-07:00",
+      "subject": "Re: saw the news",
+      "body": "Aiden! Thank you. \n\nYes that meeting. Three hours on whether we could shave twelve minutes off a Seattle-to-Portland route by changing which truck stop we used. I think that was the day I started writing the first version of this in a notebook.\n\nHow are things at Corvia? Is Theo still making everyone demo on Fridays?\n\nBest,\nPriya"
+    },
+    {
+      "from": "aiden",
+      "date_utc": "2026-04-17T11:03:00-07:00",
+      "subject": "Re: saw the news",
+      "body": "He is, and they're somehow even longer now. Last week we watched someone present a button redesign for twenty-two minutes.\n\nI'm good though. Still on the routing team, which is fine. Thinking about what's next but not actively doing anything about it yet, you know how that goes.\n\nWe should get coffee sometime if you're ever back on this side of the bay. Would love to hear more about what you're building.\n\nA"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-21T14:35:00-07:00",
+      "subject": "Re: saw the news",
+      "body": "would love that. let me see when things calm down a bit and I'll ping you\n\nBest,\nPriya"
+    }
+  ]
+}

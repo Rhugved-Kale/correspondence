@@ -1,0 +1,24 @@
+{
+  "thread_id": "t-callum-apr30",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-apr30'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "mobile",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-04-30T14:23:00-07:00",
+      "subject": "mobile",
+      "body": "scheduling screen is busted on ios\n\n[image attached]"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-30T14:41:00-07:00",
+      "subject": "mobile",
+      "body": "on it"
+    }
+  ]
+}

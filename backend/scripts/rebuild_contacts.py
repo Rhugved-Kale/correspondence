@@ -89,7 +89,7 @@ def main() -> None:
             if is_outgoing:
                 # to_emails was stored as a comma-joined string. The data
                 # in there might already be corrupted (bare local-parts
-                # from "Green, Karen" splits), but on a re-parse with
+                # from "Vance, Marguerite" splits), but on a re-parse with
                 # getaddresses they'll either be recoverable (if the
                 # angle-bracket form survived) or silently dropped (if
                 # only "green" without an @ remained, which isn't a valid

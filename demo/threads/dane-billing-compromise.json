@@ -1,0 +1,66 @@
+{
+  "thread_id": "t-dane-billing-compromise",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-billing-compromise'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "scoping billing down",
+  "messages": [
+    {
+      "from": "priya",
+      "date_utc": "2026-06-01T10:15:00-07:00",
+      "subject": "scoping billing down",
+      "body": "ok so hear me out\n\nwhat if we build billing read-only first. just display what's in their current system, let them see it in Thicket, no editing, no invoice generation. two week build, maybe three.\n\nthen invoicing is post-seed, when we have the runway for it and aren't betting the company on a six-week module.\n\nP"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-01T10:22:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "wait does read-only actually close westbrook"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-01T10:23:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "like can they see their outstanding invoices and who owes what"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-01T10:24:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "because if yes then ok this might work"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-01T11:40:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "yes. import from their existing system, display it, search it, filter by outstanding/paid/overdue. everything they're looking at now in QuickBooks or whatever, just inside Thicket so they're not tabbing between three apps.\n\nthey still generate invoices in the old system for now. we sync the data back in.\n\nP"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-02T14:10:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "ok this is good"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-02T14:18:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "talked to westbrook this morning, they're fine with read-only if it means they get it this month instead of august. the tab-switching thing is actually what they complained about most"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-04T09:50:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "starting it friday. two weeks if nothing breaks, three if the QuickBooks import is worse than I think.\n\nP"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-04T09:55:00-07:00",
+      "subject": "Re: scoping billing down",
+      "body": "good\n\nand hey this is the right call. you were right about the runway thing I just didn't want to hear it in may"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "thread_id": "t-beatriz-logistics",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'beatriz-logistics'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "beatriz"
+  ],
+  "subject": "room assignments thursday",
+  "messages": [
+    {
+      "from": "beatriz",
+      "date_utc": "2026-05-06T10:15:00-07:00",
+      "subject": "room assignments thursday",
+      "body": "Priya,\n\nRos said you're coming Thursday to map the rooms into the system. I'll be here from 9 to 5, whenever works for you.\n\nDo you need anything pulled beforehand? We've got three exam rooms, one surgery suite, and the ISO room in back.\n\nBeatriz"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-06T14:42:00-07:00",
+      "subject": "room assignments thursday",
+      "body": "11am work? and no need to pull anything, just need to see the layout and then we can set it up together\n\nP"
+    },
+    {
+      "from": "beatriz",
+      "date_utc": "2026-05-09T09:03:00-07:00",
+      "subject": "room assignments thursday",
+      "body": "11 is perfect. See you then."
+    },
+    {
+      "from": "beatriz",
+      "date_utc": "2026-05-09T13:28:00-07:00",
+      "subject": "room assignments thursday",
+      "body": "OK, got all five rooms entered. One thing though—Exam 2 and Exam 3 are actually one room with a curtain down the middle. We track them separately because we can double-book if it's just exams, but if one side has surgery prep we block both.\n\nNot sure if that matters for your scheduling logic but figured I should mention it before someone books a neuter on one side and a puppy wellness check on the other."
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-14T16:50:00-07:00",
+      "subject": "room assignments thursday",
+      "body": "that matters a lot actually, thank you for catching it\n\ngoing to need to think about how to model that without making the interface horrible. might just be a manual block-both toggle for now\n\nP"
+    }
+  ]
+}

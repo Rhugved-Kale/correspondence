@@ -1,0 +1,66 @@
+{
+  "thread_id": "t-noise-alerts-1",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-alerts-1'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "alerts@statuspage.thicket.vet"
+  ],
+  "subject": "(varies)",
+  "messages": [
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-05T14:22:00-07:00",
+      "subject": "[Thicket Status] Degraded Performance - API Response Times",
+      "body": "INCIDENT DETECTED\n\nService: Thicket API\nStatus: Degraded Performance\nDetected: 2026-04-05 14:22 UTC\n\nAPI response times have exceeded threshold (p95: 2.4s, threshold: 800ms)\nAffected endpoints: /api/v1/appointments, /api/v1/patients\n\nWe are investigating.\n\nView status: https://status.thicket.vet/incidents/20260405-001"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-05T15:03:00-07:00",
+      "subject": "[Thicket Status] Resolved - API Response Times",
+      "body": "INCIDENT RESOLVED\n\nService: Thicket API\nStatus: Operational\nResolved: 2026-04-05 15:03 UTC\nDuration: 41 minutes\n\nRoot cause: Database query optimization regression in v0.8.2 deployment\nResolution: Reverted to v0.8.1\n\nAll services operating normally.\n\nView status: https://status.thicket.vet/incidents/20260405-001"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-12T11:47:00-07:00",
+      "subject": "[Thicket Status] Service Disruption - Authentication",
+      "body": "INCIDENT DETECTED\n\nService: Authentication Service\nStatus: Major Outage\nDetected: 2026-04-12 11:47 UTC\n\nUsers unable to log in. Existing sessions unaffected.\nError rate: 98.2%\n\nInvestigating with high priority.\n\nView status: https://status.thicket.vet/incidents/20260412-001"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-12T12:31:00-07:00",
+      "subject": "[Thicket Status] Resolved - Authentication",
+      "body": "INCIDENT RESOLVED\n\nService: Authentication Service\nStatus: Operational\nResolved: 2026-04-12 12:31 UTC\nDuration: 44 minutes\n\nRoot cause: OAuth provider certificate renewal failed\nResolution: Manual certificate update applied\n\nAll authentication flows restored.\n\nView status: https://status.thicket.vet/incidents/20260412-001"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-19T09:18:00-07:00",
+      "subject": "[Thicket Status] Scheduled Maintenance - April 20",
+      "body": "SCHEDULED MAINTENANCE\n\nWindow: 2026-04-20 02:00 - 04:00 UTC (April 19, 7pm - 9pm Pacific)\nAffected services: All Thicket services\nExpected downtime: 15-20 minutes\n\nWe will be performing database maintenance and infrastructure updates.\n\nIf you have questions, contact support@thicket.vet\n\nView status: https://status.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-27T16:09:00-07:00",
+      "subject": "[Thicket Status] Investigating - Sync Delays",
+      "body": "INCIDENT DETECTED\n\nService: Real-time Sync\nStatus: Degraded Performance\nDetected: 2026-04-27 16:09 UTC\n\nCalendar updates syncing with 3-5 minute delay\nAffected: Cascade Veterinary, Westbrook Animal Hospital\n\nInvestigating.\n\nView status: https://status.thicket.vet/incidents/20260427-001"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-04-27T16:44:00-07:00",
+      "subject": "[Thicket Status] Resolved - Sync Delays",
+      "body": "INCIDENT RESOLVED\n\nService: Real-time Sync\nStatus: Operational\nResolved: 2026-04-27 16:44 UTC\nDuration: 35 minutes\n\nRoot cause: WebSocket connection pool exhaustion\nResolution: Connection pool limits increased\n\nSync operating normally.\n\nView status: https://status.thicket.vet/incidents/20260427-001"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-05-11T13:52:00-07:00",
+      "subject": "[Thicket Status] Monitoring - Elevated Error Rate",
+      "body": "MONITORING ALERT\n\nService: Billing Module (Beta)\nStatus: Monitoring\nDetected: 2026-05-11 13:52 UTC\n\nError rate elevated to 4.2% (threshold: 2%)\nAffected: Invoice generation endpoint\nImpact: Low - beta feature, 1 active user\n\nMonitoring. Will update if escalates.\n\nView status: https://status.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-05-20T10:15:00-07:00",
+      "subject": "[Thicket Status] All Systems Operational",
+      "body": "STATUS UPDATE\n\nAll Thicket services: Operational\nUptime (30 day): 99.87%\n\nNo active incidents.\nNo scheduled maintenance.\n\nView detailed status: https://status.thicket.vet\n\nTo adjust notification preferences: https://status.thicket.vet/preferences"
+    }
+  ]
+}

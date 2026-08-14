@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-jun29",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-jun29'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "july",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-06-29T10:14:00-07:00",
+      "subject": "july",
+      "body": "ok so july\n\nros call is the 8th\nwestbrook wants to talk pricing which means they're actually using it\nand i have two ridgeline callbacks"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-29T10:15:00-07:00",
+      "subject": "july",
+      "body": "also we need to decide whether we're doing the thing at that conference or if it's a waste of two days"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-29T10:16:00-07:00",
+      "subject": "july",
+      "body": "i think we do it if westbrook converts before the 15th and we don't if they don't"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-29T10:31:00-07:00",
+      "subject": "july",
+      "body": "agree on conference. ros call is the big one"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-wendy-side-photo",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'wendy-side-photo'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "wendy"
+  ],
+  "subject": "found this",
+  "messages": [
+    {
+      "from": "wendy",
+      "date_utc": "2026-05-16T14:37:00-07:00",
+      "subject": "found this",
+      "body": "Going through boxes in the garage and look what turned up.\n\n[photo: you and me on Grandpa's porch, maybe 1999? You're holding that terrible cat he had, the one that bit everyone]\n\nYour hair!! I forgot about the braids phase.\n\nW"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-16T14:54:00-07:00",
+      "subject": "found this",
+      "body": "oh my god\n\nthat cat was evil and I loved him\n\nlove you"
+    },
+    {
+      "from": "wendy",
+      "date_utc": "2026-05-17T11:22:00-07:00",
+      "subject": "found this",
+      "body": "I'm keeping this one. Might get it printed for the party actually, Ma would lose it."
+    }
+  ]
+}

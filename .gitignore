@@ -40,3 +40,12 @@ Thumbs.db
 *.backup
 *.bak
 *.orig
+
+# Demo corpus generation. The committed fixture is the corpus itself
+# (demo/threads/, demo/*.json). The machinery that produced it is not:
+# raw model output, the prompts used for a given run, and cost logs are
+# run artifacts, not source.
+demo/.generated/
+demo/**/*.raw.json
+demo/*.cost.log
+demo/the_read.json

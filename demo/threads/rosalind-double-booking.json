@@ -1,0 +1,53 @@
+{
+  "thread_id": "t-ros-double-booking",
+  "anchor": true,
+  "_note": "Hand-written. The near-quit in week 5. Carries the strongest story material in the corpus and the personal detail for the prep card (Bramble, mentioned in passing at the end of a message about something else, never as the subject). Note the reply latency here: Priya answers in 17 minutes, which shows she is fast when the stakes are visible, and is what makes the four-day gap with her sister a choice rather than a capacity problem. That contrast is load-bearing for The Read.",
+
+  "participants": ["rosalind", "priya"],
+  "subject": "we double booked OR2 this morning",
+
+  "messages": [
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-01T07:52:00-07:00",
+      "subject": "we double booked OR2 this morning",
+      "body": "Priya, we have a problem and I want you to hear it from me before Bea calls you.\n\nRusty (11yo shepherd mix, splenectomy) was in OR2 and under at 7:15. At 7:40 Marcus walked in with a laceration repair, because the schedule showed OR2 as open. It showed open because the surgery is booked as a 45 minute appointment, and the room is blocked for three hours in my head and nowhere else.\n\nNobody was hurt. Rusty is fine and is in recovery being deeply unreasonable about the cone. But Marcus had a sedated animal in the hallway for six minutes while we worked out what had happened, and that is the kind of six minutes that ends in a board complaint at a different clinic.\n\nI told you about the room thing in week two.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-01T08:09:00-07:00",
+      "subject": "Re: we double booked OR2 this morning",
+      "body": "I'm so sorry. You did tell me in week two, and I logged it as a scheduling preference instead of as what it actually is.\n\nI'm pulling the team onto this today. Can I call you at lunch? I don't want to send you a plan over email that I've only thought about for an hour.\n\nP"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-01T18:31:00-07:00",
+      "subject": "Re: we double booked OR2 this morning",
+      "body": "We talked, and I want to put in writing what I said on the phone, because I was gentler on the phone than I actually feel.\n\nI have been in practice twenty-six years. I have survived three practice management systems, and I chose to be your first real customer because you asked me questions the other two never asked. Bea thinks that makes me a soft touch and she is not wrong.\n\nBut I cannot have my staff working around software. The entire point was to stop working around things.\n\nIf room-based scheduling is not in the product by the end of the month, we go back to the paper book. I would rather say that to you now than quietly stop logging in and let you find out from a graph.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-03T23:20:00-07:00",
+      "subject": "Re: we double booked OR2 this morning",
+      "body": "I've spent the weekend on this. I want to tell you what we're doing rather than that we're sorry, since I already said that part and it doesn't fix anything.\n\nThe scheduler is being rebuilt so the room is the thing being reserved. An appointment asks for a room and a duration, the room is blocked for that duration, and a procedure can hold a room with no client attached to it at all. That last case is the one we never modeled, and it's why your surgery day looks empty to the software.\n\nTwo things I want to be straight with you about.\n\nIt's about two weeks, not one. I could ship something in a week that special-cases surgeries, and it would hold until the first time you needed to block a room for a deep clean, and then you would be working around software again.\n\nAnd the migration moves your appointments but not your room assignments, because those don't exist as data yet. Someone there has to sit down and assign rooms for the next two weeks of the book. I'll do it with Bea over video if that's faster than me explaining it in writing.\n\nEnd of the month was your deadline. I think we make it with four days to spare.\n\nP"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-04T06:47:00-07:00",
+      "subject": "Re: we double booked OR2 this morning",
+      "body": "That's the right answer, and the two weeks is the part that tells me it's the right answer. Anyone who told me one week would have been guessing.\n\nBea has Thursday afternoon.\n\nRos"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-14T23:38:00-07:00",
+      "subject": "Re: we double booked OR2 this morning",
+      "body": "Room-based scheduling is live on your account. Bea's assignments came through clean, all of them.\n\nFriday is the real test. I'll be watching it.\n\nP"
+    },
+    {
+      "from": "rosalind",
+      "date_utc": "2026-05-15T18:12:00-07:00",
+      "subject": "Re: we double booked OR2 this morning",
+      "body": "Through surgery day with nobody standing in a hallway.\n\nMarcus noticed the room block on his own and moved a nail trim rather than asking me about it, which he would not have done if he didn't trust it. That's the part I'd tell another vet about.\n\nSo I'll say the thing I didn't say two weeks ago: this is now better than the paper book.\n\nBramble says hello. Thyroid numbers came back good, which after last spring I will absolutely take.\n\nRos"
+    }
+  ]
+}

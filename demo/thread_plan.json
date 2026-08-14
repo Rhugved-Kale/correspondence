@@ -1,0 +1,988 @@
+{
+  "_comment": "The generation manifest. Every thread that is not hand-written is specified here as beats, not prose. Generation fills in the words; this file decides what happens. Keeping the beats hand-authored is what stops the corpus from being a template.",
+  "_hours_key": {
+    "business": "09:00-18:00 weekdays. Most routine traffic. This is what dilutes the second-shift ratio back toward true.",
+    "late": "22:30-01:30. Thinking-out-loud and avoidance. Use sparingly.",
+    "mixed": "either, generator picks per message"
+  },
+  "threads": [
+    {
+      "id": "dane-billing-push",
+      "with": "dane",
+      "subject": "billing",
+      "range": [
+        "2026-05-11",
+        "2026-05-16"
+      ],
+      "messages": 11,
+      "hours": "mixed",
+      "beats": "Week 6. Dane makes the case for billing: two clinics asked, he thinks it closes the seed. Priya pushes back with the six-week estimate. It stays professional. Neither concedes. Ends unresolved with Dane saying they should talk Monday. Note that this happens AFTER Theo told her billing was a trapdoor on Apr 24 and BEFORE she tells Theo they cut it on May 18, so her position here should already be firm without her citing Theo.",
+      "constraints": [
+        "no resolution",
+        "Priya's messages get longer than usual for Dane, 30-60 words, which is itself a signal",
+        "Dane writes one long excited run-on message"
+      ]
+    },
+    {
+      "id": "dane-billing-sharp",
+      "with": "dane",
+      "subject": "Re: billing",
+      "range": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "messages": 8,
+      "hours": "mixed",
+      "beats": "Week 7. The one time it gets sharp. Dane says she is building for Rosalind and not for the market. Priya says he is selling a product that does not exist yet. Both are partly right. One message from each of them is slightly too honest. It does not become a fight, it becomes quiet, and the thread stops mid-exchange.",
+      "constraints": [
+        "nobody apologizes",
+        "thread ends without resolution",
+        "one message from Priya sent after midnight that is longer and more raw than anything else she sends Dane"
+      ]
+    },
+    {
+      "id": "dane-billing-compromise",
+      "with": "dane",
+      "subject": "scoping billing down",
+      "range": [
+        "2026-06-01",
+        "2026-06-04"
+      ],
+      "messages": 9,
+      "hours": "business",
+      "beats": "Week 9. The compromise, arrived at without either of them referencing the sharp exchange. Billing read-only, invoicing deferred to post-seed, scoped to two weeks. Dane is fine with it, which retroactively suggests the argument was never really about billing. Warm again by the end.",
+      "constraints": [
+        "neither mentions the May 19 thread",
+        "Dane sends one message that is just 'ok this is good'"
+      ]
+    },
+    {
+      "id": "callum-scheduler-ui",
+      "with": "callum",
+      "subject": "sched v2",
+      "range": [
+        "2026-05-04",
+        "2026-05-13"
+      ],
+      "messages": 18,
+      "hours": "business",
+      "beats": "Design work for the room-based scheduler rewrite, running in parallel with the Rosalind crisis. Callum sends Figma links with no context. Priya replies 'this is right' or 'room block needs to read as a wall not a card'. One 2am message from Callum that is genuinely the sharpest thing anyone says about the product that month, about how a room is a place and an appointment is a promise and the UI was treating both as boxes.",
+      "constraints": [
+        "all lowercase from Callum",
+        "Priya's replies 3-10 words except once",
+        "the 2am message is 80-120 words and unlike everything else he sends"
+      ]
+    },
+    {
+      "id": "callum-invoice",
+      "with": "callum",
+      "subject": "invoice",
+      "range": [
+        "2026-04-20",
+        "2026-06-18"
+      ],
+      "messages": 11,
+      "hours": "business",
+      "beats": "An invoice that should take two messages and takes eleven, spread over two months. Wrong PO number, a resend to the wrong address, a period where both assume the other is handling it, Callum apologizing for chasing, Priya apologizing for the delay. Nobody is at fault and it is nobody's priority. Resolves eventually with no ceremony.",
+      "constraints": [
+        "long silent gaps between messages",
+        "at least one message that is just 'sorry just saw this'",
+        "ends resolved but flatly"
+      ],
+      "min_days": 6
+    },
+    {
+      "id": "ezra-flood-1",
+      "with": "ezra",
+      "subject": "Water in the rear bathroom",
+      "range": [
+        "2026-04-17",
+        "2026-04-19"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "First flooding. Ezra explains it is not a plumbing issue, it is a drainage characteristic of the building. Numbers his points. Priya replies once, briefly. He gets the last word.",
+      "constraints": [
+        "Ezra says 'the premises'",
+        "Priya sends exactly one message",
+        "Ezra sends the final message"
+      ]
+    },
+    {
+      "id": "ezra-flood-2",
+      "with": "ezra",
+      "subject": "Water in the rear bathroom (2)",
+      "range": [
+        "2026-05-22",
+        "2026-05-26"
+      ],
+      "messages": 5,
+      "hours": "business",
+      "beats": "Second flooding. Still not a plumbing issue. Now it is a tenant usage pattern. Priya is slightly funnier than she means to be. Ezra does not notice. He gets the last word again.",
+      "constraints": [
+        "Ezra references his own previous email as though it settled the matter",
+        "Ezra sends the final message"
+      ]
+    },
+    {
+      "id": "ezra-flood-3",
+      "with": "ezra",
+      "subject": "Rear bathroom, further to my previous",
+      "range": [
+        "2026-06-15",
+        "2026-06-20"
+      ],
+      "messages": 5,
+      "hours": "business",
+      "beats": "Third flooding. Ezra proposes a schedule of tenant responsibilities. It has five numbered items and the fifth is about the bathroom. Priya replies with one line. He gets the last word for the third time, which is the whole joke.",
+      "constraints": [
+        "five numbered items",
+        "Ezra sends the final message"
+      ]
+    },
+    {
+      "id": "hana-outreach",
+      "with": "hana",
+      "subject": "Northlane, and a role I think you'd want to hear about",
+      "range": [
+        "2026-04-08",
+        "2026-06-26"
+      ],
+      "messages": 6,
+      "hours": "business",
+      "beats": "Five inbound from Hana across the window, one reply from Priya in April saying she is not looking. Hana names Thicket each time to prove research. Each message is shorter and more direct than the last. The final one in June is two sentences and slightly wounded. Priya never replies again.",
+      "constraints": [
+        "exactly one message from Priya, in April",
+        "Hana's messages shorten monotonically",
+        "thread ends on Hana"
+      ],
+      "min_days": 5
+    },
+    {
+      "id": "beatriz-logistics",
+      "with": "beatriz",
+      "subject": "room assignments thursday",
+      "range": [
+        "2026-05-06",
+        "2026-05-14"
+      ],
+      "messages": 5,
+      "hours": "business",
+      "beats": "The practical follow-through on the room migration Priya promised Rosalind. Beatriz is brisk and competent and slightly amused by the whole thing. Confirms the Thursday session, does the assignments, flags two rooms that are actually one room with a curtain, which is a real data modeling problem nobody anticipated.",
+      "constraints": [
+        "Beatriz is brief and unbothered",
+        "the curtain detail is the thing that matters"
+      ]
+    },
+    {
+      "id": "aiden-catchup",
+      "with": "aiden",
+      "subject": "saw the news",
+      "range": [
+        "2026-04-15",
+        "2026-04-21"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "An old Corvia colleague sees the funding announcement, sends congratulations, they trade two messages of genuine warmth and one attempt to schedule a coffee that never gets scheduled. Then nothing for the rest of the window. Thin but real, which is exactly the case the reciprocity damper in the ranker exists to handle.",
+      "constraints": [
+        "the coffee never gets scheduled",
+        "no messages after April"
+      ]
+    },
+    {
+      "id": "ros-weekly-may",
+      "with": "rosalind",
+      "subject": "thursday check-in notes",
+      "range": [
+        "2026-05-28",
+        "2026-06-04"
+      ],
+      "messages": 6,
+      "hours": "business",
+      "beats": "Routine post-crisis check-ins. The product is working. Ros reports small things warmly, mentions the clinic's new tech, digresses about a difficult client with a cat named Governor. Priya is responsive but noticeably less so than during the crisis. One of the small things Ros mentions here is the same day-sheet printing bug, which she is now mentioning for the third time without framing it as a complaint.",
+      "constraints": [
+        "the day sheet comes up a third time, in passing, unresolved",
+        "Priya's replies are warm but 40-70 words"
+      ]
+    },
+    {
+      "id": "ros-reference-offer",
+      "with": "rosalind",
+      "subject": "Puyallup practice asked me about you",
+      "range": [
+        "2026-06-26",
+        "2026-06-29"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Late June. Rosalind unprompted offers to talk to other clinics, because a practice in Puyallup asked her what she uses. This is the payoff of the near-quit arc and should feel earned rather than sweet. She is matter-of-fact about it. Priya's reply is the most genuinely happy thing she writes in the corpus.",
+      "constraints": [
+        "Rosalind does not make a big deal of it",
+        "Bramble is not mentioned, the warmth is elsewhere"
+      ]
+    },
+    {
+      "id": "marguerite-intro-westbrook",
+      "with": "marguerite",
+      "subject": "Two people who failed at this",
+      "range": [
+        "2026-04-13",
+        "2026-04-16"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Marguerite delivers the two failure-story introductions she promised on Apr 6. Priya replies fast, 40 minutes, because this is an easy email. Reinforces that her latency with Marguerite is a function of the question and not the person.",
+      "constraints": [
+        "Priya replies inside an hour",
+        "short thread"
+      ]
+    },
+    {
+      "id": "marguerite-update-may",
+      "with": "marguerite",
+      "subject": "Thicket monthly, May",
+      "range": [
+        "2026-05-31",
+        "2026-06-01"
+      ],
+      "messages": 3,
+      "hours": "late",
+      "beats": "The monthly update Priya promised. Long, good on product, quiet on customers, which is exactly the thing Marguerite calls out on Jun 8 in the metrics thread. Written at 12:40am on the last day of the month. Marguerite acknowledges briefly.",
+      "constraints": [
+        "Priya's update is 300-400 words and mentions no revenue",
+        "sent after midnight on the last possible day"
+      ]
+    },
+    {
+      "id": "wendy-side-photo",
+      "with": "wendy",
+      "subject": "found this",
+      "range": [
+        "2026-05-16",
+        "2026-05-17"
+      ],
+      "messages": 3,
+      "hours": "mixed",
+      "beats": "A tiny warm thread with no ask in it. Wendy sends an old photo of the two of them at their grandfather's house. Priya replies within twenty minutes, which is the fastest she ever answers her sister, because there is nothing being asked of her. This thread is the control condition for the entire Wendy finding and it matters enormously: it proves the four-day gaps are not about Wendy.",
+      "constraints": [
+        "Priya replies in under 25 minutes",
+        "no questions are asked by anyone",
+        "warm and short"
+      ]
+    },
+    {
+      "id": "noise-stripe",
+      "with": "__noise__",
+      "sender": "receipts@stripe.com",
+      "range": [
+        "2026-04-01",
+        "2026-06-30"
+      ],
+      "messages": 20,
+      "hours": "business",
+      "beats": "Monthly billing receipts and two failed-payment warnings for a clinic's card. Never replied to.",
+      "constraints": [
+        "no replies ever",
+        "transactional template voice"
+      ],
+      "min_days": 12,
+      "subject": "Your Thicket receipt",
+      "periodic": true
+    },
+    {
+      "id": "noise-newsletter",
+      "with": "__noise__",
+      "sender": "dispatch@vetbusinessweekly.com",
+      "range": [
+        "2026-04-01",
+        "2026-06-30"
+      ],
+      "messages": 13,
+      "hours": "business",
+      "beats": "Weekly industry newsletter. Practice consolidation, corporate buyouts of independents, staffing shortages. Occasionally genuinely relevant to Thicket, which is why she has not unsubscribed. Never replied to.",
+      "constraints": [
+        "no replies ever"
+      ],
+      "min_days": 10,
+      "subject": "Vet Business Weekly",
+      "periodic": true
+    },
+    {
+      "id": "noise-cfp",
+      "with": "__noise__",
+      "sender": "cfp@vetsoftsummit.org",
+      "range": [
+        "2026-05-05",
+        "2026-06-20"
+      ],
+      "messages": 5,
+      "hours": "business",
+      "beats": "A call for papers and two increasingly desperate deadline-extension reminders. Never replied to.",
+      "constraints": [
+        "no replies ever"
+      ],
+      "subject": "VetSoft Summit 2026 - Call for Papers"
+    },
+    {
+      "id": "noise-cold-sales",
+      "with": "__noise__",
+      "sender": "outreach@meridianstack.io",
+      "range": [
+        "2026-04-22",
+        "2026-06-11"
+      ],
+      "messages": 8,
+      "hours": "business",
+      "beats": "Cold outbound for an observability tool. Four messages. Priya replies once with 'no thanks' and they stop. This exists so the ranker has a contact with exactly one outgoing message to correctly score near zero.",
+      "constraints": [
+        "Priya's only reply is under 5 words"
+      ],
+      "min_days": 4,
+      "subject": "Observability for Thicket"
+    },
+    {
+      "id": "noise-notifications-apr",
+      "with": "__noise__",
+      "sender": "no-reply@google.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-04-01",
+        "2026-04-30"
+      ],
+      "messages": 14,
+      "hours": "business",
+      "beats": "Document shares, calendar invites and changes, one security alert about a new sign-in.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 10
+    },
+    {
+      "id": "noise-notifications-may",
+      "with": "__noise__",
+      "sender": "no-reply@google.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-05-01",
+        "2026-05-31"
+      ],
+      "messages": 14,
+      "hours": "business",
+      "beats": "More of the same. A calendar invite that gets moved twice, three document shares from Callum, a storage warning.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 10
+    },
+    {
+      "id": "noise-notifications-jun",
+      "with": "__noise__",
+      "sender": "no-reply@google.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-06-01",
+        "2026-06-30"
+      ],
+      "messages": 14,
+      "hours": "business",
+      "beats": "Same again. Calendar changes, shared docs, one alert about a login from a new device.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 10
+    },
+    {
+      "id": "noise-github-apr",
+      "with": "__noise__",
+      "sender": "notifications@github.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-04-02",
+        "2026-04-30"
+      ],
+      "messages": 10,
+      "hours": "business",
+      "beats": "Automated repo notifications: failed CI runs, dependency alerts, a weekly digest. Terse machine formatting.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 7
+    },
+    {
+      "id": "noise-github-may",
+      "with": "__noise__",
+      "sender": "notifications@github.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-05-01",
+        "2026-05-30"
+      ],
+      "messages": 10,
+      "hours": "business",
+      "beats": "CI failures clustering around the scheduler rewrite, two security advisories for a dependency.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 7
+    },
+    {
+      "id": "noise-github-jun",
+      "with": "__noise__",
+      "sender": "notifications@github.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-06-01",
+        "2026-06-29"
+      ],
+      "messages": 10,
+      "hours": "business",
+      "beats": "Routine again. Failed nightly builds, a dependabot run, a weekly digest.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 7
+    },
+    {
+      "id": "noise-alerts-1",
+      "with": "__noise__",
+      "sender": "alerts@statuspage.thicket.vet",
+      "subject": "(varies)",
+      "range": [
+        "2026-04-05",
+        "2026-05-20"
+      ],
+      "messages": 9,
+      "hours": "business",
+      "beats": "Uptime and error-rate alerts. Two real incidents, several flapping false alarms at 3am that nobody acts on.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 6
+    },
+    {
+      "id": "noise-alerts-2",
+      "with": "__noise__",
+      "sender": "alerts@statuspage.thicket.vet",
+      "subject": "(varies)",
+      "range": [
+        "2026-05-21",
+        "2026-06-28"
+      ],
+      "messages": 9,
+      "hours": "business",
+      "beats": "More alerts. One genuine outage during the scheduler migration, the rest noise.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 6
+    },
+    {
+      "id": "noise-linkedin",
+      "with": "__noise__",
+      "sender": "messages-noreply@linkedin.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-04-03",
+        "2026-06-27"
+      ],
+      "messages": 12,
+      "hours": "business",
+      "beats": "Connection requests, one recruiter InMail digest, 'people you may know'. Never opened, never replied to.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 9
+    },
+    {
+      "id": "noise-domain",
+      "with": "__noise__",
+      "sender": "billing@namecheap.com",
+      "subject": "(varies)",
+      "range": [
+        "2026-04-11",
+        "2026-06-24"
+      ],
+      "messages": 8,
+      "hours": "business",
+      "beats": "Domain and DNS billing. Two renewal notices, an SSL certificate expiry warning that is slightly alarming and entirely routine.",
+      "constraints": [
+        "no replies ever",
+        "each message is a separate automated notification, not a conversation"
+      ],
+      "min_days": 6,
+      "periodic": true
+    },
+    {
+      "id": "noise-bookkeeper",
+      "with": "__noise__",
+      "sender": "karin@ledgerpost.co",
+      "subject": "Q2 books",
+      "range": [
+        "2026-04-24",
+        "2026-06-26"
+      ],
+      "messages": 6,
+      "hours": "business",
+      "min_days": 5,
+      "beats": "An outsourced bookkeeper sending quarterly reminders for receipts and category confirmations. Priya replies once, briefly, in April and never again. Exists to give the ranker a second contact with exactly one outgoing message to correctly score near zero.",
+      "constraints": [
+        "Priya sends exactly one short reply, in April",
+        "thread ends on the bookkeeper"
+      ]
+    },
+    {
+      "id": "dane-apr02",
+      "with": "dane",
+      "subject": "demo went long",
+      "range": [
+        "2026-04-02",
+        "2026-04-02"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Dane back from a Ridgeline demo. She wanted boarding tracking, which they don't do, but she's booking surgery through the scheduler. Dane reads it as a win. Priya's reply is one word.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-apr08",
+      "with": "dane",
+      "subject": "cascade hills quiet",
+      "range": [
+        "2026-04-08",
+        "2026-04-08"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "A prospect has gone quiet for ten days. Dane notices, Priya already knows and has left a voicemail. Nothing to do.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-apr11",
+      "with": "dane",
+      "subject": "per provider or per location",
+      "range": [
+        "2026-04-11",
+        "2026-04-11"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Dane asks a pricing question and answers it himself two messages later before Priya replies. She agrees in two words. Saturday.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-apr16",
+      "with": "dane",
+      "subject": "figma",
+      "range": [
+        "2026-04-16",
+        "2026-04-16"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "Dane sends a Figma link with no context. Priya identifies what it is and comments on one detail.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-apr23",
+      "with": "dane",
+      "subject": "redwood called",
+      "range": [
+        "2026-04-23",
+        "2026-04-23"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "A prospect wants a second demo with their office manager. Dane is pleased. Priya says great.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-apr28",
+      "with": "dane",
+      "subject": "who's coming thursday",
+      "range": [
+        "2026-04-28",
+        "2026-04-28"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Logistics about who joins the Cascade check-in. Mildly confused, resolves fine.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-may05",
+      "with": "dane",
+      "subject": "ros",
+      "range": [
+        "2026-05-05",
+        "2026-05-05"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Fallout from the double-booking, from Dane's side. He heard from Beatriz before Priya told him, and is slightly stung about it without saying so directly.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-may08",
+      "with": "dane",
+      "subject": "conference thing",
+      "range": [
+        "2026-05-08",
+        "2026-05-08"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "A vet software conference wants a sponsor. Dane is excited, Priya is not. It costs $4k.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-may13",
+      "with": "dane",
+      "subject": "do we need a logo",
+      "range": [
+        "2026-05-13",
+        "2026-05-13"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Dane thinks the logo looks like a bush. It is a thicket. This goes four messages and resolves nothing.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-may19",
+      "with": "dane",
+      "subject": "harborview",
+      "range": [
+        "2026-05-19",
+        "2026-05-19"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "A new prospect from the conference list. Dane wants to demo Friday.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-may22",
+      "with": "dane",
+      "subject": "you ok",
+      "range": [
+        "2026-05-22",
+        "2026-05-22"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Dane notices Priya seems fried and asks. She deflects in four words. He lets it go, then sends one more message an hour later that just says 'ok'.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-may27",
+      "with": "dane",
+      "subject": "westbrook logins",
+      "range": [
+        "2026-05-27",
+        "2026-05-27"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "Westbrook's usage jumped from two to nine and neither of them knows why yet.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun03",
+      "with": "dane",
+      "subject": "westbrook",
+      "range": [
+        "2026-06-03",
+        "2026-06-03"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "They work out that Westbrook finished their records migration without telling anyone. Dane wants to call them, Priya wants to watch for another week.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun09",
+      "with": "dane",
+      "subject": "did we ever hear back from nkechi",
+      "range": [
+        "2026-06-09",
+        "2026-06-09"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "Dane asks about the hire. Priya deflects without lying. He does not push.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun12",
+      "with": "dane",
+      "subject": "summit booth",
+      "range": [
+        "2026-06-12",
+        "2026-06-12"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Conference booth logistics. Dane has already half-committed. Priya is resigned.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun17",
+      "with": "dane",
+      "subject": "silvercreek",
+      "range": [
+        "2026-06-17",
+        "2026-06-17"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "Silvercreek still has not moved. Dane suggests giving up on them, Priya says wait until October.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun22",
+      "with": "dane",
+      "subject": "nkechi?",
+      "range": [
+        "2026-06-22",
+        "2026-06-22"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Dane asks about the hire a second time, more directly. Priya deflects a second time, differently. This is the last time he asks.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun25",
+      "with": "dane",
+      "subject": "ros said yes to talking to puyallup",
+      "range": [
+        "2026-06-25",
+        "2026-06-25"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "Dane relays that Rosalind offered to be a reference. He is thrilled. Priya already knew.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "dane-jun29",
+      "with": "dane",
+      "subject": "july",
+      "range": [
+        "2026-06-29",
+        "2026-06-29"
+      ],
+      "messages": 4,
+      "hours": "business",
+      "beats": "Loose planning for July. The paid-plan conversation with Cascade comes up as a thing that has been scheduled.",
+      "constraints": [
+        "Priya replies in 3-25 minutes",
+        "Priya's messages are 3-20 words",
+        "Dane never signs off, no greeting, lowercase sentence starts",
+        "at least one burst where Dane sends 3 messages inside two minutes"
+      ]
+    },
+    {
+      "id": "callum-apr14",
+      "with": "callum",
+      "subject": "icons",
+      "range": [
+        "2026-04-14",
+        "2026-04-14"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "callum asks whether to keep the old icon set. gets a two word answer.",
+      "constraints": [
+        "all lowercase from Callum",
+        "most messages under 8 words",
+        "Priya replies 2-6 words"
+      ]
+    },
+    {
+      "id": "callum-apr30",
+      "with": "callum",
+      "subject": "mobile",
+      "range": [
+        "2026-04-30",
+        "2026-04-30"
+      ],
+      "messages": 2,
+      "hours": "business",
+      "beats": "a screenshot of something broken on mobile. no reply from priya at all.",
+      "constraints": [
+        "all lowercase from Callum",
+        "most messages under 8 words",
+        "Priya replies 2-6 words"
+      ]
+    },
+    {
+      "id": "callum-may18",
+      "with": "callum",
+      "subject": "room block",
+      "range": [
+        "2026-05-18",
+        "2026-05-18"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "a figma link and 'like this?'. priya says yes.",
+      "constraints": [
+        "all lowercase from Callum",
+        "most messages under 8 words",
+        "Priya replies 2-6 words"
+      ]
+    },
+    {
+      "id": "callum-jun02",
+      "with": "callum",
+      "subject": "thumbs",
+      "range": [
+        "2026-06-02",
+        "2026-06-02"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "callum sends a link, priya sends a thumbs up, callum sends 'k'. nothing else happens.",
+      "constraints": [
+        "all lowercase from Callum",
+        "most messages under 8 words",
+        "Priya replies 2-6 words"
+      ]
+    },
+    {
+      "id": "callum-jun16",
+      "with": "callum",
+      "subject": "empty states",
+      "range": [
+        "2026-06-16",
+        "2026-06-16"
+      ],
+      "messages": 3,
+      "hours": "business",
+      "beats": "a genuine question about empty states that deserves a longer answer than it gets.",
+      "constraints": [
+        "all lowercase from Callum",
+        "most messages under 8 words",
+        "Priya replies 2-6 words"
+      ]
+    },
+    {
+      "id": "callum-jun27",
+      "with": "callum",
+      "subject": "last one",
+      "range": [
+        "2026-06-27",
+        "2026-06-27"
+      ],
+      "messages": 2,
+      "hours": "business",
+      "beats": "a final figma handoff before he goes part-time-er. priya says thanks.",
+      "constraints": [
+        "all lowercase from Callum",
+        "most messages under 8 words",
+        "Priya replies 2-6 words"
+      ]
+    }
+  ]
+}

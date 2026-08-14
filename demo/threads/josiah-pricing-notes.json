@@ -1,0 +1,29 @@
+{
+  "thread_id": "t-josiah-pricing",
+  "anchor": true,
+  "_note": "Hand-written. Early April, before the ask. Josiah does unprompted work for her and then offers an intro, and in the third message he delivers it. That is the point of this thread: he made an intro for her in April, she promised him one on April 9, and she never made it. The asymmetry is derivable from the corpus rather than asserted anywhere, which is what lets the forgotten agent and the stories agent both find it. Priya's register here is peer and warm, distinct from the sparring she does with Theo.",
+
+  "participants": ["josiah", "priya"],
+  "subject": "unsolicited opinions about your pricing page",
+
+  "messages": [
+    {
+      "from": "josiah",
+      "date_utc": "2026-04-02T09:14:00-07:00",
+      "subject": "unsolicited opinions about your pricing page",
+      "body": "You didn't ask for this and you can ignore all of it.\n\nI was showing someone Thicket as an example of a good vertical wedge and ended up staring at your pricing page for twenty minutes. Three things:\n\nYour per-seat pricing is fighting your own product. A two-vet clinic has eleven people who touch the schedule and two people who generate revenue. Per-seat means the front desk is a cost, so they'll share a login, and then your usage data is garbage and you won't know it for a year.\n\nThe $180 tier has no name. The other two do. It reads like the one you don't want anyone to pick, which is presumably not true since it's the one most clinics should be on.\n\nAnd you're apologizing for the price in the FAQ. \"We know practice management software is expensive\" — they know. Every one of them is paying more than that today for something worse.\n\nSeparately, and unrelatedly: do you want an intro to Corbin Achebe? He ran ops for a twelve-clinic group in Portland before he went independent and he is the single most useful person I know on how clinics actually buy. He'll take the call if I ask.\n\nJ"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-02T23:52:00-07:00",
+      "subject": "Re: unsolicited opinions about your pricing page",
+      "body": "The per-seat thing is correct and slightly ruinous to read at 11pm.\n\nWe went per-seat because it was the thing I understood how to build, which is a bad reason that I have been calling a pricing strategy for four months. You're right that they'll share a login. Ros's clinic almost certainly already does and I've never once looked.\n\nThe FAQ line is going. That's just fear written down.\n\nI'm less sure about naming the middle tier. Part of me thinks an unnamed tier reads as the boring default and the boring default is where you want most people to land. But I think you're right that it currently reads as the one we're embarrassed by, which is a different thing.\n\nAnd yes to Corbin, genuinely. That's exactly the person I don't have.\n\nBest,\nPriya"
+    },
+    {
+      "from": "josiah",
+      "date_utc": "2026-04-03T08:30:00-07:00",
+      "subject": "Re: unsolicited opinions about your pricing page",
+      "body": "Done, intro going out this morning. I told him you'd ask better questions than the last three founders he talked to, so no pressure.\n\nOn the middle tier, fair pushback. Boring default is a real strategy. I'd just make sure it's boring on purpose and not boring because nobody got to it.\n\nJ"
+    }
+  ]
+}

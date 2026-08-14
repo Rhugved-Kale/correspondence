@@ -1,0 +1,29 @@
+{
+  "thread_id": "t-marguerite-close",
+  "anchor": true,
+  "_note": "Hand-written. April, the close. Priya replies in 41 minutes. This thread exists to establish that she is fast with Marguerite when the question is easy, so that the two-day and three-day gaps in the metrics thread read as being about the question rather than about the person. Without this thread the metrics latency looks like ordinary investor-relations lag.",
+
+  "participants": ["marguerite", "priya"],
+  "subject": "Signed, and three small things",
+
+  "messages": [
+    {
+      "from": "marguerite",
+      "date_utc": "2026-04-06T11:20:00-07:00",
+      "subject": "Signed, and three small things",
+      "body": "Signed and sent back to your counsel this morning. Delighted to be in.\n\nThree small things, none urgent:\n\n1. Please add me to whatever you use for updates. Monthly is plenty. I would rather have four honest paragraphs than a dashboard.\n\n2. I know two people who have sold into independent veterinary practices and failed at it. Both would talk to you. Failure stories are more useful than success stories at your stage and considerably easier to get.\n\n3. When you have a moment, I would like to understand how you are thinking about the three pilots. Not metrics, I know it is early. Just how you would characterize them.\n\nCongratulations. This is the fun part and it does not last, so enjoy it while it does.\n\nBest,\nMarguerite"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-06T12:01:00-07:00",
+      "subject": "Re: Signed, and three small things",
+      "body": "Thank you, genuinely. It's been a strange four months and this makes it feel considerably less strange.\n\nYes to monthly updates, I'll get you on the list before the first one goes out at the end of the month.\n\nAnd yes please to both failure conversations. That's the single most useful offer anyone has made me this year, and I mean that literally, I've been collecting advice from people who succeeded and it's mostly been unfalsifiable.\n\nOn the pilots, I'll write you something proper rather than something quick. Short version is one is real and two are polite, and I've been trying to work out whether that's a product problem or a selection problem.\n\nBest,\nPriya"
+    },
+    {
+      "from": "marguerite",
+      "date_utc": "2026-04-07T08:45:00-07:00",
+      "subject": "Re: Signed, and three small things",
+      "body": "\"One is real and two are polite\" is a better summary than most seed decks manage, so do not feel obliged to dress it up later.\n\nIntroductions going out this week.\n\nBest,\nMarguerite"
+    }
+  ]
+}

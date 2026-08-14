@@ -1,0 +1,78 @@
+{
+  "thread_id": "t-callum-invoice",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-invoice'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "invoice",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-04-20T14:22:00-07:00",
+      "subject": "invoice",
+      "body": "hey sent invoice to dane's email is that right or should it go somewhere else"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-20T14:35:00-07:00",
+      "subject": "invoice",
+      "body": "accounting@thicket.vet, it's in your contract somewhere but that address didn't exist when you signed so\n\nthx"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-04-20T14:38:00-07:00",
+      "subject": "invoice",
+      "body": "k resending"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-08T11:14:00-07:00",
+      "subject": "invoice",
+      "body": "sorry to bug you but did that invoice go through? stripe usually hits by now"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-09T16:43:00-07:00",
+      "subject": "invoice",
+      "body": "sorry just saw this\n\nlet me check with dane he set up the accounting@ forwarding"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-14T10:21:00-07:00",
+      "subject": "invoice",
+      "body": "ok so the PO number on the invoice doesn't match what's in our system, can you resend with PO-2026-04-18? should've caught this two weeks ago sorry"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-14T15:08:00-07:00",
+      "subject": "invoice",
+      "body": "wait i just copied it from last month's. did it change"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-22T13:50:00-07:00",
+      "subject": "invoice",
+      "body": "sorry just saw this\n\nok i think dane changed the format when he set up quickbooks and didn't tell anyone including me. new one is date-based. can you just update it and resend, this is entirely our fault"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-05-22T14:12:00-07:00",
+      "subject": "invoice",
+      "body": "sent"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-06-17T10:05:00-07:00",
+      "subject": "invoice",
+      "body": "hey really sorry to chase again but it's been a month, rent is tomorrow and i'm short. can you check if it's stuck somewhere"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-18T09:33:00-07:00",
+      "subject": "invoice",
+      "body": "god i'm sorry. dane had it sitting in approvals and didn't realize it needed two signatures now because of how the bank account is set up. just pushed it through, should hit today\n\nthx"
+    }
+  ]
+}

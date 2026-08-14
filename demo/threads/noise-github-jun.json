@@ -1,0 +1,72 @@
+{
+  "thread_id": "t-noise-github-jun",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-github-jun'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "notifications@github.com"
+  ],
+  "subject": "(varies)",
+  "messages": [
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-02T09:14:32-07:00",
+      "subject": "[thicket-core] Build failed in main",
+      "body": "Build #847 failed\n\nBranch: main\nCommit: a3f9d12 (Priya Raghunathan)\nDuration: 4m 23s\n\nFailing job: test-integration\n\nView build: https://github.com/thicket/thicket-core/actions/runs/847\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-05T10:37:18-07:00",
+      "subject": "[thicket-core] Dependabot: 3 security updates available",
+      "body": "Dependabot found 3 new security advisories affecting your dependencies.\n\n• axios: moderate severity (CVE-2026-1847)\n• express: low severity (CVE-2026-2103)\n• pg: moderate severity (CVE-2026-1992)\n\nReview pull requests: https://github.com/thicket/thicket-core/security/dependabot\n\n---\nYou are receiving this because you are subscribed to security alerts for this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-09T11:22:04-07:00",
+      "subject": "[thicket-core] Weekly digest: 14 commits, 3 pull requests merged",
+      "body": "Week of June 2-8, 2026\n\nActivity summary:\n• 14 commits across 3 branches\n• 3 pull requests merged\n• 2 issues closed\n• 1 new contributor: callum-rb\n\nTop contributors:\n1. dane-w (8 commits)\n2. priya-r (6 commits)\n\nMost active: Fix room blocking logic (#94) - 47 comments\n\nView full activity: https://github.com/thicket/thicket-core/pulse/weekly\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-12T14:08:51-07:00",
+      "subject": "[thicket-core] Build failed in staging",
+      "body": "Build #891 failed\n\nBranch: staging\nCommit: b7e2c44 (Dane Whitfield)\nDuration: 2m 56s\n\nFailing job: deploy-staging\n\nError: Environment variable STRIPE_WEBHOOK_SECRET not found\n\nView build: https://github.com/thicket/thicket-core/actions/runs/891\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-13T09:43:26-07:00",
+      "subject": "[thicket-core] Build succeeded in staging",
+      "body": "Build #894 passed\n\nBranch: staging\nCommit: c91d5f3 (Dane Whitfield)\nDuration: 3m 12s\n\nAll jobs completed successfully.\n\nView build: https://github.com/thicket/thicket-core/actions/runs/894\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-16T10:15:39-07:00",
+      "subject": "[thicket-core] Weekly digest: 11 commits, 2 pull requests merged",
+      "body": "Week of June 9-15, 2026\n\nActivity summary:\n• 11 commits across 2 branches\n• 2 pull requests merged\n• 4 issues closed\n• 0 new contributors\n\nTop contributors:\n1. priya-r (7 commits)\n2. dane-w (4 commits)\n\nMost active: Billing module read-only implementation (#101) - 32 comments\n\nView full activity: https://github.com/thicket/thicket-core/pulse/weekly\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-19T15:41:07-07:00",
+      "subject": "[thicket-core] Dependabot: 1 security update available",
+      "body": "Dependabot found 1 new security advisory affecting your dependencies.\n\n• jsonwebtoken: high severity (CVE-2026-2214)\n\nReview pull request: https://github.com/thicket/thicket-core/security/dependabot/12\n\n---\nYou are receiving this because you are subscribed to security alerts for this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-23T10:52:13-07:00",
+      "subject": "[thicket-core] Weekly digest: 19 commits, 5 pull requests merged",
+      "body": "Week of June 16-22, 2026\n\nActivity summary:\n• 19 commits across 4 branches\n• 5 pull requests merged\n• 3 issues closed\n• 0 new contributors\n\nTop contributors:\n1. priya-r (11 commits)\n2. dane-w (6 commits)\n3. callum-rb (2 commits)\n\nMost active: Invoice generation UI components (#108) - 28 comments\n\nView full activity: https://github.com/thicket/thicket-core/pulse/weekly\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-26T13:28:44-07:00",
+      "subject": "[thicket-core] Build failed in main",
+      "body": "Build #967 failed\n\nBranch: main\nCommit: e4a8b91 (Priya Raghunathan)\nDuration: 5m 18s\n\nFailing job: test-integration\n\nError: Timeout waiting for database connection in room_blocking_spec.js\n\nView build: https://github.com/thicket/thicket-core/actions/runs/967\n\n---\nYou are receiving this because you are watching this repository."
+    },
+    {
+      "from": "notifications@github.com",
+      "date_utc": "2026-06-29T11:04:22-07:00",
+      "subject": "[thicket-core] Dependabot successfully updated 2 dependencies",
+      "body": "Dependabot successfully merged pull request #14\n\nUpdated dependencies:\n• axios: 1.4.2 → 1.4.3 (security)\n• pg: 8.11.0 → 8.11.2 (security)\n\nAll checks passed. Changes deployed to staging.\n\nView changes: https://github.com/thicket/thicket-core/pull/14\n\n---\nYou are receiving this because you are subscribed to security alerts for this repository."
+    }
+  ]
+}

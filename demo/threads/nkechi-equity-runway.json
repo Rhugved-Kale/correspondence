@@ -1,0 +1,53 @@
+{
+  "thread_id": "t-nkechi-equity",
+  "anchor": true,
+  "_note": "Hand-written, and the direction matters. Priya's reply latency goes 2d, 3d, 6d and her word count goes 90, 58, 21. Nkechi's gaps only start lengthening after Priya's do. The data says Priya cooled first and Nkechi matched her, which is the opposite of how this reads to the person living it. The candidate did not go cold. Nkechi asks what happens if the seed does not close three separate times and never gets an answer, which is the same behavioral signature as the Marguerite threads: the third question is the real one and it is the one that gets dropped. Thread ends on her question, unanswered.",
+
+  "participants": ["nkechi", "priya"],
+  "subject": "the boring questions",
+
+  "messages": [
+    {
+      "from": "nkechi",
+      "date_utc": "2026-05-08T09:15:00-07:00",
+      "subject": "the boring questions",
+      "body": "Good call on Thursday, and the room-based scheduling thing you walked me through is genuinely the kind of problem I'd want to work on.\n\nSo, the boring questions, which I've been putting off because they're less fun than the product ones:\n\n1. What's the equity range you're thinking for a first engineer, and is it real equity or is it a number that assumes a round that hasn't happened?\n\n2. What's the current cash-out date, and does that assume the seed?\n\n3. If the seed doesn't close by the fall, what happens? Not the optimistic version. I've been at a company that ran out of a runway everyone told me was eighteen months, and I'd rather ask the ugly question now than find out I should have.\n\nNkechi"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-10T23:40:00-07:00",
+      "subject": "Re: the boring questions",
+      "body": "Sorry, just seeing this, we've been heads-down on the scheduler rewrite for a customer who nearly walked.\n\nEquity: 1.5 to 2.5% for a first engineer, four year vest, one year cliff. It's real, in the sense that it's off the current cap table and doesn't assume anything.\n\nCash-out is March next year on current burn, which does not assume the seed. If the seed lands it's obviously a different conversation.\n\nHappy to go deeper on any of this.\n\nBest,\nPriya"
+    },
+    {
+      "from": "nkechi",
+      "date_utc": "2026-05-21T08:40:00-07:00",
+      "subject": "Re: the boring questions",
+      "body": "Thanks, that's helpful, and 1.5 to 2.5 off the current table is a real answer, which I appreciate.\n\nI don't think you got to the third one though, and it's the one I care most about. If the seed doesn't close by the fall, what's the plan? Do you cut to survive, do you raise a bridge, do you wind down, do you take services revenue?\n\nI'm not asking because I think it's likely. I'm asking because how a founder answers that question tells me more than anything else they say.\n\nNkechi"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-24T23:52:00-07:00",
+      "subject": "Re: the boring questions",
+      "body": "Fair. It's a real question and it deserves a real answer rather than a paragraph I write at midnight.\n\nCan we do it live? I'd rather talk it through than send you something that reads more confident than I am. I'm around most of next week.\n\nBest,\nPriya"
+    },
+    {
+      "from": "nkechi",
+      "date_utc": "2026-06-03T09:05:00-07:00",
+      "subject": "Re: the boring questions",
+      "body": "Sure. What day works?\n\nNkechi"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-09T23:58:00-07:00",
+      "subject": "Re: the boring questions",
+      "body": "This week got away from me. Let me look at next week and send some times.\n\nBest,\nPriya"
+    },
+    {
+      "from": "nkechi",
+      "date_utc": "2026-06-12T08:30:00-07:00",
+      "subject": "Re: the boring questions",
+      "body": "No rush.\n\nI'll ask it one more time in writing, and then I'll leave it: if the seed doesn't close by the fall, what happens?\n\nI'd rather have a two-line answer than a scheduled call, honestly. It's not a hard question unless the answer is hard.\n\nNkechi"
+    }
+  ]
+}

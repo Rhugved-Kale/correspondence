@@ -75,7 +75,7 @@ export default function SetupWizard({ preflight, onContinue, onComplete }) {
           className="mt-6 max-w-[520px]"
           style={{ fontSize: 17, lineHeight: 1.55, color: "#5C544A" }}
         >
-          TwinMind runs on your machine and talks directly to your own
+          Correspondence runs on your machine and talks directly to your own
           accounts. Give it an Anthropic API key so it can write your
           pages, and a Google OAuth client so it can read your Gmail and
           calendar. Both stay on your laptop.
@@ -437,7 +437,7 @@ function GoogleHowTo() {
       style={{ background: "#FAF8F4", color: "#5C544A", lineHeight: 1.6 }}
     >
       <p style={{ marginBottom: 10 }}>
-        Each TwinMind user provides their own OAuth client because Google
+        Each user provides their own OAuth client because Google
         requires app-specific verification before unverified apps can
         request Gmail or Calendar access from arbitrary users. Setting
         this up takes about 10 minutes.

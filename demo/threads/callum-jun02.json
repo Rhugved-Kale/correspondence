@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-callum-jun02",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-jun02'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "thumbs",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-06-02T11:43:00-07:00",
+      "subject": "thumbs",
+      "body": "https://figma.com/file/xK9mP2nQ..."
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-02T11:51:00-07:00",
+      "subject": "thumbs",
+      "body": "👍"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-06-02T11:52:00-07:00",
+      "subject": "thumbs",
+      "body": "k"
+    }
+  ]
+}

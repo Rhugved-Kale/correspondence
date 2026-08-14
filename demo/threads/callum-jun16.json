@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-callum-jun16",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'callum-jun16'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "callum"
+  ],
+  "subject": "empty states",
+  "messages": [
+    {
+      "from": "callum",
+      "date_utc": "2026-06-16T11:43:00-07:00",
+      "subject": "empty states",
+      "body": "what do you want the scheduling view to say when there's no appointments yet"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-16T14:22:00-07:00",
+      "subject": "empty states",
+      "body": "good question"
+    },
+    {
+      "from": "callum",
+      "date_utc": "2026-06-16T14:25:00-07:00",
+      "subject": "empty states",
+      "body": "k just did placeholder text"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "_comment": "Calendar fixture, written as rules rather than 60 expanded event objects. The loader expands these. Recurring meetings are what make the ranker's calendar signal meaningful, and the entries after demo_as_of are what keep the Upcoming surface from rendering empty.",
+
+  "recurring": [
+    {
+      "summary": "Thicket standup",
+      "attendees": ["dane"],
+      "weekdays": ["Mon", "Wed", "Fri"],
+      "time": "09:15",
+      "duration_min": 15,
+      "from": "2026-04-01",
+      "to": "2026-07-10",
+      "_note": "The daily-ish rhythm. Dane's meeting count should dwarf everyone else's, which corroborates the 11-minute reply floor with a second, independent signal."
+    },
+    {
+      "summary": "Cascade check-in",
+      "attendees": ["rosalind", "beatriz"],
+      "weekdays": ["Thu"],
+      "time": "16:00",
+      "duration_min": 30,
+      "from": "2026-04-09",
+      "to": "2026-07-09",
+      "skip": ["2026-05-07", "2026-06-11"],
+      "_note": "Skipped twice: once during the double-booking week, once without explanation."
+    },
+    {
+      "summary": "Design sync",
+      "attendees": ["callum"],
+      "weekdays": ["Tue"],
+      "time": "11:00",
+      "duration_min": 45,
+      "from": "2026-04-07",
+      "to": "2026-06-23"
+    }
+  ],
+
+  "one_off": [
+    { "summary": "Marguerite / Thicket intro call", "attendees": ["marguerite"], "start": "2026-04-03T10:00:00-07:00", "duration_min": 45 },
+    { "summary": "Marguerite monthly", "attendees": ["marguerite"], "start": "2026-05-19T14:00:00-07:00", "duration_min": 30 },
+    { "summary": "Marguerite monthly", "attendees": ["marguerite"], "start": "2026-06-16T14:00:00-07:00", "duration_min": 30 },
+
+    { "summary": "Nkechi - intro", "attendees": ["nkechi"], "start": "2026-04-16T14:00:00-07:00", "duration_min": 30 },
+    { "summary": "Nkechi - technical conversation", "attendees": ["nkechi"], "start": "2026-05-07T13:00:00-07:00", "duration_min": 60 },
+    {
+      "summary": "Nkechi - follow up",
+      "attendees": ["nkechi"],
+      "start": "2026-06-18T15:00:00-07:00",
+      "duration_min": 45,
+      "cancelled": true,
+      "_note": "Scheduled and quietly cancelled. Corroborates the cooling arc from a second source, and it is the kind of detail that makes a page feel observed rather than summarized."
+    },
+
+    { "summary": "Cascade - room assignments w/ Bea", "attendees": ["beatriz"], "start": "2026-05-07T13:30:00-07:00", "duration_min": 90 },
+    { "summary": "Westbrook practice manager call", "attendees": [], "start": "2026-05-14T11:00:00-07:00", "duration_min": 30 },
+    { "summary": "Corbin Achebe intro call", "attendees": [], "start": "2026-04-08T09:30:00-07:00", "duration_min": 45 },
+
+    { "summary": "Fulton Works - walkthrough re: bathroom", "attendees": ["ezra"], "start": "2026-05-26T08:30:00-07:00", "duration_min": 30 },
+
+    { "summary": "MOM BIRTHDAY PLANNING CALL", "attendees": ["wendy"], "start": "2026-05-10T17:00:00-07:00", "duration_min": 30, "declined": true },
+    { "summary": "MOM BIRTHDAY PLANNING CALL", "attendees": ["wendy"], "start": "2026-06-07T17:00:00-07:00", "duration_min": 30, "declined": true },
+
+    { "summary": "Dentist", "attendees": [], "start": "2026-04-29T08:00:00-07:00", "duration_min": 60 },
+    { "summary": "Car service", "attendees": [], "start": "2026-06-05T08:00:00-07:00", "duration_min": 30 },
+
+    { "summary": "Cascade - paid plan conversation", "attendees": ["rosalind"], "start": "2026-07-02T16:00:00-07:00", "duration_min": 45,
+      "_note": "The July conversation Priya told Marguerite about twice. It is on the calendar and it is after demo_as_of, so it lands in Upcoming while the promise about it sits unresolved in the metrics thread." },
+    { "summary": "Marguerite quarterly", "attendees": ["marguerite"], "start": "2026-07-07T14:00:00-07:00", "duration_min": 45 },
+    { "summary": "First round - eng candidate (Adaeze O.)", "attendees": [], "start": "2026-07-06T11:00:00-07:00", "duration_min": 45 },
+    { "summary": "MOM BIRTHDAY PLANNING CALL", "attendees": ["wendy"], "start": "2026-07-05T17:00:00-07:00", "duration_min": 30,
+      "_note": "Still on the calendar, still unanswered, eleven days before the party. This is the single most useful thing Upcoming can show." }
+  ]
+}

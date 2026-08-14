@@ -1,0 +1,48 @@
+{
+  "thread_id": "t-noise-bookkeeper",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-bookkeeper'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "karin@ledgerpost.co"
+  ],
+  "subject": "Q2 books",
+  "messages": [
+    {
+      "from": "karin@ledgerpost.co",
+      "date_utc": "2026-04-24T10:15:00-07:00",
+      "subject": "Q2 books",
+      "body": "Hi Priya,\n\nJust a reminder that Q2 closes in about five weeks. To keep everything smooth for the close, I'll need:\n\n1. Any outstanding receipts from April through June\n2. Confirmation on the expense categories we discussed last quarter (software subscriptions vs. contractor payments)\n3. Updated bank statement access if anything has changed\n\nLet me know if you have questions. Happy to jump on a call if it's easier to walk through anything.\n\nBest,\nKarin\nLedgerPost"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-26T14:22:00-07:00",
+      "subject": "Re: Q2 books",
+      "body": "will get you receipts by end of next week\n\nBest,\nPriya"
+    },
+    {
+      "from": "karin@ledgerpost.co",
+      "date_utc": "2026-05-14T09:40:00-07:00",
+      "subject": "Re: Q2 books",
+      "body": "Hi Priya,\n\nFollowing up on the Q2 materials. We're now about three weeks out from close and I'm still missing:\n\n- April and May receipts\n- The category confirmation\n- Bank access check\n\nIf you can get me at least the receipts by end of this week, I can start preliminary reconciliation and we won't be scrambling at month-end.\n\nThanks,\nKarin"
+    },
+    {
+      "from": "karin@ledgerpost.co",
+      "date_utc": "2026-06-03T11:20:00-07:00",
+      "subject": "Re: Q2 books",
+      "body": "Hi Priya,\n\nQuick check-in. Q2 closes in four weeks and I want to make sure we have enough time to handle anything unusual that comes up.\n\nCan you send over what you have so far? Even partial records let me get started, and we can fill in gaps as you find things.\n\nLet me know.\n\nBest,\nKarin"
+    },
+    {
+      "from": "karin@ledgerpost.co",
+      "date_utc": "2026-06-18T13:05:00-07:00",
+      "subject": "Re: Q2 books",
+      "body": "Hi Priya,\n\nWe're now less than two weeks from quarter close. I'm going to need those materials by end of this week (June 21) at the absolute latest if we want to close the books on time.\n\nIf something has changed on your end or you need to adjust our arrangement, just let me know and we can figure it out. I just need to know either way so I can plan accordingly.\n\nThanks,\nKarin"
+    },
+    {
+      "from": "karin@ledgerpost.co",
+      "date_utc": "2026-06-26T15:30:00-07:00",
+      "subject": "Re: Q2 books",
+      "body": "Hi Priya,\n\nQuarter closes in four days. At this point I won't be able to deliver a complete Q2 close without at least partial records.\n\nI'm going to work with what I can pull from bank feeds and Stripe, but there will be gaps and anything that needs manual categorization won't be done. We can clean it up in Q3 but your investor reports are going to show incomplete financials for April through June.\n\nIf you want to send anything over in the next 48 hours I can still incorporate it, but after that I have to move on to other client closes.\n\nLet me know how you want to handle this.\n\nKarin"
+    }
+  ]
+}

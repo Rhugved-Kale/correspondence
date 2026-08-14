@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-jun22",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-jun22'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "nkechi?",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-06-22T11:14:00-07:00",
+      "subject": "nkechi?",
+      "body": "so are we hiring her or"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-22T11:15:00-07:00",
+      "subject": "nkechi?",
+      "body": "just need to know if we're still planning for that or if i should look at other options"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-22T11:16:00-07:00",
+      "subject": "nkechi?",
+      "body": "bc the billing conversation changes a lot if it's you and callum vs you and an actual engineer"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-22T11:33:00-07:00",
+      "subject": "nkechi?",
+      "body": "still talking to her"
+    }
+  ]
+}

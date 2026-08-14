@@ -2,7 +2,7 @@
 Secret scrubbing for email bodies.
 
 People email each other API keys all the time. Without this, we'd cheerfully
-forward those keys to Anthropic and Perplexity in our prompts. That's bad
+forward those keys to Anthropic in our prompts. That's bad
 both for the user (key exposed in third-party logs) and for us (potential
 abuse if a bad actor pastes keys into someone's inbox expecting us to log
 them somewhere).

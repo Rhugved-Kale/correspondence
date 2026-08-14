@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-apr02",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-apr02'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "demo went long",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-04-02T14:22:00-07:00",
+      "subject": "demo went long",
+      "body": "ridgeline just wrapped\n\nshe wanted boarding tracking which we don't have but"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-02T14:22:00-07:00",
+      "subject": "demo went long",
+      "body": "she booked two surgeries through the scheduler while we were on the call"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-02T14:23:00-07:00",
+      "subject": "demo went long",
+      "body": "ok so i think this one actually converts. asked about pricing, asked when we're adding multi-location. her associate vet was on the call taking notes"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-02T14:35:00-07:00",
+      "subject": "demo went long",
+      "body": "nice"
+    }
+  ]
+}

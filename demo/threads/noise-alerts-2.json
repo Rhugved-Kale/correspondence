@@ -1,0 +1,66 @@
+{
+  "thread_id": "t-noise-alerts-2",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-alerts-2'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "alerts@statuspage.thicket.vet"
+  ],
+  "subject": "(varies)",
+  "messages": [
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-05-21T11:14:00-07:00",
+      "subject": "Scheduled Maintenance - API Gateway Upgrade",
+      "body": "SCHEDULED MAINTENANCE NOTIFICATION\n\nService: Thicket API Gateway\nScheduled Start: 2026-05-22 02:00 UTC\nEstimated Duration: 45 minutes\nExpected Impact: None (rolling deployment)\n\nWhat's happening:\nWe will be upgrading our API gateway infrastructure to improve performance and reliability. No user-facing downtime is expected.\n\nWhat you need to do:\nNothing. This maintenance window is precautionary.\n\nQuestions? Reply to support@thicket.vet\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-05-22T10:42:00-07:00",
+      "subject": "Completed - API Gateway Upgrade",
+      "body": "MAINTENANCE COMPLETED\n\nService: Thicket API Gateway\nCompleted: 2026-05-22 02:38 UTC\nActual Duration: 38 minutes\nImpact: None\n\nThe scheduled maintenance has been completed successfully. All systems are operating normally.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-03T14:28:00-07:00",
+      "subject": "Investigating - Elevated API Error Rates",
+      "body": "INCIDENT NOTIFICATION\n\nService: Thicket Scheduling Module\nStatus: Investigating\nDetected: 2026-06-03 14:22 UTC\n\nWhat we're seeing:\nWe are investigating elevated error rates affecting the scheduling module. Some appointment creation requests may be failing.\n\nCurrent impact:\nApproximately 15% of scheduling operations are returning errors.\n\nNext update:\nWe will provide an update within 30 minutes.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-03T14:51:00-07:00",
+      "subject": "Identified - Elevated API Error Rates",
+      "body": "INCIDENT UPDATE\n\nService: Thicket Scheduling Module\nStatus: Identified\nLast Updated: 2026-06-03 14:51 UTC\n\nWhat we found:\nThe issue has been identified as a database connection pool exhaustion during the migration to the new room-based scheduling logic. We are rolling back the deployment that introduced this change.\n\nCurrent impact:\nApproximately 15% of scheduling operations are still affected.\n\nNext steps:\nRollback in progress. Expected resolution within 15 minutes.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-03T15:19:00-07:00",
+      "subject": "Resolved - Elevated API Error Rates",
+      "body": "INCIDENT RESOLVED\n\nService: Thicket Scheduling Module\nStatus: Resolved\nResolved: 2026-06-03 15:16 UTC\nTotal Duration: 54 minutes\n\nWhat happened:\nA deployment introducing room-based scheduling changes caused database connection pool exhaustion. The deployment has been rolled back and all systems are operating normally.\n\nNext steps:\nWe will be conducting a full review of the deployment before reintroducing the room-based scheduling feature. Affected clinics will be contacted directly.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-12T13:07:00-07:00",
+      "subject": "Scheduled Maintenance - Database Index Rebuild",
+      "body": "SCHEDULED MAINTENANCE NOTIFICATION\n\nService: Thicket Records Module\nScheduled Start: 2026-06-13 03:00 UTC\nEstimated Duration: 2 hours\nExpected Impact: Intermittent slowness during record searches\n\nWhat's happening:\nWe will be rebuilding database indexes to improve search performance across patient records. Some search operations may experience temporary slowness.\n\nWhat you need to do:\nNothing, though you may notice slightly slower search results between 3:00 AM and 5:00 AM UTC.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-13T12:31:00-07:00",
+      "subject": "Completed - Database Index Rebuild",
+      "body": "MAINTENANCE COMPLETED\n\nService: Thicket Records Module\nCompleted: 2026-06-13 04:47 UTC\nActual Duration: 1 hour 47 minutes\nImpact: Minimal intermittent slowness as expected\n\nThe scheduled maintenance has been completed successfully. Search performance should be noticeably improved.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-24T16:03:00-07:00",
+      "subject": "Monitoring - Intermittent SMS Delivery Delays",
+      "body": "SERVICE NOTICE\n\nService: SMS Appointment Reminders\nStatus: Monitoring\nDetected: 2026-06-24 15:48 UTC\n\nWhat we're seeing:\nOur SMS provider is reporting intermittent delays in message delivery. Appointment reminders may arrive later than scheduled.\n\nCurrent impact:\nDelivery delays of 10-45 minutes for some SMS reminders.\n\nWhat we're doing:\nThis is a provider-side issue. We are monitoring the situation and have contacted the provider for resolution timeline.\n\nNo action required on your part.\n\n---\nThicket Status\nstatus.thicket.vet"
+    },
+    {
+      "from": "alerts@statuspage.thicket.vet",
+      "date_utc": "2026-06-28T11:52:00-07:00",
+      "subject": "Resolved - Intermittent SMS Delivery Delays",
+      "body": "SERVICE NOTICE RESOLVED\n\nService: SMS Appointment Reminders\nStatus: Resolved\nResolved: 2026-06-28 11:45 UTC\n\nOur SMS provider has resolved the delivery delays. All appointment reminders are now being delivered on schedule.\n\nThank you for your patience.\n\n---\nThicket Status\nstatus.thicket.vet"
+    }
+  ]
+}

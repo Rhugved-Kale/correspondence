@@ -1,0 +1,96 @@
+{
+  "thread_id": "t-noise-notifications-may",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'noise-notifications-may'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "no-reply@google.com"
+  ],
+  "subject": "(varies)",
+  "messages": [
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-01T11:23:00-07:00",
+      "subject": "Google Workspace storage is 82% full",
+      "body": "Hi Priya,\n\nYour Google Workspace storage is now 82% full (12.3 GB of 15 GB used).\n\nTo avoid service interruptions, consider:\n• Deleting old emails and attachments\n• Removing files from Google Drive\n• Upgrading your storage plan\n\nManage storage: https://one.google.com/storage\n\nThe Google Workspace Team"
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-02T09:15:00-07:00",
+      "subject": "Dane Whitfield shared \"Pilot Pricing Scenarios v4\" with you",
+      "body": "Dane Whitfield has shared a Google Doc with you.\n\nPilot Pricing Scenarios v4\n\nOpen in Google Docs: https://docs.google.com/document/d/1kJ9mP...\n\nThis message was sent by Google Docs on behalf of Dane Whitfield."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-06T13:42:00-07:00",
+      "subject": "Event update: Design Review - Scheduling Module",
+      "body": "Design Review - Scheduling Module\n\nWhen: Tuesday, May 13, 2026 at 2:00 PM – 3:00 PM (Pacific Time)\nWhere: Thicket Office\n\nThis event has been updated by Callum Reyes-Baptiste.\n\nWhat changed:\n• Time changed from 10:00 AM to 2:00 PM\n\nView event details: https://calendar.google.com/calendar/event?eid=..."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-08T10:18:00-07:00",
+      "subject": "Callum Reyes-Baptiste shared \"Appointment Cards - Revised\" with you",
+      "body": "Callum Reyes-Baptiste has shared a file with you.\n\nAppointment Cards - Revised.fig\n\nOpen in Figma: https://figma.com/file/XyZ892k...\n\nThis message was sent by Figma on behalf of Callum Reyes-Baptiste."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-09T14:31:00-07:00",
+      "subject": "Event canceled: Design Review - Scheduling Module",
+      "body": "Design Review - Scheduling Module\n\nWhen: Tuesday, May 13, 2026 at 2:00 PM – 3:00 PM (Pacific Time)\nWhere: Thicket Office\n\nThis event has been canceled by Callum Reyes-Baptiste.\n\nView canceled event: https://calendar.google.com/calendar/event?eid=..."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-12T09:47:00-07:00",
+      "subject": "New event: Design Review - Scheduling Module",
+      "body": "Design Review - Scheduling Module\n\nWhen: Thursday, May 15, 2026 at 3:30 PM – 4:30 PM (Pacific Time)\nWhere: Thicket Office\n\nCallum Reyes-Baptiste has invited you to this event.\n\nGoing? Yes - Maybe - No\n\nView event details: https://calendar.google.com/calendar/event?eid=..."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-14T11:04:00-07:00",
+      "subject": "Callum Reyes-Baptiste shared \"Treatment Plan Flow - May Update\" with you",
+      "body": "Callum Reyes-Baptiste has shared a file with you.\n\nTreatment Plan Flow - May Update.fig\n\nOpen in Figma: https://figma.com/file/Abc123x...\n\nThis message was sent by Figma on behalf of Callum Reyes-Baptiste."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-16T15:22:00-07:00",
+      "subject": "Google Workspace storage is 87% full",
+      "body": "Hi Priya,\n\nYour Google Workspace storage is now 87% full (13.1 GB of 15 GB used).\n\nYou're approaching your storage limit. When your storage is full, you won't be able to:\n• Send or receive emails in Gmail\n• Upload files to Google Drive\n• Create new Google Docs, Sheets, or Slides\n\nManage storage: https://one.google.com/storage\n\nThe Google Workspace Team"
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-19T10:38:00-07:00",
+      "subject": "Dane Whitfield shared \"Seed Round Deck v2\" with you",
+      "body": "Dane Whitfield has shared a Google Slides presentation with you.\n\nSeed Round Deck v2\n\nOpen in Google Slides: https://docs.google.com/presentation/d/1nR8fL...\n\nThis message was sent by Google Slides on behalf of Dane Whitfield."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-21T13:56:00-07:00",
+      "subject": "Reminder: Your GitHub Copilot trial expires in 7 days",
+      "body": "Hi Priya,\n\nYour GitHub Copilot trial will expire on May 28, 2026.\n\nTo continue using GitHub Copilot after your trial ends, you'll need to set up a paid subscription.\n\nCurrent plan: Individual Trial\nPrice after trial: $10/month or $100/year\n\nManage subscription: https://github.com/settings/copilot\n\nGitHub"
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-23T09:12:00-07:00",
+      "subject": "Security alert: New sign-in from Mac on Chrome",
+      "body": "Hi Priya,\n\nYour Google Account was just used to sign in from a new device.\n\nDevice: Mac\nBrowser: Chrome\nLocation: Oakland, CA, USA\nTime: Friday, May 23, 2026 9:11 AM PDT\n\nIf this was you, you don't need to do anything.\n\nIf this wasn't you, secure your account: https://myaccount.google.com/security\n\nThe Google Accounts Team"
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-27T14:29:00-07:00",
+      "subject": "Dane Whitfield commented on \"Pilot Pricing Scenarios v4\"",
+      "body": "Dane Whitfield commented on a document you have access to.\n\nPilot Pricing Scenarios v4\n\nComment: \"what if we just eat cc fees for first 6 months\"\n\nReply to comment: https://docs.google.com/document/d/1kJ9mP...\n\nThis message was sent by Google Docs on behalf of Dane Whitfield."
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-29T11:43:00-07:00",
+      "subject": "Google Workspace storage is 91% full",
+      "body": "Hi Priya,\n\nYour Google Workspace storage is now 91% full (13.7 GB of 15 GB used).\n\nAction required: You're running out of storage space.\n\nWhat happens when storage is full:\n• New emails will bounce back to senders\n• You won't be able to upload new files\n• Syncing will stop on all devices\n\nFree up space now: https://one.google.com/storage/management\n\nThe Google Workspace Team"
+    },
+    {
+      "from": "no-reply@google.com",
+      "date_utc": "2026-05-30T16:07:00-07:00",
+      "subject": "Callum Reyes-Baptiste shared \"Invoice Template Mockups\" with you",
+      "body": "Callum Reyes-Baptiste has shared a file with you.\n\nInvoice Template Mockups.fig\n\nOpen in Figma: https://figma.com/file/Qrs456w...\n\nThis message was sent by Figma on behalf of Callum Reyes-Baptiste."
+    }
+  ]
+}

@@ -22,6 +22,21 @@ import ProgressView from "./ProgressView.jsx";
  * setInterval so a slow status response can't pile up overlapping
  * requests.
  */
+// Demo build. When VITE_DEMO is set the app skips the API and the whole
+// setup/progress flow and reads prebuilt JSON, because the public demo has
+// no backend to talk to. Imported rather than fetched so there is no
+// loading flash on a cold visit.
+const DEMO = import.meta.env.VITE_DEMO === "1";
+
+// Imported, not fetched. A static deploy has no Vite middleware to serve
+// these, and bundling them also removes the loading flash on a cold
+// visit: the artifact is in the first paint rather than one round trip
+// later. Vite tree-shakes these out of the non-demo build.
+import demoPeople from "./demo/people.json";
+import demoInsights from "./demo/insights.json";
+import demoConfig from "./demo/config.json";
+
+
 export default function App() {
   const [status, setStatus] = useState(null);
   const [people, setPeople] = useState(null);
@@ -53,6 +68,7 @@ export default function App() {
 
   // Status poll loop.
   useEffect(() => {
+    if (DEMO) return;
     let cancelled = false;
     let timeoutId;
     async function poll() {
@@ -78,6 +94,10 @@ export default function App() {
   // phase flips back to idle (after a reset). This is what keeps the
   // Setup screen accurate when the user switches accounts.
   async function fetchAccountAndPreflight() {
+    // Demo builds have no backend. Without this guard the demo fires
+    // /api/account and /api/preflight on every mount and logs a pair of
+    // 500s in the console of a page that is otherwise entirely static.
+    if (DEMO) return;
     try {
       const [accountResp, preflightResp] = await Promise.all([
         fetch("/api/account"),
@@ -164,6 +184,25 @@ export default function App() {
     await handleReset(false);
     // Tiny delay so the reset propagates before /api/start fires.
     setTimeout(() => handleStart(), 300);
+  }
+
+  // Demo build renders the artifact directly. No polling, no setup, no
+  // progress: there is nothing to wait for.
+  if (DEMO) {
+    return (
+      <PeopleWiki
+        people={demoPeople}
+        insights={demoInsights}
+        landingPersonId={demoConfig.landing_person_id}
+        // Comes from the build so the card footer always matches the
+        // domain it was actually deployed to.
+        demoUrl={__PUBLIC_URL__.replace(/^https?:\/\//, "")}
+        // The corpus is frozen at a fixed date. Relative times render
+        // against that instead of the clock, so "tomorrow" stays
+        // tomorrow instead of drifting into "eight months ago".
+        asOf={demoInsights.as_of_utc}
+      />
+    );
   }
 
   // Decide what to render.

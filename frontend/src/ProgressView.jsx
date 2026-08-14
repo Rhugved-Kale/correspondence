@@ -299,7 +299,7 @@ function IndeterminateBar() {
   return (
     <>
       <style>{`
-        @keyframes twinmind-slide {
+        @keyframes progress-slide {
           0%   { transform: translateX(-100%); }
           100% { transform: translateX(330%); }
         }
@@ -314,7 +314,7 @@ function IndeterminateBar() {
             height: "100%",
             background: "#3D3A8E",
             borderRadius: 999,
-            animation: "twinmind-slide 1.8s ease-in-out infinite",
+            animation: "progress-slide 1.8s ease-in-out infinite",
           }}
         />
       </div>

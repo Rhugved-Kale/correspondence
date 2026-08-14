@@ -2,9 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TwinMind preview</title>
+    <title>Correspondence</title>
+    <meta name="description" content="Reads your Gmail and Calendar, finds the ten people who matter most right now, and writes an editorial page for each one." />
+
+    <!-- Absolute URLs because scrapers do not resolve relative paths.
+         Update the domain here if the deploy target changes. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Correspondence" />
+    <meta property="og:description" content="It reads your email and writes about you. A photo got answered in seventeen minutes. A question about $135 took 5.6 days." />
+    <meta property="og:image" content="__PUBLIC_URL__/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Correspondence" />
+    <meta name="twitter:description" content="It reads your email and writes about you." />
+    <meta name="twitter:image" content="__PUBLIC_URL__/og.png" />
   </head>
   <body class="bg-stone-50">
     <div id="root"></div>

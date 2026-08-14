@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-jun12",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-jun12'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "summit booth",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-06-12T10:14:00-07:00",
+      "subject": "summit booth",
+      "body": "ok so they have one 10x10 left for the VMX thing in august\n\n$2400 but we'd be next to the purina booth which is actually perfect\n\nbasically every clinic owner in the northwest"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-12T10:15:00-07:00",
+      "subject": "summit booth",
+      "body": "i kind of already told them we'd take it"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-12T10:16:00-07:00",
+      "subject": "summit booth",
+      "body": "sorry"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-12T10:34:00-07:00",
+      "subject": "summit booth",
+      "body": "ok"
+    }
+  ]
+}

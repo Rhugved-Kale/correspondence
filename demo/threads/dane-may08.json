@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-dane-may08",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-may08'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "conference thing",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-08T11:14:00-07:00",
+      "subject": "conference thing",
+      "body": "ok so VetFocus wants us as a sponsor\n\n$4k, booth, ten minute demo slot\n\nthey're projecting 400 clinic owners"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-08T11:29:00-07:00",
+      "subject": "conference thing",
+      "body": "when is it"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-08T11:31:00-07:00",
+      "subject": "conference thing",
+      "body": "july 18-19\n\nseattle\n\nwe'd need the booth materials but callum could turn that fast\n\ni know it's expensive but two of the clinics i've been talking to are going"
+    }
+  ]
+}

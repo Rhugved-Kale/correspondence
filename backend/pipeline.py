@@ -45,6 +45,17 @@ log = get_logger(__name__)
 PERSON_CONCURRENCY = 1
 
 
+def _name_from_email(email: str) -> str:
+    """
+    "priya.raghunathan@thicket.vet" -> "Priya Raghunathan". Only used when
+    nothing better is configured; a rough name beats a hardcoded one.
+    """
+    import re
+    local = re.sub(r"\d+$", "", (email or "").split("@", 1)[0])
+    parts = [p for p in re.split(r"[._\-+]+", local) if p]
+    return " ".join(p[:1].upper() + p[1:] for p in parts) or "the account owner"
+
+
 class EmptyInboxError(Exception):
     """
     Raised when ranking finds zero usable contacts. This isn't a bug; it
@@ -78,6 +89,11 @@ async def run_pipeline(
     # the about-you stats and to anchor calendar-event matching.
     from backend.clients.gmail import get_my_email
     my_email = get_my_email(creds)
+
+    # Whose inbox this is, for the agent prompts. Config wins if the user
+    # set it; otherwise derive something usable from the address so the
+    # agents at least narrate as a person rather than as a placeholder.
+    protagonist = (settings.protagonist_name or "").strip() or _name_from_email(my_email)
 
     def emit(stage: str, current: int, total: int, message: str) -> None:
         log.info("[%s] %d/%d  %s", stage, current, total, message)
@@ -128,6 +144,7 @@ async def run_pipeline(
                 email=c.email,
                 rank_score=c.score,
                 rank_position=position,
+                protagonist_name=protagonist,
             )
         async with completed_lock:
             completed += 1

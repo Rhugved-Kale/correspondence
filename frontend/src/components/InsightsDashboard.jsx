@@ -4,12 +4,7 @@ import {
   Calendar,
   Sparkles,
   ArrowRight,
-  MessageCircle,
   Inbox,
-  Send,
-  Users,
-  Globe,
-  TrendingUp,
 } from "lucide-react";
 
 /**
@@ -29,8 +24,9 @@ import {
  * we don't duplicate the palette logic).
  */
 export default function InsightsDashboard({
-  view,                 // "forgotten" | "upcoming" | "about_you"
+  view,                 // "forgotten" | "upcoming" | "the_read"
   insights,             // result of /api/insights
+  asOf,                 // freeze relative time for the demo's fixed corpus
   accentFor,            // function(name) -> { solid, soft, ink, ... }
   onOpenPerson,         // (personId) => void
 }) {
@@ -53,14 +49,127 @@ export default function InsightsDashboard({
         accentFor={accentFor}
         onOpenPerson={onOpenPerson}
         serif={serif}
+        asOf={asOf}
       />
     );
   }
   return (
-    <AboutYouView
-      stats={insights?.about_you || {}}
+    <TheReadView
+      read={insights?.the_read || {}}
       serif={serif}
     />
+  );
+}
+
+
+// --- The Read ---------------------------------------------------------------
+//
+// This replaces a grid of stat tiles. The grid was the problem: it answered
+// "how much" when the interesting question is "what do you do", and a grid
+// reads as a dashboard no matter what numbers are in it.
+//
+// So: a single column, one vignette per card, generous vertical rhythm. The
+// page opens on the sharpest finding set large with no lede above it,
+// because a lede would explain the thing the finding is supposed to land on
+// its own. Numbers live inside sentences rather than in tiles.
+
+function TheReadView({ read, serif }) {
+  const vignettes = read?.vignettes || [];
+
+  if (vignettes.length === 0) {
+    return (
+      <div className="max-w-[720px] mx-auto px-6 md:px-12 py-16">
+        <EmptyState
+          icon={<Sparkles size={28} strokeWidth={1.8} />}
+          title="Nothing to say yet."
+          body="The Read needs a few months of correspondence before it can find anything worth pointing at."
+        />
+      </div>
+    );
+  }
+
+  const [opening, ...rest] = vignettes;
+
+  return (
+    <div className="max-w-[720px] mx-auto px-6 md:px-12 py-16 md:py-24">
+      {/* Opening. No eyebrow, no lede. The finding is the entrance. */}
+      <motion.section
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h1
+          style={{
+            fontFamily: serif,
+            fontWeight: 500,
+            fontSize: "clamp(34px, 5.2vw, 54px)",
+            lineHeight: 1.08,
+            letterSpacing: "-0.022em",
+            color: "#15110D",
+          }}
+        >
+          {opening.headline}
+        </h1>
+        <p
+          className="mt-7"
+          style={{ fontSize: 19, lineHeight: 1.68, color: "#2E2A24" }}
+        >
+          {opening.body}
+        </p>
+      </motion.section>
+
+      <div
+        className="my-16 h-px w-full"
+        style={{
+          background:
+            "linear-gradient(to right, #D9D2C4, rgba(217,210,196,0.15))",
+        }}
+      />
+
+      <div className="space-y-16 md:space-y-20">
+        {rest.map((v, i) => (
+          <motion.section
+            key={i}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-70px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h2
+              style={{
+                fontFamily: serif,
+                fontWeight: 500,
+                fontSize: "clamp(24px, 3.2vw, 32px)",
+                lineHeight: 1.15,
+                letterSpacing: "-0.016em",
+                color: "#15110D",
+              }}
+            >
+              {v.headline}
+            </h2>
+            <p
+              className="mt-5"
+              style={{ fontSize: 17, lineHeight: 1.7, color: "#3A342D" }}
+            >
+              {v.body}
+            </p>
+          </motion.section>
+        ))}
+      </div>
+
+      {/* The only number on the page that is not inside a sentence. */}
+      {read?.window && (
+        <div
+          className="mt-20 pt-8"
+          style={{ borderTop: "1px solid #EAE5DC" }}
+        >
+          <p className="text-[12.5px]" style={{ color: "#9B907F" }}>
+            Read from {read.volume?.total?.toLocaleString?.() || "your"} messages,{" "}
+            {read.window.first} to {read.window.last}.
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -151,7 +260,7 @@ function ForgottenView({ items, accentFor, onOpenPerson, serif }) {
 
 // --- Upcoming meetings view -------------------------------------------------
 
-function UpcomingView({ items, accentFor, onOpenPerson, serif }) {
+function UpcomingView({ items, accentFor, onOpenPerson, serif, asOf }) {
   return (
     <DashboardLayout
       eyebrow="Coming up on your calendar"
@@ -174,7 +283,7 @@ function UpcomingView({ items, accentFor, onOpenPerson, serif }) {
             // the "Open page" button.
             const hasAnchor = !!m.anchor_person_id;
             const accent = accentFor(m.anchor_person_name || "default");
-            const when = formatMeetingTime(m.start_utc);
+            const when = formatMeetingTime(m.start_utc, asOf);
             return (
               <motion.div
                 key={m.event_id}
@@ -330,134 +439,6 @@ function UpcomingView({ items, accentFor, onOpenPerson, serif }) {
 
 // --- About-you view ---------------------------------------------------------
 
-function AboutYouView({ stats, serif }) {
-  // No useful stats yet?
-  if (!stats || stats.error || !stats.total_messages) {
-    return (
-      <DashboardLayout
-        eyebrow="About you"
-        title="Your inbox, by the numbers."
-        lede="A few things we noticed while reading your email."
-        serif={serif}
-      >
-        <EmptyState
-          icon={<TrendingUp size={28} strokeWidth={1.8} />}
-          title="Stats unavailable."
-          body="Run the pipeline on a real inbox to see your numbers here."
-        />
-      </DashboardLayout>
-    );
-  }
-
-  const reciprocityPct = stats.total_messages > 0
-    ? Math.round((stats.sent_messages / stats.total_messages) * 100)
-    : 0;
-
-  return (
-    <DashboardLayout
-      eyebrow="About you"
-      title="Your inbox, by the numbers."
-      lede="A snapshot of how you actually use email across the window we read. Numbers, not narratives."
-      serif={serif}
-    >
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatTile
-          icon={<MessageCircle size={16} strokeWidth={2.2} />}
-          label="Messages read"
-          value={stats.total_messages?.toLocaleString() || "—"}
-          sub={
-            stats.window_days
-              ? `over ${stats.window_days} days`
-              : null
-          }
-        />
-        <StatTile
-          icon={<Send size={16} strokeWidth={2.2} />}
-          label="Sent by you"
-          value={stats.sent_messages?.toLocaleString() || "—"}
-          sub={`${reciprocityPct}% of total`}
-        />
-        <StatTile
-          icon={<Users size={16} strokeWidth={2.2} />}
-          label="People you replied to"
-          value={stats.people_you_replied_to?.toLocaleString() || "—"}
-          sub={`${stats.distinct_correspondents?.toLocaleString() || 0} touched your inbox`}
-        />
-        <StatTile
-          icon={<Globe size={16} strokeWidth={2.2} />}
-          label="Organizations"
-          value={stats.distinct_domains?.toLocaleString() || "—"}
-          sub="distinct email domains"
-        />
-        {stats.busiest_week && (
-          <StatTile
-            icon={<TrendingUp size={16} strokeWidth={2.2} />}
-            label="Busiest week"
-            value={stats.busiest_week.message_count?.toLocaleString() || "—"}
-            sub={stats.busiest_week.human_label || stats.busiest_week.week_id}
-            wide
-          />
-        )}
-      </div>
-
-      {stats.top_senders && stats.top_senders.length > 0 && (
-        <div className="mt-10">
-          <div
-            className="text-[11px] uppercase tracking-[0.18em] font-semibold mb-4"
-            style={{ color: "#7A726A" }}
-          >
-            People you hear from most
-          </div>
-          <div className="space-y-2">
-            {stats.top_senders.map((s, i) => (
-              <div
-                key={s.email}
-                className="rounded-xl px-5 py-4 flex items-center gap-4"
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E5DFD3",
-                }}
-              >
-                <div
-                  className="flex-shrink-0 inline-flex items-center justify-center font-semibold"
-                  style={{
-                    width: 36, height: 36, borderRadius: 999,
-                    background: "#272555", color: "#FAF8F4",
-                    fontSize: 13,
-                  }}
-                >
-                  {i + 1}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div
-                    className="font-medium truncate"
-                    style={{ color: "#15110D", fontSize: 15 }}
-                  >
-                    {s.name}
-                  </div>
-                  <div
-                    className="truncate"
-                    style={{ color: "#7A726A", fontSize: 12.5 }}
-                  >
-                    {s.email}
-                  </div>
-                </div>
-                <div
-                  className="font-medium tabular-nums"
-                  style={{ color: "#5C544A", fontSize: 14 }}
-                >
-                  {s.count.toLocaleString()}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </DashboardLayout>
-  );
-}
-
-
 // --- Shared primitives ------------------------------------------------------
 
 function DashboardLayout({ eyebrow, title, lede, serif, children }) {
@@ -493,54 +474,6 @@ function DashboardLayout({ eyebrow, title, lede, serif, children }) {
       <div className="mt-10">
         {children}
       </div>
-    </div>
-  );
-}
-
-
-function StatTile({ icon, label, value, sub, wide }) {
-  return (
-    <div
-      className={`rounded-xl px-5 py-5 ${wide ? "col-span-2 md:col-span-1" : ""}`}
-      style={{
-        background: "#FFFFFF",
-        border: "1px solid #E5DFD3",
-      }}
-    >
-      <div
-        className="inline-flex items-center justify-center mb-3"
-        style={{
-          width: 32, height: 32, borderRadius: 8,
-          background: "#EDECF7", color: "#272555",
-        }}
-      >
-        {icon}
-      </div>
-      <div
-        className="text-[11px] uppercase tracking-[0.16em] font-semibold"
-        style={{ color: "#7A726A" }}
-      >
-        {label}
-      </div>
-      <div
-        className="mt-1 tabular-nums"
-        style={{
-          fontSize: 28,
-          fontWeight: 600,
-          color: "#15110D",
-          letterSpacing: "-0.01em",
-        }}
-      >
-        {value}
-      </div>
-      {sub && (
-        <div
-          className="mt-1"
-          style={{ fontSize: 12.5, color: "#7A726A" }}
-        >
-          {sub}
-        </div>
-      )}
     </div>
   );
 }
@@ -583,11 +516,14 @@ function EmptyState({ icon, title, body }) {
 
 // --- helpers ----------------------------------------------------------------
 
-function formatMeetingTime(utcString) {
+function formatMeetingTime(utcString, asOf) {
   if (!utcString) return "";
   try {
     const d = new Date(utcString);
-    const now = new Date();
+    // The demo corpus is frozen, so "tomorrow" has to mean tomorrow
+    // relative to the window it was generated for, not to the day someone
+    // happens to load the page.
+    const now = asOf ? new Date(asOf) : new Date();
     const diffMs = d - now;
     const diffHr = diffMs / (1000 * 60 * 60);
     const diffDay = diffHr / 24;

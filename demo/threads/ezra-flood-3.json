@@ -1,0 +1,42 @@
+{
+  "thread_id": "t-ezra-flood-3",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'ezra-flood-3'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "ezra"
+  ],
+  "subject": "Rear bathroom, further to my previous",
+  "messages": [
+    {
+      "from": "ezra",
+      "date_utc": "2026-06-15T09:42:00-07:00",
+      "subject": "Rear bathroom, further to my previous",
+      "body": "Priya,\n\nFollowing yesterday's incident, I have prepared a brief outline of tenant responsibilities as they pertain to the shared facilities. I believe clarity on these points will prevent future misunderstandings.\n\n1. Tenants are responsible for ensuring that paper products are disposed of appropriately and not in excessive quantities.\n\n2. Any personal items stored in the shared bathroom must be removed by end of business Friday of each week.\n\n3. The facilities are shared among four tenant organizations and courtesy regarding usage duration is expected.\n\n4. Maintenance issues should be reported within 24 hours of discovery, with photographic documentation where possible.\n\n5. The bathroom facilities are connected to a shared drainage system that predates the current configuration of the premises, and as I have noted in my previous communications, the system's capacity is a function of tenant usage patterns rather than a plumbing deficiency.\n\nPlease acknowledge receipt.\n\nRegards,\nEzra Mbeki-Toft\nPremises Manager"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-15T14:18:00-07:00",
+      "subject": "Re: Rear bathroom, further to my previous",
+      "body": "Acknowledged."
+    },
+    {
+      "from": "ezra",
+      "date_utc": "2026-06-16T11:33:00-07:00",
+      "subject": "Re: Rear bathroom, further to my previous",
+      "body": "Priya,\n\nI take your response to mean you have reviewed the outlined responsibilities. For record-keeping purposes, I will need explicit confirmation that Thicket agrees to observe points 1 through 5 as stated.\n\nA simple \"agreed\" or \"confirmed\" will suffice.\n\nRegards,\nEzra"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-17T16:07:00-07:00",
+      "subject": "Re: Rear bathroom, further to my previous",
+      "body": "confirmed"
+    },
+    {
+      "from": "ezra",
+      "date_utc": "2026-06-20T10:15:00-07:00",
+      "subject": "Re: Rear bathroom, further to my previous",
+      "body": "Noted.\n\nI have filed your confirmation. Should any future incidents occur, I will refer back to this exchange and to the responsibilities as outlined on June 15.\n\nRegards,\nEzra Mbeki-Toft"
+    }
+  ]
+}

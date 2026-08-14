@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-apr23",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-apr23'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "redwood called",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-04-23T11:42:00-07:00",
+      "subject": "redwood called",
+      "body": "redwood wants a second demo"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-23T11:42:00-07:00",
+      "subject": "redwood called",
+      "body": "bringing their office manager this time"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-04-23T11:43:00-07:00",
+      "subject": "redwood called",
+      "body": "ok so this is the one where they actually have budget, she said they're trying to be off paper by july"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-23T11:59:00-07:00",
+      "subject": "redwood called",
+      "body": "nice. when"
+    }
+  ]
+}

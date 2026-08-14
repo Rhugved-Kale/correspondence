@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-marguerite-update-may",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'marguerite-update-may'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "marguerite"
+  ],
+  "subject": "Thicket monthly, May",
+  "messages": [
+    {
+      "from": "priya",
+      "date_utc": "2026-05-31T00:41:00-07:00",
+      "subject": "Thicket monthly, May",
+      "body": "Attached is May, slightly past deadline but complete.\n\nThe short version: product moved forward in ways that matter, customer motion was mixed, and I am more confident about what we are building than I was thirty days ago.\n\nOn product, the scheduling rewrite shipped on the 19th and has been running clean at Cascade for eleven days, including two full surgery days with no room conflicts. This was the thing that nearly lost us Rosalind in April, and the fact that it has held through her busiest week of the month means the core model is right. I rebuilt it around rooms as the atomic unit instead of appointments, which sounds like a small distinction and required touching every assumption in the booking layer.\n\nWestbrook finished their records migration quietly three weeks ago. I only noticed because weekly active users went from two to nine. No announcement, no ask for help, they just did it. I have a call with their practice manager on Thursday and I expect that conversation to be clarifying in both directions.\n\nSilvercreek has not moved. Same two logins, same front desk manager counting down to October. I have stopped reading this as a product gap and started reading it as a timing problem we cannot solve.\n\nCallum finished the invoice layout work and it is the first part of the UI I would put in front of someone without disclaimers. We are still not building billing, but when we do the surface will be ready.\n\nThe less good news is that I have been treating email as the signal and I should have been watching logins. The pilot that converted did not tell me, and the one that has not is also not going to tell me. I have been optimizing for the wrong channel.\n\nRunway update in the attached sheet. We are where I said we would be in April.\n\nBest,\nPriya"
+    },
+    {
+      "from": "marguerite",
+      "date_utc": "2026-05-31T10:22:00-07:00",
+      "subject": "Re: Thicket monthly, May",
+      "body": "This is exactly the right level of detail. The logins observation in particular is a good one.\n\nI will read the sheet this weekend and will have questions, but nothing that cannot wait until next week.\n\nBest,\nMarguerite"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-01T11:05:00-07:00",
+      "subject": "Re: Thicket monthly, May",
+      "body": "Thank you. I'll wait for those.\n\nBest,\nPriya"
+    }
+  ]
+}

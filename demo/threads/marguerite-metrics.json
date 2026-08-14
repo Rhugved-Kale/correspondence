@@ -1,0 +1,41 @@
+{
+  "thread_id": "t-marguerite-metrics",
+  "anchor": true,
+  "_note": "Hand-written. The behavioral signature, stated three times. Marguerite numbers her questions, the third is always the one that matters, and the third is always the one that goes unanswered. Priya writes 340 words back and answers two of three, so the length performs thoroughness while the evasion happens underneath it. That is the finding: long replies are not the same as answers, and the corpus has to show it rather than say it. Same signature as the Nkechi thread, which makes it a pattern rather than an incident. Marguerite never gets annoyed, and her June message is shorter and more formal, which is how distance actually shows up in writing from someone like her.",
+
+  "participants": ["marguerite", "priya"],
+  "subject": "Pilots, when you have a moment",
+
+  "messages": [
+    {
+      "from": "marguerite",
+      "date_utc": "2026-05-12T09:30:00-07:00",
+      "subject": "Pilots, when you have a moment",
+      "body": "Coming back to the pilots, since the first monthly update was very good on product and quiet on customers.\n\nThree questions:\n\n1. What did the scheduling rewrite actually cost you in weeks, and would you make the same call again?\n\n2. Of the two polite pilots, has either changed behaviour since April, in either direction?\n\n3. Is anyone paying you yet? I ask because \"pilot\" is doing a lot of work in these updates, and there is a version of the next nine months where all three are pilots forever and everyone stays friendly about it.\n\nBest,\nMarguerite"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-13T20:20:00-07:00",
+      "subject": "Re: Pilots, when you have a moment",
+      "body": "Good questions, and the first one has a more interesting answer than I expected.\n\nThe rewrite cost eleven working days, against my estimate of ten, which is the first estimate I have made this year that survived contact. But the real cost was not the days. It was that I had to tell Rosalind it would be two weeks when I could have shipped a special-case fix in three days, and she was one incident away from going back to paper. Holding the two weeks was the right call and it was the most uncomfortable email I have written since we started.\n\nWould I make the same call again: yes, and faster. The special-case version would have broken the first time she blocked a room for a deep clean, and she would have been working around software again, which is the exact thing she is paying us to stop doing.\n\nOn the two polite pilots. Westbrook has changed, quietly. They were the three-vet practice sitting on six years of paper, and they finished the records migration three weeks ago without telling us, which I only found out because their weekly active count went from two to nine. I have a call with their practice manager on Thursday. Silvercreek has not changed at all. Same two logins, same front desk manager who is retiring in October and does not want to learn anything new before she does. I have stopped treating that as a product problem and started treating it as a timing problem.\n\nThe thing I have taken from both: the pilot that converted did it silently, and the one that has not is not going to tell me either. I have been reading the wrong signal, which is emails, when the signal is logins.\n\nBest,\nPriya"
+    },
+    {
+      "from": "marguerite",
+      "date_utc": "2026-06-08T10:15:00-07:00",
+      "subject": "Re: Pilots, when you have a moment",
+      "body": "The logins observation is a good one and I would put it in the next update, it is the kind of thing that tells a reader you are paying attention.\n\nI do not think you answered the third question.\n\nBest,\nMarguerite"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-10T23:47:00-07:00",
+      "subject": "Re: Pilots, when you have a moment",
+      "body": "You're right, I didn't, and I'd rather say why than answer it badly.\n\nThe honest position is that nobody is paying yet and I have been reluctant to put a number in front of Rosalind while the product was still doing the thing that nearly lost her. That was a defensible reason in May. I am aware it becomes an excuse somewhere around July.\n\nWhat I would like to do is take a paid plan to Cascade in the first week of July, once room-based has a full month of clean surgery days behind it, and use whatever she says as the template for Westbrook. If she says no I would rather find that out in July than in October.\n\nI'll have a real answer for you after that conversation.\n\nBest,\nPriya"
+    },
+    {
+      "from": "marguerite",
+      "date_utc": "2026-06-23T09:00:00-07:00",
+      "subject": "Re: Pilots, when you have a moment",
+      "body": "Understood, and July is a reasonable answer.\n\nI would only note that you have now told me twice that you will have a real answer after a conversation that has not yet been scheduled. I am not chasing you. I am telling you what it sounds like from here, which is a thing I would want to know if I were you.\n\nBest,\nMarguerite"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-dane-jun17",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-jun17'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "silvercreek",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-06-17T11:14:00-07:00",
+      "subject": "silvercreek",
+      "body": "silvercreek still at two logins\n\nno movement in five weeks"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-17T11:15:00-07:00",
+      "subject": "silvercreek",
+      "body": "front desk manager retiring in october per their last email\n\nshe doesn't want to learn it"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-06-17T11:15:00-07:00",
+      "subject": "silvercreek",
+      "body": "ok so do we just call it"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-06-17T11:29:00-07:00",
+      "subject": "silvercreek",
+      "body": "wait until october"
+    }
+  ]
+}

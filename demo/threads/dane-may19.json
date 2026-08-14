@@ -1,0 +1,30 @@
+{
+  "thread_id": "t-dane-may19",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'dane-may19'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "dane"
+  ],
+  "subject": "harborview",
+  "messages": [
+    {
+      "from": "dane",
+      "date_utc": "2026-05-19T10:43:00-07:00",
+      "subject": "harborview",
+      "body": "harborview pet clinic from the tacoma list just replied\n\nok so owner + lead tech both want to see it\n\nfriday 2pm work for you"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-05-19T10:58:00-07:00",
+      "subject": "Re: harborview",
+      "body": "yes"
+    },
+    {
+      "from": "dane",
+      "date_utc": "2026-05-19T11:15:00-07:00",
+      "subject": "Re: harborview",
+      "body": "k locking it in"
+    }
+  ]
+}

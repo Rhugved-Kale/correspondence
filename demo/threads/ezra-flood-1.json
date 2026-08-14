@@ -1,0 +1,36 @@
+{
+  "thread_id": "t-ezra-flood-1",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'ezra-flood-1'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "ezra"
+  ],
+  "subject": "Water in the rear bathroom",
+  "messages": [
+    {
+      "from": "ezra",
+      "date_utc": "2026-04-17T09:43:00-07:00",
+      "subject": "Water in the rear bathroom",
+      "body": "Good morning,\n\nI observed standing water in the rear bathroom serving the premises this morning during my weekly inspection. I have assessed the situation and want to clarify the following points:\n\n1. This is not a plumbing issue.\n2. The floor drain in that bathroom sits at a lower grade than the supply line, which is a characteristic of the building's original construction.\n3. When humidity is elevated, condensation naturally migrates to the lowest point.\n\nI have placed additional mats near the affected area. Please ensure your team does not obstruct the floor drain with storage items, as this impedes the natural drainage cycle.\n\nRegards,\nEzra Mbeki-Toft\nBuilding Management"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-17T14:22:00-07:00",
+      "subject": "Re: Water in the rear bathroom",
+      "body": "Got it, thanks for looking into it.\n\nBest,\nPriya"
+    },
+    {
+      "from": "ezra",
+      "date_utc": "2026-04-18T11:17:00-07:00",
+      "subject": "Re: Water in the rear bathroom",
+      "body": "Follow-up:\n\nI returned this morning and the water level has decreased, which confirms my assessment. The drainage characteristic is functioning as designed. I have added one additional mat as a preventative measure.\n\nPlease continue to monitor and let me know if you observe any change in the pattern.\n\nRegards,\nEzra Mbeki-Toft"
+    },
+    {
+      "from": "ezra",
+      "date_utc": "2026-04-19T10:05:00-07:00",
+      "subject": "Re: Water in the rear bathroom",
+      "body": "Final note on this matter:\n\nThe floor is now dry. As indicated, this was a drainage characteristic rather than a systemic issue with the premises. Should you observe water again, it will follow the same pattern and resolve naturally within 24 to 48 hours.\n\nRegards,\nEzra Mbeki-Toft"
+    }
+  ]
+}

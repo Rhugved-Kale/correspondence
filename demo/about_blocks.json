@@ -1,0 +1,104 @@
+{
+  "_comment": "Authored stand-ins for the About-them agent, injected by the demo loader because the agent web-searches real people and these people do not exist. Written to the agent's exact output schema and, more importantly, to its exact completeness distribution: full for the two people with real public footprints, partial for the three with a profile page and little else, thin for the two running pre-launch companies, empty for the three who are private individuals. Three empty blocks out of ten is not a gap. It is the identity check failing closed, which is a real property of the tool and worth a viewer seeing. Fields obey the agent's caps: one_line under 25 words, current_focus and background one to two sentences, at most three things_to_know at under 25 words each, and no generic descriptors.",
+
+  "_fill_levels": {
+    "marguerite": "full",
+    "theo": "full",
+    "nkechi": "partial",
+    "hana": "partial",
+    "rosalind": "partial",
+    "dane": "thin",
+    "josiah": "thin",
+    "callum": "empty",
+    "wendy": "empty",
+    "ezra": "empty"
+  },
+
+  "blocks": {
+    "marguerite": {
+      "one_line": "Angel investor and former COO of Ardith Staffing, which sold to a healthcare services group in 2021.",
+      "current_focus": "Invests personally at pre-seed in vertical software for healthcare operations, typically writing the first institutional check. Serves on four boards.",
+      "background": "Spent eleven years in healthcare staffing operations before moving to investing, the last six as COO. Has written publicly about why operators make impatient investors.",
+      "three_things_to_know": [
+        "Publishes an annual letter on why most vertical software companies underprice their first year",
+        "Was an operator before an investor, and her questions tend to be about process rather than metrics",
+        "Sits on four boards and has said she takes on no more than one new one a year"
+      ]
+    },
+
+    "theo": {
+      "one_line": "Director of engineering at Corvia, a freight logistics company, where he has led platform teams since 2019.",
+      "current_focus": "Runs the platform organization at Corvia. Spoke at an infrastructure conference last year on incremental migration of systems that cannot be taken offline.",
+      "background": "Engineering roles at two logistics companies before Corvia. Has managed the same core team for several years, which several public writeups of his talks make a point of noting.",
+      "three_things_to_know": [
+        "His conference talk argued that the interesting part of a migration is the months before the cutover",
+        "Has managed the same platform team at Corvia for roughly five years",
+        "Writes infrequently but is cited by others in the logistics engineering community"
+      ]
+    },
+
+    "nkechi": {
+      "one_line": "Senior software engineer working on data infrastructure at a large technology company.",
+      "current_focus": "",
+      "background": "Six years in engineering, the last three focused on migrations of high-volume write paths. Published a widely shared writeup of a five-month dual-write migration.",
+      "three_things_to_know": [
+        "Her migration writeup is the piece of public writing she is most often cited for",
+        "No public indication she is looking for a new role"
+      ]
+    },
+
+    "hana": {
+      "one_line": "In-house technical recruiter at Northlane, focused on senior and staff engineering hires.",
+      "current_focus": "Recruits for Northlane's platform and infrastructure teams. Her public posts are largely open-role announcements.",
+      "background": "",
+      "three_things_to_know": [
+        "Has been at Northlane for roughly two years, per her profile"
+      ]
+    },
+
+    "rosalind": {
+      "one_line": "Owner and lead veterinarian at Cascade Veterinary in Tacoma, in practice since 1999.",
+      "current_focus": "",
+      "background": "Founded Cascade Veterinary after several years in a larger multi-site practice. The clinic's site lists soft-tissue surgery and senior animal care as her focus.",
+      "three_things_to_know": [
+        "Clinic bio notes twenty-six years in practice and a particular interest in geriatric care",
+        "Cascade is independent and has stayed two-vet, in a region where most practices have been acquired"
+      ]
+    },
+
+    "dane": {
+      "one_line": "Co-founder of Thicket. Worked as a veterinary technician for several years before moving into software sales.",
+      "current_focus": "",
+      "background": "",
+      "three_things_to_know": []
+    },
+
+    "josiah": {
+      "one_line": "Founder of an early-stage company. Limited public information available beyond a landing page.",
+      "current_focus": "",
+      "background": "",
+      "three_things_to_know": []
+    },
+
+    "callum": {
+      "one_line": "",
+      "current_focus": "",
+      "background": "",
+      "three_things_to_know": []
+    },
+
+    "wendy": {
+      "one_line": "",
+      "current_focus": "",
+      "background": "",
+      "three_things_to_know": []
+    },
+
+    "ezra": {
+      "one_line": "",
+      "current_focus": "",
+      "background": "",
+      "three_things_to_know": []
+    }
+  }
+}

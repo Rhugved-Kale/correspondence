@@ -1,0 +1,48 @@
+{
+  "thread_id": "t-hana-outreach",
+  "anchor": false,
+  "_note": "Generated from thread_plan.json entry 'hana-outreach'. Beats are hand-authored; prose is not.",
+  "participants": [
+    "priya",
+    "hana"
+  ],
+  "subject": "Northlane, and a role I think you'd want to hear about",
+  "messages": [
+    {
+      "from": "hana",
+      "date_utc": "2026-04-08T10:42:00-07:00",
+      "subject": "Northlane, and a role I think you'd want to hear about",
+      "body": "Hi Priya,\n\nI'm reaching out from Northlane because we're building out our platform engineering team and your name came up in a few conversations. I saw you recently started Thicket—congrats on the launch, the scheduling piece looks really thoughtfully designed—but I wanted to put this on your radar in case the timing ever shifts.\n\nWe're looking for a senior engineering leader to own our infrastructure roadmap, reporting directly to our VP of Engineering. The team is about thirty people right now, growing to fifty by end of year. Compensation is in the $220–260K range plus equity, and we're committed to fully remote with a preference for Pacific time.\n\nI know founder life doesn't always leave room for exploratory calls, but if you're ever curious about what we're building or just want to talk through what a transition back might look like down the road, I'd love to find twenty minutes.\n\nBest,\nHana Vuković\nSenior Technical Recruiter, Northlane"
+    },
+    {
+      "from": "priya",
+      "date_utc": "2026-04-08T15:18:00-07:00",
+      "subject": "Re: Northlane, and a role I think you'd want to hear about",
+      "body": "Thanks for thinking of me, but I'm not looking right now. Thicket is very early and I'm all in on it.\n\nBest,\nPriya"
+    },
+    {
+      "from": "hana",
+      "date_utc": "2026-04-22T11:05:00-07:00",
+      "subject": "Re: Northlane, and a role I think you'd want to hear about",
+      "body": "Totally understand, and I figured that was the case. I've seen how much momentum Thicket has been getting with the vet clinic space—someone forwarded me a demo video from one of your pilot customers last week and it's clear you're solving a real problem.\n\nThat said, I wanted to loop back because the scope of this role has expanded a bit. We're now looking at this as a hybrid product-infrastructure position, someone who can think about platform as a product discipline rather than just keeping the lights on. Given your background at Corvia and what you're building now, it felt like something that might be more aligned with where you want to take your career long-term.\n\nNo pressure at all, but if you want to keep the door open for a conversation later this year, just say the word.\n\nBest,\nHana"
+    },
+    {
+      "from": "hana",
+      "date_utc": "2026-05-13T14:37:00-07:00",
+      "subject": "Re: Northlane, and a role I think you'd want to hear about",
+      "body": "Hi Priya,\n\nJust wanted to touch base one more time. I know you're heads-down on Thicket, but we've started interviews for this role and I wanted to make sure you had a chance to weigh in before we move too far down the pipeline with other candidates.\n\nThe team has a lot of respect for what you built at Corvia, and I think there's a real case to be made that the platform work here would give you exposure to problems at a scale that's hard to get in an early-stage startup environment. Happy to share more about the technical roadmap if that's useful.\n\nLet me know if you want to talk.\n\nBest,\nHana"
+    },
+    {
+      "from": "hana",
+      "date_utc": "2026-06-04T10:15:00-07:00",
+      "subject": "Re: Northlane, and a role I think you'd want to hear about",
+      "body": "Priya,\n\nQuick check-in—we're getting close to an offer stage with a couple of candidates, but I wanted to give you one last chance to express interest if this is something you'd want to explore. I know the timing might not be right, but I also know that six months into a startup can be when the calculus starts to shift for some people.\n\nNo hard feelings either way, just wanted to close the loop.\n\nHana"
+    },
+    {
+      "from": "hana",
+      "date_utc": "2026-06-26T16:52:00-07:00",
+      "subject": "Re: Northlane, and a role I think you'd want to hear about",
+      "body": "Hi Priya,\n\nWe've filled the role, but I wanted to let you know I'll keep you in mind for future opportunities. Best of luck with Thicket.\n\nHana"
+    }
+  ]
+}
