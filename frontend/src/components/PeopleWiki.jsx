@@ -183,6 +183,19 @@ function formatDate(iso) {
 // live inside the generated hero_line sentence, where they can carry a
 // claim instead of sitting in boxes. A row of four tiles is the visual
 // signature of a dashboard; one sentence and one marker is an essay.
+// True when the About agent confirmed anything at all. All four fields
+// empty means the identity check failed closed, which is the correct
+// outcome for a private individual and not something to announce.
+function hasAbout(person) {
+  const a = person?.about || {};
+  return Boolean(
+    (a.one_line || "").trim() ||
+    (a.current_focus || "").trim() ||
+    (a.background || "").trim() ||
+    (a.three_things_to_know || []).length
+  );
+}
+
 function recencyLabel(person, asOf) {
   const events = [...(person.timeline || [])].sort((a, b) =>
     (a.date || "").localeCompare(b.date || "")
@@ -258,6 +271,12 @@ export default function PeopleWiki({ people, insights, landingPersonId, demoUrl,
   // Clicking a person in the sidebar always lands them on the
   // per-person view, even if they were previously on the dashboard.
   function openPerson(personId) {
+    // Ignore ids we cannot render. Nothing currently links to a person
+    // outside the featured set (Forgotten and Upcoming are both built by
+    // walking the same payloads), but without this an unknown id would
+    // push a URL while the page fell back to somebody else, leaving the
+    // address bar and the content disagreeing.
+    if (!people.some((p) => p.id === personId)) return;
     setSelectedId(personId);
     setView("person");
     const next = `/p/${encodeURIComponent(personId)}`;
@@ -707,7 +726,13 @@ function PersonPage({ person, accent, serif, asOf }) {
         </div>
       </section>
 
-      {/* ABOUT */}
+      {/* ABOUT. Omitted entirely when the agent confirmed nothing, rather
+          than rendered as a heading over a placeholder. The identity check
+          fails closed on purpose, and a private person having no public
+          footprint is a real answer: four of the ten in the demo corpus
+          come back empty. Printing "no information found" would turn an
+          honest absence into an apology for one. */}
+      {hasAbout(person) && (
       <Section title="About them" accent={accent}>
         <div className="grid md:grid-cols-3 gap-x-10 gap-y-10">
           {person.about.current_focus && person.about.current_focus.trim() && (
@@ -772,6 +797,7 @@ function PersonPage({ person, accent, serif, asOf }) {
           )}
         </div>
       </Section>
+      )}
 
       {/* TIMELINE */}
       <Section title="Timeline" accent={accent}>

@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { toPng } from "html-to-image";
+// Imported as a raw string at build time so the export never has to
+// discover it. See the note on render().
+import fontEmbedCSS from "../fonts.css?raw";
 import { Download, Copy, Shuffle, Check, X } from "lucide-react";
 
 /**
@@ -193,15 +195,59 @@ export default function ShareCard({ cards, accent, onClose, demoUrl }) {
     return () => window.removeEventListener("resize", fit);
   }, [w, h]);
 
+  // Rendered without html-to-image.
+  //
+  // That library discovers fonts by walking every stylesheet and running a
+  // url() regex over each rule. Our @font-face rules carry two base64
+  // payloads of about 90KB, and an export took over thirty seconds and
+  // often never finished. Passing it pre-built font CSS did not help,
+  // which ruled out font discovery as the only cost.
+  //
+  // Measuring settled it: the browser rasterises a 161KB font-carrying SVG
+  // in ten milliseconds. All of the time was library JavaScript, none of
+  // it was the work we actually need. So we do the work directly.
+  //
+  // The node is already laid out at the exact output size, so this is a
+  // serialise and a draw, with no re-layout and no upscale.
+  function documentCSS() {
+    let out = "";
+    for (const sheet of document.styleSheets) {
+      try {
+        for (const rule of sheet.cssRules) out += rule.cssText + "\n";
+      } catch {
+        // Cross-origin stylesheet. Nothing of ours lives in one.
+      }
+    }
+    return out;
+  }
+
   async function render() {
-    // 2x for retina. The node is already at output size, so this is a
-    // straight upscale rather than a re-layout.
-    return toPng(nodeRef.current, {
-      pixelRatio: 2,
-      width: w,
-      height: h,
-      cacheBust: true,
-    });
+    const node = nodeRef.current;
+    const css = fontEmbedCSS + "\n" + documentCSS();
+
+    // XHTML namespace is required: an SVG foreignObject will not render
+    // HTML without it.
+    const html = node.outerHTML.replace(
+      /^<div/,
+      '<div xmlns="http://www.w3.org/1999/xhtml"'
+    );
+    const svg =
+      `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">` +
+      `<foreignObject x="0" y="0" width="100%" height="100%">` +
+      `<style xmlns="http://www.w3.org/1999/xhtml">${css}</style>` +
+      html +
+      `</foreignObject></svg>`;
+
+    const img = new Image();
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    await img.decode();
+
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, w, h);
+    return canvas.toDataURL("image/png");
   }
 
   async function download() {
